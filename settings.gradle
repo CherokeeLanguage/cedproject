@@ -12,3 +12,4 @@ rootProject.name = 'cedproject'
 include('transliteration')
 include('utilities')
 include('conjugation')
+include('dictionary')
