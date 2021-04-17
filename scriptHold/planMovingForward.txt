@@ -1,0 +1,3 @@
+convert site to use services and not local domain objects and controllers
+calls will go to services for REST then display using the view
+

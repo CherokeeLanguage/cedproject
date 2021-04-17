@@ -1,0 +1,45 @@
+/etc/nginx/sites-available/default
+/etc/nginx/sites-enabled/default
+
+scp cdrchops@63.142.255.175:/etc/nginx/sites-enabled/default ./enabled.txt
+scp cdrchops@63.142.255.175:/etc/nginx/sites-available/default ./available.txt
+
+MariaDB [(none)]> GRANT ALL ON *.* TO 'ced'@'localhost' IDENTIFIED BY 'Tk02030#' WITH GRANT OPTION;
+
+scp cdrchops@63.142.255.175:/opt/tomcat/conf/server.xml ./
+
+scp ./server.xml chuckfinley@104.251.216.58:~/
+
+
+scp ./build/libs/dictionary.war chuckfinley@104.251.216.58:~/
+scp ./dump.sql.gz chuckfinley@104.251.216.58:~/
+mysql -u ced -p cherokeedictionary < dump.sql
+
+scp ./dump.sql.gz chuckfinley@104.251.216.58:~/
+
+
+backupDB.sh        build.sh  dump.sql.gz                  ORIGINAL_ROOT.war  server.xml
+buildAndDeploy.sh  default   google593a568777046d5c.html  ROOT.war           startNinek.sh
+scp cdrchops@63.142.255.175:~/backupDB.sh ./
+scp cdrchops@63.142.255.175:~/build.sh ./
+scp cdrchops@63.142.255.175:~/dump.sql.gz ./
+scp cdrchops@63.142.255.175:~/ROOT.war ./
+scp cdrchops@63.142.255.175:~/server.xml ./
+scp cdrchops@63.142.255.175:~/default ./
+scp cdrchops@63.142.255.175:~/buildAndDeploy.sh ./
+scp cdrchops@63.142.255.175:~/startNinek.sh ./
+scp cdrchops@63.142.255.175:~/google593a568777046d5c.html ./
+
+RedTurbine44
+
+scp cdrchops@63.142.255.175:~/cnt ./
+scp cdrchops@63.142.255.175:~/CherokeeAnalyzer.war ./
+
+sudo service tomcat stop
+sudo rm -fr /opt/apache-tomcat-9.0.7/webapps/ROOT*
+cp ./ROOT.war /opt/apache-tomcat-9.0.7/webapps/
+sudo service tomcat start
+tail -f /opt/apache-tomcat-9.0.7/logs/catalina.out
+
+
+scp ROOT.war chuckfinley@104.251.216.58:~/dictionary.war
