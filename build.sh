@@ -7,6 +7,7 @@ function gitClone() {
     git clone https://github.com/cdrchops/cherokeeconjugation.git conjugation
     git clone https://github.com/cdrchops/cedLibrariesForWindows.git
     git clone https://github.com/cdrchops/cherokeedictionary.git dictionary
+    git clone https://winkdoubleguns@bitbucket.org/cherokeedictionary/grammarguide.git grammar
 }
 
 #takes a parameter for the path either ./ or ../
@@ -14,6 +15,7 @@ function buildTranslit() {
     echo -e "build transliteration"
     cd $1transliteration
     gradle clean build publishToMavenLocal publish
+    cd ..
 }
 
 #takes a parameter for the path
@@ -21,6 +23,7 @@ function buildUtils() {
     echo -e "build utilities"
     cd $1utilities
     gradle clean build publishToMavenLocal publish
+    cd ..
 }
 
 #takes a parameter for the path
@@ -28,31 +31,39 @@ function buildConjugation() {
     echo -e "build conjugation"
     cd $1conjugation
     gradle clean build publishToMavenLocal publish
+    cd ..
 }
 
 #takes a parameter for the path
 function buildDictionary() {
+    copyGrammarGuide
     echo -e "build dictionary"
     cd $1dictionary
     grails clean
     grails war
+    cd ..
+}
+
+function copyGrammarGuide() {
+  cp ./grammar/hold1.txt ./dictionary/grails-app/assets/javascripts/hold1.txt
+  cp ./grammar/hold2.txt ./dictionary/grails-app/assets/javascripts/hold2.txt
 }
 
 function buildAll() {
     echo -e "building all"
     buildTranslit ./
-    buildUtils ../
-    buildConjugation ../
-    buildDictionary ../
+    buildUtils ./
+    buildConjugation ./
+    buildDictionary ./
 }
 
-function updateSite() {
-
-}
-
-function backupDatabase() {
-
-}
+#function updateSite() {
+##nothing
+#}
+#
+#function backupDatabase() {
+##nothing
+#}
 
 while true
 do
