@@ -1,0 +1,126 @@
+1) echo -e "building portlet"
+            cd provider-finder-portlet
+            echo -e "clean and install"
+            mvn clean install -D"build.environment"=mbr -D"javax.net.ssl.trustStore"="c:/Program Files/Java/jdk1.8.0_181/jre/lib/security/cacerts" -D"javax.net.ssl.trustStorePassword"=changeit -e
+            cd ..
+            echo -e "copying file to deploy directory"
+            cp ./provider-finder-portlet/target/mbr_provider-finder-portlet.war ./member-env-config/vagrant/liferay-7.2/deploy/
+            ;;
+        2) echo -e "Stopping Liferay"
+            sudo service liferay stop
+            echo -e "cleaning tomcat logs"
+            sudo rm -r /opt/mw/liferay/instance-01/tomcat-home/logs/*
+            echo -e "cleaning liferay logs"
+            sudo rm -r /opt/mw/liferay/instance-01/liferay-home/logs/*
+			echo -e "cleaning other tomcat logs"
+			sudo rm -r /opt/mw/tomcat/logs/*
+            ;;
+        3) echo -e "starting liferay"
+            sudo service liferay start
+            ;;
+        4) echo -e "stop and start liferay"
+            echo -e "stopping liferay"
+            sudo service liferay stop
+            echo -e "starting liferay"
+            sudo service liferay start
+            echo -e "tailing logs"
+            sudo tail -f /opt/mw/tomcat/logs/catalina.out
+            ;;
+        5) echo -e "cleaning deploy directory"
+            rm -r C:/projects/member-env-config/vagrant/liferay-7.2/deploy/*
+            echo -e "copy jasper reports to deploy directory"
+            cp C:/projects/member-env-config/provisioning/ansible/roles/copy_files/files/* C:/projects/member-env-config/vagrant/liferay-7.2/deploy/
+            ;;
+        6) echo -e "copy reports from deploy to jasper templates directory"
+            cp /opt/mw/liferay/instance-01/liferay-home/deploy/* /opt/mw/liferay/jasper-templates/
+            ;;
+        7) echo -e "stopping tomcat"
+            sudo /opt/mw/tomcat/bin/shutdown.sh
+            echo -e "starting tomcat"
+            sudo /opt/mw/tomcat/bin/startup.sh
+            echo -e "tail logs"
+            tail -f /opt/mw/liferay/instance-01/tomcat-home/logs/catalina.out
+            ;;
+        8) echo -e "start vagrant with debug enabled"
+            cd ./member-env-config/vagrant/liferay-7.2
+            #vagrant up --debug 2>&1 | Tee-Object -FilePath ".\vagrant.log"
+            vagrant up --debug &> vagrant.log
+            ;;
+        9) echo -e "removing node_modules"
+            cd rewriteBranch
+            rm -r node_modules
+            echo -e "installing node modules"
+            npm install
+            cd ..
+            ;;
+        10) echo -e "startup npm"
+            cd rewriteBranchTrunk
+            npm start
+            cd ..
+            ;;
+        11) echo -e "go to tomcat conf directory"
+            cd /opt/mw/liferay/instance-01/tomcat-home/conf
+            ;;
+        12) echo -e "building all dependencies"
+            # init
+#            function pause(){
+#               read -p "$*"
+#            }
+
+            #add git clone for each project to make this a complete installation
+            #and some require npm install
+            echo -e "member-access clean install"
+            cd ./member-access/
+            mvn clean install #passed
+            cd ../common
+
+            echo -e "post login hook clean install"
+            git checkout feature/MBC-7831-post-login-hook
+            mvn clean install #passed
+
+            echo -e "common-utils portlet clean install"
+            cd ../common-utils
+            git checkout feature/MBC-7822-message-center-portlet
+            mvn clean install
+
+            echo -e "common-persistence clean install"
+            cd ../common-persistence
+            git checkout feature/7.2-changes
+            mvn clean install
+
+            echo -e "provider finder portlet clean install"
+            cd ../provider-finder-portlet
+            git checkout feature/dxp-7.2-changes
+            mvn clean install -D"build.environment"=mbr
+
+            echo -e "layoutttpl clean install"
+            cd ../layouttpl
+#            cd layouttpl
+            mvn clean install
+
+            echo -e "layouts ttpl clean install"
+            cd ../redesign-2015-layouts-layouttpl
+            mvn clean install
+
+            echo -e "redesign member theme clean install"
+            cd ../redesign-member-theme
+            gulp build
+            cd ..
+
+            echo -e "copy portlet to deploy"
+            cp provider-finder-portlet/dist/mbr_provider-finder-portlet.war C:\projects\member-env-config\vagrant\liferay-7.2\deploy
+            #cd provider-finder-static-web/
+            #git checkout develop-dxp
+            #gulp BUILD:LOCAL
+
+            echo -e "copy layoutttpl to deploy"
+            cp redesign-2015-layouts-layouttpl/dist/mbr_redesign-2015-layouts-layouttpl.war C:\projects\member-env-config\vagrant\liferay-7.2\deploy
+
+            echo -e "copy theme to deploy"
+            cp redesign-member-theme/dist/mbr_redesign-member-theme.war C:\projects\member-env-config\vagrant\liferay-7.2\deploy
+
+            cd ..
+            # ...
+            # call it
+#            pause 'Press [Enter] key to continue...'
+            ;;

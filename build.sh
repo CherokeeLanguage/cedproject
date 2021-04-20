@@ -46,6 +46,14 @@ function buildAll() {
     buildDictionary ../
 }
 
+function updateSite() {
+
+}
+
+function backupDatabase() {
+
+}
+
 while true
 do
   clear
