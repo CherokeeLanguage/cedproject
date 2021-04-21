@@ -14,6 +14,20 @@ function gitClone() {
     git clone https://winkdoubleguns@bitbucket.org/cherokeedictionary/grammarguide.git grammar
 }
 
+function updateLocalFromGit() {
+    cd utilities/
+    git pull
+    cd ../transliteration/
+    git pull
+    cd ../grammar/
+    git pull
+    cd ../conjugation/
+    git pull
+    cd ..dictionary/
+    git pull
+    cd ..
+}
+
 #takes a parameter for the path either ./ or ../
 function buildTranslit() {
     echo -e "build transliteration"
@@ -90,6 +104,7 @@ do
   echo "6 - build dictionary"
   echo "7 - backup database on server"
   echo "8 - backup database from server"
+  echo "9 - pull latest from git"
 #  echo "2 - reset all repos"
 #  echo "3 - reset translit"
 #  echo "3 - reset utils"
@@ -116,6 +131,8 @@ do
     7) backupDatabaseOnServer
       ;;
     8) pullDatabaseFromServer
+      ;;
+    9) updateLocalFromGit
       ;;
   esac
   echo -e "Press Enter to continue \c"
