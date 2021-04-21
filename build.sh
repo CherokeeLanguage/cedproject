@@ -26,7 +26,7 @@ function updateLocalFromGit() {
     git pull
     cd ../conjugation/
     git pull
-    cd ..dictionary/
+    cd ../dictionary/
     git pull
     cd ..
 }
