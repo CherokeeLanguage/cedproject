@@ -1,5 +1,8 @@
 #!/bin/bash
 
+export USERNAME=cdrchops
+export HOSTS="63.142.255.175"
+
 function gitClone() {
     echo -e "clone repos"
     git clone https://github.com/cdrchops/cherokee-transliteration.git transliteration
@@ -57,13 +60,19 @@ function buildAll() {
     buildDictionary ./
 }
 
-#function updateSite() {
-##nothing
-#}
-#
-#function backupDatabase() {
-##nothing
-#}
+function backupDatabaseOnServer() {
+    echo "backing up database on server"
+    for HOSTNAME in ${HOSTS} ; do
+        ssh -l ${USERNAME} ${HOSTNAME} "\/home/cdrchops/backupDB.sh"
+    done
+}
+
+function pullDatabaseFromServer() {
+    echo "pulling sql dump from server"
+    cd backup
+    scp ${USERNAME}"@"${HOSTS}:~/dump.sql.gz ./dump.sql.gz
+    cd ..
+}
 
 while true
 do
@@ -75,6 +84,8 @@ do
   echo "4 - build utilities"
   echo "5 - build conjugation"
   echo "6 - build dictionary"
+  echo "7 - backup database on server"
+  echo "8 - backup database from server"
 #  echo "2 - reset all repos"
 #  echo "3 - reset translit"
 #  echo "3 - reset utils"
@@ -97,6 +108,10 @@ do
     5) buildConjugation ./
       ;;
     6) buildDictionary ./
+      ;;
+    7) backupDatabaseOnServer
+      ;;
+    8) pullDatabaseFromServer
       ;;
   esac
   echo -e "Press Enter to continue \c"
