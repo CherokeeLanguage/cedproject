@@ -1,7 +1,8 @@
 #!/bin/bash
 
-export USERNAME=cdrchops
-export HOSTS="63.142.255.175"
+function prop {
+    grep "${1}" ./build.properties|cut -d'=' -f2
+}
 
 function gitClone() {
     echo -e "clone repos"
@@ -62,15 +63,18 @@ function buildAll() {
 
 function backupDatabaseOnServer() {
     echo "backing up database on server"
-    for HOSTNAME in ${HOSTS} ; do
-        ssh -l ${USERNAME} ${HOSTNAME} "\/home/cdrchops/backupDB.sh"
-    done
+    username=$(prop 'USERNAME')
+    hosts=$(prop 'HOSTS')
+    #todo: fix this so it doesn't have a crappy cli entry
+    ssh -l ${username} ${hosts} "\/home/cdrchops/backupDB.sh"
 }
 
 function pullDatabaseFromServer() {
     echo "pulling sql dump from server"
+    username=$(prop 'USERNAME')
+    hosts=$(prop 'HOSTS')
     cd backup
-    scp ${USERNAME}"@"${HOSTS}:~/dump.sql.gz ./dump.sql.gz
+    scp ${username}"@"${hosts}:~/dump.sql.gz ./dump.sql.gz
     cd ..
 }
 
