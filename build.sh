@@ -12,10 +12,13 @@ function gitClone() {
     git clone https://github.com/cdrchops/cedLibrariesForWindows.git
     git clone https://github.com/cdrchops/cherokeedictionary.git dictionary
     git clone https://winkdoubleguns@bitbucket.org/cherokeedictionary/grammarguide.git grammar
+    git clone https://github.com/cdrchops/CherokeeDateTime.git dateTime
 }
 
 function updateLocalFromGit() {
-    cd utilities/
+    cd ./utilities/
+    git pull
+    cd ../dateTime
     git pull
     cd ../transliteration/
     git pull
@@ -52,6 +55,13 @@ function buildConjugation() {
     cd ..
 }
 
+function buildDateTime() {
+    echo -e "build dateTime"
+    cd $1dateTime
+    gradle clean build publishToMavenLocal publish
+    cd ..
+}
+
 #takes a parameter for the path
 function buildDictionary() {
     copyGrammarGuide
@@ -73,6 +83,7 @@ function buildAll() {
     buildUtils ./
     buildConjugation ./
     buildDictionary ./
+    buildDateTime ./
 }
 
 function backupDatabaseOnServer() {
