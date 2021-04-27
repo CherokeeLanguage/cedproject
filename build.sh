@@ -6,12 +6,12 @@ function prop {
 
 function gitClone() {
     echo -e "clone repos"
-    git clone https://github.com/cdrchops/cherokee-transliteration.git transliteration
-    git clone https://github.com/cdrchops/cherokee-utilities.git utilities
+    git clone https://github.com/cdrchops/cherokeetransliteration.git transliteration
+    git clone https://github.com/cdrchops/cherokeeutilities.git utilities
     git clone https://github.com/cdrchops/cherokeeconjugation.git conjugation
     git clone https://github.com/cdrchops/cedLibrariesForWindows.git
     git clone https://github.com/cdrchops/cherokeedictionary.git dictionary
-    git clone https://winkdoubleguns@bitbucket.org/cherokeedictionary/grammarguide.git grammar
+    git clone https://github.com/cdrchops/cedgrammarguide.git grammar
     git clone https://github.com/cdrchops/CherokeeDateTime.git dateTime
 }
 
