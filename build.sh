@@ -9,7 +9,7 @@ function gitClone() {
     git clone https://github.com/cdrchops/cherokeetransliteration.git transliteration
     git clone https://github.com/cdrchops/cherokeeutilities.git utilities
     git clone https://github.com/cdrchops/cherokeeconjugation.git conjugation
-    git clone https://github.com/cdrchops/cedLibrariesForWindows.git
+#    git clone https://github.com/cdrchops/cedLibrariesForWindows.git
     git clone https://github.com/cdrchops/cherokeedictionary.git dictionary
     git clone https://github.com/cdrchops/cedgrammarguide.git grammar
     git clone https://github.com/cdrchops/CherokeeDateTime.git dateTime
