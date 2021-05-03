@@ -13,7 +13,7 @@ function gitClone() {
     git clone https://github.com/cdrchops/cherokeedictionary.git dictionary
     git clone https://github.com/cdrchops/cedgrammarguide.git grammar
     git clone https://github.com/cdrchops/CherokeeDateTime.git dateTime
-    git clone https://github.com/cdrchops/cherokeeDecontstructor.git deconstruction
+    git clone https://github.com/cdrchops/cherokeeDecontstructor.git deconstructor
 }
 
 function updateLocalFromGit() {
@@ -27,7 +27,7 @@ function updateLocalFromGit() {
     git pull
     cd ../conjugation/
     git pull
-    cd ../deconstruction/
+    cd ../deconstructor/
     git pull
     cd ../dictionary/
     git pull
@@ -67,7 +67,7 @@ function buildDateTime() {
 
 function buildDeconstruction() {
     echo -e "build deconstruction"
-    cd $1deconstruction
+    cd $1deconstructor
     gradle clean build
     cd ..
 }
