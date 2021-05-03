@@ -27,6 +27,8 @@ function updateLocalFromGit() {
     git pull
     cd ../conjugation/
     git pull
+    cd ../deconstruction/
+    git pull
     cd ../dictionary/
     git pull
     cd ..
@@ -65,7 +67,7 @@ function buildDateTime() {
 
 function buildDeconstruction() {
     echo -e "build deconstruction"
-    cd $1dconstruction
+    cd $1deconstruction
     gradle clean build
     cd ..
 }

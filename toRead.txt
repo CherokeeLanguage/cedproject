@@ -1,0 +1,7 @@
+https://medium.com/dipien/10-great-ideas-to-improve-your-gradle-build-times-2a6b281c69c6
+https://medium.com/dipien/10-ideas-to-improve-your-gradle-build-times-part-ii-9551bb10e9bd
+
+https://github.com/dipien/releases-hub-gradle-plugin
+https://scans.gradle.com/
+https://github.com/runningcode/gradle-doctor/
+
