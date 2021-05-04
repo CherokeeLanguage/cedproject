@@ -16,6 +16,24 @@ function gitClone() {
     git clone https://github.com/cdrchops/cherokeeDecontstructor.git deconstructor
 }
 
+function resetLocalFromGit() {
+    cd ./utilities/
+    git reset --hard
+    cd ../dateTime
+    git reset --hard
+    cd ../transliteration/
+    git reset --hard
+    cd ../grammar/
+    git reset --hard
+    cd ../conjugation/
+    git reset --hard
+    cd ../deconstructor/
+    git reset --hard
+    cd ../dictionary/
+    git reset --hard
+    cd ..
+}
+
 function updateLocalFromGit() {
     cd ./utilities/
     git pull
@@ -92,7 +110,7 @@ function buildAll() {
     buildTranslit ./
     buildUtils ./
     buildConjugation ./
-    buildDictionary ./
+    #buildDictionary ./
     buildDateTime ./
     buildDeconstruction ./
 }
@@ -127,6 +145,7 @@ do
   echo "7 - backup database on server"
   echo "8 - backup database from server"
   echo "9 - pull latest from git"
+  echo "10 - reset repositories from git"
 #  echo "2 - reset all repos"
 #  echo "3 - reset translit"
 #  echo "3 - reset utils"
@@ -155,6 +174,8 @@ do
     8) pullDatabaseFromServer
       ;;
     9) updateLocalFromGit
+      ;;
+    10) resetLocalFromGit
       ;;
   esac
   echo -e "Press Enter to continue \c"
