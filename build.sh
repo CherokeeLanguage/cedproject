@@ -14,6 +14,7 @@ function gitClone() {
     git clone https://github.com/cdrchops/cedgrammarguide.git grammar
     git clone https://github.com/cdrchops/CherokeeDateTime.git dateTime
     git clone https://github.com/cdrchops/cherokeeDecontstructor.git deconstructor
+    # git clone https://github.com/cdrchops/reactCED.git reactCED
 }
 
 function resetLocalFromGit() {
