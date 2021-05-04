@@ -11,3 +11,7 @@ grammar
 dump.sql.gz
 dateTime
 deconstructor
+backup
+backup/.DS_Store
+backup/dump.sql
+backup/dump.sql.gz

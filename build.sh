@@ -96,7 +96,7 @@ function buildDictionary() {
     echo -e "build dictionary"
     cd $1dictionary
     grails clean
-    grails war
+    grails prod war
     cd ..
 }
 
@@ -117,19 +117,27 @@ function buildAll() {
 
 function backupDatabaseOnServer() {
     echo "backing up database on server"
-    username=$(prop 'USERNAME')
-    hosts=$(prop 'HOSTS')
+#    username=$(prop 'USERNAME')
+#    hosts=$(prop 'HOSTS')
     #todo: fix this so it doesn't have a crappy cli entry
-    ssh -l ${username} ${hosts} "\/home/cdrchops/backupDB.sh"
+    ssh cdrchops@63.142.255.175 "\/home/cdrchops/backupDB.sh"
+#    ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/backupDB.sh"
 }
 
 function pullDatabaseFromServer() {
     echo "pulling sql dump from server"
-    username=$(prop 'USERNAME')
-    hosts=$(prop 'HOSTS')
+#    username=$(prop 'USERNAME')
+#    hosts=$(prop 'HOSTS')
+    mkdir backup
     cd backup
-    scp ${username}"@"${hosts}:~/dump.sql.gz ./dump.sql.gz
+    scp cdrchops@63.142.255.175:~/dump.sql.gz ./dump.sql.gz
+#    scp ${username}"@"${hosts}:~/dump.sql.gz ./dump.sql.gz
     cd ..
+}
+
+function updateServerWithLatestWar() {
+  echo "updateServerWithLatestWar"
+  scp ./dictionary/build/libs/dictionary-0.1.war cdrchops@63.142.255.175:~/ROOT.war
 }
 
 while true
@@ -146,6 +154,7 @@ do
   echo "8 - backup database from server"
   echo "9 - pull latest from git"
   echo "10 - reset repositories from git"
+  echo "11 - upload latest war to site"
 #  echo "2 - reset all repos"
 #  echo "3 - reset translit"
 #  echo "3 - reset utils"
@@ -176,6 +185,9 @@ do
     9) updateLocalFromGit
       ;;
     10) resetLocalFromGit
+      ;;
+    11)
+        updateServerWithLatestWar
       ;;
   esac
   echo -e "Press Enter to continue \c"
