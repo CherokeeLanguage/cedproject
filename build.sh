@@ -137,8 +137,32 @@ function pullDatabaseFromServer() {
 }
 
 function updateServerWithLatestWar() {
-  echo "updateServerWithLatestWar"
-  scp ./dictionary/build/libs/dictionary-0.1.war cdrchops@63.142.255.175:~/ROOT.war
+    echo "updateServerWithLatestWar"
+    scp ./dictionary/build/libs/dictionary-0.1.war cdrchops@63.142.255.175:~/ROOT.war
+}
+
+function startReactServer() {
+    ./gradlew server:bootRun
+}
+
+function startReactClient() {
+    ./gradlew client:start
+}
+
+function stopReactClient() {
+  # taskkill -F -IM node.exe #windows
+    lsof -i :3000
+}
+function stopReactServer() {
+    lsof -i :8080
+}
+
+function startBothClientAndServer() {
+    ./gradlew bootRun -parallel
+}
+function stopBothClientAndServer() {
+    stopReactClient
+    stopReactServer
 }
 
 while true
