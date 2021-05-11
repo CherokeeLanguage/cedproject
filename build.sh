@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO: unzip and import sql to database then delete local database zip file
+
 function prop {
     grep "${1}" ./build.properties|cut -d'=' -f2
 }
