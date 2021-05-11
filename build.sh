@@ -14,7 +14,7 @@ function gitClone() {
     git clone https://github.com/cdrchops/cedgrammarguide.git grammar
     git clone https://github.com/cdrchops/CherokeeDateTime.git dateTime
     git clone https://github.com/cdrchops/cherokeeDecontstructor.git deconstructor
-     git clone https://github.com/cdrchops/reactCED.git reactCED
+    git clone https://github.com/cdrchops/reactCED.git reactCED
 }
 
 function pull() {
@@ -86,18 +86,18 @@ function buildAll() {
 function backupDatabaseOnServer() {
     echo "backing up database on server"
 #    ssh cdrchops@63.142.255.175 "\/home/cdrchops/backupDB.sh"
-#    ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/backupDB.sh"
+    ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/backupDB.sh"
 }
 
 function pullDatabaseFromServer() {
     echo "pulling sql dump from server"
 #    scp cdrchops@63.142.255.175:~/dump.sql.gz ./dump.sql.gz
-#    scp $(prop 'USERNAME')"@"$(prop 'HOSTS'):~/dump.sql.gz ./backup/dump.sql.gz
+    scp $(prop 'USERNAME')"@"$(prop 'HOSTS'):~/dump.sql.gz ./backup/dump.sql.gz
 }
 
 function updateServerWithLatestWar() {
     echo "updateServerWithLatestWar"
-#    scp ./dictionary/build/libs/dictionary-0.1.war cdrchops@63.142.255.175:~/ROOT.war
+    scp ./dictionary/build/libs/dictionary-0.1.war $(prop 'USERNAME')"@"$(prop 'HOSTS'):~/ROOT.war
 }
 
 function startReactServer() {
