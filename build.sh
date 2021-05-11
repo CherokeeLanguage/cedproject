@@ -9,85 +9,52 @@ function gitClone() {
     git clone https://github.com/cdrchops/cherokeetransliteration.git transliteration
     git clone https://github.com/cdrchops/cherokeeutilities.git utilities
     git clone https://github.com/cdrchops/cherokeeconjugation.git conjugation
-#    git clone https://github.com/cdrchops/cedLibrariesForWindows.git
+    git clone https://github.com/cdrchops/cedLibrariesForWindows.git
     git clone https://github.com/cdrchops/cherokeedictionary.git dictionary
     git clone https://github.com/cdrchops/cedgrammarguide.git grammar
     git clone https://github.com/cdrchops/CherokeeDateTime.git dateTime
     git clone https://github.com/cdrchops/cherokeeDecontstructor.git deconstructor
-    # git clone https://github.com/cdrchops/reactCED.git reactCED
+     git clone https://github.com/cdrchops/reactCED.git reactCED
+}
+
+function pull() {
+    git pull
+}
+
+function reset() {
+    git reset --hard
+}
+
+function directories() {
+    cd ./utilities/
+    $1
+    cd ../dateTime
+    $1
+    cd ../transliteration/
+    $1
+    cd ../conjugation/
+    $1
+    cd ../deconstructor/
+    $1
+    cd ../dictionary/
+    $1
+    cd ..
 }
 
 function resetLocalFromGit() {
-    cd ./utilities/
-    git reset --hard
-    cd ../dateTime
-    git reset --hard
-    cd ../transliteration/
-    git reset --hard
-    cd ../grammar/
-    git reset --hard
-    cd ../conjugation/
-    git reset --hard
-    cd ../deconstructor/
-    git reset --hard
-    cd ../dictionary/
-    git reset --hard
-    cd ..
+    echo "reset local from git"
+    directories reset
 }
 
 function updateLocalFromGit() {
-    cd ./utilities/
-    git pull
-    cd ../dateTime
-    git pull
-    cd ../transliteration/
-    git pull
-    cd ../grammar/
-    git pull
-    cd ../conjugation/
-    git pull
-    cd ../deconstructor/
-    git pull
-    cd ../dictionary/
-    git pull
-    cd ..
+    echo "update local from git"
+    directories pull
 }
 
-#takes a parameter for the path either ./ or ../
-function buildTranslit() {
-    echo -e "build transliteration"
-    cd $1transliteration
+function build() {
+    echo "build "$1
+    cd $1
     gradle clean build publishToMavenLocal publish
-    cd ..
-}
-
-#takes a parameter for the path
-function buildUtils() {
-    echo -e "build utilities"
-    cd $1utilities
-    gradle clean build publishToMavenLocal publish
-    cd ..
-}
-
-#takes a parameter for the path
-function buildConjugation() {
-    echo -e "build conjugation"
-    cd $1conjugation
-    gradle clean build publishToMavenLocal publish
-    cd ..
-}
-
-function buildDateTime() {
-    echo -e "build dateTime"
-    cd $1dateTime
-    gradle clean build publishToMavenLocal publish
-    cd ..
-}
-
-function buildDeconstruction() {
-    echo -e "build deconstruction"
-    cd $1deconstructor
-    gradle clean build
     cd ..
 }
 
@@ -102,43 +69,35 @@ function buildDictionary() {
 }
 
 function copyGrammarGuide() {
-  cp ./grammar/hold1.txt ./dictionary/grails-app/assets/javascripts/hold1.txt
-  cp ./grammar/hold2.txt ./dictionary/grails-app/assets/javascripts/hold2.txt
+    cp ./grammar/hold1.txt ./dictionary/grails-app/assets/javascripts/hold1.txt
+    cp ./grammar/hold2.txt ./dictionary/grails-app/assets/javascripts/hold2.txt
 }
 
 function buildAll() {
     echo -e "building all"
-    buildTranslit ./
-    buildUtils ./
-    buildConjugation ./
-    #buildDictionary ./
-    buildDateTime ./
-    buildDeconstruction ./
+    build "transliteration"
+    build "utilities"
+    build "conjugation"
+    build "dateTime"
+#    build "deconstruction"
+    buildDictionary
 }
 
 function backupDatabaseOnServer() {
     echo "backing up database on server"
-#    username=$(prop 'USERNAME')
-#    hosts=$(prop 'HOSTS')
-    #todo: fix this so it doesn't have a crappy cli entry
-    ssh cdrchops@63.142.255.175 "\/home/cdrchops/backupDB.sh"
+#    ssh cdrchops@63.142.255.175 "\/home/cdrchops/backupDB.sh"
 #    ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/backupDB.sh"
 }
 
 function pullDatabaseFromServer() {
     echo "pulling sql dump from server"
-#    username=$(prop 'USERNAME')
-#    hosts=$(prop 'HOSTS')
-    mkdir backup
-    cd backup
-    scp cdrchops@63.142.255.175:~/dump.sql.gz ./dump.sql.gz
-#    scp ${username}"@"${hosts}:~/dump.sql.gz ./dump.sql.gz
-    cd ..
+#    scp cdrchops@63.142.255.175:~/dump.sql.gz ./dump.sql.gz
+#    scp $(prop 'USERNAME')"@"$(prop 'HOSTS'):~/dump.sql.gz ./backup/dump.sql.gz
 }
 
 function updateServerWithLatestWar() {
     echo "updateServerWithLatestWar"
-    scp ./dictionary/build/libs/dictionary-0.1.war cdrchops@63.142.255.175:~/ROOT.war
+#    scp ./dictionary/build/libs/dictionary-0.1.war cdrchops@63.142.255.175:~/ROOT.war
 }
 
 function startReactServer() {
@@ -160,6 +119,7 @@ function stopReactServer() {
 function startBothClientAndServer() {
     ./gradlew bootRun -parallel
 }
+
 function stopBothClientAndServer() {
     stopReactClient
     stopReactServer
@@ -180,7 +140,6 @@ do
   echo "9 - pull latest from git"
   echo "10 - reset repositories from git"
   echo "11 - upload latest war to site"
-#  echo "2 - reset all repos"
 #  echo "3 - reset translit"
 #  echo "3 - reset utils"
 #  echo "3 - reset conjugation"
@@ -211,8 +170,7 @@ do
       ;;
     10) resetLocalFromGit
       ;;
-    11)
-        updateServerWithLatestWar
+    11) updateServerWithLatestWar
       ;;
   esac
   echo -e "Press Enter to continue \c"
