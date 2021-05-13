@@ -127,6 +127,108 @@ function stopBothClientAndServer() {
     stopReactServer
 }
 
+function installGradleSDKLinuxMac() {
+    echo "installing gradle 6.8.3 via sdk"
+    source "$HOME/.sdkman/bin/sdkman-init.sh"
+    sdk install gradle 6.8.3
+}
+
+function installGrailsSDKLinuxMac() {
+    echo "installing grails 4.0.10 via sdk"
+    source "$HOME/.sdkman/bin/sdkman-init.sh"
+    sdk install grails 4.0.10
+}
+
+function installJDKSDKLinuxMac() {
+    echo "installing jdk 8 via sdk"
+    source "$HOME/.sdkman/bin/sdkman-init.sh"
+    sdk install java 8.0.292.j9-adpt
+}
+
+function installGroovySDKLinuxMac() {
+    echo "installing groovy 3.0.8 via sdk"
+    source "$HOME/.sdkman/bin/sdkman-init.sh"
+    sdk install groovy 3.0.8
+}
+
+function installSDKManLinuxMac() {
+    echo "install sdkman"
+    curl -s "https://get.sdkman.io" | bash
+    . ./sdkcheck.sh
+}
+
+function installSDKMANAllLinuxMac() {
+    installSDKManLinuxMac
+    installGradleSDKLinuxMac
+    installGrailsSDKLinuxMac
+    installGroovySDKLinuxMac
+    installJDKSDKLinuxMac
+}
+
+function installGradleSDKWindows() {
+    echo "installing gradle 6.8.3"
+#    source "$HOME/.sdkman/bin/sdkman-init.sh"
+#    sdk install gradle 6.8.3
+    #https://gradle.org/next-steps/?version=6.8.3&format=bin
+}
+
+function installGrailsSDKWindows() {
+    echo "installing grails 4.0.10"
+#    source "$HOME/.sdkman/bin/sdkman-init.sh"
+#    sdk install grails 4.0.10
+#    https://github.com/grails/grails-core/releases/download/v4.0.10/grails-4.0.10.zip
+}
+
+function installJDKSDKWindows() {
+    echo "installing jdk 8"
+#    source "$HOME/.sdkman/bin/sdkman-init.sh"
+#    sdk install java 8.0.292.j9-adpt
+#    https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
+}
+
+function installGroovySDKWindows() {
+    echo "installing groovy 3.0.8"
+#    source "$HOME/.sdkman/bin/sdkman-init.sh"
+#    sdk install groovy 3.0.8
+}
+
+function installAllWindows() {
+    installGradleSDKWindows
+    installGrailsSDKWindows
+    installGroovySDKWindows
+    installJDKSDKWindows
+}
+
+function installNodeLinuxMac() {
+  echo "install node linux/mac"
+#    https://nodejs.org/dist/v14.17.0/node-v14.17.0.pkg
+#    https://nodejs.org/dist/v14.17.0/node-v14.17.0-linux-x64.tar.xz
+}
+
+function installNPMLinuxMac() {
+    npm install npm@latest -g
+}
+
+function installNodeWindows() {
+    echo "install node for windows"
+#    https://nodejs.org/dist/v14.17.0/node-v14.17.0-x64.msi
+}
+
+function installNPMWindows() {
+    npm install npm@latest -g
+}
+
+function installMysqlDatabase() {
+    rootpasswd=Tk02030#
+    MAINDB=smallDb
+    PASSWDDB="Tk02030#"
+    mysql -uroot -p${rootpasswd} -e "CREATE DATABASE ${MAINDB} /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+    mysql -uroot -p${rootpasswd} -e "CREATE USER ${MAINDB}@localhost IDENTIFIED BY '${PASSWDDB}';"
+    mysql -uroot -p${rootpasswd} -e "GRANT ALL PRIVILEGES ON ${MAINDB}.* TO '${MAINDB}'@'localhost';"
+    mysql -uroot -p${rootpasswd} -e "FLUSH PRIVILEGES;"
+    mysql -uroot -p${rootpasswd} smallDb < ./backups/cedSmallDb.sql
+}
+
 while true
 do
   clear
@@ -146,6 +248,22 @@ do
 #  echo "3 - reset utils"
 #  echo "3 - reset conjugation"
 #  echo "3 - reset dictionary"
+  echo "80 - linux/mac install node"
+  echo "81 - linux/mac install npm"
+  echo "82 - linux/mac install sdkman gradle grails jdk groovy"
+  echo "83 - linux/mac install sdkman"
+  echo "84 - linux/mac install gradle 6.8.3"
+  echo "85 - linux/mac install grails 4.0.10"
+  echo "86 - linux/mac install jdk 8"
+  echo "87 - linux/mac install groovy 3.0.8"
+  echo "90 - windows install node"
+  echo "91 - windows install npm"
+  echo "92 - windows install gradle grails jdk groovy"
+  echo "93 - windows install gradle"
+  echo "94 - windows install grails"
+  echo "95 - windows install jdk"
+  echo "96 - windows install groovy"
+  echo "100 - mysql install database"
   echo "q - quit"
   echo ""
   read answer
@@ -173,6 +291,54 @@ do
     10) resetLocalFromGit
       ;;
     11) updateServerWithLatestWar
+      ;;
+    80)
+      installNodeLinuxMac
+      ;;
+    81)
+      installNPMLinuxMac
+      ;;
+    82)
+      installSDKMANAllLinuxMac
+      ;;
+    83)
+      installSDKManLinuxMac
+      ;;
+    84)
+      installGradleSDKLinuxMac
+      ;;
+    85)
+      installGrailsSDKLinuxMac
+      ;;
+    86)
+      installJDKSDKLinuxMac
+      ;;
+    87)
+      installGroovySDKLinuxMac
+      ;;
+    90)
+      installNodeWindows
+      ;;
+    91)
+      installNPMWindows
+      ;;
+    92)
+      installAllWindows
+      ;;
+    93)
+      installGradleSDKWindows
+      ;;
+    94)
+      installGrailsSDKWindows
+      ;;
+    95)
+      installJDKSDKWindows
+      ;;
+    96)
+      installGroovySDKWindows
+      ;;
+    100)
+      installMysqlDatabase
       ;;
   esac
   echo -e "Press Enter to continue \c"

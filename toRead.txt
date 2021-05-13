@@ -5,3 +5,51 @@ https://github.com/dipien/releases-hub-gradle-plugin
 https://scans.gradle.com/
 https://github.com/runningcode/gradle-doctor/
 
+installs
+linux/mac
+sdk - curl -s "https://get.sdkman.io" | bash
+    - source "$HOME/.sdkman/bin/sdkman-init.sh"
+    - sdk version
+
+gradle 6.8.3
+    - sdk install gradle 6.8.3
+    - https://gradle.org/next-steps/?version=6.8.3&format=bin
+
+grails 4.0.10
+    - sdk install grails 4.0.10
+    https://github.com/grails/grails-core/releases/download/v4.0.10/grails-4.0.10.zip
+
+node - https://nodejs.org/dist/v14.17.0/node-v14.17.0-x64.msi
+     - mac - https://nodejs.org/dist/v14.17.0/node-v14.17.0.pkg
+     - linux - https://nodejs.org/dist/v14.17.0/node-v14.17.0-linux-x64.tar.xz
+
+npm - npm install npm@latest -g
+
+jdk 1.8.0_292
+    - mac/linux - sudo apt-get install openjdk-8-jre
+    - sdk install java 8.0.292.j9-adpt
+    - windows - https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
+
+
+
+install java\
+install gradle\
+install grails\
+install mysql\
+clone the repositories\
+build the repositories\
+install the repositories locally\
+pull latest backup of database\
+import latest backup of database\
+\
+start a browser\
+start grails\
+\
+https://openjdk.java.net/ \
+JDK 8 is recommended
+
+https://grails.org/ \
+https://github.com/grails/grails-core/releases/download/v4.0.10/grails-4.0.10.zip
+
+https://gradle.org/releases/ \
+https://gradle.org/next-steps/?version=6.8.3&format=bin
