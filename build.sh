@@ -8,15 +8,15 @@ function prop {
 
 function gitClone() {
     echo -e "clone repos"
-    git clone https://github.com/cdrchops/cherokeetransliteration.git transliteration
-    git clone https://github.com/cdrchops/cherokeeutilities.git utilities
-    git clone https://github.com/cdrchops/cherokeeconjugation.git conjugation
-    git clone https://github.com/cdrchops/cedLibrariesForWindows.git
-    git clone https://github.com/cdrchops/cherokeedictionary.git dictionary
-    git clone https://github.com/cdrchops/cedgrammarguide.git grammar
-    git clone https://github.com/cdrchops/CherokeeDateTime.git dateTime
-    git clone https://github.com/cdrchops/cherokeeDecontstructor.git deconstructor
-    git clone https://github.com/cdrchops/reactCED.git reactCED
+    git clone https://github.com/CherokeeLanguage/cherokeetransliteration.git transliteration
+    git clone https://github.com/CherokeeLanguage/cherokeeutilities.git utilities
+    git clone https://github.com/CherokeeLanguage/cherokeeconjugation.git conjugation
+    git clone https://github.com/CherokeeLanguage/cedLibrariesForWindows.git
+    git clone https://github.com/CherokeeLanguage/cherokeedictionary.git dictionary
+    git clone https://github.com/CherokeeLanguage/cedgrammarguide.git grammar
+    git clone https://github.com/CherokeeLanguage/CherokeeDateTime.git dateTime
+    git clone https://github.com/CherokeeLanguage/cherokeeDecontstructor.git deconstructor
+    git clone https://github.com/CherokeeLanguage/reactCED.git reactCED
 }
 
 function pull() {
@@ -232,22 +232,29 @@ function installMysqlDatabase() {
 while true
 do
   clear
-  echo "Menu ----"
+  echo "CHECKOUT AND BUILD COMMANDS"
+  echo ""
   echo "1 - clone repos"
-  echo "2 - build all"
-  echo "3 - build transliteration"
-  echo "4 - build utilities"
-  echo "5 - build conjugation"
-  echo "6 - build dictionary"
-  echo "7 - backup database on server"
-  echo "8 - backup database from server"
-  echo "9 - pull latest from git"
-  echo "10 - reset repositories from git"
-  echo "11 - upload latest war to site"
+  echo "2 - pull latest from git"
+  echo "3 - reset repositories from git"
+  echo "4 - build all"
+  echo "5 - build transliteration"
+  echo "6 - build utilities"
+  echo "7 - build conjugation"
+  echo "8 - build dictionary"
+  echo "-----------------------"
+  echo "ALL SERVER COMMANDS"
+  echo ""
+  echo "70 - backup database on server"
+  echo "71- backup database from server"
+  echo "72 - upload latest war to site"
 #  echo "3 - reset translit"
 #  echo "3 - reset utils"
 #  echo "3 - reset conjugation"
 #  echo "3 - reset dictionary"
+    echo "-----------------------"
+  echo "ALL LINUX/MAC COMMANDS"
+  echo ""
   echo "80 - linux/mac install node"
   echo "81 - linux/mac install npm"
   echo "82 - linux/mac install sdkman gradle grails jdk groovy"
@@ -256,6 +263,9 @@ do
   echo "85 - linux/mac install grails 4.0.10"
   echo "86 - linux/mac install jdk 8"
   echo "87 - linux/mac install groovy 3.0.8"
+  echo "-----------------------"
+  echo "ALL WINDOWS COMMANDS"
+  echo ""
   echo "90 - windows install node"
   echo "91 - windows install npm"
   echo "92 - windows install gradle grails jdk groovy"
@@ -263,6 +273,9 @@ do
   echo "94 - windows install grails"
   echo "95 - windows install jdk"
   echo "96 - windows install groovy"
+  echo "-----------------------"
+  echo "ALL DATABASE COMMANDS"
+  echo ""
   echo "100 - mysql install database"
   echo "q - quit"
   echo ""
@@ -272,25 +285,25 @@ do
     q) exit ;;
     1) gitClone
       ;;
-    2) buildAll
+    2) updateLocalFromGit
       ;;
-    3) buildTranslit ./
+    3) resetLocalFromGit
       ;;
-    4) buildUtils ./
+    4) buildAll
       ;;
-    5) buildConjugation ./
+    5) buildTranslit ./
       ;;
-    6) buildDictionary ./
+    6) buildUtils ./
       ;;
-    7) backupDatabaseOnServer
+    7) buildConjugation ./
       ;;
-    8) pullDatabaseFromServer
+    8) buildDictionary ./
       ;;
-    9) updateLocalFromGit
+    70) backupDatabaseOnServer
       ;;
-    10) resetLocalFromGit
+    71) pullDatabaseFromServer
       ;;
-    11) updateServerWithLatestWar
+    72) updateServerWithLatestWar
       ;;
     80)
       installNodeLinuxMac
