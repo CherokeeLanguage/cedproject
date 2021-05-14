@@ -2,8 +2,8 @@
 
 # TODO: unzip and import sql to database then delete local database zip file
 
-function prop {
-    grep "${1}" ./build.properties|cut -d'=' -f2
+function prop() {
+    grep "${1}" ./build.properties | cut -d'=' -f2
 }
 
 function gitClone() {
@@ -81,19 +81,19 @@ function buildAll() {
     build "utilities"
     build "conjugation"
     build "dateTime"
-#    build "deconstruction"
+    #    build "deconstruction"
     buildDictionary
 }
 
 function backupDatabaseOnServer() {
     echo "backing up database on server"
-#    ssh cdrchops@63.142.255.175 "\/home/cdrchops/backupDB.sh"
+    #    ssh cdrchops@63.142.255.175 "\/home/cdrchops/backupDB.sh"
     ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/backupDB.sh"
 }
 
 function pullDatabaseFromServer() {
     echo "pulling sql dump from server"
-#    scp cdrchops@63.142.255.175:~/dump.sql.gz ./dump.sql.gz
+    #    scp cdrchops@63.142.255.175:~/dump.sql.gz ./dump.sql.gz
     scp $(prop 'USERNAME')"@"$(prop 'HOSTS'):~/dump.sql.gz ./backup/dump.sql.gz
 }
 
@@ -111,7 +111,7 @@ function startReactClient() {
 }
 
 function stopReactClient() {
-  # taskkill -F -IM node.exe #windows
+    # taskkill -F -IM node.exe #windows
     lsof -i :3000
 }
 function stopReactServer() {
@@ -154,7 +154,9 @@ function installGroovySDKLinuxMac() {
 function installSDKManLinuxMac() {
     echo "install sdkman"
     curl -s "https://get.sdkman.io" | bash
-    . ./sdkcheck.sh
+    source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+    sdk version
 }
 
 function installSDKMANAllLinuxMac() {
@@ -167,29 +169,29 @@ function installSDKMANAllLinuxMac() {
 
 function installGradleSDKWindows() {
     echo "installing gradle 6.8.3"
-#    source "$HOME/.sdkman/bin/sdkman-init.sh"
-#    sdk install gradle 6.8.3
+    #    source "$HOME/.sdkman/bin/sdkman-init.sh"
+    #    sdk install gradle 6.8.3
     #https://gradle.org/next-steps/?version=6.8.3&format=bin
 }
 
 function installGrailsSDKWindows() {
     echo "installing grails 4.0.10"
-#    source "$HOME/.sdkman/bin/sdkman-init.sh"
-#    sdk install grails 4.0.10
-#    https://github.com/grails/grails-core/releases/download/v4.0.10/grails-4.0.10.zip
+    #    source "$HOME/.sdkman/bin/sdkman-init.sh"
+    #    sdk install grails 4.0.10
+    #    https://github.com/grails/grails-core/releases/download/v4.0.10/grails-4.0.10.zip
 }
 
 function installJDKSDKWindows() {
     echo "installing jdk 8"
-#    source "$HOME/.sdkman/bin/sdkman-init.sh"
-#    sdk install java 8.0.292.j9-adpt
-#    https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
+    #    source "$HOME/.sdkman/bin/sdkman-init.sh"
+    #    sdk install java 8.0.292.j9-adpt
+    #    https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
 }
 
 function installGroovySDKWindows() {
     echo "installing groovy 3.0.8"
-#    source "$HOME/.sdkman/bin/sdkman-init.sh"
-#    sdk install groovy 3.0.8
+    #    source "$HOME/.sdkman/bin/sdkman-init.sh"
+    #    sdk install groovy 3.0.8
 }
 
 function installAllWindows() {
@@ -200,9 +202,9 @@ function installAllWindows() {
 }
 
 function installNodeLinuxMac() {
-  echo "install node linux/mac"
-#    https://nodejs.org/dist/v14.17.0/node-v14.17.0.pkg
-#    https://nodejs.org/dist/v14.17.0/node-v14.17.0-linux-x64.tar.xz
+    echo "install node linux/mac"
+    #    https://nodejs.org/dist/v14.17.0/node-v14.17.0.pkg
+    #    https://nodejs.org/dist/v14.17.0/node-v14.17.0-linux-x64.tar.xz
 }
 
 function installNPMLinuxMac() {
@@ -211,7 +213,7 @@ function installNPMLinuxMac() {
 
 function installNodeWindows() {
     echo "install node for windows"
-#    https://nodejs.org/dist/v14.17.0/node-v14.17.0-x64.msi
+    #    https://nodejs.org/dist/v14.17.0/node-v14.17.0-x64.msi
 }
 
 function installNPMWindows() {
@@ -226,134 +228,140 @@ function installMysqlDatabase() {
     mysql -uroot -p${rootpasswd} -e "CREATE USER ${MAINDB}@localhost IDENTIFIED BY '${PASSWDDB}';"
     mysql -uroot -p${rootpasswd} -e "GRANT ALL PRIVILEGES ON ${MAINDB}.* TO '${MAINDB}'@'localhost';"
     mysql -uroot -p${rootpasswd} -e "FLUSH PRIVILEGES;"
-    mysql -uroot -p${rootpasswd} smallDb < ./backups/cedSmallDb.sql
+    mysql -uroot -p${rootpasswd} smallDb <./backups/cedSmallDb.sql
 }
 
-while true
-do
-  clear
-  echo "CHECKOUT AND BUILD COMMANDS"
-  echo ""
-  echo "1 - clone repos"
-  echo "2 - pull latest from git"
-  echo "3 - reset repositories from git"
-  echo "4 - build all"
-  echo "5 - build transliteration"
-  echo "6 - build utilities"
-  echo "7 - build conjugation"
-  echo "8 - build dictionary"
-  echo "-----------------------"
-  echo "ALL SERVER COMMANDS"
-  echo ""
-  echo "70 - backup database on server"
-  echo "71- backup database from server"
-  echo "72 - upload latest war to site"
-#  echo "3 - reset translit"
-#  echo "3 - reset utils"
-#  echo "3 - reset conjugation"
-#  echo "3 - reset dictionary"
+while true; do
+    clear
+    echo "CHECKOUT AND BUILD COMMANDS"
+    echo ""
+    echo "1 - clone repos"
+    echo "2 - pull latest from git"
+    echo "3 - reset repositories from git"
+    echo "4 - build all"
+    echo "5 - build transliteration"
+    echo "6 - build utilities"
+    echo "7 - build conjugation"
+    echo "8 - build dictionary"
     echo "-----------------------"
-  echo "ALL LINUX/MAC COMMANDS"
-  echo ""
-  echo "80 - linux/mac install node"
-  echo "81 - linux/mac install npm"
-  echo "82 - linux/mac install sdkman gradle grails jdk groovy"
-  echo "83 - linux/mac install sdkman"
-  echo "84 - linux/mac install gradle 6.8.3"
-  echo "85 - linux/mac install grails 4.0.10"
-  echo "86 - linux/mac install jdk 8"
-  echo "87 - linux/mac install groovy 3.0.8"
-  echo "-----------------------"
-  echo "ALL WINDOWS COMMANDS"
-  echo ""
-  echo "90 - windows install node"
-  echo "91 - windows install npm"
-  echo "92 - windows install gradle grails jdk groovy"
-  echo "93 - windows install gradle"
-  echo "94 - windows install grails"
-  echo "95 - windows install jdk"
-  echo "96 - windows install groovy"
-  echo "-----------------------"
-  echo "ALL DATABASE COMMANDS"
-  echo ""
-  echo "100 - mysql install database"
-  echo "q - quit"
-  echo ""
-  read answer
-  echo ""
-  case "$answer" in
+    echo "ALL SERVER COMMANDS"
+    echo ""
+    echo "70 - backup database on server"
+    echo "71- backup database from server"
+    echo "72 - upload latest war to site"
+    echo "-----------------------"
+    echo "ALL LINUX/MAC COMMANDS"
+    echo ""
+    echo "80 - linux/mac install node"
+    echo "81 - linux/mac install npm"
+    echo "82 - linux/mac install sdkman gradle grails jdk groovy"
+    echo "83 - linux/mac install sdkman"
+    echo "84 - linux/mac install gradle 6.8.3"
+    echo "85 - linux/mac install grails 4.0.10"
+    echo "86 - linux/mac install jdk 8"
+    echo "87 - linux/mac install groovy 3.0.8"
+    echo "-----------------------"
+    echo "ALL WINDOWS COMMANDS"
+    echo ""
+    echo "90 - windows install node"
+    echo "91 - windows install npm"
+    echo "92 - windows install gradle grails jdk groovy"
+    echo "93 - windows install gradle"
+    echo "94 - windows install grails"
+    echo "95 - windows install jdk"
+    echo "96 - windows install groovy"
+    echo "-----------------------"
+    echo "ALL DATABASE COMMANDS"
+    echo ""
+    echo "100 - mysql install database"
+    echo "q - quit"
+    echo ""
+    read answer
+    echo ""
+    case "$answer" in
     q) exit ;;
-    1) gitClone
-      ;;
-    2) updateLocalFromGit
-      ;;
-    3) resetLocalFromGit
-      ;;
-    4) buildAll
-      ;;
-    5) buildTranslit ./
-      ;;
-    6) buildUtils ./
-      ;;
-    7) buildConjugation ./
-      ;;
-    8) buildDictionary ./
-      ;;
-    70) backupDatabaseOnServer
-      ;;
-    71) pullDatabaseFromServer
-      ;;
-    72) updateServerWithLatestWar
-      ;;
+    1)
+        gitClone
+        ;;
+    2)
+        updateLocalFromGit
+        ;;
+    3)
+        resetLocalFromGit
+        ;;
+    4)
+        buildAll
+        ;;
+    5)
+        buildTranslit ./
+        ;;
+    6)
+        buildUtils ./
+        ;;
+    7)
+        buildConjugation ./
+        ;;
+    8)
+        buildDictionary ./
+        ;;
+    70)
+        backupDatabaseOnServer
+        ;;
+    71)
+        pullDatabaseFromServer
+        ;;
+    72)
+        updateServerWithLatestWar
+        ;;
     80)
-      installNodeLinuxMac
-      ;;
+        installNodeLinuxMac
+        ;;
     81)
-      installNPMLinuxMac
-      ;;
+        installNPMLinuxMac
+        ;;
     82)
-      installSDKMANAllLinuxMac
-      ;;
+        installSDKMANAllLinuxMac
+        ;;
     83)
-      installSDKManLinuxMac
-      ;;
+        installSDKManLinuxMac
+        ;;
     84)
-      installGradleSDKLinuxMac
-      ;;
+        installGradleSDKLinuxMac
+        ;;
     85)
-      installGrailsSDKLinuxMac
-      ;;
+        installGrailsSDKLinuxMac
+        ;;
     86)
-      installJDKSDKLinuxMac
-      ;;
+        installJDKSDKLinuxMac
+        ;;
     87)
-      installGroovySDKLinuxMac
-      ;;
+        installGroovySDKLinuxMac
+        ;;
     90)
-      installNodeWindows
-      ;;
+        installNodeWindows
+        ;;
     91)
-      installNPMWindows
-      ;;
+        installNPMWindows
+        ;;
     92)
-      installAllWindows
-      ;;
+        installAllWindows
+        ;;
     93)
-      installGradleSDKWindows
-      ;;
+        installGradleSDKWindows
+        ;;
     94)
-      installGrailsSDKWindows
-      ;;
+        installGrailsSDKWindows
+        ;;
     95)
-      installJDKSDKWindows
-      ;;
+        installJDKSDKWindows
+        ;;
     96)
-      installGroovySDKWindows
-      ;;
+        installGroovySDKWindows
+        ;;
     100)
-      installMysqlDatabase
-      ;;
-  esac
-  echo -e "Press Enter to continue \c"
-  read input
+        installMysqlDatabase
+        ;;
+    esac
+    echo -e "Press Enter to continue \c"
+    read input
 done
