@@ -15,7 +15,7 @@ function gitClone() {
     git clone https://github.com/CherokeeLanguage/cherokeedictionary.git dictionary
     git clone https://github.com/CherokeeLanguage/cedgrammarguide.git grammar
     git clone https://github.com/CherokeeLanguage/CherokeeDateTime.git dateTime
-    git clone https://github.com/CherokeeLanguage/cherokeeDecontstructor.git deconstructor
+    git clone https://github.com/CherokeeLanguage/cherokeeDeconstructor.git deconstructor
     git clone https://github.com/CherokeeLanguage/reactCED.git reactCED
 }
 
