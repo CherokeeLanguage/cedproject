@@ -247,7 +247,7 @@ while true; do
     echo "ALL SERVER COMMANDS"
     echo ""
     echo "70 - backup database on server"
-    echo "71- backup database from server"
+    echo "71 - backup database from server"
     echo "72 - upload latest war to site"
     echo "-----------------------"
     echo "ALL LINUX/MAC COMMANDS"
