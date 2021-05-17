@@ -27,19 +27,38 @@ function reset() {
     git reset --hard
 }
 
+function status() {
+    git status
+}
+
+function addCommit() {
+    git add .
+    git commit -m "$1"
+    git push
+}
+
 function directories() {
+    echo "in utilities"
     cd ./utilities/
-    $1
+    $1 $2
+    echo "in date time"
     cd ../dateTime
-    $1
+    $1 $2
+    echo "in transliteration"
     cd ../transliteration/
-    $1
+    $1 $2
+    echo "in conjugation"
     cd ../conjugation/
-    $1
+    $1 $2
+    echo "in deconstructor"
     cd ../deconstructor/
-    $1
+    $1 $2
+    echo "in reactCED"
+    cd ../reactCED/
+    $1 $2
+    echo "in dictionary"
     cd ../dictionary/
-    $1
+    $1 $2
     cd ..
 }
 
@@ -53,11 +72,65 @@ function updateLocalFromGit() {
     directories pull
 }
 
+function statusLocalFromGit() {
+    echo "status local from git"
+    directories status
+}
+
+function addCommitToGit() {
+    echo "commit message?"
+    read answer
+    echo ""
+    directories addCommit answer
+}
+
 function build() {
     echo "build "$1
     cd $1
     gradle clean build publishToMavenLocal publish
     cd ..
+}
+
+function copyGrammarGuide() {
+    cp ./grammar/hold1.txt ./dictionary/grails-app/assets/javascripts/hold1.txt
+    cp ./grammar/hold2.txt ./dictionary/grails-app/assets/javascripts/hold2.txt
+}
+
+function addCommitDirectory() {
+    cd $1
+    echo "commit message?"
+    read answer
+    echo ""
+    addCommit $1 answer
+    cd ..
+}
+
+function addCommitUtilities() {
+    addCommitDirectory "utilities"
+}
+
+function addCommitTransliteration() {
+    addCommitDirectory "transliteration"
+}
+
+function addCommitConjugation() {
+    addCommitDirectory "conjugation"
+}
+
+function addCommitDateTime() {
+    addCommitDirectory "dateTime"
+}
+
+function addCommitDictionary() {
+    addCommitDirectory "dictionary"
+}
+
+function addCommitReactCED() {
+    addCommitDirectory "reactCED"
+}
+
+function addCommitDeconstructor() {
+    addCommitDirectory "deconstructor"
 }
 
 #takes a parameter for the path
@@ -70,17 +143,38 @@ function buildDictionary() {
     cd ..
 }
 
-function copyGrammarGuide() {
-    cp ./grammar/hold1.txt ./dictionary/grails-app/assets/javascripts/hold1.txt
-    cp ./grammar/hold2.txt ./dictionary/grails-app/assets/javascripts/hold2.txt
+function buildUtilities() {
+    build "utilities" ./
+}
+
+function buildTransliteration() {
+    build "transliteration" ./
+}
+
+function buildConjugation() {
+    build "conjugation" ./
+}
+
+function buildDateTime() {
+    build "dateTime" ./
+}
+
+function buildDeconstructor() {
+    cd deconstructor
+    gradle convert
+    cd ..
 }
 
 function buildAll() {
     echo -e "building all"
-    build "transliteration"
-    build "utilities"
-    build "conjugation"
-    build "dateTime"
+    buildTransliteration
+    buildUtilities
+    buildConjugation
+    buildDateTime
+#    build "transliteration"
+#    build "utilities"
+#    build "conjugation"
+#    build "dateTime"
     #    build "deconstruction"
     buildDictionary
 }
@@ -105,6 +199,13 @@ function updateServerWithLatestWar() {
 
 function goToServer() {
     ssh cdrchops@63.142.255.175
+}
+
+function restartServer() {
+  echo "restarting server"
+  ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/stopTomcat.sh"
+  ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/copyWar.sh"
+  ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/startTomcat.sh"
 }
 
 function startReactServer() {
@@ -236,18 +337,49 @@ function installMysqlDatabase() {
     mysql -uroot -p${rootpasswd} smallDb <./backups/cedSmallDb.sql
 }
 
+#backups
+#cedLibrariesForWindows
+#conjugation - b
+#dateTime - b
+#deconstructor - b
+#dictionary - b
+#grammar - b
+#reactCED - b
+#cnt - need project
+#transliteration - b
+#utilities - b
+
 while true; do
     clear
+    echo $(prop 'USERNAME') $(prop 'HOSTS')
     echo "CHECKOUT AND BUILD COMMANDS"
-    echo ""
+
     echo "1 - clone repos"
     echo "2 - pull latest from git"
-    echo "3 - reset repositories from git"
-    echo "4 - build all"
-    echo "5 - build transliteration"
-    echo "6 - build utilities"
-    echo "7 - build conjugation"
-    echo "8 - build dictionary (production)"
+    echo "3 - status of repositories from git"
+    echo "4 - reset repositories from git"
+    echo "-----------------------"
+    echo "GIT ADD AND COMMIT"
+    echo ""
+    echo "10 - add and commit ALL repositories to git"
+    echo "11 - add and commit transliteration"
+    echo "12 - add and commit utilities"
+    echo "13 - add and commit conjugation"
+    echo "14 - add and commit date time library"
+    echo "15 - add and commit react"
+    echo "16 - add and commit deconstructor"
+    echo "19 - add and commit dictionary (production)"
+    echo "-----------------------"
+    echo "BUILD COMMANDS"
+    echo ""
+    echo "30 - build all"
+    echo "31 - build transliteration"
+    echo "32 - build utilities"
+    echo "33 - build conjugation"
+    echo "34 - build date time library"
+    echo "35 - build react"
+    echo "36 - build deconstructor"
+    echo "39 - build dictionary (production)"
     echo "-----------------------"
     echo "ALL SERVER COMMANDS"
     echo ""
@@ -255,6 +387,7 @@ while true; do
     echo "71 - backup database from server"
     echo "72 - upload latest war to site"
     echo "73 - go to server"
+    echo "74 - restartServer with latest war"
     echo "-----------------------"
     echo "ALL LINUX/MAC COMMANDS"
     echo ""
@@ -293,21 +426,57 @@ while true; do
         updateLocalFromGit
         ;;
     3)
-        resetLocalFromGit
+        statusLocalFromGit
         ;;
     4)
+        resetLocalFromGit
+        ;;
+    10)
+        addCommitToGit
+        ;;
+    11)
+        buildTransliteration
+        ;;
+    12)
+        addCommitUtilities
+        ;;
+    13)
+        addCommitConjugation
+        ;;
+    14)
+        addCommitDateTime
+        ;;
+    15)
+        addCommitReactCEDReact ./
+        ;;
+    16)
+        addCommitDeconstructor ./
+        ;;
+    19)
+        addCommitDictionary ./
+        ;;
+    30)
         buildAll
         ;;
-    5)
-        buildTranslit ./
+    31)
+        buildTransliteration
         ;;
-    6)
-        buildUtils ./
+    32)
+        buildUtilities
         ;;
-    7)
-        buildConjugation ./
+    33)
+        buildConjugation
         ;;
-    8)
+    34)
+        buildDateTime
+        ;;
+    35)
+        buildReactCED ./
+        ;;
+    36)
+        buildDeconstructor ./
+        ;;
+    39)
         buildDictionary ./
         ;;
     70)
@@ -321,6 +490,9 @@ while true; do
         ;;
     73)
         goToServer
+        ;;
+    74)
+        restartServer
         ;;
     80)
         installNodeLinuxMac
