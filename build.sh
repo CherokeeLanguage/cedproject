@@ -99,7 +99,8 @@ function pullDatabaseFromServer() {
 
 function updateServerWithLatestWar() {
     echo "updateServerWithLatestWar"
-    scp ./dictionary/build/libs/dictionary-0.1.war $(prop 'USERNAME')"@"$(prop 'HOSTS'):~/ROOT.war
+    scp ./dictionary/build/libs/dictionary-0.1.war cdrchops@63.142.255.175:~/ROOT.war
+#    scp ./dictionary/build/libs/dictionary-0.1.war $(prop 'USERNAME')"@"$(prop 'HOSTS'):~/ROOT.war
 }
 
 function startReactServer() {
@@ -242,7 +243,7 @@ while true; do
     echo "5 - build transliteration"
     echo "6 - build utilities"
     echo "7 - build conjugation"
-    echo "8 - build dictionary"
+    echo "8 - build dictionary (production)"
     echo "-----------------------"
     echo "ALL SERVER COMMANDS"
     echo ""
