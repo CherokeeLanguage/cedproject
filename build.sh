@@ -103,6 +103,10 @@ function updateServerWithLatestWar() {
 #    scp ./dictionary/build/libs/dictionary-0.1.war $(prop 'USERNAME')"@"$(prop 'HOSTS'):~/ROOT.war
 }
 
+function goToServer() {
+    ssh cdrchops@63.142.255.175
+}
+
 function startReactServer() {
     ./gradlew server:bootRun
 }
@@ -250,6 +254,7 @@ while true; do
     echo "70 - backup database on server"
     echo "71 - backup database from server"
     echo "72 - upload latest war to site"
+    echo "73 - go to server"
     echo "-----------------------"
     echo "ALL LINUX/MAC COMMANDS"
     echo ""
@@ -313,6 +318,9 @@ while true; do
         ;;
     72)
         updateServerWithLatestWar
+        ;;
+    73)
+        goToServer
         ;;
     80)
         installNodeLinuxMac
