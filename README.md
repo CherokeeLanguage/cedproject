@@ -17,3 +17,16 @@ add %GRADLE_HOME%/bin
 #Linux/Mac Install
 https://dev.mysql.com/downloads/workbench/ 
 install workbench
+
+
+# to generate a new build file 
+
+open CLI 
+
+groovy .\buildScripts\CreateMenu.groovy
+
+this will overwrite the existing build.sh file
+
+if there are new functions to add to the script, open CreateMenu and add a new item in the appropriate map
+
+then add the function or update the function in functions.sh and run the createmenu script again
