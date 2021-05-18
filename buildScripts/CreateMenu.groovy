@@ -1,5 +1,6 @@
 package net.cherokeedictionary.menubuilder
 
+//ideas from https://askubuntu.com/questions/1146166/bash-how-to-create-a-menu-with-submenu
 def CHECKOUT_AND_BUILD_COMMANDS=
         [title:"CHECKOUT AND BUILD COMMANDS",
          "clone repos": "gitClone",
