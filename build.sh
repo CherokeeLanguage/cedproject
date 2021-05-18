@@ -356,6 +356,7 @@ function installMysqlDatabase() {
 #transliteration - b
 #utilities - b
 function CHECKOUT_AND_BUILD_COMMANDS() {
+clear
 	PS3='Please <ENTER> submenu CHECKOUT AND BUILD COMMANDS option: '
 	echo "CHECKOUT AND BUILD COMMANDS"
 	options=("clone repos" "pull latest from git" "status of repositories from git" "reset repositories from git" "Back to Main Menu")
@@ -375,6 +376,7 @@ function CHECKOUT_AND_BUILD_COMMANDS() {
 			resetLocalFromGit
 			;;
 		"Back to Main Menu")
+clear
 			return
 			;;
 		*) echo "invalid option $REPLY"
@@ -384,6 +386,7 @@ function CHECKOUT_AND_BUILD_COMMANDS() {
 }
 
 function GIT_ADD_AND_COMMIT() {
+clear
 	PS3='Please <ENTER> submenu GIT ADD AND COMMIT option: '
 	echo "GIT ADD AND COMMIT"
 	options=("add and commit ALL repositories to git" "add and commit transliteration" "add and commit utilities" "add and commit conjugation" "add and commit date time library" "add and commit react" "add and commit deconstructor" "add and commit dictionary (production" "Back to Main Menu")
@@ -415,6 +418,7 @@ function GIT_ADD_AND_COMMIT() {
 			addCommitDictionary ./
 			;;
 		"Back to Main Menu")
+clear
 			return
 			;;
 		*) echo "invalid option $REPLY"
@@ -424,6 +428,7 @@ function GIT_ADD_AND_COMMIT() {
 }
 
 function BUILD_COMMANDS() {
+clear
 	PS3='Please <ENTER> submenu BUILD COMMANDS option: '
 	echo "BUILD COMMANDS"
 	options=("build all" "build transliteration" "build utilities" "build conjugation" "build date time library" "build react" "build deconstructor" "build dictionary (production" "Back to Main Menu")
@@ -455,6 +460,7 @@ function BUILD_COMMANDS() {
 			buildDictionary ./
 			;;
 		"Back to Main Menu")
+clear
 			return
 			;;
 		*) echo "invalid option $REPLY"
@@ -464,6 +470,7 @@ function BUILD_COMMANDS() {
 }
 
 function ALL_SERVER_COMMANDS() {
+clear
 	PS3='Please <ENTER> submenu ALL SERVER COMMANDS option: '
 	echo "ALL SERVER COMMANDS"
 	options=("backup database on server" "backup database from server" "upload latest war to site" "go to server" "restartServer with latest war" "Back to Main Menu")
@@ -486,6 +493,7 @@ function ALL_SERVER_COMMANDS() {
 			restartServer
 			;;
 		"Back to Main Menu")
+clear
 			return
 			;;
 		*) echo "invalid option $REPLY"
@@ -495,6 +503,7 @@ function ALL_SERVER_COMMANDS() {
 }
 
 function ALL_LINUXMAC_COMMANDS() {
+clear
 	PS3='Please <ENTER> submenu ALL LINUX/MAC COMMANDS option: '
 	echo "ALL LINUX/MAC COMMANDS"
 	options=("linuxmac install node" "linuxmac install npm" "linuxmac install sdkman gradle grails jdk groovy" "linuxmac install sdkman" "linuxmac install gradle .." "linuxmac install grails .." "linuxmac install jdk " "linuxmac install groovy .." "Back to Main Menu")
@@ -526,6 +535,7 @@ function ALL_LINUXMAC_COMMANDS() {
 			installGroovySDKLinuxMac
 			;;
 		"Back to Main Menu")
+clear
 			return
 			;;
 		*) echo "invalid option $REPLY"
@@ -535,6 +545,7 @@ function ALL_LINUXMAC_COMMANDS() {
 }
 
 function ALL_WINDOWS_COMMANDS() {
+clear
 	PS3='Please <ENTER> submenu ALL WINDOWS COMMANDS option: '
 	echo "ALL WINDOWS COMMANDS"
 	options=("windows install node" "windows install npm" "windows install gradle grails jdk groovy" "windows install gradle" "windows install grails" "windows install jdk" "windows install groovy" "Back to Main Menu")
@@ -563,6 +574,7 @@ function ALL_WINDOWS_COMMANDS() {
 			installGroovySDKWindows
 			;;
 		"Back to Main Menu")
+clear
 			return
 			;;
 		*) echo "invalid option $REPLY"
@@ -572,6 +584,7 @@ function ALL_WINDOWS_COMMANDS() {
 }
 
 function ALL_DATABASE_COMMANDS() {
+clear
 	PS3='Please <ENTER> submenu ALL DATABASE COMMANDS option: '
 	echo "ALL DATABASE COMMANDS"
 	options=("mysql install database" "Back to Main Menu")
@@ -582,6 +595,7 @@ function ALL_DATABASE_COMMANDS() {
 			installMysqlDatabase
 			;;
 		"Back to Main Menu")
+clear
 			return
 			;;
 		*) echo "invalid option $REPLY"

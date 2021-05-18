@@ -80,8 +80,8 @@ f2.each {
 }
 
 def createSubMenu(item, f) {
-        
         f.append  "function ${item.get("title").replaceAll(" ", "_").replaceAll("/", "")}() {\n"
+        f.append("clear\n")
         f.append  "\tPS3='Please <ENTER> submenu ${item.get("title")} option: '\n"
         f.append  "\techo \"${item.get("title")}\"\n"
         f.append  "\toptions=("
@@ -102,12 +102,8 @@ def createSubMenu(item, f) {
                                 f.append  "\t\t\t;;\n"
                         }
                 }
-        //lzt.eachWithIndex {option, idx ->
-        //        f.append  "\"$option\")"
-        //        f.append  ";;"
-        //}
-        
         f.append  "\t\t\"Back to Main Menu\")\n"
+        f.append("clear\n")
         f.append  "\t\t\treturn\n"
         f.append  "\t\t\t;;\n"
         f.append  "\t\t*) echo \"invalid option \$REPLY\"\n\t\t\t;;\n"
