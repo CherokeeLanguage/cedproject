@@ -1,6 +1,8 @@
 package net.cherokeedictionary.menubuilder
 
 //ideas from https://askubuntu.com/questions/1146166/bash-how-to-create-a-menu-with-submenu
+// the lists here include a title that will be displayed to a user such as "clone repos" and the function name in functions.sh that will be called when
+// this menu item is selected
 def CHECKOUT_AND_BUILD_COMMANDS=
         [title:"CHECKOUT AND BUILD COMMANDS",
          "clone repos": "gitClone",
