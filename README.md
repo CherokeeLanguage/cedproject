@@ -23,7 +23,7 @@ install workbench
 
 open CLI 
 
-groovy .\buildScripts\CreateMenu.groovy
+sh ./createMenu.sh
 
 this will overwrite the existing build.sh file
 
