@@ -391,7 +391,7 @@ function GIT_ADD_AND_COMMIT() {
   clear
   PS3='Please <ENTER> submenu GIT ADD AND COMMIT option: '
   echo "GIT ADD AND COMMIT"
-  options=("add and commit ALL repositories to git" "add and commit transliteration" "add and commit utilities" "add and commit conjugation" "add and commit date time library" "add and commit react" "add and commit deconstructor" "add and commit dictionary (production" "Back to Main Menu")
+  options=("add and commit ALL repositories to git" "add and commit transliteration" "add and commit utilities" "add and commit conjugation" "add and commit date time library" "add and commit react" "add and commit deconstructor" "add and commit dictionary (production)" "Back to Main Menu")
   select opt in "${options[@]}"; do
     case $opt in
     "add and commit ALL repositories to git")
@@ -415,7 +415,7 @@ function GIT_ADD_AND_COMMIT() {
     "add and commit deconstructor")
       addCommitDeconstructor ./
       ;;
-    "add and commit dictionary (production")
+    "add and commit dictionary (production)")
       addCommitDictionary ./
       ;;
     "Back to Main Menu")

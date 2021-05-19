@@ -32,7 +32,7 @@ def BUILD_COMMANDS=
          "build date time library": "buildDateTime",
          "build react": "buildReactCED ./",
          "build deconstructor": "buildDeconstructor ./",
-         "build dictionary (production": "buildDictionary ./"
+         "build dictionary (production)": "buildDictionary ./"
         ]
 
 def ALL_SERVER_COMMANDS=
