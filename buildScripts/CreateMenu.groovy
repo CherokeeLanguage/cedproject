@@ -20,7 +20,7 @@ def GIT_ADD_AND_COMMIT=
          "add and commit date time library": "addCommitDateTime",
          "add and commit react": "addCommitReactCEDReact ./",
          "add and commit deconstructor": "addCommitDeconstructor ./",
-         "add and commit dictionary (production": "addCommitDictionary ./"
+         "add and commit dictionary (production)": "addCommitDictionary ./"
         ]
 
 def BUILD_COMMANDS=

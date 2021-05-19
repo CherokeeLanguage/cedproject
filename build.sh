@@ -433,7 +433,7 @@ function BUILD_COMMANDS() {
   clear
   PS3='Please <ENTER> submenu BUILD COMMANDS option: '
   echo "BUILD COMMANDS"
-  options=("build all" "build transliteration" "build utilities" "build conjugation" "build date time library" "build react" "build deconstructor" "build dictionary (production" "Back to Main Menu")
+  options=("build all" "build transliteration" "build utilities" "build conjugation" "build date time library" "build react" "build deconstructor" "build dictionary (production)" "Back to Main Menu")
   select opt in "${options[@]}"; do
     case $opt in
     "build all")
@@ -457,7 +457,7 @@ function BUILD_COMMANDS() {
     "build deconstructor")
       buildDeconstructor ./
       ;;
-    "build dictionary (production")
+    "build dictionary (production)")
       buildDictionary ./
       ;;
     "Back to Main Menu")
