@@ -11,6 +11,10 @@
 # TODO: also make sure you can specify a script to say update a single table or insert values to test and the like - local should always have just the test data
 #   scp C:\Users\torr\Documents\dumps/Dump20210519.sql cdrchops@63.142.255.175:~/Dump20210519.sql
 #   mysql -uroot -p likespreadsheets < ./Dump20210519.sql
+#scp ./Dump20210601.sql cdrchops@63.142.255.175:~/Dump.sql
+
+#mysql -uroot -p cherokeedictionary < ./Dump.sql
+
 function prop() {
   grep "${1}" ./build.properties | cut -d'=' -f2
 }
@@ -212,9 +216,9 @@ function goToServer() {
 
 function restartServer() {
   echo "restarting server"
-  ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/stopTomcat.sh"
-  ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/copyWar.sh"
-  ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/startTomcat.sh"
+#  ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/stopTomcat.sh"
+#  ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/copyWar.sh"
+#  ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/startTomcat.sh"
 }
 
 function startReactServer() {
