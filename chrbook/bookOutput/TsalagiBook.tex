@@ -1,0 +1,132 @@
+%&latex
+\documentclass{book}
+% for reworking Cherokee so I don't have to define the font every time
+%https://tex.stackexchange.com/questions/132087/displaying-cherokee-text
+
+%formatting ideas
+%https://anneurai.net/2017/10/18/thesis-formatting-in-latex/
+
+%to include pdfs in this document
+\usepackage{pdfpages}
+
+%+MakeIndex
+\usepackage{imakeidx}
+
+\makeindex
+%-MakeIndex
+
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage[USenglish]{babel}
+\usepackage{fullpage}
+\tracinglostchars=2
+%\usepackage{babel}
+\usepackage{unicode-math}
+\usepackage{ucharclasses}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{color}
+%\usepackage{polyglossia}
+
+\babelprovide[import=chr]{cherokee}
+
+\defaultfontfeatures{ Scale=MatchUppercase, Ligatures=TeX }
+
+%% Aboriginal Serif, Aboriginal Sans and Digohweli, by Christopher Harvey, are
+%% available at http://www.languagegeek.com/font/fontdownload.html
+%% These fonts do not support the lowercase Cherokee added in Unicode 8.0.
+\defaultfontfeatures[AboriginalSerif]{
+    Ligatures=Common,
+    UprightFont = *REGULAR ,
+    BoldFont = *BOLD ,
+    ItalicFont = *ITALIC ,
+    BoldItalicFont = *BOLDITALIC ,
+    Extension = .ttf }
+\defaultfontfeatures[AboriginalSans]{
+    Ligatures= {Common, Discretionary},
+    UprightFont = *REGULAR ,
+    BoldFont = *BOLD ,
+    ItalicFont = *ITALIC ,
+    BoldItalicFont = *BOLDITALIC ,
+    Extension = .ttf }
+%% An alternative is Noto Sans Cherokee, availabe at
+%% https://www.google.com/get/noto/#sans-cher
+%% This font comes in numerous weights, so select the pair that matches your
+%% other fonts, e.g. Medium and ExtraBold or Light and Semibold. It has no
+%% italics.
+\defaultfontfeatures[NotoSansCherokee]{
+    UprightFont=*-Regular ,
+    BoldFont = *-Bold ,
+    Extension = .ttf
+}
+%% Everson Mono is available at: https://www.evertype.com/emono/
+
+\babelfont{rm}
+[Ligatures=Common, Scale=1.0]{Noto Sans}
+\babelfont[cherokee]{rm}
+{NotoSansCherokee}
+\babelfont{sf}
+[Ligatures=Common]{Noto Sans}
+\babelfont[cherokee]{sf}
+{NotoSansCherokee}
+\babelfont{tt}
+{Courier New}
+%\setmathfont{TeX Gyre Termes Math}
+
+%\setDefaultTransitions{\selectlanguage{english}}{}
+\setTransitionsForCherokeeFull{\selectlanguage{cherokee}}{\selectlanguage{english}}
+
+%\font \Cherokee = "Noto Sans Cherokee"
+\begin{document}
+
+%+Title
+    \title{\Huge\bf ᏣᎳᎩ ᎦᏬᏂᎯᏍᏓ ᏗᎪᏪᎵ\\Cherokee Language Book}
+    \author{Tim Orr}
+    \date{\today}
+    \maketitle
+%-Title
+
+%+Contents
+    \tableofcontents
+%+Contents
+
+%+Make Parts
+%\part{Lessons}
+%-Make Parts
+
+% this removes the numbering inside the chapters leaving only the first number - if you want to display 1.2.13 then set the 0 to 2
+    \setcounter{secnumdepth}{0}
+%\sffamily
+
+\input{book.tex}
+
+%+Make Parts
+%\part{Reader}
+%-Make Parts
+
+\input{reader.tex}
+
+%+Make Parts
+%\part{Grammar}
+%-Make Parts
+
+%+Make Parts
+%\part{Appendices}
+%-Make Parts
+
+%+Make Parts
+%\part{Answers}
+%-Make Parts
+
+\input{answerGuide.tex}
+
+\input{changelist.tex}
+
+\input{bibliography.tex}
+
+%+MakeIndex
+\printindex
+%-MakeIndex
+
+\end{document}

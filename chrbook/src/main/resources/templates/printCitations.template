@@ -1,0 +1,3 @@
+<g:each var="item" in="${citationMap}">
+        <sup id=\"ref${item.key}\">[${idx + 1}]</sup> ${item.value} <br/>
+    </g:each>

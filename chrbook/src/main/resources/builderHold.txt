@@ -1,0 +1,249 @@
+
+//    def writer = new StringWriter()
+//    def builder = new MarkupBuilder(writer)
+//
+//    def premake = {title ->
+//        builder.a(href: "#${title.replaceAll(" ", "")}") {
+//            builder.mkp.yield "$title"
+//        }
+//    }
+//
+//    def anchorName = {title ->
+//        builder.a(name:title.replaceAll(" ", "")) {
+//            builder.mkp.yield ""
+//        }
+//    }
+//
+//    def tableOfContents = {
+//        builder.pre {
+//            premake 'Dedication'
+//            premake 'From The Author'
+//            premake 'Greetings'
+//            premake '\tWhat You Will Learn'
+//            premake '\t' + greetOthersChapterTitle
+//            premake 'What is your name?'
+//            premake 'I\'d like you to meet'
+//            premake 'I want.  I see'
+//            premake 'Where are you from?'
+//            premake 'Do you speak Cherokee?'
+//            premake 'Cardinal Numbers'
+//            premake 'Ordinal Numbers'
+//            premake 'On the Telephone'
+//            premake 'Address and Email'
+//            premake 'Profession'
+//            premake 'Dates, Months, and Days of Week'
+//            premake 'Time'
+//            premake 'Body Parts'
+//            premake 'Emotions'
+//            premake '5 senses'
+//            premake 'prepositions'
+//            premake 'conjunctions'
+//            premake 'interjections'
+//            premake 'negation'
+//            premake 'are you hungry'
+//            premake 'Seasons'
+//            premake 'This and That'
+//            premake 'Family'
+//            premake 'To Have and Have Not'
+//            premake 'Describing Others'
+//            premake 'Directions'
+//            premake 'Weather'
+//            premake 'Money'
+//            premake 'Clothes and Shopping'
+//            premake 'Animals'
+//            premake 'Colors'
+//            premake 'Food'
+//            premake 'On the farm'
+//            premake 'Visiting Friends'
+//            premake 'Verb Conjugation'
+//            premake 'Yours, Mine, Ours'
+//            premake 'Questions'
+//            premake 'Pronouns'
+//            premake 'At the doctor'
+//            premake 'Around the House'
+//            premake 'At the beach'
+//            premake 'Transporation'
+//            premake 'Festivals and Celebrations'
+//            premake 'At the airport'
+//            premake 'Articles and Conversion'
+//            premake 'advanced Verb'
+//            premake 'Clitics'
+//            premake 'Grammar Summary'
+//            premake 'Charts'
+//            premake 'Shapes'
+//            premake 'Publication bibliography'
+//        }
+//    }
+//
+//    def whatYouWillLearn = {topics ->
+//        builder.b {
+//            builder.mkp.yield "What You Will Learn:"
+//        }
+//
+//        builder.ul {
+//            topics.each {topic ->
+//                builder.li {
+//                    builder.mkp.yield topic
+//                }
+//            }
+//        }
+//    }
+//
+//    def dialogItem = {key, value ->
+//        g.dialogLine(name: key, dialog: value, phonetic: 'true')
+//    }
+//
+//    def dialog = {dialogList, vocabulary ->
+//        builder.div(style:'display:table-row') {
+//            builder.div(style:'display:table-cell;padding-right:20px') {
+//                builder.h4 {builder.mkp.yield "Dialog"}
+//                dialogList.each {
+//                    builder.mkp.yieldUnescaped it
+//                }
+//            }
+//
+//            builder.div(style:'display:table-cell;padding-right:20px') {
+//                builder.mkp.yieldUnescaped g.vocabulary(src:vocabulary)
+//            }
+//        }
+//    }
+//
+//    def redSpan = {text ->
+//        builder.span(style:"color:red") {
+//            builder.mkp.yield text
+//        }
+//    }
+//
+//    def exercise = {exerciseText ->
+//        builder.h4 {
+//            builder.mkp.yield "Exercise - ${g.translit(src:"alisinahisdisgv digvdodi")}"
+//        }
+//        builder.mkp.yield "Translate to Cherokee syllabary and the phonetic equivalent"
+//        builder.br()
+//        builder.mkp.yieldUnescaped exerciseText
+//    }
+
+    def greetOthersChapterTitle = 'Greet Others'
+
+    def greetOthersTopics = ['How to greet people',
+                             'How to make short descriptive phrases',
+                             'About definites and indefinites',
+                             'Say "hello" and "goodbye"',
+                             'Ask how someone is doing']
+
+    //todo: what if these have audio files?
+    def greetingsVocabulary = [:]
+        greetingsVocabulary.Titus = 'Dadasi'
+        greetingsVocabulary.Timothy = 'Dimadi'
+        greetingsVocabulary.Mary = 'Meli'
+        greetingsVocabulary.Mark = 'Maga'
+        greetingsVocabulary.Daniel = 'Danili'
+        greetingsVocabulary.Susan = 'Susani'
+        greetingsVocabulary.John = 'Jani'
+        greetingsVocabulary.Hello = '(o)siyo'
+        greetingsVocabulary.And = 'ale <e>or nole'
+        greetingsVocabulary.Good = 'osda'
+        greetingsVocabulary."Well/Fine" = 'osigwu'
+//
+//    def greetingsDialog = []
+//        greetingsDialog << dialogItem("Danili", "Osiyo.  Danili dawadoa.  Gado dejadoa?")
+//        greetingsDialog << dialogItem("Susani", "Osiyo.  Susani dawadoa.  Dohiju?")
+//        greetingsDialog << dialogItem("Danili", "Osigwu.  Nihinahv?")
+//        greetingsDialog << dialogItem("Susani", "Osda.  Donadagohvi.")
+//        greetingsDialog << dialogItem("Danili", "Donadagohvi.")
+//
+//    def helloSection = {
+//        builder.h4 {builder.mkp.yieldUnescaped "Hello - ${g.translit(src:"osiyo")}" }
+//        builder.mkp.yieldUnescaped "In Cherokee there is only one way to say 'Good Morning,' 'Good Afternoon,' 'Good Evening,' and Hello; that is by saying ${g.translit(src:"osiyo")} "
+//        redSpan("(o)siyo")
+//        builder.mkp.yieldUnescaped " or the shortened version ${g.translit(src:"siyo")}"
+//        redSpan("siyo")
+//        builder.br()
+//        builder.mkp.yieldUnescaped g.footnote(src:"We will follow the convention of placing optional syllables in parenthesis.  You will see this written as (O)siyo.  The parentheses around the 'O' mean that the voicing of the 'O' is optional.")
+//        builder.br()
+//        builder.mkp.yieldUnescaped g.footnote(src:"Osi will be discussed more in the section ", linkTitle:"Word Breakdown - Tohi and Osi", link:"wordBreakdownTohiOsi")
+//    }
+//
+//    def goodbyeSection = {
+//        builder.h4 {builder.mkp.yieldUnescaped "Good Bye - ${g.translit(src:"donadagohvi")}"}
+//        builder.mkp.yieldUnescaped "There is no word for 'goodbye' only 'to meet again'. The way to say 'goodbye' to one person is ${g.translit(src:"donadagohvi")}"
+//        redSpan("donadagohvi")
+//        builder.mkp.yield ". If you would like to say 'goodbye' to more than one person you would say ${g.translit(src:"dodadagohvi")}"
+//        redSpan("dodadagohvi")
+//        builder.mkp.yield ". Lit: Let's meet again."
+//    }
+//
+//    def tohiOsi = {
+//        builder.with {
+//            div {
+//                anchorName("wordBreakdownTohiOsi")
+//
+//                h4 {mkp.yieldUnescaped "Word Breakdown - ${g.translit(src:"dohi")} and ${g.translit(src:"osi")}  Tohi and Osi"}
+//                mkp.yield "Altman and Belt (pp91-92) have this to say about Tohi and Osi:"
+//                mkp.yieldUnescaped "Tohi is a Cherokee morpheme that indicates the state in which nature is flowing at its appropriate pace and everything is as it should be. This fundamental concept is used in greetings and responses ("
+//                redSpan("Tohigwatsv?")
+//                mkp.yield " and "
+//                redSpan("Tohigwu.")
+//                mkp.yield "), and in a variety of other instances and constructions that indicate an underlying concern with the notion that things be flowing well in the Cherokee world. Tohi can be glossed variously as \"well,\" \"peaceful,\" \"unhurried,\" and \"health.\" In the Cherokee speakers' view, if the state of tohi becomes disrupted there can be disastrous consequences, and communities that are disrupted in this way can be dangerous or unhealthy places to live."
+//                br()
+//                br()
+//                mkp.yieldUnescaped "In addition to and as an adjunct to tohi, the concept of osi describes the proper state of the individual person.  Visualized as upright, facing forward, and resting on a single point of balance, osi is also used in greetings and replies ("
+//                redSpan("osigwatsv?")
+//                mkp.yield " and "
+//                redSpan("osigwu.")
+//                mkp.yield ") , and in other contexts that indicate that the notion of an individual’s state of being is crucial in ensuring that all is flowing well in the larger Cherokee world. Osi is properly understood as referring to the state of neutrality and balance, but it is most often glossed as \"good.\" If individuals are out of balance, they can cause problems in the larger system."
+//                mkp.yieldUnescaped g. citation(src:"Altman, H.M., & Belt, T.N. (2008). Reading History: Cherokee History through a Cherokee Lens. Native South 1, 90-98. http://doi.org/10.135303")
+//            }
+//        }
+//    }
+//
+//    def greetings = {
+//        anchorName(greetOthersChapterTitle)
+//        builder.with {
+//            h2 { mkp.yield "Greetings - ${SyllabaryUtil.tsalagiToSyllabary("unalihelijeti")}" }
+//
+//            div {
+//            h3 {mkp.yield greetOthersChapterTitle}
+//                whatYouWillLearn(greetOthersTopics)
+//                dialog(greetingsDialog, greetingsVocabulary)
+//                mkp.yield g.clearCitations()
+//                helloSection()
+//                br()
+//                exercise("1. Hello, Mary 2. Hello, Mark 3. Hello, Daniel")
+//                br()
+//                goodbyeSection()
+//                br()
+//                mkp.yieldUnescaped g.footnote(src:"We will discuss the plurality prefixes (d-/di-) in the section ", linkTitle:"Word Breakdown - Plurality Prefixe s", link:"wordBreakdownPluralityPrefixes")
+//                br()
+//                exercise("1. Goodbye, Mary and John 2. Goodbye, Titus 3. Goodbye, Daniel 4. Goodbye, Mary, John, Susan, and Mark")
+//            }
+//        }
+//    }
+//
+//    def bibliography = {
+//        builder.with {
+//            br()
+//
+//            br()
+//            br()
+//            div {
+//            span {
+//                mkp.yieldUnescaped "<b>Bibliography</b>"
+//                }
+//                br()
+//                mkp.yieldUnescaped g.printCitations()
+//            }
+//        }
+//    }
+//
+//    builder.book {
+//        tableOfContents()
+//
+//        greetings()
+//
+//        tohiOsi()
+//
+//        bibliography()
+//    }
+
+//    out << raw(writer.toString())

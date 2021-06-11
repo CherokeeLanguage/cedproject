@@ -1,0 +1,1 @@
+\\footnote{${src}<% if (link) { %>\\hyperref[sec:${link}]{${linkTitle}}<% } %>}

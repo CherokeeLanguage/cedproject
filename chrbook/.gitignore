@@ -1,0 +1,15 @@
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+
+bookOutput/TsalagiBook.aux
+bookOutput/TsalagiBook.idx
+bookOutput/TsalagiBook.ilg
+bookOutput/TsalagiBook.ind
+bookOutput/TsalagiBook.log
+bookOutput/TsalagiBook.out
+bookOutput/TsalagiBook.pdf
+bookOutput/TsalagiBook.synctex.gz
+bookOutput/TsalagiBook.toc

@@ -1,0 +1,3 @@
+\\index{<%=titleName%>}
+\\index{<%=titleTranslit%>}
+\\chapter{<%=title%>}

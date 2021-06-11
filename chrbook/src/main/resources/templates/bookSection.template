@@ -1,0 +1,7 @@
+
+sb << "<h4>${params.title}"
+if (params.phonetic) {
+    sb << " - ${transl(src: params.phonetic)}"
+}
+sb << "</h4>"
+sb << body()

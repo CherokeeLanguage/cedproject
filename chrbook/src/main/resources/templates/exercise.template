@@ -1,0 +1,11 @@
+<h4>Exercise - ${title}</h4>
+Translate to Cherokee syllabary and the phonetic equivalent<br/>
+${text}
+<% if (answers) { %>
+<br/>${answers}
+<br/>${answersTranslit}
+<% } %>
+
+if (answers) {
+    answerKey."${text}" = answers
+}

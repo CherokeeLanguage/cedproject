@@ -1,0 +1,2 @@
+<% if (anchor) { %>\\label{sec:${anchor.replaceAll(" ", "")}}<% } %>
+\\section{Word Breakdown - ${title}}
