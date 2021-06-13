@@ -1,0 +1,1768 @@
+This is XeTeX, Version 3.141592653-2.6-0.999993 (MiKTeX 21.3) (preloaded format=xelatex 2021.5.29)  13 JUN 2021 12:16
+entering extended mode
+**./TsalagiBook.tex
+(TsalagiBook.tex
+LaTeX2e <2020-10-01> patch level 4
+L3 programming layer <2021-05-11>
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/base\book.cls
+Document Class: book 2020/04/10 v1.4m Standard LaTeX document class
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/base\bk10.clo
+File: bk10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+)
+\c@part=\count175
+\c@chapter=\count176
+\c@section=\count177
+\c@subsection=\count178
+\c@subsubsection=\count179
+\c@paragraph=\count180
+\c@subparagraph=\count181
+\c@figure=\count182
+\c@table=\count183
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\pdfpages.st
+y
+Package: pdfpages 2021/03/06 v0.5t Insert pages of external PDF documents (AM)
+ (C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/latex-tools\calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count184
+\calc@Bcount=\count185
+\calc@Adimen=\dimen139
+\calc@Bdimen=\dimen140
+\calc@Askip=\skip49
+\calc@Bskip=\skip50
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count186
+\calc@Cskip=\skip51
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/eso-pic\eso-pic.sty
+Package: eso-pic 2020/10/14 v3.0a eso-pic (RN)
+\ESO@tempdima=\dimen141
+\ESO@tempdimb=\dimen142
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+) (C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.c
+fg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: xetex.def on input line 225.
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\xetex.d
+ef
+File: xetex.def 2021/03/18 v5.0k Graphics/color driver for xetex
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+))
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.st
+y
+Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.st
+y
+Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
+ (C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphic
+s.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: xetex.def on input line 105.
+)
+\Gin@req@height=\dimen143
+\Gin@req@width=\dimen144
+)
+\AM@pagewidth=\dimen145
+\AM@pageheight=\dimen146
+\AM@fboxrule=\dimen147
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\ppxetex.def
+File: ppxetex.def 2021/03/06 v0.5t Pdfpages driver for XeTeX (AM)
+)
+\pdfpages@includegraphics@status=\count187
+\AM@pagebox=\box47
+\AM@global@opts=\toks16
+\AM@pagecnt=\count188
+\AM@toc@title=\toks17
+\c@AM@survey=\count189
+\AM@templatesizebox=\box48
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/imakeidx\imakeidx.st
+y
+Package: imakeidx 2016/10/15 v1.3e Package for typesetting indices in a synchro
+nous mode
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.te
+x
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.t
+ex
+\XKV@toks=\toks18
+\XKV@tempa@toks=\toks19
+)
+\XKV@depth=\count190
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifxetex.sty
+Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+))
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/latex-tools\multicol
+.sty
+Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
+\c@tracingmulticols=\count191
+\mult@box=\box49
+\multicol@leftmargin=\dimen148
+\c@unbalance=\count192
+\c@collectmore=\count193
+\doublecol@number=\count194
+\multicoltolerance=\count195
+\multicolpretolerance=\count196
+\full@width=\dimen149
+\page@free=\dimen150
+\premulticols=\dimen151
+\postmulticols=\dimen152
+\multicolsep=\skip52
+\multicolbaselineskip=\skip53
+\partial@page=\box50
+\last@line=\box51
+\maxbalancingoverflow=\dimen153
+\mult@rightbox=\box52
+\mult@grightbox=\box53
+\mult@gfirstbox=\box54
+\mult@firstbox=\box55
+\@tempa=\box56
+\@tempa=\box57
+\@tempa=\box58
+\@tempa=\box59
+\@tempa=\box60
+\@tempa=\box61
+\@tempa=\box62
+\@tempa=\box63
+\@tempa=\box64
+\@tempa=\box65
+\@tempa=\box66
+\@tempa=\box67
+\@tempa=\box68
+\@tempa=\box69
+\@tempa=\box70
+\@tempa=\box71
+\@tempa=\box72
+\@tempa=\box73
+\@tempa=\box74
+\@tempa=\box75
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\@tempa=\box92
+\c@minrows=\count197
+\c@columnbadness=\count198
+\c@finalcolumnbadness=\count199
+\last@try=\dimen154
+\multicolovershoot=\dimen155
+\multicolundershoot=\dimen156
+\mult@nat@firstbox=\box93
+\colbreak@box=\box94
+\mc@col@check@num=\count266
+))
+\TsalagiBook@idxfile=\write3
+\openout3 = `TsalagiBook.idx'.
+
+
+Writing index file TsalagiBook.idx
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.st
+y
+Package: hyperref 2021-02-27 v7.00k Hypertext links for LaTeX
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.st
+y
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexc
+mds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarer
+r.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode not found.
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/kvsetkeys\kvsetkey
+s.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdef
+inekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescap
+e.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxma
+cro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.
+sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+)
+\@linkdim=\dimen157
+\Hy@linkcounter=\count267
+\Hy@pagecounter=\count268
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+File: pd1enc.def 2021-02-27 v7.00k Hyperref: PDFDocEncoding definition (HO)
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref-la
+ngpatches.def
+File: hyperref-langpatches.def 2021-02-27 v7.00k Hyperref: patches for babel la
+nguages
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.st
+y
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.
+sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count269
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+File: puenc.def 2021-02-27 v7.00k Hyperref: PDF Unicode definition (HO)
+)
+Package hyperref Info: Hyper figures OFF on input line 4192.
+Package hyperref Info: Link nesting OFF on input line 4197.
+Package hyperref Info: Hyper index ON on input line 4200.
+Package hyperref Info: Plain pages OFF on input line 4207.
+Package hyperref Info: Backreferencing OFF on input line 4212.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4445.
+\c@Hy@tempcnt=\count270
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4804.
+\XeTeXLinkMargin=\dimen158
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintc
+alc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count271
+\Field@Width=\dimen159
+\Fld@charsize=\dimen160
+Package hyperref Info: Hyper figures OFF on input line 6075.
+Package hyperref Info: Link nesting OFF on input line 6080.
+Package hyperref Info: Hyper index ON on input line 6083.
+Package hyperref Info: backreferencing OFF on input line 6090.
+Package hyperref Info: Link coloring OFF on input line 6095.
+Package hyperref Info: Link coloring with OCG OFF on input line 6100.
+Package hyperref Info: PDF/A mode OFF on input line 6105.
+LaTeX Info: Redefining \ref on input line 6145.
+LaTeX Info: Redefining \pageref on input line 6149.
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.st
+y
+Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi packa
+ge
+with kernel methods
+)
+\Hy@abspage=\count272
+\c@Item=\count273
+\c@Hfootnote=\count274
+)
+Package hyperref Info: Driver (autodetected): hxetex.
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hxetex.def
+File: hxetex.def 2021-02-27 v7.00k Hyperref driver for XeTeX
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringen
+c.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+\pdfm@box=\box95
+\c@Hy@AnnotLevel=\count275
+\HyField@AnnotCount=\count276
+\Fld@listcount=\count277
+\c@bookmark@seq@number=\count278
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerun
+filecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.s
+ty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery packag
+e
+with kernel methods
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniq
+uecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+)
+\Hy@SectionHShift=\skip54
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/latex-tools\verbatim
+.sty
+Package: verbatim 2020-07-07 v1.5u LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks20
+\verbatim@line=\toks21
+\verbatim@in@stream=\read2
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+Package: babel 2021/05/16 3.59 The Babel package
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.def
+File: babel.def 2021/05/16 3.59 Babel common definitions
+\babel@savecnt=\count279
+\U@D=\dimen161
+\l@unhyphenated=\language79
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/babel\xebabel.def
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def
+))
+\bbl@readstream=\read3
+)
+\bbl@dirlevel=\count280
+
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/babel-english\USengl
+ish.ldf
+Language: USenglish 2017/06/06 v3.3r English support from the babel system
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/babel-english\englis
+h.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+Package babel Info: Hyphen rules for 'canadian' set to \l@english
+(babel)             (\language0). Reported on input line 102.
+Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
+(babel)             (\language73). Reported on input line 105.
+Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
+(babel)             (\language73). Reported on input line 108.
+)))
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/preprint\fullpage.st
+y
+Package: fullpage 1999/02/23 1.1 (PWD)
+\FP@margin=\skip55
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/unicode-math\unicode
+-math.sty
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+Package: expl3 2021-05-11 L3 programming layer (loader) 
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-
+xetex.def
+File: l3backend-xetex.def 2021-05-07 L3 backend support: XeTeX
+ ()
+\c__kernel_sys_dvipdfmx_version_int=\count281
+\l__color_backend_stack_int=\count282
+\g__color_backend_stack_int=\count283
+\g__graphics_track_int=\count284
+\l__pdf_internal_box=\box96
+\g__pdf_backend_object_int=\count285
+\g__pdf_backend_annotation_int=\count286
+\g__pdf_backend_link_int=\count287
+))
+Package: unicode-math 2020/01/31 v0.8q Unicode maths in XeLaTeX and LuaLaTeX
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/unicode-math\unicode
+-math-xetex.sty
+Package: unicode-math-xetex 2020/01/31 v0.8q Unicode maths in XeLaTeX and LuaLa
+TeX
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xp
+arse.sty
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xp
+arse-2020-10-01.sty
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xp
+arse-generic.tex)))
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/l3keys2e\
+l3keys2e.sty
+Package: l3keys2e 2021-05-07 LaTeX2e option processing using LaTeX3 keys
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec.st
+y
+Package: fontspec 2020/02/21 v2.7i Font selection for XeLaTeX and LuaLaTeX
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec-xe
+tex.sty
+Package: fontspec-xetex 2020/02/21 v2.7i Font selection for XeLaTeX and LuaLaTe
+X
+\l__fontspec_script_int=\count288
+\l__fontspec_language_int=\count289
+\l__fontspec_strnum_int=\count290
+\l__fontspec_tmp_int=\count291
+\l__fontspec_tmpa_int=\count292
+\l__fontspec_tmpb_int=\count293
+\l__fontspec_tmpc_int=\count294
+\l__fontspec_em_int=\count295
+\l__fontspec_emdef_int=\count296
+\l__fontspec_strong_int=\count297
+\l__fontspec_strongdef_int=\count298
+\l__fontspec_tmpa_dim=\dimen162
+\l__fontspec_tmpb_dim=\dimen163
+\l__fontspec_tmpc_dim=\dimen164
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+Package: fontenc 2020/08/10 v2.0s Standard LaTeX package
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec.cf
+g))) (C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/base\fix-cm.sty
+Package: fix-cm 2015/01/14 v1.1t fixes to LaTeX
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
+))
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2020/09/23 v2.17i AMS math features
+\@mathmargin=\skip56
+
+For additional information on amsmath, use the `?' option.
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks22
+\ex@=\dimen165
+)) (C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.st
+y
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen166
+) (C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count299
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count300
+\leftroot@=\count301
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count302
+\DOTSCASE@=\count303
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box97
+\strutbox@=\box98
+\big@size=\dimen167
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count304
+\c@MaxMatrixCols=\count305
+\dotsspace@=\muskip17
+\c@parentequation=\count306
+\dspbrk@lvl=\count307
+\tag@help=\toks23
+\row@=\count308
+\column@=\count309
+\maxfields@=\count310
+\andhelp@=\toks24
+\eqnshift@=\dimen168
+\alignsep@=\dimen169
+\tagshift@=\dimen170
+\tagwidth@=\dimen171
+\totwidth@=\dimen172
+\lineht@=\dimen173
+\@envbody=\toks25
+\multlinegap=\skip57
+\multlinetaggap=\skip58
+\mathdisplay@stack=\toks26
+LaTeX Info: Redefining \[ on input line 2923.
+LaTeX Info: Redefining \] on input line 2924.
+)
+\g__um_fam_int=\count311
+\g__um_fonts_used_int=\count312
+\l__um_primecount_int=\count313
+\g__um_primekern_muskip=\muskip18
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/unicode-math\unicode
+-math-table.tex)))
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/xelatex/ucharclasses\uchar
+classes.sty
+Package: ucharclasses 2021/02/16 v2.4.0 Unicode block character classes for XeL
+aTeX
+\AegeanNumbersClass=\XeTeXcharclass1
+\AlphabeticPresentationFormsClass=\XeTeXcharclass2
+\AncientGreekMusicalNotationClass=\XeTeXcharclass3
+\AncientGreekNumbersClass=\XeTeXcharclass4
+\AncientSymbolsClass=\XeTeXcharclass5
+\ArabicClass=\XeTeXcharclass6
+\ArabicPresentationFormsAClass=\XeTeXcharclass7
+\ArabicPresentationFormsBClass=\XeTeXcharclass8
+\ArabicSupplementClass=\XeTeXcharclass9
+\ArmenianClass=\XeTeXcharclass10
+\ArrowsClass=\XeTeXcharclass11
+\BalineseClass=\XeTeXcharclass12
+\BasicLatinClass=\XeTeXcharclass13
+\BengaliClass=\XeTeXcharclass14
+\BlockElementsClass=\XeTeXcharclass15
+\BopomofoClass=\XeTeXcharclass16
+\BopomofoExtendedClass=\XeTeXcharclass17
+\BoxDrawingClass=\XeTeXcharclass18
+\BraillePatternsClass=\XeTeXcharclass19
+\BugineseClass=\XeTeXcharclass20
+\BuhidClass=\XeTeXcharclass21
+\ByzantineMusicalSymbolsClass=\XeTeXcharclass22
+\ChamClass=\XeTeXcharclass23
+\CherokeeClass=\XeTeXcharclass24
+\CJKCompatibilityClass=\XeTeXcharclass25
+\CJKCompatibilityFormsClass=\XeTeXcharclass26
+\CJKCompatibilityIdeographsClass=\XeTeXcharclass27
+\CJKCompatibilityIdeographsSupplementClass=\XeTeXcharclass28
+\CJKRadicalsSupplementClass=\XeTeXcharclass29
+\CJKStrokesClass=\XeTeXcharclass30
+\CJKSymbolsAndPunctuationClass=\XeTeXcharclass31
+\CJKUnifiedIdeographsClass=\XeTeXcharclass32
+\CJKUnifiedIdeographsExtensionAClass=\XeTeXcharclass33
+\CJKUnifiedIdeographsExtensionBClass=\XeTeXcharclass34
+\CombiningDiacriticalMarksClass=\XeTeXcharclass35
+\CombiningDiacriticalMarksForSymbolsClass=\XeTeXcharclass36
+\CombiningDiacriticalMarksSupplementClass=\XeTeXcharclass37
+\CombiningHalfMarksClass=\XeTeXcharclass38
+\ControlPicturesClass=\XeTeXcharclass39
+\CopticClass=\XeTeXcharclass40
+\CountingRodNumeralsClass=\XeTeXcharclass41
+\CuneiformClass=\XeTeXcharclass42
+\CuneiformNumbersAndPunctuationClass=\XeTeXcharclass43
+\CurrencySymbolsClass=\XeTeXcharclass44
+\CypriotSyllabaryClass=\XeTeXcharclass45
+\CyrillicClass=\XeTeXcharclass46
+\CyrillicExtendedAClass=\XeTeXcharclass47
+\CyrillicExtendedBClass=\XeTeXcharclass48
+\CyrillicSupplementClass=\XeTeXcharclass49
+\DeseretClass=\XeTeXcharclass50
+\DevanagariDanDaClass=\XeTeXcharclass51
+\DevanagariMarksClass=\XeTeXcharclass52
+\DevanagariPostDanDaClass=\XeTeXcharclass53
+\DevanagariPostMarksClass=\XeTeXcharclass54
+\DevanagariPreMarksClass=\XeTeXcharclass55
+\DingbatsClass=\XeTeXcharclass56
+\DominoTilesClass=\XeTeXcharclass57
+\EnclosedAlphanumericsClass=\XeTeXcharclass58
+\EnclosedCJKLettersAndMonthsClass=\XeTeXcharclass59
+\EthiopicClass=\XeTeXcharclass60
+\EthiopicExtendedClass=\XeTeXcharclass61
+\EthiopicSupplementClass=\XeTeXcharclass62
+\GeneralPunctuationClass=\XeTeXcharclass63
+\GeometricShapesClass=\XeTeXcharclass64
+\GeorgianClass=\XeTeXcharclass65
+\GeorgianSupplementClass=\XeTeXcharclass66
+\GlagoliticClass=\XeTeXcharclass67
+\GothicClass=\XeTeXcharclass68
+\GreekAndCopticClass=\XeTeXcharclass69
+\GreekExtendedClass=\XeTeXcharclass70
+\GujaratiClass=\XeTeXcharclass71
+\GurmukhiClass=\XeTeXcharclass72
+\HalfwidthAndFullwidthFormsClass=\XeTeXcharclass73
+\HangulCompatibilityJamoClass=\XeTeXcharclass74
+\HangulJamoClass=\XeTeXcharclass75
+\HangulSyllablesClass=\XeTeXcharclass76
+\HanunooClass=\XeTeXcharclass77
+\HebrewClass=\XeTeXcharclass78
+\HiraganaClass=\XeTeXcharclass79
+\IdeographicDescriptionCharactersClass=\XeTeXcharclass80
+\IPAExtensionsClass=\XeTeXcharclass81
+\KanbunClass=\XeTeXcharclass82
+\KangxiRadicalsClass=\XeTeXcharclass83
+\KannadaClass=\XeTeXcharclass84
+\KatakanaClass=\XeTeXcharclass85
+\KatakanaPhoneticExtensionsClass=\XeTeXcharclass86
+\KayahLiClass=\XeTeXcharclass87
+\KharoshthiClass=\XeTeXcharclass88
+\KhmerClass=\XeTeXcharclass89
+\KhmerSymbolsClass=\XeTeXcharclass90
+\LaoClass=\XeTeXcharclass91
+\LatinExtendedAdditionalClass=\XeTeXcharclass92
+\LatinExtendedAClass=\XeTeXcharclass93
+\LatinExtendedBClass=\XeTeXcharclass94
+\LatinExtendedCClass=\XeTeXcharclass95
+\LatinExtendedDClass=\XeTeXcharclass96
+\LatinSupplementClass=\XeTeXcharclass97
+\LepchaClass=\XeTeXcharclass98
+\LetterlikeSymbolsClass=\XeTeXcharclass99
+\LimbuClass=\XeTeXcharclass100
+\LinearBIdeogramsClass=\XeTeXcharclass101
+\LinearBSyllabaryClass=\XeTeXcharclass102
+\LycianClass=\XeTeXcharclass103
+\LydianClass=\XeTeXcharclass104
+\MahjongTilesClass=\XeTeXcharclass105
+\MalayalamClass=\XeTeXcharclass106
+\MathematicalAlphanumericSymbolsClass=\XeTeXcharclass107
+\MathematicalOperatorsClass=\XeTeXcharclass108
+\MiscellaneousMathematicalSymbolsAClass=\XeTeXcharclass109
+\MiscellaneousMathematicalSymbolsBClass=\XeTeXcharclass110
+\MiscellaneousSymbolsClass=\XeTeXcharclass111
+\MiscellaneousSymbolsAndArrowsClass=\XeTeXcharclass112
+\MiscellaneousTechnicalClass=\XeTeXcharclass113
+\ModifierToneLettersClass=\XeTeXcharclass114
+\MongolianClass=\XeTeXcharclass115
+\MusicalSymbolsClass=\XeTeXcharclass116
+\MyanmarClass=\XeTeXcharclass117
+\NewTaiLueClass=\XeTeXcharclass118
+\NKoClass=\XeTeXcharclass119
+\NumberFormsClass=\XeTeXcharclass120
+\OghamClass=\XeTeXcharclass121
+\OlChikiClass=\XeTeXcharclass122
+\OldPersianClass=\XeTeXcharclass123
+\OpticalCharacterRecognitionClass=\XeTeXcharclass124
+\OriyaClass=\XeTeXcharclass125
+\OsmanyaClass=\XeTeXcharclass126
+\PhagsPaClass=\XeTeXcharclass127
+\PhoenicianClass=\XeTeXcharclass128
+\PhoneticExtensionsClass=\XeTeXcharclass129
+\PhoneticExtensionsSupplementClass=\XeTeXcharclass130
+\PrivateUseAreaClass=\XeTeXcharclass131
+\RejangClass=\XeTeXcharclass132
+\RunicClass=\XeTeXcharclass133
+\SaurashtraClass=\XeTeXcharclass134
+\ShavianClass=\XeTeXcharclass135
+\SinhalaClass=\XeTeXcharclass136
+\SmallFormVariantsClass=\XeTeXcharclass137
+\SpacingModifierLettersClass=\XeTeXcharclass138
+\SundaneseClass=\XeTeXcharclass139
+\SuperscriptsAndSubscriptsClass=\XeTeXcharclass140
+\SupplementalArrowsAClass=\XeTeXcharclass141
+\SupplementalArrowsBClass=\XeTeXcharclass142
+\SupplementalMathematicalOperatorsClass=\XeTeXcharclass143
+\SupplementalPunctuationClass=\XeTeXcharclass144
+\SylotiNagriClass=\XeTeXcharclass145
+\SyriacClass=\XeTeXcharclass146
+\TagalogClass=\XeTeXcharclass147
+\TagbanwaClass=\XeTeXcharclass148
+\TagsClass=\XeTeXcharclass149
+\TaiLeClass=\XeTeXcharclass150
+\TaiXuanJingSymbolsClass=\XeTeXcharclass151
+\TamilClass=\XeTeXcharclass152
+\TeluguClass=\XeTeXcharclass153
+\ThaanaClass=\XeTeXcharclass154
+\ThaiClass=\XeTeXcharclass155
+\TibetanClass=\XeTeXcharclass156
+\TifinaghClass=\XeTeXcharclass157
+\UgariticClass=\XeTeXcharclass158
+\UnifiedCanadianAboriginalSyllabicsClass=\XeTeXcharclass159
+\VaiClass=\XeTeXcharclass160
+\VerticalFormsClass=\XeTeXcharclass161
+\YiRadicalsClass=\XeTeXcharclass162
+\YiSyllablesClass=\XeTeXcharclass163
+\YijingHexagramSymbolsClass=\XeTeXcharclass164
+\AvestanClass=\XeTeXcharclass165
+\BamumClass=\XeTeXcharclass166
+\CJKUnifiedIdeographsExtensionCClass=\XeTeXcharclass167
+\CommonIndicNumberFormsClass=\XeTeXcharclass168
+\DevanagariExtendedClass=\XeTeXcharclass169
+\EgyptianHieroglyphsClass=\XeTeXcharclass170
+\EnclosedAlphanumericSupplementClass=\XeTeXcharclass171
+\EnclosedIdeographicSupplementClass=\XeTeXcharclass172
+\HangulJamoExtendedAClass=\XeTeXcharclass173
+\HangulJamoExtendedBClass=\XeTeXcharclass174
+\ImperialAramaicClass=\XeTeXcharclass175
+\InscriptionalPahlaviClass=\XeTeXcharclass176
+\InscriptionalParthianClass=\XeTeXcharclass177
+\JavaneseClass=\XeTeXcharclass178
+\KaithiClass=\XeTeXcharclass179
+\LisuClass=\XeTeXcharclass180
+\MeeteiMayekClass=\XeTeXcharclass181
+\MyanmarExtendedAClass=\XeTeXcharclass182
+\RumiNumeralSymbolsClass=\XeTeXcharclass183
+\SamaritanClass=\XeTeXcharclass184
+\TaiThamClass=\XeTeXcharclass185
+\TaiVietClass=\XeTeXcharclass186
+\UnifiedCanadianAboriginalSyllabicsExtendedClass=\XeTeXcharclass187
+\VedicExtensionsClass=\XeTeXcharclass188
+\AlchemicalSymbolsClass=\XeTeXcharclass189
+\BamumSupplementClass=\XeTeXcharclass190
+\BatakClass=\XeTeXcharclass191
+\BrahmiClass=\XeTeXcharclass192
+\CJKUnifiedIdeographsExtensionDClass=\XeTeXcharclass193
+\EmoticonsClass=\XeTeXcharclass194
+\EthiopicExtendedAClass=\XeTeXcharclass195
+\KanaSupplementClass=\XeTeXcharclass196
+\MandaicClass=\XeTeXcharclass197
+\MiscellaneousSymbolsAndPictographsClass=\XeTeXcharclass198
+\PlayingCardsClass=\XeTeXcharclass199
+\TransportAndMapSymbolsClass=\XeTeXcharclass200
+\ArabicExtendedAClass=\XeTeXcharclass201
+\ArabicMathematicalAlphabeticSymbolsClass=\XeTeXcharclass202
+\ChakmaClass=\XeTeXcharclass203
+\MeeteiMayekExtensionsClass=\XeTeXcharclass204
+\MeroiticCursiveClass=\XeTeXcharclass205
+\MeroiticHieroglyphsClass=\XeTeXcharclass206
+\MiaoClass=\XeTeXcharclass207
+\SharadaClass=\XeTeXcharclass208
+\SoraSompengClass=\XeTeXcharclass209
+\SundaneseSupplementClass=\XeTeXcharclass210
+\TakriClass=\XeTeXcharclass211
+\BassaVahClass=\XeTeXcharclass212
+\CaucasianAlbanianClass=\XeTeXcharclass213
+\CombiningDiacriticalMarksExtendedClass=\XeTeXcharclass214
+\CopticEpactNumbersClass=\XeTeXcharclass215
+\ElbasanClass=\XeTeXcharclass216
+\GeometricShapesExtendedClass=\XeTeXcharclass217
+\GranthaClass=\XeTeXcharclass218
+\KhojkiClass=\XeTeXcharclass219
+\KhudawadiClass=\XeTeXcharclass220
+\LatinExtendedEClass=\XeTeXcharclass221
+\LinearAClass=\XeTeXcharclass222
+\MahajaniClass=\XeTeXcharclass223
+\ManichaeanClass=\XeTeXcharclass224
+\MendeKikakuiClass=\XeTeXcharclass225
+\ModiClass=\XeTeXcharclass226
+\MroClass=\XeTeXcharclass227
+\MyanmarExtendedBClass=\XeTeXcharclass228
+\NabataeanClass=\XeTeXcharclass229
+\OldPermicClass=\XeTeXcharclass230
+\OrnamentalDingbatsClass=\XeTeXcharclass231
+\PahawhHmongClass=\XeTeXcharclass232
+\PalmyreneClass=\XeTeXcharclass233
+\PauCinHauClass=\XeTeXcharclass234
+\PsalterPahlaviClass=\XeTeXcharclass235
+\SiddhamClass=\XeTeXcharclass236
+\SinhalaArchaicNumbersClass=\XeTeXcharclass237
+\SupplementalArrowsCClass=\XeTeXcharclass238
+\TirhutaClass=\XeTeXcharclass239
+\WarangCitiClass=\XeTeXcharclass240
+\CherokeeSupplementClass=\XeTeXcharclass241
+\CJKUnifiedIdeographsExtensionEClass=\XeTeXcharclass242
+\OldHungarianClass=\XeTeXcharclass243
+\SupplementalSymbolsAndPictographsClass=\XeTeXcharclass244
+\CyrillicExtendedCClass=\XeTeXcharclass245
+\GlagoliticSupplementClass=\XeTeXcharclass246
+\IdeographicSymbolsAndPunctuationClass=\XeTeXcharclass247
+\MongolianSupplementClass=\XeTeXcharclass248
+\CJKUnifiedIdeographsExtensionFClass=\XeTeXcharclass249
+\KanaExtendedAClass=\XeTeXcharclass250
+\SyriacSupplementClass=\XeTeXcharclass251
+\GeorgianExtendedClass=\XeTeXcharclass252
+\SmallKanaExtensionClass=\XeTeXcharclass253
+\SymbolsAndPictographsExtendedAClass=\XeTeXcharclass254
+\CJKUnifiedIdeographsExtensionGClass=\XeTeXcharclass255
+\CarianClass=\XeTeXcharclass256
+\OldItalicClass=\XeTeXcharclass257
+\PhaistosDiscClass=\XeTeXcharclass258
+\SupplementaryPrivateUseAreaAClass=\XeTeXcharclass259
+\SupplementaryPrivateUseAreaBClass=\XeTeXcharclass260
+\OldSouthArabianClass=\XeTeXcharclass261
+\OldTurkicClass=\XeTeXcharclass262
+\DuployanClass=\XeTeXcharclass263
+\OldNorthArabianClass=\XeTeXcharclass264
+\ShorthandFormatControlsClass=\XeTeXcharclass265
+\AhomClass=\XeTeXcharclass266
+\AnatolianHieroglyphsClass=\XeTeXcharclass267
+\EarlyDynasticCuneiformClass=\XeTeXcharclass268
+\HatranClass=\XeTeXcharclass269
+\MultaniClass=\XeTeXcharclass270
+\SuttonSignWritingClass=\XeTeXcharclass271
+\AdlamClass=\XeTeXcharclass272
+\BhaiksukiClass=\XeTeXcharclass273
+\MarchenClass=\XeTeXcharclass274
+\NewaClass=\XeTeXcharclass275
+\OsageClass=\XeTeXcharclass276
+\TangutClass=\XeTeXcharclass277
+\TangutComponentsClass=\XeTeXcharclass278
+\MasaramGondiClass=\XeTeXcharclass279
+\NushuClass=\XeTeXcharclass280
+\SoyomboClass=\XeTeXcharclass281
+\ZanabazarSquareClass=\XeTeXcharclass282
+\ChessSymbolsClass=\XeTeXcharclass283
+\DograClass=\XeTeXcharclass284
+\GunjalaGondiClass=\XeTeXcharclass285
+\HanifiRohingyaClass=\XeTeXcharclass286
+\IndicSiyaqNumbersClass=\XeTeXcharclass287
+\MakasarClass=\XeTeXcharclass288
+\MayanNumeralsClass=\XeTeXcharclass289
+\MedefaidrinClass=\XeTeXcharclass290
+\OldSogdianClass=\XeTeXcharclass291
+\SogdianClass=\XeTeXcharclass292
+\EgyptianHieroglyphFormatControlsClass=\XeTeXcharclass293
+\ElymaicClass=\XeTeXcharclass294
+\NandinagariClass=\XeTeXcharclass295
+\NyiakengPuachueHmongClass=\XeTeXcharclass296
+\OttomanSiyaqNumbersClass=\XeTeXcharclass297
+\TamilSupplementClass=\XeTeXcharclass298
+\WanchoClass=\XeTeXcharclass299
+\ChorasmianClass=\XeTeXcharclass300
+\DivesAkuruClass=\XeTeXcharclass301
+\KhitanSmallScriptClass=\XeTeXcharclass302
+\LisuSupplementClass=\XeTeXcharclass303
+\SymbolsForLegacyComputingClass=\XeTeXcharclass304
+\TangutSupplementClass=\XeTeXcharclass305
+\YezidiClass=\XeTeXcharclass306
+)
+Package babel Info: Importing data for cherokee
+(babel)             from babel-chr.ini. Reported on input line 32.
+Package babel Info: Hyphen rules for 'cherokee' set to \l@english
+(babel)             (\language0). Reported on input line 32.
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/en\ba
+bel-usenglish.tex
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/en\ba
+bel-english-unitedstates.tex
+Package babel Info: Importing font and identification data for USenglish
+(babel)             from babel-en-US.ini. Reported on input line 11.
+))
+
+Package fontspec Warning: Language 'English' not available for font 'Noto
+(fontspec)                Sans' with script 'Latin'.
+
+
+Package fontspec Info: Noto Sans scale = 0.9565809269802192.
+
+
+Package fontspec Warning: OpenType feature 'Ligatures=Common' (liga) not
+(fontspec)                available for font 'Noto Sans' with script 'Latin'
+(fontspec)                and language 'English'.
+
+
+Package fontspec Info: Noto Sans scale = 0.9565809269802192.
+
+
+Package fontspec Warning: OpenType feature 'Ligatures=Common' (liga) not
+(fontspec)                available for font 'Noto Sans' with script 'Latin'
+(fontspec)                and language 'English'.
+
+
+Package fontspec Info: Noto Sans scale = 0.9565809269802192.
+
+
+Package fontspec Warning: OpenType feature 'Ligatures=Common' (liga) not
+(fontspec)                available for font 'Noto Sans' with script 'Latin'
+(fontspec)                and language 'English'.
+
+
+Package fontspec Info: Noto Sans/B scale = 0.9565809269802192.
+
+
+Package fontspec Warning: OpenType feature 'Ligatures=Common' (liga) not
+(fontspec)                available for font 'Noto Sans/B' with script 'Latin'
+(fontspec)                and language 'English'.
+
+
+Package fontspec Info: Noto Sans/B scale = 0.9565809269802192.
+
+
+Package fontspec Warning: OpenType feature 'Ligatures=Common' (liga) not
+(fontspec)                available for font 'Noto Sans/B' with script 'Latin'
+(fontspec)                and language 'English'.
+
+
+Package fontspec Info: Noto Sans/I scale = 0.9565809269802192.
+
+
+Package fontspec Info: Noto Sans/I scale = 0.9565809269802192.
+
+
+Package fontspec Info: Noto Sans/BI scale = 0.9565809269802192.
+
+
+Package fontspec Info: Noto Sans/BI scale = 0.9565809269802192.
+
+
+Package fontspec Info: Font family 'NotoSans(0)' created for font 'Noto Sans'
+(fontspec)             with options
+(fontspec)             [Scale=MatchUppercase,Ligatures=TeX,Ligatures=TeX,Script
+=Latin,Language=English,Ligatures=Common,Scale=1.0].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->s*[1.0]"Noto
+(fontspec)             Sans/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: <->s*[1.0]"Noto
+(fontspec)             Sans/OT:script=latn;language=dflt;+smcp;mapping=tex-text
+;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->s*[1.0]"Noto
+(fontspec)             Sans/B/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->s*[1.0]"Noto
+(fontspec)             Sans/B/OT:script=latn;language=dflt;+smcp;mapping=tex-te
+xt;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.: <->s*[1.0]"Noto
+(fontspec)             Sans/I/OT:script=latn;language=dflt;+liga;mapping=tex-te
+xt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->s*[1.0]"Noto
+(fontspec)             Sans/I/OT:script=latn;language=dflt;+liga;+smcp;mapping=
+tex-text;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->s*[1.0]"Noto
+(fontspec)             Sans/BI/OT:script=latn;language=dflt;+liga;mapping=tex-t
+ext;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->s*[1.0]"Noto
+(fontspec)             Sans/BI/OT:script=latn;language=dflt;+liga;+smcp;mapping
+=tex-text;"
+
+LaTeX Font Info:    Font shape `TU/NotoSans(0)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 66.
+
+Package fontspec Warning: Language 'English' not available for font 'Noto
+(fontspec)                Sans' with script 'Latin'.
+
+
+Package fontspec Info: Noto Sans scale = 0.9999978629190816.
+
+
+Package fontspec Warning: OpenType feature 'Ligatures=Common' (liga) not
+(fontspec)                available for font 'Noto Sans' with script 'Latin'
+(fontspec)                and language 'English'.
+
+
+Package fontspec Info: Noto Sans scale = 0.9999978629190816.
+
+
+Package fontspec Warning: OpenType feature 'Ligatures=Common' (liga) not
+(fontspec)                available for font 'Noto Sans' with script 'Latin'
+(fontspec)                and language 'English'.
+
+
+Package fontspec Info: Noto Sans scale = 0.9999978629190816.
+
+
+Package fontspec Warning: OpenType feature 'Ligatures=Common' (liga) not
+(fontspec)                available for font 'Noto Sans' with script 'Latin'
+(fontspec)                and language 'English'.
+
+
+Package fontspec Info: Noto Sans/B scale = 0.9999978629190816.
+
+
+Package fontspec Warning: OpenType feature 'Ligatures=Common' (liga) not
+(fontspec)                available for font 'Noto Sans/B' with script 'Latin'
+(fontspec)                and language 'English'.
+
+
+Package fontspec Info: Noto Sans/B scale = 0.9999978629190816.
+
+
+Package fontspec Warning: OpenType feature 'Ligatures=Common' (liga) not
+(fontspec)                available for font 'Noto Sans/B' with script 'Latin'
+(fontspec)                and language 'English'.
+
+
+Package fontspec Info: Noto Sans/I scale = 0.9999978629190816.
+
+
+Package fontspec Info: Noto Sans/I scale = 0.9999978629190816.
+
+
+Package fontspec Info: Noto Sans/BI scale = 0.9999978629190816.
+
+
+Package fontspec Info: Noto Sans/BI scale = 0.9999978629190816.
+
+
+Package fontspec Info: Font family 'NotoSans(1)' created for font 'Noto Sans'
+(fontspec)             with options
+(fontspec)             [Scale=MatchUppercase,Ligatures=TeX,Ligatures=TeX,Script
+=Latin,Language=English,Ligatures=Common].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[0.9999978629190816]"Noto
+(fontspec)             Sans/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->s*[0.9999978629190816]"Noto
+(fontspec)             Sans/OT:script=latn;language=dflt;+smcp;mapping=tex-text
+;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[0.9999978629190816]"Noto
+(fontspec)             Sans/B/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->s*[0.9999978629190816]"Noto
+(fontspec)             Sans/B/OT:script=latn;language=dflt;+smcp;mapping=tex-te
+xt;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[0.9999978629190816]"Noto
+(fontspec)             Sans/I/OT:script=latn;language=dflt;+liga;mapping=tex-te
+xt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->s*[0.9999978629190816]"Noto
+(fontspec)             Sans/I/OT:script=latn;language=dflt;+liga;+smcp;mapping=
+tex-text;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[0.9999978629190816]"Noto
+(fontspec)             Sans/BI/OT:script=latn;language=dflt;+liga;mapping=tex-t
+ext;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->s*[0.9999978629190816]"Noto
+(fontspec)             Sans/BI/OT:script=latn;language=dflt;+liga;+smcp;mapping
+=tex-text;"
+
+LaTeX Font Info:    Font shape `TU/NotoSans(1)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 70.
+
+Package fontspec Warning: Language 'English' not available for font 'Courier
+(fontspec)                New' with script 'Latin'.
+
+
+Package fontspec Info: Courier New scale = 1.249801683222.
+
+
+Package fontspec Info: Courier New scale = 1.249801683222.
+
+
+Package fontspec Info: Courier New/B scale = 1.206491835571794.
+
+
+Package fontspec Info: Courier New/I scale = 1.249801683222.
+
+
+Package fontspec Info: Courier New/BI scale = 1.206491835571794.
+
+
+Package fontspec Info: Font family 'CourierNew(0)' created for font 'Courier
+(fontspec)             New' with options
+(fontspec)             [Scale=MatchUppercase,Ligatures=TeX,WordSpace={1,0,0},Hy
+phenChar=None,PunctuationSpace=WordSpace,Script=Latin,Language=English].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[1.249801683222]"Courier
+(fontspec)             New/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[1.206491835571794]"Courier
+(fontspec)             New/B/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[1.249801683222]"Courier
+(fontspec)             New/I/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[1.206491835571794]"Courier
+(fontspec)             New/BI/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+
+LaTeX Font Info:    Font shape `TU/CourierNew(0)/m/n' will be
+(Font)              scaled to size 12.49802pt on input line 74.
+(TsalagiBook.aux
+
+Package fontspec Warning: Language 'Cherokee' not available for font
+(fontspec)                'NotoSansCherokee-Regular' with script 'Cherokee'.
+
+
+Package fontspec Info: NotoSansCherokee-Regular scale = 0.9999978629190816.
+
+
+Package fontspec Info: NotoSansCherokee-Regular scale = 0.9999978629190816.
+
+
+Package fontspec Info: NotoSansCherokee-Bold scale = 0.9999978629190816.
+
+
+Package fontspec Info: Font family 'NotoSansCherokee(0)' created for font
+(fontspec)             'NotoSansCherokee' with options
+(fontspec)             [Scale=MatchUppercase,Ligatures=TeX,Ligatures=TeX,Uprigh
+tFont=*-Regular,BoldFont
+(fontspec)             = *-Bold,Extension =
+(fontspec)             .ttf,Script=Cherokee,Language=Cherokee].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[0.9999978629190816]"[NotoSansCherokee-Regular.ttf]
+/OT:script=cher;language=dflt;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[0.9999978629190816]"[NotoSansCherokee-Bold.ttf]/OT
+:script=cher;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+
+LaTeX Font Info:    Font shape `TU/NotoSansCherokee(0)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 22.
+
+Package fontspec Warning: Language 'Cherokee' not available for font
+(fontspec)                'NotoSansCherokee-Regular' with script 'Cherokee'.
+
+
+Package fontspec Info: NotoSansCherokee-Regular scale = 0.9999978629190816.
+
+
+Package fontspec Warning: Font "Courier New" does not contain requested Script
+(fontspec)                "Cherokee".
+
+
+Package fontspec Warning: Language 'Cherokee' not available for font 'Courier
+(fontspec)                New' with script 'CustomDefault'.
+
+
+Package fontspec Info: Courier New scale = 1.249801683222.
+
+
+Package fontspec Info: Courier New scale = 1.249801683222.
+
+
+Package fontspec Info: Courier New/B scale = 1.206491835571794.
+
+
+Package fontspec Info: Courier New/I scale = 1.249801683222.
+
+
+Package fontspec Info: Courier New/BI scale = 1.206491835571794.
+
+
+Package fontspec Info: Font family 'CourierNew(1)' created for font 'Courier
+(fontspec)             New' with options
+(fontspec)             [Scale=MatchUppercase,Ligatures=TeX,WordSpace={1,0,0},Hy
+phenChar=None,PunctuationSpace=WordSpace,Script=Cherokee,Language=Cherokee].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[1.249801683222]"Courier
+(fontspec)             New/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[1.206491835571794]"Courier
+(fontspec)             New/B/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[1.249801683222]"Courier
+(fontspec)             New/I/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[1.206491835571794]"Courier
+(fontspec)             New/BI/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+
+LaTeX Font Info:    Font shape `TU/CourierNew(1)/m/n' will be
+(Font)              scaled to size 12.49802pt on input line 22.
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/en\ba
+bel-english.tex
+Package babel Info: Importing basic data for english
+(babel)             from babel-en.ini. Reported on input line 11.
+)
+
+Package fontspec Warning: Language 'English' not available for font 'Noto
+(fontspec)                Sans' with script 'Latin'.
+
+
+Package fontspec Info: Noto Sans scale = 0.9999978629190816.
+
+
+Package fontspec Warning: OpenType feature 'Ligatures=Common' (liga) not
+(fontspec)                available for font 'Noto Sans' with script 'Latin'
+(fontspec)                and language 'English'.
+
+
+Package fontspec Warning: Language 'English' not available for font 'Noto
+(fontspec)                Sans' with script 'Latin'.
+
+
+Package fontspec Info: Noto Sans scale = 0.9999978629190816.
+
+
+Package fontspec Warning: OpenType feature 'Ligatures=Common' (liga) not
+(fontspec)                available for font 'Noto Sans' with script 'Latin'
+(fontspec)                and language 'English'.
+
+
+Package fontspec Warning: Language 'English' not available for font 'Courier
+(fontspec)                New' with script 'Latin'.
+
+
+Package fontspec Info: Courier New scale = 1.249801683222.
+
+)
+\openout1 = `TsalagiBook.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.
+sty
+Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/graphics\lscape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: dvipdfm (xetex) on input line 98.
+
+)
+Package hyperref Info: Link coloring OFF on input line 81.
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
+
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.st
+y
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(C:\Users\winkimac\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\get
+titlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count314
+)
+LaTeX Info: Redefining \ref on input line 81.
+LaTeX Info: Redefining \pageref on input line 81.
+LaTeX Info: Redefining \nameref on input line 81.
+ (TsalagiBook.out) (TsalagiBook.out)
+\@outlinefile=\write4
+\openout4 = `TsalagiBook.out'.
+
+LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
+(Font)                  OT1/cmr/m/n --> TU/NotoSans(0)/m/n on input line 81.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> TU/NotoSans(0)/m/it on input line 81.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> TU/NotoSans(0)/b/n on input line 81.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> TU/NotoSans(1)/m/n on input line 81.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> TU/NotoSans(1)/b/n on input line 81.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> TU/CourierNew(0)/m/n on input line 81.
+
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> TU/CourierNew(0)/b/n on input line 81.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045385289044977.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045385289044977.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045385289044977.
+
+
+Package fontspec Info: Font family 'latinmodern-math.otf(0)' created for font
+(fontspec)             'latinmodern-math.otf' with options
+(fontspec)             [Scale=MatchUppercase,Ligatures=TeX,BoldItalicFont={},It
+alicFont={},SmallCapsFont={},Script=Math,BoldFont={latinmodern-math.otf}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[1.045385289044977]"[latinmodern-math.otf]/OT:scrip
+t=math;language=dflt;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[1.045385289044977]"[latinmodern-math.otf]/OT:scrip
+t=math;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
+(Font)              scaled to size 10.4538pt on input line 81.
+
+Package fontspec Info: latinmodern-math scale = 1.045385289044977.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045385289044977.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045385289044977.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045385289044977.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045385289044977.
+
+
+Package fontspec Info: Font family 'latinmodern-math.otf(1)' created for font
+(fontspec)             'latinmodern-math.otf' with options
+(fontspec)             [Scale=MatchUppercase,Ligatures=TeX,BoldItalicFont={},It
+alicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=8.5-},{Size=6-8.5,
+Font=latinmodern-math.otf,Style=MathScript},{Size=-6,Font=latinmodern-math.otf,
+Style=MathScriptScript}},BoldFont={latinmodern-math.otf}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <8.5->s*[1.045385289044977]"[latinmodern-math.otf]/OT:sc
+ript=math;language=dflt;mapping=tex-text;"<6-8.5>s*[1.045385289044977]"[latinmo
+dern-math.otf]/OT:script=math;language=dflt;+ssty=0;mapping=tex-text;"<-6>s*[1.
+045385289044977]"[latinmodern-math.otf]/OT:script=math;language=dflt;+ssty=1;ma
+pping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[1.045385289044977]"[latinmodern-math.otf]/OT:scrip
+t=math;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 10.4538pt on input line 81.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `normal' on input line 81.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input
+ line 81.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `bold' on input line 81.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on inpu
+t line 81.
+
+Package fontspec Info: latinmodern-math scale = 1.045385289044977.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045489827573881.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045385289044977.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045489827573881.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045385289044977.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045489827573881.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045385289044977.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045489827573881.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045385289044977.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045489827573881.
+
+
+Package fontspec Info: Font family 'latinmodern-math.otf(2)' created for font
+(fontspec)             'latinmodern-math.otf' with options
+(fontspec)             [Scale=MatchUppercase,Ligatures=TeX,BoldItalicFont={},It
+alicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=8.5-},{Size=6-8.5,
+Font=latinmodern-math.otf,Style=MathScript},{Size=-6,Font=latinmodern-math.otf,
+Style=MathScriptScript}},BoldFont={latinmodern-math.otf},ScaleAgain=1.0001,Font
+Adjustment={\fontdimen
+(fontspec)             8\font =7.07722pt\relax \fontdimen 9\font
+(fontspec)             =4.11879pt\relax \fontdimen 10\font =4.64148pt\relax
+(fontspec)             \fontdimen 11\font =7.17131pt\relax \fontdimen 12\font
+(fontspec)             =3.60657pt\relax \fontdimen 13\font =3.79472pt\relax
+(fontspec)             \fontdimen 14\font =3.79472pt\relax \fontdimen 15\font
+(fontspec)             =3.02115pt\relax \fontdimen 16\font =2.58209pt\relax
+(fontspec)             \fontdimen 17\font =2.58209pt\relax \fontdimen 18\font
+(fontspec)             =2.61345pt\relax \fontdimen 19\font =2.09076pt\relax
+(fontspec)             \fontdimen 22\font =2.61345pt\relax \fontdimen 20\font
+(fontspec)             =0pt\relax \fontdimen 21\font =0pt\relax }].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <8.5->s*[1.045489827573881]"[latinmodern-math.otf]/OT:sc
+ript=math;language=dflt;mapping=tex-text;"<6-8.5>s*[1.045489827573881]"[latinmo
+dern-math.otf]/OT:script=math;language=dflt;+ssty=0;mapping=tex-text;"<-6>s*[1.
+045489827573881]"[latinmodern-math.otf]/OT:script=math;language=dflt;+ssty=1;ma
+pping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 8\font =7.07722pt\relax \fontdimen 9\font
+(fontspec)             =4.11879pt\relax \fontdimen 10\font =4.64148pt\relax
+(fontspec)             \fontdimen 11\font =7.17131pt\relax \fontdimen 12\font
+(fontspec)             =3.60657pt\relax \fontdimen 13\font =3.79472pt\relax
+(fontspec)             \fontdimen 14\font =3.79472pt\relax \fontdimen 15\font
+(fontspec)             =3.02115pt\relax \fontdimen 16\font =2.58209pt\relax
+(fontspec)             \fontdimen 17\font =2.58209pt\relax \fontdimen 18\font
+(fontspec)             =2.61345pt\relax \fontdimen 19\font =2.09076pt\relax
+(fontspec)             \fontdimen 22\font =2.61345pt\relax \fontdimen 20\font
+(fontspec)             =0pt\relax \fontdimen 21\font =0pt\relax 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[1.045489827573881]"[latinmodern-math.otf]/OT:scrip
+t=math;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 8\font =7.07722pt\relax \fontdimen 9\font
+(fontspec)             =4.11879pt\relax \fontdimen 10\font =4.64148pt\relax
+(fontspec)             \fontdimen 11\font =7.17131pt\relax \fontdimen 12\font
+(fontspec)             =3.60657pt\relax \fontdimen 13\font =3.79472pt\relax
+(fontspec)             \fontdimen 14\font =3.79472pt\relax \fontdimen 15\font
+(fontspec)             =3.02115pt\relax \fontdimen 16\font =2.58209pt\relax
+(fontspec)             \fontdimen 17\font =2.58209pt\relax \fontdimen 18\font
+(fontspec)             =2.61345pt\relax \fontdimen 19\font =2.09076pt\relax
+(fontspec)             \fontdimen 22\font =2.61345pt\relax \fontdimen 20\font
+(fontspec)             =0pt\relax \fontdimen 21\font =0pt\relax 
+
+LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
+(Font)              `symbols' in the math version `normal' on input line 81.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on inpu
+t line 81.
+LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
+(Font)              `symbols' in the math version `bold' on input line 81.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on inpu
+t line 81.
+
+Package fontspec Info: latinmodern-math scale = 1.045385289044977.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045280750516073.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045385289044977.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045280750516073.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045385289044977.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045280750516073.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045385289044977.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045280750516073.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045385289044977.
+
+
+Package fontspec Info: latinmodern-math scale = 1.045280750516073.
+
+
+Package fontspec Info: Font family 'latinmodern-math.otf(3)' created for font
+(fontspec)             'latinmodern-math.otf' with options
+(fontspec)             [Scale=MatchUppercase,Ligatures=TeX,BoldItalicFont={},It
+alicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=8.5-},{Size=6-8.5,
+Font=latinmodern-math.otf,Style=MathScript},{Size=-6,Font=latinmodern-math.otf,
+Style=MathScriptScript}},BoldFont={latinmodern-math.otf},ScaleAgain=0.9999,Font
+Adjustment={\fontdimen
+(fontspec)             8\font =0.41815pt\relax \fontdimen 9\font
+(fontspec)             =2.09076pt\relax \fontdimen 10\font =1.74579pt\relax
+(fontspec)             \fontdimen 11\font =1.16037pt\relax \fontdimen 12\font
+(fontspec)             =6.27228pt\relax \fontdimen 13\font =0pt\relax }].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <8.5->s*[1.045280750516073]"[latinmodern-math.otf]/OT:sc
+ript=math;language=dflt;mapping=tex-text;"<6-8.5>s*[1.045280750516073]"[latinmo
+dern-math.otf]/OT:script=math;language=dflt;+ssty=0;mapping=tex-text;"<-6>s*[1.
+045280750516073]"[latinmodern-math.otf]/OT:script=math;language=dflt;+ssty=1;ma
+pping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 8\font =0.41815pt\relax \fontdimen 9\font
+(fontspec)             =2.09076pt\relax \fontdimen 10\font =1.74579pt\relax
+(fontspec)             \fontdimen 11\font =1.16037pt\relax \fontdimen 12\font
+(fontspec)             =6.27228pt\relax \fontdimen 13\font =0pt\relax 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[1.045280750516073]"[latinmodern-math.otf]/OT:scrip
+t=math;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 8\font =0.41815pt\relax \fontdimen 9\font
+(fontspec)             =2.09076pt\relax \fontdimen 10\font =1.74579pt\relax
+(fontspec)             \fontdimen 11\font =1.16037pt\relax \fontdimen 12\font
+(fontspec)             =6.27228pt\relax \fontdimen 13\font =0pt\relax 
+
+LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
+(Font)              `largesymbols' in the math version `normal' on input line 8
+1.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> TU/latinmodern-math.otf(3)/m/n on inpu
+t line 81.
+LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
+(Font)              `largesymbols' in the math version `bold' on input line 81.
+
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> TU/latinmodern-math.otf(3)/b/n on inpu
+t line 81.
+LaTeX Font Info:    Font shape `TU/NotoSans(0)/m/n' will be
+(Font)              scaled to size 17.28pt on input line 89.
+LaTeX Font Info:    Font shape `TU/NotoSans(0)/m/n' will be
+(Font)              scaled to size 24.88pt on input line 89.
+LaTeX Font Info:    Font shape `TU/NotoSans(0)/b/n' will be
+(Font)              scaled to size 24.88pt on input line 89.
+LaTeX Font Info:    Font shape `TU/NotoSansCherokee(0)/b/n' will be
+(Font)              scaled to size 24.88pt on input line 89.
+LaTeX Font Info:    Font shape `TU/NotoSans(0)/m/n' will be
+(Font)              scaled to size 12.0pt on input line 89.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 12.54456pt on input line 89.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 8.36304pt on input line 89.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 6.27228pt on input line 89.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 12.54584pt on input line 89.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 8.36389pt on input line 89.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 6.27292pt on input line 89.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 12.54346pt on input line 89.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 8.3623pt on input line 89.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 6.27173pt on input line 89.
+ [1
+
+
+] [2
+
+] (TsalagiBook.toc
+LaTeX Font Info:    Font shape `TU/NotoSans(0)/b/n' will be
+(Font)              scaled to size 10.0pt on input line 58.
+LaTeX Font Info:    Font shape `TU/NotoSansCherokee(0)/b/n' will be
+(Font)              scaled to size 10.0pt on input line 58.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.31766pt on input line 63.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.2269pt on input line 63.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.45486pt on input line 63.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.3184pt on input line 63.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.22743pt on input line 63.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 10.45288pt on input line 63.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.31702pt on input line 63.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.22644pt on input line 63.
+)
+\tf@toc=\write5
+\openout5 = `TsalagiBook.toc'.
+
+(book.tex [3] [4
+
+]
+Chapter 1.
+LaTeX Font Info:    Font shape `TU/NotoSans(0)/m/n' will be
+(Font)              scaled to size 20.74pt on input line 3.
+LaTeX Font Info:    Font shape `TU/NotoSans(0)/b/n' will be
+(Font)              scaled to size 20.74pt on input line 3.
+LaTeX Font Info:    Font shape `TU/NotoSans(0)/b/n' will be
+(Font)              scaled to size 12.0pt on input line 4.
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 4.
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 15--36
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--36
+
+ []
+
+LaTeX Font Info:    Font shape `TU/NotoSansCherokee(0)/b/n' will be
+(Font)              scaled to size 12.0pt on input line 37.
+[6]
+Chapter 2.
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 67.
+
+[7
+
+] [8
+
+]
+Chapter 3.
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 90.
+
+[9]
+LaTeX Font Info:    Font shape `TU/NotoSans(0)/m/n' will be
+(Font)              scaled to size 14.4pt on input line 144.
+LaTeX Font Info:    Font shape `TU/NotoSans(0)/b/n' will be
+(Font)              scaled to size 14.4pt on input line 144.
+LaTeX Font Info:    Font shape `TU/NotoSansCherokee(0)/b/n' will be
+(Font)              scaled to size 14.4pt on input line 144.
+ [10]) (reader.tex) (answerGuide.tex) (changelist.tex [11] [12
+
+]
+\bbl@nocaption@i{chaptername}{englishchaptername} 4.
+
+Package babel Warning: \chaptername not set for 'english'. Please,
+(babel)                define it after the language has been loaded
+(babel)                (typically in the preamble) with:
+(babel)                \setlocalecaption{english}{chapter}{..}
+(babel)                Reported on input line 1.
+
+) (bibliography.tex [13] [14
+
+]
+
+Package babel Warning: \bibname not set for 'english'. Please,
+(babel)                define it after the language has been loaded
+(babel)                (typically in the preamble) with:
+(babel)                \setlocalecaption{english}{bib}{..}
+(babel)                Reported on input line 4.
+
+) [15] [16
+
+]
+runsystem(makeindex TsalagiBook.idx)...executed (allowed).
+
+ (TsalagiBook.ind
+
+Package babel Warning: \indexname not set for 'english'. Please,
+(babel)                define it after the language has been loaded
+(babel)                (typically in the preamble) with:
+(babel)                \setlocalecaption{english}{index}{..}
+(babel)                Reported on input line 1.
+
+) [17
+
+] (TsalagiBook.aux)
+
+Package rerunfilecheck Warning: File `TsalagiBook.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `TsalagiBook.out':
+(rerunfilecheck)             Before: 58EE4457A599F47D339F371EE4387F56;2752
+(rerunfilecheck)             After:  8BD8C8D77620DC50DB438E14C3890415;2751.
+ ) 
+Here is how much of TeX's memory you used:
+ 18580 strings out of 411568
+ 335040 string characters out of 2833575
+ 890767 words of memory out of 3000000
+ 38442 multiletter control sequences out of 15000+600000
+ 406569 words of font info for 95 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 85i,8n,138p,1345b,571s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on TsalagiBook.pdf (17 pages).

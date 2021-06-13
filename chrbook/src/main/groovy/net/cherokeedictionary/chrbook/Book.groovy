@@ -248,6 +248,14 @@ def br = {
     }
 }
 
+def pre = {
+    if (isPrintVersion) {
+
+    } else {
+        output.append("<pre>${it}</pre>")
+    }
+}
+
 def text = {
     output.append(it)
 }
@@ -531,25 +539,70 @@ genericChapter(greetingsSection) {
     }
 }
 
-genericChapter(whatIsYourNameSection) {}
+genericChapter(whatIsYourNameSection) {
+    def str = """
+    Meeting people pp 2-3 (name, to want)
 
-genericChapter(numbersSection) {}
+    Simple questions pp4 (tsu, sgo, sg, s) and pp 74 Smith
 
-genericChapter(colorsSection) {}
+    turn these statements into questions
+    turn these questions into statements
+    ask for xyz
+    do you want xyz
+    tell your friend you would like an apple
+    Identify other people you see that you are not currently talking to.
 
-genericChapter(shapesSection) {}
+    More on this in Chapter 4
 
-genericChapter(datesSection) {
-    footnote("Discussed in the section ", "Days Of Week Meanings", "daysOfWeekMeaning")
+    Is your name bob?
+    Is his name Barry?
+    """
+    text(str)
 }
-genericChapter(monthsSection) {
-    footnote("Discussed in the section ", "Days Of Week Meanings", "daysOfWeekMeaning")
+
+genericChapter(numbersSection) {
+    bookSection("Cardinal Numbers", "") {
+        text("Cardinal Numbers are any of the numbers that express amount, as one, two, three,  etc. (distinguished from ordinal number).")
+        citation("cardinalNumbers", "http://dictionary.reference.com/browse/cardinal+numbers?s=t")
+        br()
+        br()
+        text("Cardinal numbers answer the question: How many are there? and tell the total.")
+    }
+    bookSection("Ordinal Numbers", "") {
+        text("Cardinal numbers are any of the numbers that express degree, quality, or position in a series, as first, second, and third  (distinguished from cardinal number ).")
+        citation("ordinalNumbers", "http://dictionary.reference.com/browse/ordinal+numbers?s=t")
+        br()
+        br()
+        text("Ordinal numbers answer the question: Where does it fit in a numbered set? and tell the order.")
+        br()
+        br()
+        text("Ord(inal) - Ord(er)")
+    }
 }
 
-genericChapter(timesSection) {}
+//genericChapter(colorsSection) {}
+//
+//genericChapter(shapesSection) {}
+//
+//genericChapter(datesSection) {
+//    footnote("Discussed in the section ", "Days Of Week Meanings", "daysOfWeekMeaning")
+//}
+//genericChapter(monthsSection) {
+//    footnote("Discussed in the section ", "Days Of Week Meanings", "daysOfWeekMeaning")
+//}
+//
+//genericChapter(timesSection) {
+//    footnote("1 Any time after 12:00 p.m. until the sun starts to set.")
+//    footnote("2 The time of day when the sun is setting.")
+//    footnote("3 The time somewhere in the late time of night like 12:00 a.m.")
+//    citation("walcpp47", "walc pp47")
+//}
 
-
-
+bookSection("Dialect Breakdown", "Otali - Giduwa") {
+    text("The Giduwah, or Eastern, dialect of Cherokee varies in some ways from the Otali, or Western, dialect dialect of Cherokee.  A simple example is ${transl("hawa")} (G) vs ${transl( "howa")} (O).  Different spellings, same word.  Both mean \"ok, alright, sure\".  The word \"${transl("howa")}\" is an affirmative response and can be understood to mean different things depending on how it is used. Two of the more common meanings are \"Okay\" and \"You are welcome\".")
+    citation("joynerlesson4", "Cherokee Lessons Michael Joyner")
+}
+br()
 wordBreakdown("${transl("dohi")} and ${transl("osi")} Tohi and Osi", "wordBreakdownTohiOsi") {
     text "Altman and Belt (pp91-92) have this to say about Tohi and Osi:Tohi is a Cherokee morpheme that indicates the state in which nature is flowing at its appropriate pace and everything is as it should be. This fundamental concept is used in greetings and responses (${redSpan("Tohigwatsv?")} and ${redSpan("Tohigwu.")}), and in a variety of other instances and constructions that indicate an underlying concern with the notion that things be flowing well in the Cherokee world. Tohi can be glossed variously as \"well,\" \"peaceful,\" \"unhurried,\" and \"health.\" In the Cherokee speakers' view, if the state of tohi becomes disrupted there can be disastrous consequences, and communities that are disrupted in this way can be dangerous or unhealthy places to live."
     br()

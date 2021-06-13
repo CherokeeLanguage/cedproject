@@ -2,11 +2,10 @@ package net.cherokeedictionary.chrbook.sections
 
 class NumbersSection extends BaseSection {
     NumbersSection() {
-        title = ""
-        titleTranslit = ""
-        vocabulary = [:]
+        title = "Numbers"
+        titleTranslit = "Disesdi"
 
-        topics = ['Tell time']
+        topics = ['REMOVE']
 
         dialogs = []
 //    dialogs << new DialogLine(name:"", dialog:"", engName:"Mary", engDialog:"Hello.  How are you?  My name is Mary.  What is your name?")
