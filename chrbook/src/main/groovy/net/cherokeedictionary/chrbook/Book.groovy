@@ -12,10 +12,10 @@ import net.cherokeedictionary.chrbook.sections.GreetingsSection
 
 boolean isPrintVersion = true
 def extension = isPrintVersion ? "tex" : "html"
-def bindMap = [:]
+//def bindMap = new LinkedHashMap<String, String>()
 def citationIndex = 0
-def citationMap = [:]
-def answerKey = [:]
+def citationMap = new LinkedHashMap<String, String>()
+def answerKey = new LinkedHashMap<String, String>()
 
 def output = new File("bookOutput/book.${extension}")
 def bibliography = new File("bookOutput/bibliography.${extension}")
@@ -26,13 +26,9 @@ bibliography.write("")
 readerFile.write("")
 answerFile.write("")
 
-def printVersion = {
-    isPrintVersion = it.trueFalse && it.trueFalse=="true"
-}
-
 def clearCitations = {
     citationIndex = 0
-    citationMap = [:]
+    citationMap = new LinkedHashMap<String, String>()
 }
 
 def out = {sb ->
@@ -141,7 +137,6 @@ def vocabulary = {src ->
         sb << "\\begin{tabular}{p{3cm} p{11cm}}\n"
         src.each { key, value ->
             def sb2 = new StringBuilder()
-            def translit = ""
             if (value instanceof List) {
                 translit = value.join(" ")
                 value.each {val ->
@@ -358,7 +353,7 @@ def answerKeyPrint = {
     def sb = new StringBuilder()
     if (isPrintVersion) {
         sb << "\\section{Answer Key -}\n"
-        answerKey.each { key, value ->
+        answerKey.each {String key, String value ->
             sb << "\\noindent${key}"
             sb << "\\\\\n"
             sb << value
@@ -368,7 +363,7 @@ def answerKeyPrint = {
         }
     } else {
         sb << "<h3>Answer Key - </h3>"
-        answerKey.each { key, value ->
+        answerKey.each {String key, String value ->
             sb << key
             sb << "<br/>"
             sb << value
@@ -385,13 +380,13 @@ def reader = {
     def sb = new StringBuilder()
     if (isPrintVersion) {
         sb << "\\section{Reader -}\n"
-        answerKey.each { key, value ->
+        answerKey.each {String key, String value ->
             sb << SyllabaryUtil.mixedTransliteration(value)
             sb << "\\\\\n"
         }
     } else {
         sb << "<h3>Reader - </h3>"
-        answerKey.each { key, value ->
+        answerKey.each {String key, String value ->
             sb << SyllabaryUtil.mixedTransliteration(value)
             sb << "<br/>"
         }
@@ -522,7 +517,6 @@ Grammar Summary<br/>
 */
 
 clearCitations()
-
 
 genericChapter(greetingsSection) {
     bookSection("Hello","osiyo") {
