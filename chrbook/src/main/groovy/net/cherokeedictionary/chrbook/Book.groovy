@@ -106,6 +106,7 @@ def dialog = {baseSection, showPhonetic=true ->
             }
             sb << "\\\\\n"
         }
+
         sb << "\\end{tabular}\n"
         sb << "\\\\\n"
         sb << "\\\\\n"
@@ -404,6 +405,7 @@ def genericChapter = {baseSection, closure ->
         whatYouWillLearn(baseSection)
         dialog(baseSection)
         vocabulary(baseSection.vocabulary)
+        closure()
     }
 }
 
@@ -521,6 +523,7 @@ Grammar Summary<br/>
 
 clearCitations()
 
+
 genericChapter(greetingsSection) {
     bookSection("Hello","osiyo") {
         text"In Cherokee there is only one way to say 'Good Morning,' 'Good Afternoon,' 'Good Evening,' and Hello; that is by saying ${transl("osiyo")} ${redSpan("(o)siyo")} or the shortened version ${transl("siyo")} ${redSpan("siyo")}."
@@ -568,6 +571,7 @@ genericChapter(numbersSection) {
         br()
         text("Cardinal numbers answer the question: How many are there? and tell the total.")
     }
+
     bookSection("Ordinal Numbers", "") {
         text("Cardinal numbers are any of the numbers that express degree, quality, or position in a series, as first, second, and third  (distinguished from cardinal number ).")
         citation("ordinalNumbers", "http://dictionary.reference.com/browse/ordinal+numbers?s=t")
@@ -578,6 +582,17 @@ genericChapter(numbersSection) {
         br()
         text("Ord(inal) - Ord(er)")
     }
+}
+
+genericChapter(monthsSection) {
+    footnote("Discussed in the section ", "Days Of Week Meanings", "daysOfWeekMeaning")
+}
+
+genericChapter(timesSection) {
+    text("REMOVE")
+    footnote("Any time after 12:00 p.m. until the sun starts to set.")
+    footnote("The time of day when the sun is setting.")
+    footnote("The time somewhere in the late time of night like 12:00 a.m.")
 }
 
 //genericChapter(colorsSection) {}
@@ -616,4 +631,5 @@ answerKeyPrint()
 if (!isPrintVersion) {
     output.append("<a name=\"bibliography\"></a><h2>Bibliography</h2>")
 }
+
 printCitations()

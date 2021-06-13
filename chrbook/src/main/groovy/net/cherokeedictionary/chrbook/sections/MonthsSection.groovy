@@ -2,8 +2,7 @@ package net.cherokeedictionary.chrbook.sections
 
 class MonthsSection extends BaseSection {
     MonthsSection() {
-        title = ""
-        titleTranslit = ""
+        title = "Months"
         vocabulary = [:]
         vocabulary."January" = "Unolvtani"
         vocabulary."February" = "Kagali"
@@ -17,7 +16,5 @@ class MonthsSection extends BaseSection {
         vocabulary."October" = "Duninidi"
         vocabulary."November" = "Nvdadegwa"
         vocabulary."December" = "Vskiyi"
-        topics = []
-        dialogs = []
     }
 }

@@ -4,12 +4,9 @@ class NumbersSection extends BaseSection {
     NumbersSection() {
         title = "Numbers"
         titleTranslit = "Disesdi"
-
-        topics = ['REMOVE']
-
-        dialogs = []
+        topics = ['Tell time']
 //    dialogs << new DialogLine(name:"", dialog:"", engName:"Mary", engDialog:"Hello.  How are you?  My name is Mary.  What is your name?")
-
+        vocabulary = [:]
         vocabulary.one = "saquu"
         vocabulary.two = "tali"
         vocabulary.three = "tsoi"

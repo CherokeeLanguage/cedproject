@@ -5,10 +5,14 @@ import net.cherokeedictionary.transliteration.SyllabaryUtil
 class BaseSection {
     def title = ""
     def titleTranslit = ""
-    def vocabulary = [:]
-    def topics = []
+    def vocabulary = ["REMMOVE":"REMOVE"]
+    def topics = ["REMOVE"]
     def dialogs = []
     def tmpBindings = [:]
+
+    BaseSection() {
+        dialogs << new DialogLine(name:"REMOVE", dialog:"REMOVE", engName:"REMOVE", engDialog:"REMOVE")
+    }
 
     String getLinkTitle() {
         return title.replaceAll(" ", "").replaceAll(",", "").replaceAll("\\?", "").replaceAll("\\.", "")

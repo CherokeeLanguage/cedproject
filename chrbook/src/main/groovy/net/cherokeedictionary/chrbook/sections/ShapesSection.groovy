@@ -2,12 +2,7 @@ package net.cherokeedictionary.chrbook.sections
 
 class ShapesSection extends BaseSection {
     ShapesSection() {
-        title = ""
-        titleTranslit = ""
-        vocabulary = [:]
-        topics = []
-        dialogs = []
-
+        title = "Shapes"
         vocabulary."Circle" = "Gasogwalv"
         vocabulary."Oval (long circle)" = "Gasogwalv ganvhida"
         vocabulary."Triangle (three sides)" = "Joi junvsiyi"

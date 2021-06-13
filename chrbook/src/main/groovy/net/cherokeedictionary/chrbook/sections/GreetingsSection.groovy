@@ -6,6 +6,7 @@ class GreetingsSection extends BaseSection {
         titleTranslit = "unalihelijeti"
 
         //todo: what if these have audio files?
+        vocabulary = [:]
         vocabulary.Titus = 'Dadasi'
         vocabulary.Timothy = 'Dimadi'
         vocabulary.Mary = 'Meli'
@@ -23,7 +24,7 @@ class GreetingsSection extends BaseSection {
                   'About definites and indefinites',
                   'Say "hello" and "goodbye"',
                   'Ask how someone is doing']
-
+        dialogs = []
         dialogs << new DialogLine(name:"Danili",dialog:"Osiyo.  Danili dawadoa.  Gado dejadoa?", engName:"Daniel", engDialog:"Hello.  My name is Daniel.  What is your name?")
         dialogs << new DialogLine(name:"Susani", dialog:"Osiyo.  Susani dawadoa.  Dohiju?", engName:"Susan", engDialog:"Hello.  My name is Susan.  How are you?")
         dialogs << new DialogLine(name:"Danili", dialog:"Osigwu.  Nihinahv?", engName:"Daniel", engDialog:"I'm fine.  And you?")

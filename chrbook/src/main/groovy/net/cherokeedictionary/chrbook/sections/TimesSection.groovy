@@ -3,7 +3,6 @@ package net.cherokeedictionary.chrbook.sections
 class TimesSection extends BaseSection {
     TimesSection() {
         title = "Time, Counting, Hours, Minutes, Seconds, Fractions"
-        titleTranslit = ""
         vocabulary = [:]
         vocabulary."At what time?" = "Hila atliilisv?"
         vocabulary."What time is it? (what hour is it)" = "Hila iyuwanilv?"
@@ -31,19 +30,5 @@ class TimesSection extends BaseSection {
         vocabulary."Night" = "Usv"
         vocabulary."Midnight" = "Svnoyi - 3"
         vocabulary."Day/ Noon" = "Iga"
-
-
-//        1 Any time after 12:00 p.m. until the sun starts to set.
-//        2 The time of day when the sun is setting.
-//        3 The time somewhere in the late time of night like 12:00 a.m.
-//
-//
-//        vocabulary."" = ""
-//        vocabulary."" = ""
-//        vocabulary."" = ""
-//        vocabulary."" = ""
-
-        topics = []
-        dialogs = []
     }
 }
