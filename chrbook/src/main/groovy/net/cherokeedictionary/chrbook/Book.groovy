@@ -584,9 +584,9 @@ genericChapter(monthsSection) {
     footnote("Discussed in the section ", "Days Of Week Meanings", "daysOfWeekMeaning")
 }
 
-//genericChapter(datesSection) {
-//    footnote("Discussed in the section ", "Days Of Week Meanings", "daysOfWeekMeaning")
-//}
+genericChapter(datesSection) {
+    footnote("Discussed in the section ", "Days Of Week Meanings", "daysOfWeekMeaning")
+}
 
 genericChapter(timesSection) {
     text("REMOVE")
@@ -596,9 +596,9 @@ genericChapter(timesSection) {
     citation("walcpp47", "walc pp47")
 }
 
-//genericChapter(colorsSection) {}
+genericChapter(colorsSection) {}
 
-//genericChapter(shapesSection) {}
+genericChapter(shapesSection) {}
 
 bookSection("Dialect Breakdown", "Otali - Giduwa") {
     text("The Giduwah, or Eastern, dialect of Cherokee varies in some ways from the Otali, or Western, dialect dialect of Cherokee.  A simple example is ${transl("hawa")} (G) vs ${transl( "howa")} (O).  Different spellings, same word.  Both mean \"ok, alright, sure\".  The word \"${transl("howa")}\" is an affirmative response and can be understood to mean different things depending on how it is used. Two of the more common meanings are \"Okay\" and \"You are welcome\".")
