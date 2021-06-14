@@ -1,3 +1,7 @@
 package net.cherokeedictionary.chrbook
 
-class BookFormatter {}
+import net.cherokeedictionary.transliteration.SyllabaryUtil
+
+class BookFormatter {
+
+}

@@ -326,6 +326,7 @@ def printCitations = {
         }
         sb << "\\end{thebibliography}\n%-Bibliography\n"
     } else {
+        sb << "<a name=\"bibliography\"></a><h2>Bibliography</h2>"
         citationMap.eachWithIndex { item, idx ->
             sb << "<sup id=\"ref${item.key}\">[${idx + 1}]</sup> ${item.value} <br/>"//<a href=\"#cite${item.key}\">go back</a>
         }
@@ -599,7 +600,6 @@ genericChapter(timesSection) {
 
 //genericChapter(shapesSection) {}
 
-
 bookSection("Dialect Breakdown", "Otali - Giduwa") {
     text("The Giduwah, or Eastern, dialect of Cherokee varies in some ways from the Otali, or Western, dialect dialect of Cherokee.  A simple example is ${transl("hawa")} (G) vs ${transl( "howa")} (O).  Different spellings, same word.  Both mean \"ok, alright, sure\".  The word \"${transl("howa")}\" is an affirmative response and can be understood to mean different things depending on how it is used. Two of the more common meanings are \"Okay\" and \"You are welcome\".")
     citation("joynerlesson4", "Cherokee Lessons Michael Joyner")
@@ -635,8 +635,4 @@ wordBreakdown("Notes on the meanings of the days of the week", "daysOfWeekMeanin
 
 reader()
 answerKeyPrint()
-if (!isPrintVersion) {
-    output.append("<a name=\"bibliography\"></a><h2>Bibliography</h2>")
-}
-
 printCitations()
