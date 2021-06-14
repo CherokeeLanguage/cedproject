@@ -272,6 +272,7 @@ def redSpan = {
 
 def exercise = {displayText, answers ->
     def sb = new StringBuilder()
+
     def exerciseTitle = "Exercise - ${transl("alisinahisdisgv digvdodi")}"
     if (isPrintVersion) {
         sb << "\n\\section{${exerciseTitle}}\n"
@@ -532,8 +533,6 @@ genericChapter(greetingsSection) {
     bookSection("Goodbye", "donadagohvi") {
         text "There is no word for 'goodbye' only 'to meet again'. The way to say 'goodbye' to one person is ${transl("donadagohvi")} ${redSpan("donadagohvi")}. If you would like to say 'goodbye' to more than one person you would say ${transl("dodadagohvi")} ${redSpan("dodadagohvi")}.  Lit: Let's meet again."
         footnote("We will discuss the plurality prefixes (d-) in the section ", "Word Breakdown - Plurality Prefixes", "wordBreakdownPluralityPrefixes")
-//                <g:if test="${showExercise}">
-//                %{--        <g:exercise text="${["Goodbye, Mary and John.", "Goodbye, Titus.", "Goodbye, Daniel.", "Goodbye, Mary, John, Susan, and Mark."]}" answers="${["Dodadagohvi, Meli ale Jani.", "Donadagohvi, Dadasi", "Donadagohvi, Danili", "Dodadagohvi, Meli, Jani, Susani, ale Maga"]}/>--}%
         exercise("1. Goodbye, Mary and John. 2. Goodbye, Titus. 3. Goodbye, Daniel. 4. Goodbye, Mary, John, Susan, and Mark.", "1. Dodadagohvi, Meli ale Jani. 2. Donadagohvi, Dadasi 3. Donadagohvi, Danili 4. Dodadagohvi, Meli, Jani, Susani, ale Maga")
     }
 }
@@ -584,30 +583,22 @@ genericChapter(monthsSection) {
     footnote("Discussed in the section ", "Days Of Week Meanings", "daysOfWeekMeaning")
 }
 
+//genericChapter(datesSection) {
+//    footnote("Discussed in the section ", "Days Of Week Meanings", "daysOfWeekMeaning")
+//}
+
 genericChapter(timesSection) {
     text("REMOVE")
     footnote("Any time after 12:00 p.m. until the sun starts to set.")
     footnote("The time of day when the sun is setting.")
     footnote("The time somewhere in the late time of night like 12:00 a.m.")
+    citation("walcpp47", "walc pp47")
 }
 
 //genericChapter(colorsSection) {}
-//
+
 //genericChapter(shapesSection) {}
-//
-//genericChapter(datesSection) {
-//    footnote("Discussed in the section ", "Days Of Week Meanings", "daysOfWeekMeaning")
-//}
-//genericChapter(monthsSection) {
-//    footnote("Discussed in the section ", "Days Of Week Meanings", "daysOfWeekMeaning")
-//}
-//
-//genericChapter(timesSection) {
-//    footnote("1 Any time after 12:00 p.m. until the sun starts to set.")
-//    footnote("2 The time of day when the sun is setting.")
-//    footnote("3 The time somewhere in the late time of night like 12:00 a.m.")
-//    citation("walcpp47", "walc pp47")
-//}
+
 
 bookSection("Dialect Breakdown", "Otali - Giduwa") {
     text("The Giduwah, or Eastern, dialect of Cherokee varies in some ways from the Otali, or Western, dialect dialect of Cherokee.  A simple example is ${transl("hawa")} (G) vs ${transl( "howa")} (O).  Different spellings, same word.  Both mean \"ok, alright, sure\".  The word \"${transl("howa")}\" is an affirmative response and can be understood to mean different things depending on how it is used. Two of the more common meanings are \"Okay\" and \"You are welcome\".")
@@ -621,6 +612,7 @@ wordBreakdown("${transl("dohi")} and ${transl("osi")} Tohi and Osi", "wordBreakd
     text "In addition to and as an adjunct to tohi, the concept of osi describes the proper state of the individual person. Visualized as upright, facing forward, and resting on a single point of balance, osi is also used in greetings and replies (${redSpan("osigwatsv?")} and ${redSpan("osigwu.")}), and in other contexts that indicate that the notion of an individual’s state of being is crucial in ensuring that all is flowing well in the larger Cherokee world. Osi is properly understood as referring to the state of neutrality and balance, but it is most often glossed as \"good.\" If individuals are out of balance, they can cause problems in the larger system."
     citation("altmanBelt90-98", "Altman, H.M., & Belt, T.N. (2008). Reading History: Cherokee History through a Cherokee Lens. Native South 1, 90-98. http://doi.org/10.1353/nso.0.0003")
 }
+
 wordBreakdown("Notes on the meanings of the days of the week", "daysOfWeekMeaning") {
     text("Notes on the meanings of the days of the week:")
     citation("walc1pp46", "We Are Learning Cherokee pp46")
