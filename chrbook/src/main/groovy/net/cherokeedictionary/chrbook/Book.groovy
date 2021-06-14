@@ -270,7 +270,7 @@ def redSpan = {
     return sb.toString()
 }
 
-def exercise = {displayText, answers ->
+def exercise = {displayText, answers, displaySyllabary=true ->
     def sb = new StringBuilder()
 
     def exerciseTitle = "Exercise - ${transl("alisinahisdisgv digvdodi")}"
@@ -280,7 +280,9 @@ def exercise = {displayText, answers ->
         sb << "${displayText}\\\\\n"
         if (answers) {
             sb << "${answers}\\\\\n"
-            sb << "${SyllabaryUtil.mixedTransliteration(answers)}"
+            if (displaySyllabary) {
+                sb << "${SyllabaryUtil.mixedTransliteration(answers)}"
+            }
         }
     } else {
         sb << "<h4>${exerciseTitle}</h4>"
@@ -288,7 +290,9 @@ def exercise = {displayText, answers ->
         sb << displayText
         if (answers) {
             sb << "<br/>${answers}"
-            sb << "<br/>${SyllabaryUtil.mixedTransliteration(answers)}"
+            if (displaySyllabary) {
+                sb << "<br/>${SyllabaryUtil.mixedTransliteration(answers)}"
+            }
         }
     }
 
@@ -529,12 +533,12 @@ genericChapter(greetingsSection) {
         footnote("Osi will be discussed more in the section ", "Word Breakdown - Tohi and Osi", "wordBreakdownTohiOsi")
 //        ["Hello, Mary", "Hello, Mark", "Hello, Daniel", "Hello, Susan"]}" answers="${["1. (O)siyo, Meli.", "(O)siyo, Maga.", "(O)siyo, Danili", "(O)siyo, Susani"]
         //if (showExercise) {
-        exercise("1. Hello, Mary 2. Hello, Mark 3. Hello, Daniel 4. Hello, Susan", "1. (O)siyo, Meli. 2. (O)siyo, Maga. 3. (O)siyo, Danili 4. (O)siyo, Susani")
+        exercise("1. Hello, Mary 2. Hello, Mark 3. Hello, Daniel 4. Hello, Susan", "1. (O)siyo, Meli. 2. (O)siyo, Maga. 3. (O)siyo, Danili 4. (O)siyo, Susani", false)
     }
     bookSection("Goodbye", "donadagohvi") {
         text "There is no word for 'goodbye' only 'to meet again'. The way to say 'goodbye' to one person is ${transl("donadagohvi")} ${redSpan("donadagohvi")}. If you would like to say 'goodbye' to more than one person you would say ${transl("dodadagohvi")} ${redSpan("dodadagohvi")}.  Lit: Let's meet again."
         footnote("We will discuss the plurality prefixes (d-) in the section ", "Word Breakdown - Plurality Prefixes", "wordBreakdownPluralityPrefixes")
-        exercise("1. Goodbye, Mary and John. 2. Goodbye, Titus. 3. Goodbye, Daniel. 4. Goodbye, Mary, John, Susan, and Mark.", "1. Dodadagohvi, Meli ale Jani. 2. Donadagohvi, Dadasi 3. Donadagohvi, Danili 4. Dodadagohvi, Meli, Jani, Susani, ale Maga")
+        exercise("1. Goodbye, Mary and John. 2. Goodbye, Titus. 3. Goodbye, Daniel. 4. Goodbye, Mary, John, Susan, and Mark.", "1. Dodadagohvi, Meli ale Jani. 2. Donadagohvi, Dadasi 3. Donadagohvi, Danili 4. Dodadagohvi, Meli, Jani, Susani, ale Maga", false)
     }
 }
 
