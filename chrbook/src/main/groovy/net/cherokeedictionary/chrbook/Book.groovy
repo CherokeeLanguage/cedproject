@@ -10,6 +10,8 @@ import net.cherokeedictionary.chrbook.sections.WhatIsYourNameSection
 import net.cherokeedictionary.transliteration.SyllabaryUtil
 import net.cherokeedictionary.chrbook.sections.GreetingsSection
 
+//https://www.overleaf.com/learn/latex/Bold,_italics_and_underlining
+
 boolean isPrintVersion = true
 def extension = isPrintVersion ? "tex" : "html"
 //def bindMap = new LinkedHashMap<String, String>()
@@ -238,7 +240,7 @@ def footnote = {src, linkTitle=null, link=null ->
 
 def br = {
     if (isPrintVersion) {
-        output.append("\n")
+        output.append("\\\\\n")
     } else {
         output.append("<br/>")
     }
@@ -611,13 +613,32 @@ bookSection("Dialect Breakdown", "Otali - Giduwa") {
     text("The Giduwah, or Eastern, dialect of Cherokee varies in some ways from the Otali, or Western, dialect dialect of Cherokee.  A simple example is ${transl("hawa")} (G) vs ${transl( "howa")} (O).  Different spellings, same word.  Both mean \"ok, alright, sure\".  The word \"${transl("howa")}\" is an affirmative response and can be understood to mean different things depending on how it is used. Two of the more common meanings are \"Okay\" and \"You are welcome\".")
     citation("joynerlesson4", "Cherokee Lessons Michael Joyner")
 }
-br()
+
 wordBreakdown("${transl("dohi")} and ${transl("osi")} Tohi and Osi", "wordBreakdownTohiOsi") {
     text "Altman and Belt (pp91-92) have this to say about Tohi and Osi:Tohi is a Cherokee morpheme that indicates the state in which nature is flowing at its appropriate pace and everything is as it should be. This fundamental concept is used in greetings and responses (${redSpan("Tohigwatsv?")} and ${redSpan("Tohigwu.")}), and in a variety of other instances and constructions that indicate an underlying concern with the notion that things be flowing well in the Cherokee world. Tohi can be glossed variously as \"well,\" \"peaceful,\" \"unhurried,\" and \"health.\" In the Cherokee speakers' view, if the state of tohi becomes disrupted there can be disastrous consequences, and communities that are disrupted in this way can be dangerous or unhealthy places to live."
     br()
     br()
     text "In addition to and as an adjunct to tohi, the concept of osi describes the proper state of the individual person. Visualized as upright, facing forward, and resting on a single point of balance, osi is also used in greetings and replies (${redSpan("osigwatsv?")} and ${redSpan("osigwu.")}), and in other contexts that indicate that the notion of an individual’s state of being is crucial in ensuring that all is flowing well in the larger Cherokee world. Osi is properly understood as referring to the state of neutrality and balance, but it is most often glossed as \"good.\" If individuals are out of balance, they can cause problems in the larger system."
     citation("altmanBelt90-98", "Altman, H.M., & Belt, T.N. (2008). Reading History: Cherokee History through a Cherokee Lens. Native South 1, 90-98. http://doi.org/10.1353/nso.0.0003")
+}
+wordBreakdown("Notes on the meanings of the days of the week", "daysOfWeekMeaning") {
+    text("Notes on the meanings of the days of the week:")
+    citation("walc1pp46", "We Are Learning Cherokee pp46")
+    br()
+    text("\\textit{Unadodagwonvi} - When they have completed doing something all day")
+    br()
+    text("\\textit{Ta’line iga} - The second day")
+    br()
+    text "\\textit{Jo’ine iga} - The third day"
+    br()
+    text "\\textit{Nvhgine iga} - The fourth day"
+    br()
+    text "\\textit{Jun(v)gilosdi} - The day they wash their clothes"
+    footnote("The first way to say Friday was actually \"hisgine\'iga\" which means \"the fifth day.\"")
+    br()
+    text "\\textit{Unadodagwidena} - The day before they do something all day (when you went to town)"
+    br()
+    text"\\textit{Unadodagwasgv’i} - They day they do something all day."
 }
 
 reader()
