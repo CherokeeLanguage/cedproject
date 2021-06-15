@@ -174,7 +174,7 @@ class LatexFormat extends BaseFormat {
     def wordBreakdown = {title, anchor ->
         def sb = new StringBuilder()
         if (anchor) {
-            sb << "\\label{sec:${anchor.replaceAll(" ", "")}}"
+            sb << "\n\n\\label{sec:${anchor.replaceAll(" ", "")}}"
         }
         sb << "\\section{Word Breakdown - ${title}}"
 
@@ -202,6 +202,38 @@ class LatexFormat extends BaseFormat {
         answerKey.each {String key, String value ->
             sb << SyllabaryUtil.mixedTransliteration(value)
             sb << "\\\\\n"
+        }
+
+        return sb
+    }
+
+    //for multiple formatting like bold italic, bold underline, bold italic underline, etc
+    // you should nest the textf methods
+    // text "${textf(textf( "Unadodagwasgv’i", "i"), "b")}"
+    //textf means textf(ormat)
+    def textf = {src, style ->
+        def sb = new StringBuilder()
+        if (style) {
+            switch (style) {
+                case "i"://italic
+                    sb << "\\textit{"
+                    break;
+                case "b"://bold
+                    sb << "\\textbf{"
+                    break;
+                case "u"://underline
+                    sb << "\\underline{"
+                    break;
+                case "e"://emphasis
+                    sb << "\\emph{"
+                    break;
+            }
+        }
+
+        sb << src
+
+        if (style) {
+            sb << "}"
         }
 
         return sb

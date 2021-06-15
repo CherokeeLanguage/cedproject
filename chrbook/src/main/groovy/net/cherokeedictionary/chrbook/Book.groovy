@@ -126,6 +126,10 @@ def reader = {
     readerFile.append(format.reader(answerKey).toString())
 }
 
+def textf = {src, style ->
+    return format.textf(src, style)
+}
+
 def genericChapter = {baseSection, closure ->
     chapter(baseSection) {
         whatYouWillLearn(baseSection)
@@ -327,8 +331,12 @@ genericChapter(colorsSection) {}
 
 genericChapter(shapesSection) {}
 
+def notesName = "NOTES:"
+def notesTranslit = SyllabaryUtil.mixedTransliteration("dadadugv goweli")
+def notesTitle = "${notesName} - ${notesTranslit}"
+out(format.chapter(notesName, notesTranslit, notesTitle))
 bookSection("Dialect Breakdown", "Otali - Giduwa") {
-    text("The Giduwah, or Eastern, dialect of Cherokee varies in some ways from the Otali, or Western, dialect dialect of Cherokee.  A simple example is ${transl("hawa")} (G) vs ${transl( "howa")} (O).  Different spellings, same word.  Both mean \"ok, alright, sure\".  The word \"${transl("howa")}\" is an affirmative response and can be understood to mean different things depending on how it is used. Two of the more common meanings are \"Okay\" and \"You are welcome\".")
+    text("The Giduwah, or Eastern, dialect of Cherokee varies in some ways from the Otali, or Western, dialect dialect of Cherokee.  A simple example is ${transl("hawa")} (G) vs ${transl("howa")} (O).  Different spellings, same word.  Both mean \"ok, alright, sure\".  The word \"${transl("howa")}\" is an affirmative response and can be understood to mean different things depending on how it is used. Two of the more common meanings are \"Okay\" and \"You are welcome\".")
     citation("joynerlesson4", "Cherokee Lessons Michael Joyner")
 }
 
@@ -344,20 +352,20 @@ wordBreakdown("Notes on the meanings of the days of the week", "daysOfWeekMeanin
     text("Notes on the meanings of the days of the week:")
     citation("walc1pp46", "We Are Learning Cherokee pp46")
     br()
-    text("\\textit{Unadodagwonvi} - When they have completed doing something all day")
+    text("${textf("Unadodagwonvi", "i")} - When they have completed doing something all day")
     br()
-    text("\\textit{Ta’line iga} - The second day")
+    text("${textf("Ta’line iga", "i")} - The second day")
     br()
-    text "\\textit{Jo’ine iga} - The third day"
+    text "${textf("Jo’ine iga", "i")} - The third day"
     br()
-    text "\\textit{Nvhgine iga} - The fourth day"
+    text "${textf("Nvhgine iga", "i")} - The fourth day"
     br()
-    text "\\textit{Jun(v)gilosdi} - The day they wash their clothes"
+    text "${textf("Jun(v)gilosdi", "i")} - The day they wash their clothes"
     footnote("The first way to say Friday was actually \"hisgine\'iga\" which means \"the fifth day.\"")
     br()
-    text "\\textit{Unadodagwidena} - The day before they do something all day (when you went to town)"
+    text "${textf("Unadodagwidena", "i")} - The day before they do something all day (when you went to town)"
     br()
-    text"\\textit{Unadodagwasgv’i} - They day they do something all day."
+    text "${textf("Unadodagwasgv’i", "i")} - They day they do something all day."
 }
 
 reader()
