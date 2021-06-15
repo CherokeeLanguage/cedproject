@@ -15,12 +15,20 @@ plugins {
     id 'maven'
 
     id 'application'
+
+    id 'org.asciidoctor.jvm.convert' version '3.1.0'
+    id "org.asciidoctor.jvm.pdf" version "3.3.2"
+//
+//    id 'org.asciidoctor.jvm.pdf' version '3.3.0'
+    id 'org.asciidoctor.jvm.gems' version '3.3.0'
 }
 
 repositories {
     // Use JCenter for resolving dependencies.
     mavenLocal()
     jcenter()
+
+//    ruby.gems()
 }
 
 dependencies {
@@ -38,9 +46,40 @@ dependencies {
 
     // This dependency is exported to consumers, that is to say found on their compile classpath.
     api 'org.apache.commons:commons-math3:3.6.1'
+
+//    asciidoctorGems 'rubygems:rouge:3.15.0'
 }
 
 application {
     // Define the main class for the application.
     mainClass = 'net.cherokeedictionary.chrbook.Book'
 }
+
+asciidoctor {
+    sourceDir = file('bookOutput')
+    sources {
+        include 'book.adoc'//, 'another.adoc', 'third.adoc'
+    }
+    outputDir = file('bookOutput/output')
+}
+
+//asciidoctorPdf {
+//    dependsOn asciidoctorGemsPrepare
+//    baseDirFollowsSourceFile()
+//    asciidoctorj {
+//        requires 'rouge'
+//        attributes 'build-gradle': file('build.gradle'),
+//                'sourcedir': project.sourceSets.main.java.srcDirs[0],
+//                'endpoint-url': 'http://example.org',
+//                'source-highlighter': 'rouge',
+//                'imagesdir': './images',
+//                'toc': 'left',
+//                'icons': 'font',
+//                'idprefix': '',
+//                'idseparator': '-'
+//    }
+//}
+// alias
+//task asciidoctor(dependsOn: asciidoctorPdf)
+
+

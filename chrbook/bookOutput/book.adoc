@@ -1,15 +1,26 @@
-\index{Greet Others}
-\index{ᎤᎾᎵᎮᎵᏤᏘ}
-\chapter{Greet Others - ᎤᎾᎵᎮᎵᏤᏘ}
-\index{What You Will Learn}\subsection{What You Will Learn}
-In this unit you will learn:
-\begin{itemize}
-\item How to greet people
-\item How to make short descriptive phrases
-\item About definites and indefinites
-\item Say "hello" and "goodbye"
-\item Ask how someone is doing
-\end{itemize}\newpage
+= ᏣᎳᎩ ᎦᏬᏂᎯᏍᏓ ᏗᎪᏪᎵ - Cherokee Language Book
+Tim Orr
+v1.0, 2003-12
+:doctype: book
+
+Greet Others - ᎤᎾᎵᎮᎵᏤᏘ
+---------------------
+
+indexterm:[Greet Others]
+indexterm:[ᎤᎾᎵᎮᎵᏤᏘ]
+
+What You Will Learn
+~~~~~~~~~~~~~~~~~~~
+indexterm:[
+What You Will Learn]
+
+* In this unit you will learn:
+- How to greet people
+- How to make short descriptive phrases
+- About definites and indefinites
+- Say "hello" and "goodbye"
+- Ask how someone is doing
+<<<
 
 \subsection{Dialog - }
 \begin{tabular}{p{2cm} p{11cm}}
@@ -73,14 +84,20 @@ There is no word for 'goodbye' only 'to meet again'. The way to say 'goodbye' to
 Translate to Cherokee syllabary and the phonetic equivalent\\
 1. Goodbye, Mary and John. 2. Goodbye, Titus. 3. Goodbye, Daniel. 4. Goodbye, Mary, John, Susan, and Mark.\\
 1. Dodadagohvi, Meli ale Jani. 2. Donadagohvi, Dadasi 3. Donadagohvi, Danili 4. Dodadagohvi, Meli, Jani, Susani, ale Maga\\
-\index{What is your name?}
-\index{ᎦᏙ ᏕᏣᏙᎠ?}
-\chapter{What is your name? - ᎦᏙ ᏕᏣᏙᎠ?}
-\index{What You Will Learn}\subsection{What You Will Learn}
-In this unit you will learn:
-\begin{itemize}
-\item REMOVE
-\end{itemize}\newpage
+What is your name? - ᎦᏙ ᏕᏣᏙᎠ?
+---------------------
+
+indexterm:[What is your name?]
+indexterm:[ᎦᏙ ᏕᏣᏙᎠ?]
+
+What You Will Learn
+~~~~~~~~~~~~~~~~~~~
+indexterm:[
+What You Will Learn]
+
+* In this unit you will learn:
+- REMOVE
+<<<
 
 \subsection{Dialog - }
 \begin{tabular}{p{2cm} p{11cm}}
@@ -142,14 +159,20 @@ REMMOVE & not a valid letterᎡᎼᎥᎡ
 
     Is your name bob?
     Is his name Barry?
-    \index{Numbers}
-\index{ᏗᏎᏍᏗ}
-\chapter{Numbers - ᏗᏎᏍᏗ}
-\index{What You Will Learn}\subsection{What You Will Learn}
-In this unit you will learn:
-\begin{itemize}
-\item Tell time
-\end{itemize}\newpage
+    Numbers - ᏗᏎᏍᏗ
+---------------------
+
+indexterm:[Numbers]
+indexterm:[ᏗᏎᏍᏗ]
+
+What You Will Learn
+~~~~~~~~~~~~~~~~~~~
+indexterm:[
+What You Will Learn]
+
+* In this unit you will learn:
+- Tell time
+<<<
 
 \subsection{Dialog - }
 \begin{tabular}{p{2cm} p{11cm}}
@@ -214,14 +237,20 @@ Cardinal numbers are any of the numbers that express degree, quality, or positio
 \\
 Ordinal numbers answer the question: Where does it fit in a numbered set? and tell the order.\\
 \\
-Ord(inal) - Ord(er)\index{Months}
-\index{}
-\chapter{Months - }
-\index{What You Will Learn}\subsection{What You Will Learn}
-In this unit you will learn:
-\begin{itemize}
-\item REMOVE
-\end{itemize}\newpage
+Ord(inal) - Ord(er)Months - 
+---------------------
+
+indexterm:[Months]
+indexterm:[]
+
+What You Will Learn
+~~~~~~~~~~~~~~~~~~~
+indexterm:[
+What You Will Learn]
+
+* In this unit you will learn:
+- REMOVE
+<<<
 
 \subsection{Dialog - }
 \begin{tabular}{p{2cm} p{11cm}}
@@ -262,14 +291,20 @@ December & ᎥᏍᎩᏱ
  \newline \textcolor{red}{Vskiyi}\\
 \end{tabular}
 
-\footnote{Discussed in the section \hyperref[sec:daysOfWeekMeaning]{Days Of Week Meanings}}\index{Dates}
-\index{}
-\chapter{Dates - }
-\index{What You Will Learn}\subsection{What You Will Learn}
-In this unit you will learn:
-\begin{itemize}
-\item REMOVE
-\end{itemize}\newpage
+\footnote{Discussed in the section \hyperref[sec:daysOfWeekMeaning]{Days Of Week Meanings}}Dates - 
+---------------------
+
+indexterm:[Dates]
+indexterm:[]
+
+What You Will Learn
+~~~~~~~~~~~~~~~~~~~
+indexterm:[
+What You Will Learn]
+
+* In this unit you will learn:
+- REMOVE
+<<<
 
 \subsection{Dialog - }
 \begin{tabular}{p{2cm} p{11cm}}
@@ -300,14 +335,20 @@ Sunday & ᎤᎾᏙᏓᏆᏍᎬᎢ
  \newline \textcolor{red}{Unadodagwasgvi}\\
 \end{tabular}
 
-\footnote{Discussed in the section \hyperref[sec:daysOfWeekMeaning]{Days Of Week Meanings}}\index{Time, Counting, Hours, Minutes, Seconds, Fractions}
-\index{}
-\chapter{Time, Counting, Hours, Minutes, Seconds, Fractions - }
-\index{What You Will Learn}\subsection{What You Will Learn}
-In this unit you will learn:
-\begin{itemize}
-\item REMOVE
-\end{itemize}\newpage
+\footnote{Discussed in the section \hyperref[sec:daysOfWeekMeaning]{Days Of Week Meanings}}Time, Counting, Hours, Minutes, Seconds, Fractions - 
+---------------------
+
+indexterm:[Time, Counting, Hours, Minutes, Seconds, Fractions]
+indexterm:[]
+
+What You Will Learn
+~~~~~~~~~~~~~~~~~~~
+indexterm:[
+What You Will Learn]
+
+* In this unit you will learn:
+- REMOVE
+<<<
 
 \subsection{Dialog - }
 \begin{tabular}{p{2cm} p{11cm}}
@@ -376,14 +417,20 @@ Day/ Noon & ᎢᎦ
  \newline \textcolor{red}{Iga}\\
 \end{tabular}
 
-REMOVE\footnote{Any time after 12:00 p.m. until the sun starts to set.}\footnote{The time of day when the sun is setting.}\footnote{The time somewhere in the late time of night like 12:00 a.m.}\cite{walcpp47}\index{Colors}
-\index{}
-\chapter{Colors - }
-\index{What You Will Learn}\subsection{What You Will Learn}
-In this unit you will learn:
-\begin{itemize}
-\item REMOVE
-\end{itemize}\newpage
+REMOVE\footnote{Any time after 12:00 p.m. until the sun starts to set.}\footnote{The time of day when the sun is setting.}\footnote{The time somewhere in the late time of night like 12:00 a.m.}\cite{walcpp47}Colors - 
+---------------------
+
+indexterm:[Colors]
+indexterm:[]
+
+What You Will Learn
+~~~~~~~~~~~~~~~~~~~
+indexterm:[
+What You Will Learn]
+
+* In this unit you will learn:
+- REMOVE
+<<<
 
 \subsection{Dialog - }
 \begin{tabular}{p{2cm} p{11cm}}
@@ -402,14 +449,20 @@ REMMOVE & not a valid letterᎡᎼᎥᎡ
  \newline \textcolor{red}{REMOVE}\\
 \end{tabular}
 
-\index{Shapes}
-\index{}
-\chapter{Shapes - }
-\index{What You Will Learn}\subsection{What You Will Learn}
-In this unit you will learn:
-\begin{itemize}
-\item REMOVE
-\end{itemize}\newpage
+Shapes - 
+---------------------
+
+indexterm:[Shapes]
+indexterm:[]
+
+What You Will Learn
+~~~~~~~~~~~~~~~~~~~
+indexterm:[
+What You Will Learn]
+
+* In this unit you will learn:
+- REMOVE
+<<<
 
 \subsection{Dialog - }
 \begin{tabular}{p{2cm} p{11cm}}
