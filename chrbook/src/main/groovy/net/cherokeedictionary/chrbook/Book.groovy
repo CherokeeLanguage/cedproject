@@ -25,10 +25,21 @@ def output = new File("bookOutput/book.${extension}")
 def bibliography = new File("bookOutput/bibliography.${extension}")
 def readerFile = new File("bookOutput/reader.${extension}")
 def answerFile = new File("bookOutput/answerGuide.${extension}")
+def oldStuffFile = new File("bookOutput/oldresearch.${extension}")
+def appendiciesFile = new File("bookOutput/appendicies.${extension}")
+def chartsFile = new File("bookOutput/charts.${extension}")
+def grammarFile = new File("bookOutput/grammar.${extension}")
+
 output.write("")
 bibliography.write("")
 readerFile.write("")
 answerFile.write("")
+oldStuffFile.write("")
+appendiciesFile.write("")
+chartsFile.write("")
+grammarFile.write("")
+
+def path = "C:/projects/GoogleDriveTimo/Cherokee Umbrella"
 
 output.append(format.title)
 
@@ -137,6 +148,14 @@ def genericChapter = {baseSection, closure ->
         vocabulary(baseSection.vocabulary)
         closure()
     }
+}
+
+def pdf = {fileName, pages, appender ->
+    appender.append("\\includepdf[pages={${pages}}]{${path}${fileName}}\n")
+}
+
+def walc1 = {pages, appender=output ->
+    pdf("/cherokee/lessons/walc1.pdf", pages, appender)
 }
 
 def greetingsSection = new GreetingsSection()
@@ -252,6 +271,10 @@ Grammar Summary<br/>
 */
 
 clearCitations()
+
+out(format.chapter("Pronunciation and Syllabary", "", "Pronunciation and Syllabary - "))
+
+walc1("9-10, 109")
 
 genericChapter(greetingsSection) {
     bookSection("Hello","osiyo") {
@@ -369,5 +392,84 @@ wordBreakdown("Notes on the meanings of the days of the week", "daysOfWeekMeanin
 }
 
 reader()
+walc1("36-37,91-92,95, 108", readerFile)
+
 answerKeyPrint()
+
+walc1("66,68-79,82,103-105", grammarFile)
+walc1("14-18, 20-27", grammarFile)
+
+def charts = """\\chapter{Appendix A - Charts}
+\\includepdf[noautoscale,landscape, angle=-90, pages={1}]{${path}/cherokee/charts/cnosite/3D Solar System.jpg}
+\\includepdf[angle=90]{${path}/cherokee/charts/cnosite/3D Solar System.jpg}
+
+\\includepdf{${path}/cherokee/charts/cnosite/3D Solar System.jpg}
+\\includepdf{${path}/cherokee/charts/cnosite/Africa.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/Antarctica.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/Asia and Pacific.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/Body Parts.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/Canada.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/Central and Eastern Europe.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/Community Speaker English.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/Community Speaker Map1.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/Continents.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/Dolphin Diagram.jpg}
+\\includepdf{${path}/cherokee/charts/cnosite/Europe.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/Human Body.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/Human Skeleton.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/Individual 50 States.png}
+\\includepdf{${path}/cherokee/charts/cnosite/Mexico and South America.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/Mid East.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/Office Online.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/Oklahoma Counties Map.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/Semedite.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/Solar System.jpg}
+\\includepdf{${path}/cherokee/charts/cnosite/United States.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/Washing Hands.jpg}
+\\includepdf{${path}/cherokee/charts/cnosite/World 16x29.pdf}"""
+
+chartsFile.append(charts)
+
 printCitations()
+
+oldStuffFile.append("""
+\\includepdf[pages=43-45, trim=55 100 45 250, clip=true]{${path}/cherokee/lessons/BeginningCherokeeSearchable04.pdf}
+\\includepdf[pages=43-45]{${path}/cherokee/lessons/BeginningCherokeeSearchable04.pdf}
+
+\\cite{holmessmith3234}
+
+\\chapter{CHAPTER2}
+
+\\chapter{CHAPTER 3}
+\\includepdf[pages={43-45, 84-88}]{${path}/cherokee/lessons/BeginningCherokeeSearchable04.pdf}
+
+\\chapter{CHAPTER 4}
+
+\\chapter{CHAPTER 5}
+\\includepdf[pages={102-105, 109-113, 132-136, 92-95, 118-125, 79,80, 151-157}]{${path}/cherokee/lessons/BeginningCherokeeSearchable04.pdf}
+
+\\chapter{CHAPTER 6}
+\\includepdf[pages={16-18, 59-63, 39-43}]{${path}/cherokee/lessons/BeginningCherokeeSearchable04.pdf}
+
+\\chapter{CHAPTER 7}
+\\includepdf[pages={47-50, 85}]{${path}/cherokee/lessons/BeginningCherokeeSearchable04.pdf}
+
+\\chapter{CHAPTER 8}
+\\includepdf[pages={173,174, 129-137, 149-156, 159-168, 175-182}]{${path}/cherokee/lessons/BeginningCherokeeSearchable04.pdf}
+
+\\chapter{CHAPTER 9}
+\\includepdf[pages={245-252}]{${path}/cherokee/lessons/BeginningCherokeeSearchable04.pdf}
+
+\\chapter{CHAPTER 10}
+\\includepdf[pages={205-210, 213-223}]{${path}/cherokee/lessons/BeginningCherokeeSearchable04.pdf}
+
+\\chapter{CHAPTER 11}
+\\includepdf[pages={226-233, 236-242}]{${path}/cherokee/lessons/BeginningCherokeeSearchable04.pdf}
+
+\\chapter{CHAPTER 12}
+\\includepdf[pages={186-198, 325-330, 22-26}]{${path}/cherokee/lessons/BeginningCherokeeSearchable04.pdf}
+
+
+
+\\cite{cherokeeNationDownloads}
+""")
