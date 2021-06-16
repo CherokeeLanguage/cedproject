@@ -35,7 +35,7 @@ class LatexFormat extends BaseFormat {
 
     def dialog = {baseSection, showPhonetic=true ->
         def sb = new StringBuilder()
-        sb << "\\subsection{Dialog - }\n"
+        sb << "\\subsection{Dialog - ${SyllabaryUtil.tsalagiToSyllabary("analinohesgv")}\n" //3+ danatlinohesgv
         sb << "\\begin{tabular}{p{2cm} p{11cm}}\n"
         baseSection.dialogs.each {
             sb << SyllabaryUtil.mixedTransliteration(it.name).trim()

@@ -39,7 +39,8 @@ appendiciesFile.write("")
 chartsFile.write("")
 grammarFile.write("")
 
-def path = "C:/projects/GoogleDriveTimo/Cherokee Umbrella"
+//def path = "C:/projects/GoogleDriveTimo/Cherokee Umbrella"
+def path = "w:/cherokeeumbrella"
 
 output.append(format.title)
 
@@ -151,7 +152,8 @@ def genericChapter = {baseSection, closure ->
 }
 
 def pdf = {fileName, pages, appender ->
-    appender.append("\\includepdf[pages={${pages}}]{${path}${fileName}}\n")
+    def pagez = pages ? "[pages={${pages}}]" : ""
+    appender.append("\\includepdf${pagez}{${path}${fileName}}\n")
 }
 
 def walc1 = {pages, appender=output ->
@@ -396,54 +398,89 @@ walc1("36-37,91-92,95, 108", readerFile)
 
 answerKeyPrint()
 
+pdf("/cherokee/grammar/evaG/Pronoun Prefixes A and B hand.pdf", "", grammarFile)
+pdf("/cherokee/grammar/evaG/Say It_Persons.pdf", "", grammarFile)
+pdf("/cherokee/grammar/evaG/Say It_Vtab.pdf", "", grammarFile)
+pdf("/cherokee/grammar/evaG/Get Angry_Vtab.pdf", "", grammarFile)
+pdf("/cherokee/grammar/evaG/Get Angry_Persons.pdf", "", grammarFile)
+pdf("/cherokee/grammar/evaG/MatrixSay_Persons.pdf", "", grammarFile)
 walc1("66,68-79,82,103-105", grammarFile)
 walc1("14-18, 20-27", grammarFile)
 
-def charts = """\\chapter{Appendix A - Charts}
-\\includepdf[noautoscale,landscape, angle=-90, pages={1}]{${path}/cherokee/charts/cnosite/3D Solar System.jpg}
-\\includepdf[angle=90]{${path}/cherokee/charts/cnosite/3D Solar System.jpg}
 
-\\includepdf{${path}/cherokee/charts/cnosite/3D Solar System.jpg}
+//for windows
+//def charts = """\\chapter{Appendix A - Charts}
+//%\\includepdf[noautoscale,landscape, angle=-90, pages={1}]{${path}/cherokee/charts/cnosite/3D Solar System.jpg}
+//%\\includepdf[angle=90]{${path}/cherokee/charts/cnosite/3DSolarSystem.jpg}
+//
+//\\includepdf{${path}/cherokee/charts/cnosite/3DSolarSystem.jpg}
+//\\includepdf{${path}/cherokee/charts/cnosite/Africa.pdf}
+//\\includepdf{${path}/cherokee/charts/cnosite/Antarctica.pdf}
+//\\includepdf{${path}/cherokee/charts/cnosite/Asia and Pacific.pdf}
+//\\includepdf{${path}/cherokee/charts/cnosite/Body Parts.pdf}
+//\\includepdf{${path}/cherokee/charts/cnosite/Canada.pdf}
+//\\includepdf{${path}/cherokee/charts/cnosite/Central and Eastern Europe.pdf}
+//\\includepdf{${path}/cherokee/charts/cnosite/Community Speaker English.pdf}
+//\\includepdf{${path}/cherokee/charts/cnosite/Community Speaker Map1.pdf}
+//\\includepdf{${path}/cherokee/charts/cnosite/Continents.pdf}
+//\\includepdf{${path}/cherokee/charts/cnosite/DolphinDiagram.jpg}
+//\\includepdf{${path}/cherokee/charts/cnosite/Europe.pdf}
+//\\includepdf{${path}/cherokee/charts/cnosite/Human Body.pdf}
+//\\includepdf{${path}/cherokee/charts/cnosite/Human Skeleton.pdf}
+//\\includepdf{${path}/cherokee/charts/cnosite/Individual50States.png}
+//\\includepdf{${path}/cherokee/charts/cnosite/Mexico and South America.pdf}
+//\\includepdf{${path}/cherokee/charts/cnosite/Mid East.pdf}
+//\\includepdf{${path}/cherokee/charts/cnosite/Office Online.pdf}
+//\\includepdf{${path}/cherokee/charts/cnosite/Oklahoma Counties Map.pdf}
+//\\includepdf{${path}/cherokee/charts/cnosite/Semedite.pdf}
+//\\includepdf{${path}/cherokee/charts/cnosite/SolarSystem.jpg}
+//\\includepdf{${path}/cherokee/charts/cnosite/United States.pdf}
+//\\includepdf{${path}/cherokee/charts/cnosite/Washing Hands.jpg}
+//\\includepdf{${path}/cherokee/charts/cnosite/World 16x29.pdf}"""
+
+//on mac
+def charts = """\\chapter{Appendix A - Charts}
+%\\includepdf[noautoscale,landscape, angle=-90, pages={1}]{${path}/cherokee/charts/cnosite/3D Solar System.jpg}
+%\\includepdf[angle=90]{${path}/cherokee/charts/cnosite/3DSolarSystem.jpg}
+
+\\includepdf{${path}/cherokee/charts/cnosite/3DSolarSystem.jpg}
 \\includepdf{${path}/cherokee/charts/cnosite/Africa.pdf}
 \\includepdf{${path}/cherokee/charts/cnosite/Antarctica.pdf}
-\\includepdf{${path}/cherokee/charts/cnosite/Asia and Pacific.pdf}
-\\includepdf{${path}/cherokee/charts/cnosite/Body Parts.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/AsiaandPacific.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/BodyParts.pdf}
 \\includepdf{${path}/cherokee/charts/cnosite/Canada.pdf}
-\\includepdf{${path}/cherokee/charts/cnosite/Central and Eastern Europe.pdf}
-\\includepdf{${path}/cherokee/charts/cnosite/Community Speaker English.pdf}
-\\includepdf{${path}/cherokee/charts/cnosite/Community Speaker Map1.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/CentralandEasternEurope.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/CommunitySpeakerEnglish.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/CommunitySpeakerMap1.pdf}
 \\includepdf{${path}/cherokee/charts/cnosite/Continents.pdf}
-\\includepdf{${path}/cherokee/charts/cnosite/Dolphin Diagram.jpg}
+\\includepdf{${path}/cherokee/charts/cnosite/DolphinDiagram.jpg}
 \\includepdf{${path}/cherokee/charts/cnosite/Europe.pdf}
-\\includepdf{${path}/cherokee/charts/cnosite/Human Body.pdf}
-\\includepdf{${path}/cherokee/charts/cnosite/Human Skeleton.pdf}
-\\includepdf{${path}/cherokee/charts/cnosite/Individual 50 States.png}
-\\includepdf{${path}/cherokee/charts/cnosite/Mexico and South America.pdf}
-\\includepdf{${path}/cherokee/charts/cnosite/Mid East.pdf}
-\\includepdf{${path}/cherokee/charts/cnosite/Office Online.pdf}
-\\includepdf{${path}/cherokee/charts/cnosite/Oklahoma Counties Map.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/HumanBody.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/HumanSkeleton.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/Individual50States.png}
+\\includepdf{${path}/cherokee/charts/cnosite/MexicoandSouthAmerica.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/MidEast.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/OfficeOnline.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/OklahomaCountiesMap.pdf}
 \\includepdf{${path}/cherokee/charts/cnosite/Semedite.pdf}
-\\includepdf{${path}/cherokee/charts/cnosite/Solar System.jpg}
-\\includepdf{${path}/cherokee/charts/cnosite/United States.pdf}
-\\includepdf{${path}/cherokee/charts/cnosite/Washing Hands.jpg}
-\\includepdf{${path}/cherokee/charts/cnosite/World 16x29.pdf}"""
+\\includepdf{${path}/cherokee/charts/cnosite/SolarSystem.jpg}
+\\includepdf{${path}/cherokee/charts/cnosite/UnitedStates.pdf}
+\\includepdf{${path}/cherokee/charts/cnosite/WashingHands.jpg}
+\\includepdf{${path}/cherokee/charts/cnosite/World16x29.pdf}"""
 
 chartsFile.append(charts)
 
 printCitations()
 
 oldStuffFile.append("""
-\\includepdf[pages=43-45, trim=55 100 45 250, clip=true]{${path}/cherokee/lessons/BeginningCherokeeSearchable04.pdf}
-\\includepdf[pages=43-45]{${path}/cherokee/lessons/BeginningCherokeeSearchable04.pdf}
-
-\\cite{holmessmith3234}
-
-\\chapter{CHAPTER2}
-
+%\\includepdf[pages=43-45, trim=55 100 45 250, clip=true]{${path}/cherokee/lessons/BeginningCherokeeSearchable04.pdf}
+%\\includepdf[pages=43-45]{${path}/cherokee/lessons/BeginningCherokeeSearchable04.pdf}
+%\\chapter{CHAPTER2}
 \\chapter{CHAPTER 3}
 \\includepdf[pages={43-45, 84-88}]{${path}/cherokee/lessons/BeginningCherokeeSearchable04.pdf}
+\\\\cite{holmessmith3234}
 
-\\chapter{CHAPTER 4}
+%\\chapter{CHAPTER 4}
 
 \\chapter{CHAPTER 5}
 \\includepdf[pages={102-105, 109-113, 132-136, 92-95, 118-125, 79,80, 151-157}]{${path}/cherokee/lessons/BeginningCherokeeSearchable04.pdf}
@@ -468,8 +505,6 @@ oldStuffFile.append("""
 
 \\chapter{CHAPTER 12}
 \\includepdf[pages={186-198, 325-330, 22-26}]{${path}/cherokee/lessons/BeginningCherokeeSearchable04.pdf}
-
-
 
 \\cite{cherokeeNationDownloads}
 """)
