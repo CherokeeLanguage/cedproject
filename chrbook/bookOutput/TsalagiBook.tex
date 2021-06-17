@@ -15,6 +15,7 @@
 \makeindex
 %-MakeIndex
 
+\usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{verbatim}
 \usepackage{color}
@@ -61,7 +62,6 @@
     Extension = .ttf
 }
 %% Everson Mono is available at: https://www.evertype.com/emono/
-
 \babelfont{rm}
 [Ligatures=Common, Scale=1.0]{Noto Sans}
 \babelfont[cherokee]{rm}
@@ -73,6 +73,7 @@
 \babelfont{tt}
 {Courier New}
 %\setmathfont{TeX Gyre Termes Math}
+
 
 %\setDefaultTransitions{\selectlanguage{english}}{}
 \setTransitionsForCherokeeFull{\selectlanguage{cherokee}}{\selectlanguage{english}}
@@ -102,24 +103,23 @@
 \input{book.tex}
 
 %+Make Parts
-\part{Reader}
+%\part{Reader}
 %-Make Parts
-\newpage
+%\newpage
 \input{reader.tex}
 
 %+Make Parts
-\part{Grammar}
+%\part{Grammar}
 %-Make Parts
 \input{grammar.tex}
 
 %+Make Parts
-\part{Answers}
+%\part{Answers}
 %-Make Parts
-
 \input{answerGuide.tex}
 
 %+Make Parts
-\part{Appendices}
+%\part{Appendices}
 %-Make Parts
 
 %\input{charts.tex}
