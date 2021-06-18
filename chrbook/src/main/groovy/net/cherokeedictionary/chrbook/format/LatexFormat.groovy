@@ -1,5 +1,6 @@
 package net.cherokeedictionary.chrbook.format
 
+import net.cherokeedictionary.chrbook.util.Vocabulary
 import net.cherokeedictionary.transliteration.SyllabaryUtil
 
 class LatexFormat extends BaseFormat {
@@ -70,33 +71,56 @@ class LatexFormat extends BaseFormat {
         def sb = new StringBuilder()
 
         sb << "\\subsection{Vocabulary - ${SyllabaryUtil.mixedTransliteration("dikaneisdi")}}\n"
-        sb << "\\begin{tabular}{p{3cm} p{11cm}}\n"
         def translit = ""
+        sb << "\\begin{minipage}{\\linewidth}"
+        sb << "\\begin{tabular}{p{3cm} p{11cm}}\n"
 
-        src.each { key, value ->
-            def sb2 = new StringBuilder()
-            if (value instanceof List) {
-                translit = value.join(" ")
-                value.each {val ->
-                    if (val.contains("<e>")) {
-                        sb2 << " ${val.substring("<e>".size())} "
-                    } else {
-                        sb2 << "${SyllabaryUtil.mixedTransliteration(val)} "
-                    }
-                }
-            } else {
-                translit = value
-                sb2 << "${SyllabaryUtil.mixedTransliteration(value)} "
+        src.eachWithIndex { key, value, idx ->
+            //first item starts new table... as does 25th item which should start a new page
+            if (idx == 20) {
+                sb << "\\end{tabular}\\newpage\n"
+                sb >> "\\end{minipage}"
+                sb << "\\begin{minipage}{\\linewidth}"
+                sb << "\\begin{tabular}{p{3cm} p{11cm}}\n"
             }
 
-            sb << "${key.replaceAll("_", " ")} & ${sb2}\\newline \\textcolor{red}{${translit}}\\\\\n"
+            def sb2 = new StringBuilder()
+            def footnotes = null
+            if (value instanceof Vocabulary) {
+                translit = value.cherokee
+                footnotes = value.footnote
+                sb2 << "${SyllabaryUtil.mixedTransliteration(translit)} "
+            } else {
+                if (value instanceof List) {
+                    translit = value.join(" ")
+                    value.each { val ->
+                        if (val.contains("<e>")) {
+                            sb2 << " ${val.substring("<e>".size())} "
+                        } else {
+                            sb2 << "${SyllabaryUtil.mixedTransliteration(val)} "
+                        }
+                    }
+                } else {
+                    translit = value
+                    sb2 << "${SyllabaryUtil.mixedTransliteration(value)} "
+                }
+            }
+
+            sb << "${key.replaceAll("_", " ")} & ${sb2}\\newline \\textcolor{red}{${translit}}"
+            if (footnotes) {
+                sb << footnote(footnotes.src, footnotes.linkTitle, footnotes.link)
+            }
+            sb << "\\\\\n"
 //                sb << "${key} & ${SyllabaryUtil.mixedTransliteration(translit)} \\newline \\textcolor{red}{${translit}}\\\\<br/>"
 //                sb << "<div style=\"display:table-row\"><div style=\"display:table-cell;padding-right:10px\">${key}</div><div style=\"display:table-cell\">${SyllabaryUtil.mixedTransliteration(translit)}"
 //                sb << "<br/><span style=\"color:red\">${translit}</span>"
 //                sb << "</div></div>"
         }
-        sb << "\\end{tabular}\n\n"
 
+        println "HERE"
+
+        sb << "\\end{tabular}\n\n"
+        sb >> "\\end{minipage}"
 
         return sb
     }

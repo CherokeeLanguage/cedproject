@@ -6,6 +6,7 @@ import net.cherokeedictionary.chrbook.sections.ColorsSection
 import net.cherokeedictionary.chrbook.sections.DatesSection
 import net.cherokeedictionary.chrbook.sections.MonthsSection
 import net.cherokeedictionary.chrbook.sections.NumbersSection
+import net.cherokeedictionary.chrbook.sections.SeasonsSection
 import net.cherokeedictionary.chrbook.sections.ShapesSection
 import net.cherokeedictionary.chrbook.sections.TimesSection
 import net.cherokeedictionary.chrbook.sections.WhatIsYourNameSection
@@ -39,8 +40,8 @@ appendiciesFile.write("")
 chartsFile.write("")
 grammarFile.write("")
 
-def path = "/projects/GoogleDriveTimo/Cherokee Umbrella"
-//def path = "w:/cherokeeumbrella"
+//def path = "/projects/GoogleDriveTimo/Cherokee Umbrella"
+def path = "W:/GOOGLEDRIVE/Cherokee Umbrella"
 
 def books = [:]
 books.put("begCher", "/books/BeginningCherokeeSearchable04.pdf")
@@ -148,10 +149,17 @@ def textf = {src, style ->
 def genericChapter = {baseSection, closure ->
     chapter(baseSection) {
         whatYouWillLearn(baseSection)
+        text "\\newpage"
         dialog(baseSection)
+        text "\\vfill"
+        text "\\newpage"
         vocabulary(baseSection.vocabulary)
         closure()
     }
+}
+
+def sent = {en, chr ->
+    output.append("${en}\\newline ${redSpan(transl(chr))}")
 }
 
 def pdf = {fileName, pages, appender ->
@@ -171,112 +179,10 @@ def shapesSection = new ShapesSection()
 def datesSection = new DatesSection()
 def monthsSection = new MonthsSection()
 def timesSection = new TimesSection()
-
-/*
-%{--<g:render template="gsf/sections/titleTOC" model="[tableOfContents: tableOfContents]"/>--}%
-%{--<pre>
-Dedication
-From The Author
-</pre>
-<pre>
-Greetings
-Do you speak Cherokee?
-    ${greetingsSection.linkTitle}
-${whatIsYourNameSection.linkTitle}
-Where are you from?
-I\d like you to meet
-Do you understand?
-</pre>--}%
-%{--<g:render template="gsf/layout/chapterLayout" model="[baseSection: greetingsSection, isPrintVersion:isPrintVersion, showPhonetic:true]">--}%
-%{--    <g:render template="gsf/sections/hello" model="[showExercise:true]"/>--}%
-%{--    <br/>--}%
-%{--    <g:render template="gsf/sections/goodbye" model="[showExercise:true]"/>--}%
-%{--</g:render>--}%
-%{--<g:render template="gsf/chapters/WhatIsYourName" model="[baseSection: whatIsYourNameSection, isPrintVersion:isPrintVersion]"/>
-<pre>
-Numbers and Money
-Cardinal Numbers
-Ordinal Numbers
-Money
-</pre>
-<g:render template="gsf/chapters/Numbers" model="[baseSection: numbersSection, isPrintVersion:isPrintVersion]"/>
-<pre>
-On the Telephone
-
-Address and Email
-
-Dates, Months, and Days of Week
-</pre>
-<g:render template="gsf/chapters/Dates" model="[baseSection: datesSection, isPrintVersion:isPrintVersion]"/>
-<g:render template="gsf/chapters/Months" model="[baseSection: monthsSection, isPrintVersion:isPrintVersion]"/>
-<g:render template="gsf/chapters/Times" model="[baseSection: timesSection, isPrintVersion:isPrintVersion]"/>
-<pre>
-Special Occasions
-
-Describing Things</pre>
-<g:render template="gsf/chapters/Colors" model="[baseSection: colorsSection, isPrintVersion:isPrintVersion]"/>
-<pre>Clothes and Shopping
-Describing Others
-</pre>
-Shapes
-<g:render template="gsf/chapters/Shapes" model="[baseSection: shapesSection, isPrintVersion:isPrintVersion]"/>
-<pre>
-Food, eating, drinking
-Breakfast, Coffee, Lunch, Dinner, Dating
-are you hungry
-
-Directions, where is something, directions around town
-Weather, Seasons
-
-Profession
-Body Parts \& Functions
-5 senses
-Emotions
-
-Seasons
-This and That
-Family
-
-This \& That
-Possessive
-Animals
-
-On the farm
-Visiting Friends
-Verb Conjugation
-Yours, Mine, Ours
-At the doctor
-Around the House
-At the beach
-Transportation
-Festivals and Celebrations
-At the airport
-
-I want.  I see
-Questions
-Pronouns
-Singular/Plural
-Derived Nouns
-Articles and Conversion
-prepositions
-conjunctions
-interjections
-negation
-To Have and Have Not
-Advanced Verb
-Clitics
-</pre>
-
-Grammar Summary<br/>
-<g:render template="gsf/sections/dialect"/>
-<g:render template="gsf/sections/tohiDohiWordBreakdownQuote"/>
-<g:render template="gsf/sections/daysOfWeekMeaning"/>
-<br/><br/>
-<br/>Charts<br/>
-*/
+def seasonsSection = new SeasonsSection()
 
 clearCitations()
-
+/*
 out(format.chapter("Pronunciation and Syllabary", "", "Pronunciation and Syllabary - "))
 
 walc1("9-10, 109")
@@ -316,9 +222,9 @@ genericChapter(whatIsYourNameSection) {
     Is his name Barry?
     """
     text(str)
-}
+}*/
 
-genericChapter(numbersSection) {
+/*genericChapter(numbersSection) {
     bookSection("Cardinal Numbers", "") {
         text("Cardinal Numbers are any of the numbers that express amount, as one, two, three,  etc. (distinguished from ordinal number).")
         citation("cardinalNumbers", "http://dictionary.reference.com/browse/cardinal+numbers?s=t")
@@ -337,27 +243,61 @@ genericChapter(numbersSection) {
         br()
         text("Ord(inal) - Ord(er)")
     }
-}
-
-genericChapter(monthsSection) {
-    footnote("Discussed in the section ", "Days Of Week Meanings", "daysOfWeekMeaning")
-}
-
+}*/
+/*
 genericChapter(datesSection) {
     footnote("Discussed in the section ", "Days Of Week Meanings", "daysOfWeekMeaning")
 }
-
+*/
 genericChapter(timesSection) {
-    text("REMOVE")
+    text "  "
+    citation("walcpp42", "walc pp42")
+
     footnote("Any time after 12:00 p.m. until the sun starts to set.")
     footnote("The time of day when the sun is setting.")
     footnote("The time somewhere in the late time of night like 12:00 a.m.")
     citation("walcpp47", "walc pp47")
 }
+/*
+genericChapter(monthsSection) {
+    footnote("Discussed in the section ", "Days Of Week Meanings", "daysOfWeekMeaning")
+}
 
+genericChapter(seasonsSection) {
+    citation("walcpp49", "walc pp49")
+    br()
+    text("\\noindent JAC Seasons pp140")
+    br()
+    text "In winter"
+    br()
+    text "in summer"
+    br()
+    text "in autumn, in fall"
+    br()
+    text "in spring"
+    br()
+    text "June is in the summer"
+    br()
+    text "December is in the winter"
+    br()
+}*/
+
+/*
 genericChapter(colorsSection) {}
 
 genericChapter(shapesSection) {}
+
+genericChapter(weatherSection) {
+    text("JAC Weather pp29")
+    text "How's the weather today? What's the weather like today?"
+    text "It's nice weather."
+    text "It's raining."
+    text "It's snowing."
+    text "It's hot."
+    text "It's cold."
+    text "It's cool"
+    text "It's warm"
+    text "The weather is bad today."}
 
 def notesName = "NOTES:"
 def notesTranslit = SyllabaryUtil.mixedTransliteration("dadadugv goweli")
@@ -398,6 +338,7 @@ wordBreakdown("Notes on the meanings of the days of the week", "daysOfWeekMeanin
 
 reader()
 walc1("36-37,91-92,95, 108", readerFile)
+*/
 
 answerKeyPrint()
 

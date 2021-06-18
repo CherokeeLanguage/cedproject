@@ -3,6 +3,7 @@ package net.cherokeedictionary.chrbook.sections
 class SeasonsSection extends BaseSection {
     SeasonsSection() {
         title = "Seasons"
+        vocabulary = [:]
         vocabulary."Winter" = "Gola"
         vocabulary."Spring" = "Gogeyi"
         vocabulary."Summer" = "Gogi/Goga"
