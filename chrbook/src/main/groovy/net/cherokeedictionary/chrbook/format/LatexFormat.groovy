@@ -109,7 +109,6 @@ class LatexFormat extends BaseFormat {
 
             sb << "${key.replaceAll("_", " ")} & ${sb2}\\newline \\textcolor{red}{${translit}}"
             if (footnotes) {
-                println "footnotes ${footnotes.isInternal}"
                 sb << footnote(footnotes.src, footnotes.linkTitle, footnotes.link, footnotes.isInternal)
             }
             sb << "\\\\\n"

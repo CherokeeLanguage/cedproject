@@ -108,7 +108,7 @@ def footnote = {src, linkTitle=null, link=null, isInternal=true ->
 }
 
 def br = {
-    output.append(format.br())
+    output.append(format.br)
 }
 
 def pre = {
@@ -184,28 +184,36 @@ def walc1 = {pages, appender=output ->
     pdf("/sort/timo/walc1.pdf", pages, appender)
 }
 
-clearCitations()
-/*
-out(format.chapter("Pronunciation and Syllabary", "", "Pronunciation and Syllabary - "))
-
-walc1("9-10, 109")
-
-genericChapter(greetingsSection) {
-    bookSection("Hello","osiyo") {
-        text"In Cherokee there is only one way to say 'Good Morning,' 'Good Afternoon,' 'Good Evening,' and Hello; that is by saying ${transl("osiyo")} ${redSpan("(o)siyo")} or the shortened version ${transl("siyo")} ${redSpan("siyo")}."
-        footnote("We will follow the convention of placing optional syllables in parenthesis.  You will see this written as (O)siyo.  The parentheses around the 'O' mean that the voicing of the 'O' is optional.")
-        footnote("Osi will be discussed more in the section ", "Word Breakdown - Tohi and Osi", "wordBreakdownTohiOsi")
-//        ["Hello, Mary", "Hello, Mark", "Hello, Daniel", "Hello, Susan"]}" answers="${["1. (O)siyo, Meli.", "(O)siyo, Maga.", "(O)siyo, Danili", "(O)siyo, Susani"]
-        //if (showExercise) {
-        exercise("1. Hello, Mary 2. Hello, Mark 3. Hello, Daniel 4. Hello, Susan", "1. (O)siyo, Meli. 2. (O)siyo, Maga. 3. (O)siyo, Danili 4. (O)siyo, Susani", false)
-    }
-    bookSection("Goodbye", "donadagohvi") {
-        text "There is no word for 'goodbye' only 'to meet again'. The way to say 'goodbye' to one person is ${transl("donadagohvi")} ${redSpan("donadagohvi")}. If you would like to say 'goodbye' to more than one person you would say ${transl("dodadagohvi")} ${redSpan("dodadagohvi")}.  Lit: Let's meet again."
-        footnote("We will discuss the plurality prefixes (d-) in the section ", "Word Breakdown - Plurality Prefixes", "wordBreakdownPluralityPrefixes")
-        exercise("1. Goodbye, Mary and John. 2. Goodbye, Titus. 3. Goodbye, Daniel. 4. Goodbye, Mary, John, Susan, and Mark.", "1. Dodadagohvi, Meli ale Jani. 2. Donadagohvi, Dadasi 3. Donadagohvi, Danili 4. Dodadagohvi, Meli, Jani, Susani, ale Maga", false)
-    }
+def noindent = {appender=output ->
+    appender.append("\\noindent")
 }
 
+def helloSection = bookSection("Hello","osiyo") {
+    text"In Cherokee there is only one way to say 'Good Morning,' 'Good Afternoon,' 'Good Evening,' and Hello; that is by saying ${transl("osiyo")} ${redSpan("(o)siyo")} or the shortened version ${transl("siyo")} ${redSpan("siyo")}."
+    footnote("We will follow the convention of placing optional syllables in parenthesis.  You will see this written as (O)siyo.  The parentheses around the 'O' mean that the voicing of the 'O' is optional.")
+    footnote("Osi will be discussed more in the section ", "Word Breakdown - Tohi and Osi", "wordBreakdownTohiOsi")
+//        ["Hello, Mary", "Hello, Mark", "Hello, Daniel", "Hello, Susan"]}" answers="${["1. (O)siyo, Meli.", "(O)siyo, Maga.", "(O)siyo, Danili", "(O)siyo, Susani"]
+    //if (showExercise) {
+    exercise("1. Hello, Mary 2. Hello, Mark 3. Hello, Daniel 4. Hello, Susan", "1. (O)siyo, Meli. 2. (O)siyo, Maga. 3. (O)siyo, Danili 4. (O)siyo, Susani", false)
+}
+
+def goodbyeSection = bookSection("Goodbye", "donadagohvi") {
+    text "There is no word for 'goodbye' only 'to meet again'. The way to say 'goodbye' to one person is ${transl("donadagohvi")} ${redSpan("donadagohvi")}. If you would like to say 'goodbye' to more than one person you would say ${transl("dodadagohvi")} ${redSpan("dodadagohvi")}.  Lit: Let's meet again."
+    footnote("We will discuss the plurality prefixes (d-) in the section ", "Word Breakdown - Plurality Prefixes", "wordBreakdownPluralityPrefixes")
+    exercise("1. Goodbye, Mary and John. 2. Goodbye, Titus. 3. Goodbye, Daniel. 4. Goodbye, Mary, John, Susan, and Mark.", "1. Dodadagohvi, Meli ale Jani. 2. Donadagohvi, Dadasi 3. Donadagohvi, Danili 4. Dodadagohvi, Meli, Jani, Susani, ale Maga", false)
+}
+
+clearCitations
+
+out(format.chapter("Pronunciation and Syllabary", "", "Pronunciation and Syllabary - "))
+
+walc1 "9-10, 109"
+
+genericChapter(greetingsSection) {
+    helloSection
+    goodbyeSection
+}
+/*
 genericChapter(whatIsYourNameSection) {
     def str = """
     Meeting people pp 2-3 (name, to want)
@@ -231,19 +239,19 @@ genericChapter(numbersSection) {
     bookSection("Cardinal Numbers", "") {
         text("Cardinal Numbers are any of the numbers that express amount, as one, two, three,  etc. (distinguished from ordinal number).")
         citation("cardinalNumbers", "http://dictionary.reference.com/browse/cardinal+numbers?s=t")
-        br()
-        br()
+        br
+        br
         text("Cardinal numbers answer the question: How many are there? and tell the total.")
     }
 
     bookSection("Ordinal Numbers", "") {
         text("Cardinal numbers are any of the numbers that express degree, quality, or position in a series, as first, second, and third  (distinguished from cardinal number ).")
         citation("ordinalNumbers", "http://dictionary.reference.com/browse/ordinal+numbers?s=t")
-        br()
-        br()
+        br
+        br
         text("Ordinal numbers answer the question: Where does it fit in a numbered set? and tell the order.")
-        br()
-        br()
+        br
+        br
         text("Ord(inal) - Ord(er)")
     }
 }
@@ -264,49 +272,51 @@ genericChapter(monthsSection) {
 
 genericChapter(seasonsSection) {
     citation("walcpp49", "walc pp49")
-    br()
+    br
     text("\\noindent JAC Seasons pp140")
-    br()
+    br
     text "In winter"
-    br()
+    br
     text "in summer"
-    br()
+    br
     text "in autumn, in fall"
-    br()
+    br
     text "in spring"
-    br()
+    br
     text "June is in the summer"
-    br()
+    br
     text "December is in the winter"
-    br()
+    br
 }
 */
+
 
 //genericChapter(colorsSection) {}
 
 //genericChapter(shapesSection) {}
 
 genericChapter(weatherSection) {
+    noindent
     text("JAC Weather pp29")
-    br()
+    br
     text "How's the weather today? What's the weather like today?"
-    br()
+    br
     text "It's nice weather."
-    br()
+    br
     text "It's raining."
-    br()
+    br
     text "It's snowing."
-    br()
+    br
     text "It's hot."
-    br()
+    br
     text "It's cold."
-    br()
+    br
     text "It's cool"
-    br()
+    br
     text "It's warm"
-    br()
+    br
     text "The weather is bad today."
-    br()
+    br
 }
 /*
 def notesName = "NOTES:"
@@ -320,8 +330,8 @@ bookSection("Dialect Breakdown", "Otali - Giduwa") {
 
 wordBreakdown("${transl("dohi")} and ${transl("osi")} Tohi and Osi", "wordBreakdownTohiOsi") {
     text "Altman and Belt (pp91-92) have this to say about Tohi and Osi:Tohi is a Cherokee morpheme that indicates the state in which nature is flowing at its appropriate pace and everything is as it should be. This fundamental concept is used in greetings and responses (${redSpan("Tohigwatsv?")} and ${redSpan("Tohigwu.")}), and in a variety of other instances and constructions that indicate an underlying concern with the notion that things be flowing well in the Cherokee world. Tohi can be glossed variously as \"well,\" \"peaceful,\" \"unhurried,\" and \"health.\" In the Cherokee speakers' view, if the state of tohi becomes disrupted there can be disastrous consequences, and communities that are disrupted in this way can be dangerous or unhealthy places to live."
-    br()
-    br()
+    br
+    br
     text "In addition to and as an adjunct to tohi, the concept of osi describes the proper state of the individual person. Visualized as upright, facing forward, and resting on a single point of balance, osi is also used in greetings and replies (${redSpan("osigwatsv?")} and ${redSpan("osigwu.")}), and in other contexts that indicate that the notion of an individual’s state of being is crucial in ensuring that all is flowing well in the larger Cherokee world. Osi is properly understood as referring to the state of neutrality and balance, but it is most often glossed as \"good.\" If individuals are out of balance, they can cause problems in the larger system."
     citation("altmanBelt90-98", "Altman, H.M., & Belt, T.N. (2008). Reading History: Cherokee History through a Cherokee Lens. Native South 1, 90-98. http://doi.org/10.1353/nso.0.0003")
 }
@@ -329,20 +339,20 @@ wordBreakdown("${transl("dohi")} and ${transl("osi")} Tohi and Osi", "wordBreakd
 wordBreakdown("Notes on the meanings of the days of the week", "daysOfWeekMeaning") {
     text("Notes on the meanings of the days of the week:")
     citation("walc1pp46", "We Are Learning Cherokee pp46")
-    br()
+    br
     text("${textf("Unadodagwonvi", "i")} - When they have completed doing something all day")
-    br()
+    br
     text("${textf("Ta’line iga", "i")} - The second day")
-    br()
+    br
     text "${textf("Jo’ine iga", "i")} - The third day"
-    br()
+    br
     text "${textf("Nvhgine iga", "i")} - The fourth day"
-    br()
+    br
     text "${textf("Jun(v)gilosdi", "i")} - The day they wash their clothes"
     footnote("The first way to say Friday was actually \"hisgine\'iga\" which means \"the fifth day.\"")
-    br()
+    br
     text "${textf("Unadodagwidena", "i")} - The day before they do something all day (when you went to town)"
-    br()
+    br
     text "${textf("Unadodagwasgv’i", "i")} - The day they do something all day."
 }
 
@@ -394,7 +404,7 @@ def charts = """\\chapter{Appendix A - Charts}
 
 //chartsFile.append(charts)
 
-printCitations()
+printCitations
 
 oldStuffFile.append("""
 %\\includepdf[pages=43-45, trim=55 100 45 250, clip=true]{${path}${books.begCher}}
