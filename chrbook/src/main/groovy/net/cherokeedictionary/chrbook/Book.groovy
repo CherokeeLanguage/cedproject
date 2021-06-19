@@ -9,6 +9,7 @@ import net.cherokeedictionary.chrbook.sections.NumbersSection
 import net.cherokeedictionary.chrbook.sections.SeasonsSection
 import net.cherokeedictionary.chrbook.sections.ShapesSection
 import net.cherokeedictionary.chrbook.sections.TimesSection
+import net.cherokeedictionary.chrbook.sections.WeatherSection
 import net.cherokeedictionary.chrbook.sections.WhatIsYourNameSection
 import net.cherokeedictionary.transliteration.SyllabaryUtil
 import net.cherokeedictionary.chrbook.sections.GreetingsSection
@@ -40,8 +41,19 @@ appendiciesFile.write("")
 chartsFile.write("")
 grammarFile.write("")
 
-//def path = "/projects/GoogleDriveTimo/Cherokee Umbrella"
-def path = "W:/GOOGLEDRIVE/Cherokee Umbrella"
+def greetingsSection = new GreetingsSection()
+def whatIsYourNameSection = new WhatIsYourNameSection()
+def numbersSection = new NumbersSection()
+def colorsSection = new ColorsSection()
+def shapesSection = new ShapesSection()
+def datesSection = new DatesSection()
+def monthsSection = new MonthsSection()
+def timesSection = new TimesSection()
+def seasonsSection = new SeasonsSection()
+def weatherSection = new WeatherSection()
+
+def path = "/projects/GoogleDriveTimo/Cherokee Umbrella"
+//def path = "W:/GOOGLEDRIVE/Cherokee Umbrella"
 
 def books = [:]
 books.put("begCher", "/books/BeginningCherokeeSearchable04.pdf")
@@ -91,8 +103,8 @@ def bookSection = { title, phonetic, closure ->
     closure()
 }
 
-def footnote = {src, linkTitle=null, link=null ->
-    out(format.footnote(src, linkTitle, link))
+def footnote = {src, linkTitle=null, link=null, isInternal=true ->
+    out(format.footnote(src, linkTitle, link, isInternal))
 }
 
 def br = {
@@ -115,6 +127,7 @@ def exercise = {displayText, answers, displaySyllabary=true ->
     if (answers) {
         answerKey."${displayText}" = answers
     }
+
     out(format.exercise(displayText, answers, displaySyllabary))
 }
 
@@ -171,16 +184,6 @@ def walc1 = {pages, appender=output ->
     pdf("/sort/timo/walc1.pdf", pages, appender)
 }
 
-def greetingsSection = new GreetingsSection()
-def whatIsYourNameSection = new WhatIsYourNameSection()
-def numbersSection = new NumbersSection()
-def colorsSection = new ColorsSection()
-def shapesSection = new ShapesSection()
-def datesSection = new DatesSection()
-def monthsSection = new MonthsSection()
-def timesSection = new TimesSection()
-def seasonsSection = new SeasonsSection()
-
 clearCitations()
 /*
 out(format.chapter("Pronunciation and Syllabary", "", "Pronunciation and Syllabary - "))
@@ -222,9 +225,9 @@ genericChapter(whatIsYourNameSection) {
     Is his name Barry?
     """
     text(str)
-}*/
+}
 
-/*genericChapter(numbersSection) {
+genericChapter(numbersSection) {
     bookSection("Cardinal Numbers", "") {
         text("Cardinal Numbers are any of the numbers that express amount, as one, two, three,  etc. (distinguished from ordinal number).")
         citation("cardinalNumbers", "http://dictionary.reference.com/browse/cardinal+numbers?s=t")
@@ -243,22 +246,18 @@ genericChapter(whatIsYourNameSection) {
         br()
         text("Ord(inal) - Ord(er)")
     }
-}*/
-/*
+}
+
 genericChapter(datesSection) {
     footnote("Discussed in the section ", "Days Of Week Meanings", "daysOfWeekMeaning")
 }
-*/
+
 genericChapter(timesSection) {
     text "  "
     citation("walcpp42", "walc pp42")
-
-    footnote("Any time after 12:00 p.m. until the sun starts to set.")
-    footnote("The time of day when the sun is setting.")
-    footnote("The time somewhere in the late time of night like 12:00 a.m.")
     citation("walcpp47", "walc pp47")
 }
-/*
+
 genericChapter(monthsSection) {
     footnote("Discussed in the section ", "Days Of Week Meanings", "daysOfWeekMeaning")
 }
@@ -280,25 +279,36 @@ genericChapter(seasonsSection) {
     br()
     text "December is in the winter"
     br()
-}*/
+}
+*/
 
-/*
-genericChapter(colorsSection) {}
+//genericChapter(colorsSection) {}
 
-genericChapter(shapesSection) {}
+//genericChapter(shapesSection) {}
 
 genericChapter(weatherSection) {
     text("JAC Weather pp29")
+    br()
     text "How's the weather today? What's the weather like today?"
+    br()
     text "It's nice weather."
+    br()
     text "It's raining."
+    br()
     text "It's snowing."
+    br()
     text "It's hot."
+    br()
     text "It's cold."
+    br()
     text "It's cool"
+    br()
     text "It's warm"
-    text "The weather is bad today."}
-
+    br()
+    text "The weather is bad today."
+    br()
+}
+/*
 def notesName = "NOTES:"
 def notesTranslit = SyllabaryUtil.mixedTransliteration("dadadugv goweli")
 def notesTitle = "${notesName} - ${notesTranslit}"
@@ -338,7 +348,6 @@ wordBreakdown("Notes on the meanings of the days of the week", "daysOfWeekMeanin
 
 reader()
 walc1("36-37,91-92,95, 108", readerFile)
-*/
 
 answerKeyPrint()
 
@@ -349,7 +358,7 @@ answerKeyPrint()
 //pdf("/cherokee/grammar/evaG/Get Angry_Persons.pdf", "", grammarFile)
 //pdf("/cherokee/grammar/evaG/MatrixSay_Persons.pdf", "", grammarFile)
 walc1("66,68-79,82,103-105", grammarFile)
-walc1("14-18, 20-27", grammarFile)
+walc1("14-18, 20-27", grammarFile)*/
 
 
 //on mac
@@ -383,7 +392,7 @@ def charts = """\\chapter{Appendix A - Charts}
 \\includegraphics{${path}/charts/cnosite/WashingHands.jpg}
 \\includepdf{${path}/charts/cnosite/World16x29.pdf}"""
 
-chartsFile.append(charts)
+//chartsFile.append(charts)
 
 printCitations()
 

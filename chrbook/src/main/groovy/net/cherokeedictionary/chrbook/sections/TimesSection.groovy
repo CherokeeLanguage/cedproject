@@ -19,9 +19,9 @@ class TimesSection extends BaseSection {
         vocabulary."Yesterday" = "Svhi"
         vocabulary."Dawn" = "Ugitsideyi"
         vocabulary."Afternoon" = new Vocabulary(english:"Afternoon", cherokee: "Svhiyeyi didla", footnote: new Footnote(src:"Any time after 12:00 p.m. until the sun starts to set."))
-        vocabulary."Evening" = "Svhiyeyi - 2"
+        vocabulary."Evening" = new Vocabulary(english:"Evening", cherokee: "Svhiyeyi", footnote: new Footnote(src:"The time of day when the sun is setting."))
         vocabulary."Night" = "Usv"
-        vocabulary."Midnight" = "Svnoyi - 3"
+        vocabulary."Midnight" = new Vocabulary(english:"Midnight", cherokee: "Svnoyi", footnote: new Footnote(src:"The time somewhere in the late time of night like 12:00 a.m."))
         vocabulary."Day/ Noon" = "Iga"
         vocabulary."At what time?" = "Hila atliilisv?"
         vocabulary."What time is it?\\\\ (what hour is it)" = "Hila iyuwanilv?"

@@ -8,7 +8,7 @@ class LatexFormat extends BaseFormat {
         super.extension = "tex"
     }
 
-    def chapter = { titleName, titleTranslit, title ->
+    static def chapter(titleName, titleTranslit, title) {
         def sb = new StringBuilder()
 
         sb << "\\index{$titleName}\n"
@@ -72,14 +72,15 @@ class LatexFormat extends BaseFormat {
 
         sb << "\\subsection{Vocabulary - ${SyllabaryUtil.mixedTransliteration("dikaneisdi")}}\n"
         def translit = ""
-        sb << "\\begin{minipage}{\\linewidth}"
+        sb << "\\begin{minipage}{\\linewidth}\n"
         sb << "\\begin{tabular}{p{3cm} p{11cm}}\n"
 
         src.eachWithIndex { key, value, idx ->
             //first item starts new table... as does 25th item which should start a new page
             if (idx == 20) {
-                sb << "\\end{tabular}\\newpage\n"
-                sb >> "\\end{minipage}"
+                sb << "\\end{tabular}\n"
+                sb << "\\end{minipage}\n\n"
+                sb << "\\vfill\\newpage"
                 sb << "\\begin{minipage}{\\linewidth}"
                 sb << "\\begin{tabular}{p{3cm} p{11cm}}\n"
             }
@@ -108,7 +109,8 @@ class LatexFormat extends BaseFormat {
 
             sb << "${key.replaceAll("_", " ")} & ${sb2}\\newline \\textcolor{red}{${translit}}"
             if (footnotes) {
-                sb << footnote(footnotes.src, footnotes.linkTitle, footnotes.link)
+                println "footnotes ${footnotes.isInternal}"
+                sb << footnote(footnotes.src, footnotes.linkTitle, footnotes.link, footnotes.isInternal)
             }
             sb << "\\\\\n"
 //                sb << "${key} & ${SyllabaryUtil.mixedTransliteration(translit)} \\newline \\textcolor{red}{${translit}}\\\\<br/>"
@@ -117,13 +119,14 @@ class LatexFormat extends BaseFormat {
 //                sb << "</div></div>"
         }
 
-        println "HERE"
-
-        sb << "\\end{tabular}\n\n"
-        sb >> "\\end{minipage}"
+        sb << "\\end{tabular}\n"
+        sb << "\\end{minipage}\n\n"
 
         return sb
     }
+
+    //\footnotemark[1]
+    //\footnotetext[1]{Any time after 12:00 p.m. until the sun starts to set.}
 
     def bookSection = { title, phonetic ->
         def sb = new StringBuilder()
@@ -136,11 +139,17 @@ class LatexFormat extends BaseFormat {
         return sb
     }
 
-    def footnote = {src, linkTitle=null, link=null ->
+    def footnote = {src, linkTitle=null, link=null, isInternal=true ->
         def sb = new StringBuilder()
-        sb << "\\footnote{${src}"
+        sb << "\\footnote{"
         if (link) {
-            sb << "\\hyperref[sec:${link}]{${linkTitle}}"
+            if (isInternal) {
+                sb << "${src}\\hyperref[sec:${link}]{${linkTitle}}"
+            } else {
+                sb << "\\href{${link}}{${src}}"
+            }
+        } else {
+            sb << "${src}"
         }
         sb << "}"
 
