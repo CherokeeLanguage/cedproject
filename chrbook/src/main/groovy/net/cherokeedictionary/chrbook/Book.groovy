@@ -52,8 +52,8 @@ def timesSection = new TimesSection()
 def seasonsSection = new SeasonsSection()
 def weatherSection = new WeatherSection()
 
-def path = "/projects/GoogleDriveTimo/Cherokee Umbrella"
-//def path = "W:/GOOGLEDRIVE/Cherokee Umbrella"
+//def path = "/projects/GoogleDriveTimo/Cherokee Umbrella"
+def path = "W:/GOOGLEDRIVE/Cherokee Umbrella"
 
 def books = [:]
 books.put("begCher", "/books/BeginningCherokeeSearchable04.pdf")
@@ -108,15 +108,20 @@ def footnote = {src, linkTitle=null, link=null, isInternal=true ->
 }
 
 def br = {
-    output.append(format.br)
+    output << format.br
 }
 
 def pre = {
-    output.append(format.pre())
+    output << format.pre
 }
 
 def text = {
-    output.append(it)
+    output << it
+}
+
+def tbr = {
+    text it
+    br
 }
 
 def redSpan = {
@@ -188,19 +193,47 @@ def noindent = {appender=output ->
     appender.append("\\noindent")
 }
 
-def helloSection = bookSection("Hello","osiyo") {
-    text"In Cherokee there is only one way to say 'Good Morning,' 'Good Afternoon,' 'Good Evening,' and Hello; that is by saying ${transl("osiyo")} ${redSpan("(o)siyo")} or the shortened version ${transl("siyo")} ${redSpan("siyo")}."
-    footnote("We will follow the convention of placing optional syllables in parenthesis.  You will see this written as (O)siyo.  The parentheses around the 'O' mean that the voicing of the 'O' is optional.")
-    footnote("Osi will be discussed more in the section ", "Word Breakdown - Tohi and Osi", "wordBreakdownTohiOsi")
-//        ["Hello, Mary", "Hello, Mark", "Hello, Daniel", "Hello, Susan"]}" answers="${["1. (O)siyo, Meli.", "(O)siyo, Maga.", "(O)siyo, Danili", "(O)siyo, Susani"]
-    //if (showExercise) {
-    exercise("1. Hello, Mary 2. Hello, Mark 3. Hello, Daniel 4. Hello, Susan", "1. (O)siyo, Meli. 2. (O)siyo, Maga. 3. (O)siyo, Danili 4. (O)siyo, Susani", false)
-}
+//def helloSection = bookSection("Hello","osiyo") {
+//    text"In Cherokee there is only one way to say 'Good Morning,' 'Good Afternoon,' 'Good Evening,' and Hello; that is by saying ${transl("osiyo")} ${redSpan("(o)siyo")} or the shortened version ${transl("siyo")} ${redSpan("siyo")}."
+//    footnote("We will follow the convention of placing optional syllables in parenthesis.  You will see this written as (O)siyo.  The parentheses around the 'O' mean that the voicing of the 'O' is optional.")
+//    footnote("Osi will be discussed more in the section ", "Word Breakdown - Tohi and Osi", "wordBreakdownTohiOsi")
+////        ["Hello, Mary", "Hello, Mark", "Hello, Daniel", "Hello, Susan"]}" answers="${["1. (O)siyo, Meli.", "(O)siyo, Maga.", "(O)siyo, Danili", "(O)siyo, Susani"]
+//    //if (showExercise) {
+//    exercise("1. Hello, Mary 2. Hello, Mark 3. Hello, Daniel 4. Hello, Susan", "1. (O)siyo, Meli. 2. (O)siyo, Maga. 3. (O)siyo, Danili 4. (O)siyo, Susani", false)
+//}
+//
+//def goodbyeSection = bookSection("Goodbye", "donadagohvi") {
+//    text "There is no word for 'goodbye' only 'to meet again'. The way to say 'goodbye' to one person is ${transl("donadagohvi")} ${redSpan("donadagohvi")}. If you would like to say 'goodbye' to more than one person you would say ${transl("dodadagohvi")} ${redSpan("dodadagohvi")}.  Lit: Let's meet again."
+//    footnote("We will discuss the plurality prefixes (d-) in the section ", "Word Breakdown - Plurality Prefixes", "wordBreakdownPluralityPrefixes")
+//    exercise("1. Goodbye, Mary and John. 2. Goodbye, Titus. 3. Goodbye, Daniel. 4. Goodbye, Mary, John, Susan, and Mark.", "1. Dodadagohvi, Meli ale Jani. 2. Donadagohvi, Dadasi 3. Donadagohvi, Danili 4. Dodadagohvi, Meli, Jani, Susani, ale Maga", false)
+//}
+//
+//def cardinalNumbers = bookSection("Cardinal Numbers", "") {
+//    text("Cardinal Numbers are any of the numbers that express amount, as one, two, three,  etc. (distinguished from ordinal number).")
+//    citation("cardinalNumbers", "http://dictionary.reference.com/browse/cardinal+numbers?s=t")
+//    br
+//    br
+//    text("Cardinal numbers answer the question: How many are there? and tell the total.")
+//}
+//
+//def ordinalNumbers = bookSection("Ordinal Numbers", "") {
+//    text("Cardinal numbers are any of the numbers that express degree, quality, or position in a series, as first, second, and third  (distinguished from cardinal number ).")
+//    citation("ordinalNumbers", "http://dictionary.reference.com/browse/ordinal+numbers?s=t")
+//    br
+//    br
+//    text("Ordinal numbers answer the question: Where does it fit in a numbered set? and tell the order.")
+//    br
+//    br
+//    text("Ord(inal) - Ord(er)")
+//}
 
-def goodbyeSection = bookSection("Goodbye", "donadagohvi") {
-    text "There is no word for 'goodbye' only 'to meet again'. The way to say 'goodbye' to one person is ${transl("donadagohvi")} ${redSpan("donadagohvi")}. If you would like to say 'goodbye' to more than one person you would say ${transl("dodadagohvi")} ${redSpan("dodadagohvi")}.  Lit: Let's meet again."
-    footnote("We will discuss the plurality prefixes (d-) in the section ", "Word Breakdown - Plurality Prefixes", "wordBreakdownPluralityPrefixes")
-    exercise("1. Goodbye, Mary and John. 2. Goodbye, Titus. 3. Goodbye, Daniel. 4. Goodbye, Mary, John, Susan, and Mark.", "1. Dodadagohvi, Meli ale Jani. 2. Donadagohvi, Dadasi 3. Donadagohvi, Danili 4. Dodadagohvi, Meli, Jani, Susani, ale Maga", false)
+def nChapter = {title, closure ->
+    def sb = new StringBuilder()
+    sb << format.chapter(title, title, title)
+
+    output << sb.toString()
+
+    closure()
 }
 
 clearCitations
@@ -213,7 +246,7 @@ genericChapter(greetingsSection) {
     helloSection
     goodbyeSection
 }
-/*
+
 genericChapter(whatIsYourNameSection) {
     def str = """
     Meeting people pp 2-3 (name, to want)
@@ -235,25 +268,88 @@ genericChapter(whatIsYourNameSection) {
     text(str)
 }
 
-genericChapter(numbersSection) {
-    bookSection("Cardinal Numbers", "") {
-        text("Cardinal Numbers are any of the numbers that express amount, as one, two, three,  etc. (distinguished from ordinal number).")
-        citation("cardinalNumbers", "http://dictionary.reference.com/browse/cardinal+numbers?s=t")
-        br
-        br
-        text("Cardinal numbers answer the question: How many are there? and tell the total.")
-    }
+nChapter("I'd like you to meet...") {
+    tbr "[could be in What is your name?]"
+    tbr "JAC I'd like you to meet"
+    tbr "JAC What's new"
+    tbr "JAC have you two met?"
+    tbr "JAC glad to have met you"
+}
 
-    bookSection("Ordinal Numbers", "") {
-        text("Cardinal numbers are any of the numbers that express degree, quality, or position in a series, as first, second, and third  (distinguished from cardinal number ).")
-        citation("ordinalNumbers", "http://dictionary.reference.com/browse/ordinal+numbers?s=t")
-        br
-        br
-        text("Ordinal numbers answer the question: Where does it fit in a numbered set? and tell the order.")
-        br
-        br
-        text("Ord(inal) - Ord(er)")
-    }
+nChapter("I want, I see") {
+    tbr "Deal with plurals and I we/want from Ch4"
+    tbr "I see 2 apples"
+    tbr "I want 4 bananas"
+    tbr "I want some grapes"
+}
+
+nChapter("Where are you from?") {
+    tbr "ARC where are you from?"
+    tbr "tell about oklahoma and nc"
+    tbr "I am from xyz"
+    tbr "pics of nationalities"
+    tbr "reference Appendicies"
+    tbr "ex10 where are these people from?"
+    tbr "ex 12 list xyz of countries (area codes of states?)"
+    tbr "where are you?  where are you from?"
+    tbr "languages - german"
+    tbr "countries - Germany"
+    tbr "people - German"
+    tbr "english - yonega (according-to-white)"
+}
+
+nChapter("Do you speak Tsalagi?") {
+    tbr "Do you speak xyz?"
+    tbr "JAC do you speak Japanese?"
+    tbr "JAC please speak a little slower"
+    tbr "other languages"
+}
+
+nChapter("on the telephone") {
+    tbr "ARC the telephone number is"
+    tbr "JAC telephoning"
+    tbr "what is your phone number?"
+    tbr "ex11 what are the phone numbers and who do they belong to?"
+    tbr "contacts list on your phone"
+}
+
+nChapter("Address & Email") {
+    tbr "JAC my address is"
+    tbr "JAC writing and mailing letters"
+    tbr "email - NOT JAC - but faxing didn't seem like a current topic"
+}
+
+def vocab = [:]
+vocab."Where do you live? (1 person)" = "Hadlv hinela?"//HS pp32#22
+vocab."What is your address? (Where written-material it-you-get?" = "Hadlv gowelia dijanesdi?"//HS pp32#28
+vocab."My address is ____. (written-material it-I-get-at _____." = "Goweli diginesdi ____."//HS pp33#29
+
+vocab."people, tribe" = "yvwi"//HS pp77
+vocab."I am an Indian. (I originate of the real people.)" = "Jiyvwiyadv."//HS pp75#68
+vocab."You are an Indian." = "hiyvwiyadv."//HS pp76#69
+vocab."Are you an Indian?" = "Hiyvwiyasgohv?"//HS pp76#70
+vocab."He is an Indian." = "Ayvwiyadv."//HS pp76#71
+vocab."What tribe of Indian does he belong to?" = "Gado usdi ayvwiya?"//HS pp76#72
+vocab."Do you speak English?" = "Yunegake hiwonia?"//HS pp76#73
+vocab."I am of Osage origin . (I originate as an ...)" = "Asasi jiyvwi."//HS pp76#74
+vocab."... as a Delaware" = "Agwanvgi jiyvwi."//HS pp76#74
+vocab."... as a Creek" = "Agusa jiyvwi."//HS pp76#74
+vocab."... as a White" = "Jiyunega jiyvwi."//HS pp76#74
+vocab."American Indian (yv-wi means a people, -ya means basic, real, true, essential)" = "ayvwiya"//HS pp76
+vocab."I speak Cherokee a little. (Little I-speak Cherokee)" = "Gaoyotli jiwonia Jalagi."//HS pp76#65
+
+vocab."Do you speak Cherokee a little?" = "Gayotlike hiwonia Jalagi?"//HS pp76#66
+vocab."He speaks Cherokee well. (Well-indeed Cherokee he-speaks.)" = "Osdadv Jalagi gawonia."//HS pp76#67
+vocab."" = ""
+vocab."" = ""
+
+
+
+
+
+genericChapter(numbersSection) {
+//    cardinalNumbers
+//    ordinalNumbers
 }
 
 genericChapter(datesSection) {
@@ -288,8 +384,6 @@ genericChapter(seasonsSection) {
     text "December is in the winter"
     br
 }
-*/
-
 
 //genericChapter(colorsSection) {}
 
@@ -318,7 +412,7 @@ genericChapter(weatherSection) {
     text "The weather is bad today."
     br
 }
-/*
+
 def notesName = "NOTES:"
 def notesTranslit = SyllabaryUtil.mixedTransliteration("dadadugv goweli")
 def notesTitle = "${notesName} - ${notesTranslit}"
@@ -368,7 +462,7 @@ answerKeyPrint()
 //pdf("/cherokee/grammar/evaG/Get Angry_Persons.pdf", "", grammarFile)
 //pdf("/cherokee/grammar/evaG/MatrixSay_Persons.pdf", "", grammarFile)
 walc1("66,68-79,82,103-105", grammarFile)
-walc1("14-18, 20-27", grammarFile)*/
+walc1("14-18, 20-27", grammarFile)
 
 
 //on mac
@@ -402,7 +496,7 @@ def charts = """\\chapter{Appendix A - Charts}
 \\includegraphics{${path}/charts/cnosite/WashingHands.jpg}
 \\includepdf{${path}/charts/cnosite/World16x29.pdf}"""
 
-//chartsFile.append(charts)
+chartsFile.append(charts)
 
 printCitations
 
