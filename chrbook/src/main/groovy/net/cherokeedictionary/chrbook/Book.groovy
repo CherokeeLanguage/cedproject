@@ -6,6 +6,7 @@ import net.cherokeedictionary.chrbook.sections.ColorsSection
 import net.cherokeedictionary.chrbook.sections.DatesSection
 import net.cherokeedictionary.chrbook.sections.MonthsSection
 import net.cherokeedictionary.chrbook.sections.NumbersSection
+import net.cherokeedictionary.chrbook.sections.PeopleAndProfessionsSection
 import net.cherokeedictionary.chrbook.sections.SeasonsSection
 import net.cherokeedictionary.chrbook.sections.ShapesSection
 import net.cherokeedictionary.chrbook.sections.TimesSection
@@ -51,6 +52,7 @@ def monthsSection = new MonthsSection()
 def timesSection = new TimesSection()
 def seasonsSection = new SeasonsSection()
 def weatherSection = new WeatherSection()
+def peopleAndProfessionsSection = new PeopleAndProfessionsSection()
 
 def path = "/projects/GoogleDriveTimo/Cherokee Umbrella"
 //def path = "W:/GOOGLEDRIVE/Cherokee Umbrella"
@@ -108,7 +110,6 @@ def footnote = {src, linkTitle=null, link=null, isInternal=true ->
 }
 
 def br = {
-    println "break"
     output.append(format.br)
 }
 
@@ -373,16 +374,38 @@ genericChapter(seasonsSection) {
     tbr "December is in the winter"
 }
 
-nChapter("Profession") {
-   tbr "JAC profession"
-   tbr "Personal details"
-   tbr "What do you do?"
-   tbr "Different jobs and occupations"
-   tbr "personal details [not family unless \"I have 2 kids\"]"
-   tbr "At work - looking for a job"
-   tbr "at the office"
-   tbr "ARC when do you work"
-   tbr "pictures of profesions"
+genericChapter(peopleAndProfessionsSection) {
+    tbr "\\noindent JAC profession"
+    tbr "Personal details"
+    tbr "What do you do?"
+    tbr "Different jobs and occupations"
+    tbr "personal details [not family unless \"I have 2 kids\"]"
+    tbr "At work - looking for a job"
+    tbr "at the office"
+    tbr "ARC when do you work"
+    tbr "pictures of profesions"
+
+    bookSection("Attaching Pronoun Prefixes To Nouns", "") {
+        text "In Cherokee, pronoun prefixes are attached to a noun just as they are in a verb. Pronouns are not separated from the noun and verb as they are in English. The following examples will begin to demonstrate how to attach set A and set B prefixes onto nouns."
+        citation("walcpp53","walc pp53")
+        text "\\\\\n"
+        tbr "Set A Prefixes:"
+        tbr "25. A-ganakti —> He/she is a doctor"
+        tbr "26. Ji-ganakti —> I am a doctor"
+        tbr "27. Ani-ganakti —> They are doctors"
+        tbr "28. Hi-ganakti —-> You are a doctor"
+        tbr "29. A-yvwi —> A person or He/she is a person"
+        tbr "30. Ji-yvwi —> I am a person"
+        tbr "31. Hi-yvwi —> You are a person"
+        tbr "32. Ani-yvwi —> They are people"
+        tbr "Set B Prefixes:"
+
+        tbr "33. U-gvwiyuhi —> He/she is a chief/president"
+        tbr "34. Agi-gvwiyuhi —> I am a chief/president"
+        tbr "35. Ja-gvwiyuhi —> You are a chief/president"
+        tbr "36. Uni-gvwiyuhi —> They are chiefs/presidents"
+
+    }
 }
 
 nChapter("This and That") {
@@ -683,7 +706,7 @@ def charts = """\\chapter{Appendix A - Charts}
 
 chartsFile.append(charts)
 
-printCitations
+printCitations()
 
 oldStuffFile.append("""
 %\\includepdf[pages=43-45, trim=55 100 45 250, clip=true]{${path}${books.begCher}}
