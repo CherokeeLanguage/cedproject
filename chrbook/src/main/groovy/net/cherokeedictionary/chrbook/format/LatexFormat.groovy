@@ -10,7 +10,9 @@ class LatexFormat extends BaseFormat {
 
     static def chapter(titleName, titleTranslit, title) {
         def sb = new StringBuilder()
-
+//        titleName = titleName.replaceAll("&", "\\&")
+//        titleTranslit = titleTranslit.replaceAll("&", "\\&")
+//        title = title.replaceAll("&", "\\&")
         sb << "\\index{$titleName}\n"
         sb << "\\index{$titleTranslit}\n"
         sb << "\\chapter{${title}}\n"
