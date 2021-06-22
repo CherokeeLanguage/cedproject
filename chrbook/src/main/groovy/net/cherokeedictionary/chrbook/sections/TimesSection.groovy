@@ -41,6 +41,7 @@ class TimesSection extends BaseSection {
         vocabulary."next morning" = "ugitsvda"
         vocabulary."watch" = "watsi"
         vocabulary."clock (lit. big watch)" = "utana watsi"
+        vocabulary."outside" = "doyi"
 
         dialogs = []
         dialogs << new DialogLine(name:"Danili", dialog:"Hila atliilisv?", engName:"Daniel", engDialog:"At what time?")

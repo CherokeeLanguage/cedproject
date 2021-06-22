@@ -69,17 +69,24 @@ class LatexFormat extends BaseFormat {
         return sb
     }
 
-    def vocabulary = {src ->
-        def sb = new StringBuilder()
 
-        sb << "\\subsection{Vocabulary - ${SyllabaryUtil.mixedTransliteration("dikaneisdi")}}\n"
+    //to change this to multiple columns add
+    // \begin{multicols}{2}
+    //[\section{Cardinal Numbers}]
+    // \end{multicols} at the end
+    // and \columnbreak where you want the split
+    def vocabulary = {src, showTitle=true ->
+        def sb = new StringBuilder()
+        if (showTitle) {
+            sb << "\\subsection{Vocabulary - ${SyllabaryUtil.mixedTransliteration("dikaneisdi")}}\n"
+        }
         def translit = ""
         sb << "\\begin{minipage}{\\linewidth}\n"
         sb << "\\begin{tabular}{p{3cm} p{11cm}}\n"
 
         src.eachWithIndex { key, value, idx ->
             //first item starts new table... as does 25th item which should start a new page
-            if (idx == 20) {
+            if (idx > 0 && idx % 20 == 0) {
                 sb << "\\end{tabular}\n"
                 sb << "\\end{minipage}\n\n"
                 sb << "\\vfill\\newpage"
@@ -131,7 +138,7 @@ class LatexFormat extends BaseFormat {
 
     def bookSection = { title, phonetic ->
         def sb = new StringBuilder()
-        sb << "\\index{${title}}\\subsection{${title}"
+        sb << "\\\n\\index{${title}}\\subsection{${title}"
         if (phonetic) {
             sb << " - ${transl(phonetic)}"
         }

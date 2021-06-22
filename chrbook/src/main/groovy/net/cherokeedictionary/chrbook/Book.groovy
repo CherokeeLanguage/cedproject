@@ -1,5 +1,8 @@
 package net.cherokeedictionary.chrbook
 
+//TODO: adjust vocabulary for words so they're 2 columns
+//TODO: adjust vocabulary so sentences are one column and width is more standard
+
 import net.cherokeedictionary.chrbook.format.AsciidocFormat
 import net.cherokeedictionary.chrbook.format.LatexFormat
 import net.cherokeedictionary.chrbook.sections.ColorsSection
@@ -12,6 +15,7 @@ import net.cherokeedictionary.chrbook.sections.ShapesSection
 import net.cherokeedictionary.chrbook.sections.TimesSection
 import net.cherokeedictionary.chrbook.sections.WeatherSection
 import net.cherokeedictionary.chrbook.sections.WhatIsYourNameSection
+import net.cherokeedictionary.chrbook.util.Vocabulary
 import net.cherokeedictionary.transliteration.SyllabaryUtil
 import net.cherokeedictionary.chrbook.sections.GreetingsSection
 
@@ -54,8 +58,8 @@ def seasonsSection = new SeasonsSection()
 def weatherSection = new WeatherSection()
 def peopleAndProfessionsSection = new PeopleAndProfessionsSection()
 
-def path = "/projects/GoogleDriveTimo/Cherokee Umbrella"
-//def path = "W:/GOOGLEDRIVE/Cherokee Umbrella"
+//def path = "/projects/GoogleDriveTimo/Cherokee Umbrella"
+def path = "W:/GOOGLEDRIVE/Cherokee Umbrella"
 
 def books = [:]
 books.put("begCher", "/books/BeginningCherokeeSearchable04.pdf")
@@ -92,8 +96,8 @@ def dialog = {baseSection, showPhonetic=true ->
     out(format.dialog(baseSection, showPhonetic))
 }
 
-def vocabulary = {src ->
-    out(format.vocabulary(src))
+def vocabulary = {src, showTitle=true ->
+    out(format.vocabulary(src, showTitle))
 }
 
 def transl = {
@@ -110,11 +114,11 @@ def footnote = {src, linkTitle=null, link=null, isInternal=true ->
 }
 
 def br = {
-    output.append(format.br)
+    output.append(format.br())
 }
 
 def pre = {
-    output << format.pre
+    output << format.pre()
 }
 
 def text = {
@@ -328,43 +332,86 @@ genericChapter(numbersSection) {
     bookSection("Cardinal Numbers", "") {
         text("Cardinal Numbers are any of the numbers that express amount, as one, two, three,  etc. (distinguished from ordinal number).")
         citation("cardinalNumbers", "http://dictionary.reference.com/browse/cardinal+numbers?s=t")
-        br
-        br
-        text("Cardinal numbers answer the question: How many are there? and tell the total.")
+        text "\\\\\\\\\n"
+        text"Cardinal numbers answer the question: How many are there? and tell the total."
     }
 
     bookSection("Ordinal Numbers", "") {
-        text("Cardinal numbers are any of the numbers that express degree, quality, or position in a series, as first, second, and third  (distinguished from cardinal number ).")
+        text("Ordinal numbers are any of the numbers that express degree, quality, or position in a series, as first, second, and third  (distinguished from cardinal number ).")
         citation("ordinalNumbers", "http://dictionary.reference.com/browse/ordinal+numbers?s=t")
-        br
-        br
-        text("Ordinal numbers answer the question: Where does it fit in a numbered set? and tell the order.")
-        br
-        br
-        text("Ord(inal) - Ord(er)")
+        text "\\\\\\\\\n"
+        text("\\noindent Ordinal numbers answer the question: Where does it fit in a numbered set? and tell the order.")
+        text "\\\\\\\\\n"
+        text("\\noindent Ord(inal) - Ord(er)")
+        text "\\\\\\\\\n"
+        text "Ordinal numbers are very similar to the regular numbers in Cherokee. To make a number into an ordinal number, most of the time you will only add the suffix ${redSpan("-ne")} to the end of the word. For some the suffix ${redSpan("-hine")} (seen on 1st) and the suffix ${redSpan("-sine")} (seen on 11th - 19th) needs to be added to change the number into an ordinal."
+        citation("walc141", "WALC1 pp41")
     }
 }
 
 genericChapter(datesSection) {
     footnote("Discussed in the section ", "Days Of Week Meanings", "daysOfWeekMeaning")
+
 }
 
 genericChapter(timesSection) {
-    tbr "Time - Time, and Time of Day"
+    text "\\ \\newline"
+    tbr "\\noindent Time - Time, and Time of Day"
     tbr "JAC ago"
     tbr "morning, noon, and night"
-    tbr "Ask about opening times (museum, movie)"
+    text "Ask about opening times (museum, movie)"
     citation("walcpp42", "walc pp42")
     citation("walcpp47", "walc pp47")
+    text "\\\\\n\n"
+    text "\\noindent In order to tell time in relationship to what has passed you would use the phrase ${SyllabaryUtil.tsalagiToSyllabary("tsigesv")} meaning \"formerly existing\" or \"dead\""
+    footnote("This would normally be used to refer to someone who is now dead.")
+    citation("feelingHiderGregg202Dpp9", "Feeling, Hider, Gregg, Intermediate Cherokee Module 202D pp9")
+    text "\\\\\n\n"
+    def timesVocab = [:]
+    timesVocab."last year" = "eji jigesv"
+    timesVocab."last month" = "sinvda jigesv"
+    timesVocab."two years ago" = "tali nadetiya"
+    vocabulary(timesVocab, false)
+//    text "\\\\\n"
+    text "\\noindent When asked, \"What time it was?\" you could answer by using the phrase: ${SyllabaryUtil.tsalagiToSyllabary("iyuwanilvi")} - time (as it relates to striking of the clock)."
+    citation("feelingHiderGregg202Dpp9", "Feeling, Hider, Gregg, Intermediate Cherokee Module 202D pp9")
+    text "\\\\\n\n"
+    text "\\noindent For instance:\\\\\n"
+    def timesVocab2 = [:]
+    timesVocab2."It's eight o'clock." = "janela iyuwanilv"
+    timesVocab2."It is five o'clock." = "hisgi iyuwanilv"
+    vocabulary(timesVocab2, false)
+//    text "\\\\\n\\noindent If you wanted to use an equivalent word for ${textf("minute", "i")} you could use ${SyllabaryUtil.tsalagiToSyllabary("iyatawostanv")}.  You use it the same as in English.  ${textf("Hour", "i")} is ${SyllabaryUtil.tsalagiToSyllabary("sutlilodv")}."
+    citation("feelingHiderGregg202Dpp9", "Feeling, Hider, Gregg, Intermediate Cherokee Module 202D pp9")
+    text "\\\\\n"
+    def timesVocab3 = [:]
+    timesVocab3."five before three" = "hisgi hvdalula joi"
+    timesVocab3."q quarter-past" = "ginutidi nvlosvsdi"
+    timesVocab3."it's a quarter past one." = "ginutidi nvlosvsdi sagwui"
+    timesVocab3."It's fifteen past one." = Vocabulary.factory("It's fifteen past one.", "sgigadu ulosvsdi sagwu", "Whether you use ${SyllabaryUtil.tsalagiToSyllabary("Sagwu")} or ${SyllabaryUtil.tsalagiToSyllabary("Sagwui")} is your choice.  Many Cherokee drop the final -i when speaking.", null, null, false)
+    timesVocab3."half past" = "ayetli ulosvsdi"
+    timesVocab3."it's half past nine" = "ayetli ulosvsdi sonela"
+    timesVocab3."it's nine thirty" = "sonela josgohi"
+    vocabulary(timesVocab3, false)
+    citation("feelingHiderGregg202Dpp9", "Feeling, Hider, Gregg, Intermediate Cherokee Module 202D pp10")
+    text "\\\\\nA question such as \"What time is lunch?\" ${SyllabaryUtil.tsalagiToSyllabary("hila aatliilisv iga alisdayvdi")} would perhaps be answered:\\"
+    text "\"1130\" ${SyllabaryUtil.tsalagiToSyllabary("sadu ayetli")} or \"soon\" ${SyllabaryUtil.tsalagiToSyllabary("gilagwuiyusdi")}"
+    footnote "Actually the phrase translates to: \"kind of like later\" or in English you'd say \"soon\""
+    citation("feelingHiderGregg202Dpp9", "Feeling, Hider, Gregg, Intermediate Cherokee Module 202D pp10")
 }
 
 genericChapter(monthsSection) {
     footnote("Discussed in the section ", "Days Of Week Meanings", "daysOfWeekMeaning")
+    def monthsVocab = [:]
+    monthsVocab."Today is, March, 20th." = "Kohi iga, anvyi talisgohine."
+    monthsVocab."Yesterday was, December fifth." = "Svhi jigesv, vsgiyi hisgine."
+    vocabulary(monthsVocab, false)
+    citation("walc1pp48", "WALC 1 PP48")
 }
 
 genericChapter(seasonsSection) {
     citation("walcpp49", "walc pp49")
-    br
+    text "\\\\\n"
     tbr"\\noindent JAC Seasons pp140"
     tbr "In winter"
     tbr "in summer"
@@ -372,6 +419,14 @@ genericChapter(seasonsSection) {
     tbr "in spring"
     tbr "June is in the summer"
     tbr "December is in the winter"
+
+    def seasonsVocab = [:]
+    seasonsVocab."When winter comes, it becomes cold." = "Gola yinulistana, ahyvdladisgo’i."
+    seasonsVocab."The birds are singing this morning, it’s spring!" = "Jisgwa danihnogi’a kohi sanale, gogeyi’dv nigalsdiha!"
+    seasonsVocab."The leaves fall in Autumn." = "Degalsduwo’osgo’i ulagohvsdi."
+    seasonsVocab."What are you going to do this summer?" = "Gado tadvneli kohi gogi?"
+    vocabulary(seasonsVocab, false)
+    citation("walcpp49", "walc pp49")
 }
 
 genericChapter(peopleAndProfessionsSection) {
@@ -383,28 +438,31 @@ genericChapter(peopleAndProfessionsSection) {
     tbr "At work - looking for a job"
     tbr "at the office"
     tbr "ARC when do you work"
-    tbr "pictures of profesions"
+    tbr "pictures of professions"
 
     bookSection("Attaching Pronoun Prefixes To Nouns", "") {
         text "In Cherokee, pronoun prefixes are attached to a noun just as they are in a verb. Pronouns are not separated from the noun and verb as they are in English. The following examples will begin to demonstrate how to attach set A and set B prefixes onto nouns."
         citation("walcpp53","walc pp53")
         text "\\\\\n"
-        tbr "Set A Prefixes:"
-        tbr "25. A-ganakti —> He/she is a doctor"
-        tbr "26. Ji-ganakti —> I am a doctor"
-        tbr "27. Ani-ganakti —> They are doctors"
-        tbr "28. Hi-ganakti —-> You are a doctor"
-        tbr "29. A-yvwi —> A person or He/she is a person"
-        tbr "30. Ji-yvwi —> I am a person"
-        tbr "31. Hi-yvwi —> You are a person"
-        tbr "32. Ani-yvwi —> They are people"
-        tbr "Set B Prefixes:"
-
-        tbr "33. U-gvwiyuhi —> He/she is a chief/president"
-        tbr "34. Agi-gvwiyuhi —> I am a chief/president"
-        tbr "35. Ja-gvwiyuhi —> You are a chief/president"
-        tbr "36. Uni-gvwiyuhi —> They are chiefs/presidents"
-
+        text "\\newline \\noindent Set A Prefixes:"
+        text "\\begin{itemize}\n"
+        text "\\item A-ganakti —> He/she is a doctor\n"
+        text "\\item Ji-ganakti —> I am a doctor\n"
+        text "\\item Ani-ganakti —> They are doctors\n"
+        text "\\item Hi-ganakti —-> You are a doctor\n"
+        text "\\item A-yvwi —> A person or He/she is a person\n"
+        text "\\item Ji-yvwi —> I am a person\n"
+        text "\\item Hi-yvwi —> You are a person\n"
+        text "\\item Ani-yvwi —> They are people\n"
+        text "\\end{itemize}\n"
+        text "\n"
+        text "\\noindent Set B Prefixes:\n"
+        text "\\begin{itemize}\n"
+        text "\\item U-gvwiyuhi —> He/she is a chief/president\n"
+        text "\\item Agi-gvwiyuhi —> I am a chief/president\n"
+        text "\\item Ja-gvwiyuhi —> You are a chief/president\n"
+        text "\\item Uni-gvwiyuhi —> They are chiefs/presidents\n"
+        text "\\end{itemize}\n"
     }
 }
 
@@ -464,6 +522,79 @@ nChapter("Directions") {
     tbr "make a right (head east)"
     tbr "go to the 4-way stop"
     tbr "go straight one mile"
+    def directionsVocab = [:]
+    directionsVocab."North" = "Juhyvdlvi"
+    directionsVocab."South" = "Juganowvi"
+    directionsVocab."Up" = "Galvladi"
+    directionsVocab."Center" = "Ayetli"
+    directionsVocab."East" = "Dikalvgvi"
+    directionsVocab."West" = "Wudeligvi"
+    directionsVocab."Down" = "Eladi"
+    directionsVocab."Towards" = "Ididla"
+    directionsVocab."Which way?" = "Hadlv ididla?"
+    directionsVocab."Where?/ Where is it?" = "Hadlv?"
+    directionsVocab."Where did you go?" = "Hadlv hega? "
+    directionsVocab."Where are you heading?" = "Hadlv hwikti?"
+    directionsVocab."We are heading south." = "Juganowv ididla wojigati."
+    directionsVocab."I am going to work." = "Digilvwisdanedii gega."
+    directionsVocab."Here" = "Ahani"
+    directionsVocab."Close" = "Na’v"
+    directionsVocab."Toward" = "Ididla"
+    directionsVocab."Everywhere" = "Nikv’i"
+    directionsVocab."Outside" = "Doyi"
+    directionsVocab."Nowhere" = "Tla ilvdlv"
+    directionsVocab."Upstream" = "Jogididla"
+    directionsVocab."There" = "Vhna’i"
+    directionsVocab."there" = "Age’i Over"
+    directionsVocab."Away from" = "Udliyv’i"
+    directionsVocab."Above" = "Galvladidla"
+    directionsVocab."Below" = "Eladidla"
+    directionsVocab."Somewhere" = "Ilvtlv’i"
+    directionsVocab."Underneath" = "Hawinididla"
+    directionsVocab."Downstream" = "Ge’ididla"
+    directionsVocab."Far" = "Ina"
+    directionsVocab."Where are you going?" = "Hadlv hega?"
+    directionsVocab."When will you go?" = "Hilayv tesi?"
+    directionsVocab."Are you close?" = "Na’vju hedoha?"
+    directionsVocab."Will you go there?" = "Witedoliju?"
+    directionsVocab."Where did they go?" = "Hadlv unenvsei?"
+    directionsVocab."We will go at 6:00" = "Sudali atliilisv dadesi."
+    directionsVocab."When will you be here?" = "Hilayv tiluhji?"
+    directionsVocab."Where did you go?" = "Hadlv hweda?"
+    directionsVocab."He is standing over there" = "Age’i digadoga."
+    directionsVocab."They are singing there." = "Vhnai danihnogi’a."
+    directionsVocab."I am working behind my house." = "Digwenvsv’i ohnididla dagilvwisdaneha."
+    directionsVocab."We (not you) went to the Stomp Grounds saturday night." = "Gatiyo’i wogedolv dodagwidena usv’i jigesv’i."
+    directionsVocab."Him/her and I are walking towards the church." = "Junilawisdi’i didla wosda’i."
+    directionsVocab."They live far away." = "Ina digesv’i waninela."
+    directionsVocab."They travel around everywhere." = "Nikv’i anedolidoho’i."
+    directionsVocab."They will come here (up to this point)." = "Ahani iyv’i dvniluhji."
+    directionsVocab."On top of" = "Gadu’i"
+    directionsVocab."Above" = "Galvladidla"
+    directionsVocab."Below" = "Eladidla"
+    directionsVocab."There" = "Vhna’i"
+    directionsVocab."Over there" = "Age’i"
+    directionsVocab."Right here" = "Ahani"
+    directionsVocab."Far" = "Ina"
+    directionsVocab."Chair/table" = "Gasgilo"
+    directionsVocab."In the middle/between" = "Ayetli"
+    directionsVocab."He/she is standing" = "Gadoga"
+    directionsVocab."I am getting up" = "Gadidi’a"
+    directionsVocab."I woke up" = "Jiyegi"
+    directionsVocab."I am getting ready" = "Gadvnv’isdiha"
+    directionsVocab."I just took a shower" = "Gadawoja"
+    directionsVocab."I brushed my teeth" = "Dejindohgv dejinvgala"
+    directionsVocab."I am ironing" = "Dejitesga"
+    directionsVocab."I went to the bathroom" = "Doyi-edasdi wijiyvha"
+    directionsVocab."I just ate breakfast" = "Sanale-ehi galisdayvhvga"
+    directionsVocab."I put on my clothes" = "Deganiwoja"
+    directionsVocab."I just left" = "Ga’nigi"
+    directionsVocab."I put my shoes on" = "Degalasutlvga"
+    directionsVocab."I combed my hair" = "Galitawoja"
+    directionsVocab."I prepared my meal" = "Alsdayhdi gadvnv’isda"
+    directionsVocab."I just ironed my clothes" = "Dihnawo dejitvla"
+    vocabulary(directionsVocab, false)
+    citation("walcpp828594","walc pp82-85,94")
 }
 
 nChapter("At the doctor") {
@@ -705,9 +836,7 @@ def charts = """\\chapter{Appendix A - Charts}
 \\includepdf{${path}/charts/cnosite/World16x29.pdf}"""
 
 chartsFile.append(charts)
-
 printCitations()
-
 oldStuffFile.append("""
 %\\includepdf[pages=43-45, trim=55 100 45 250, clip=true]{${path}${books.begCher}}
 %\\includepdf[pages=43-45]{${path}${books.begCher}}
