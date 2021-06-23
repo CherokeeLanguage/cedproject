@@ -593,7 +593,9 @@ nChapter("Directions") {
     directionsVocab."I combed my hair" = "Galitawoja"
     directionsVocab."I prepared my meal" = "Alsdayhdi gadvnv’isda"
     directionsVocab."I just ironed my clothes" = "Dihnawo dejitvla"
+    text "\\begin{multicols}{2}[\\section{First Section}]"
     vocabulary(directionsVocab, false)
+    text "\\end{multicols}"
     citation("walcpp828594","walc pp82-85,94")
 }
 
