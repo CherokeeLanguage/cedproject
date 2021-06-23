@@ -3,18 +3,17 @@ package net.cherokeedictionary.chrbook.sections
 class MonthsSection extends BaseSection {
     MonthsSection() {
         title = "Months"
-        vocabulary = [:]
-        vocabulary."January" = "Unolvtani"
-        vocabulary."February" = "Kagali"
-        vocabulary."March" = "Anvyi"
-        vocabulary."April" = "Kawoni"
-        vocabulary."May" = "Anasgvti"
-        vocabulary."June" = "Dehaluyi"
-        vocabulary."July" = "Guyegwoni"
-        vocabulary."August" = "Galoni"
-        vocabulary."September" = "Dulisdi"
-        vocabulary."October" = "Duninidi"
-        vocabulary."November" = "Nvdadegwa"
-        vocabulary."December" = "Vskiyi"
+        vocabularies."January" = "Unolvtani"
+        vocabularies."February" = "Kagali"
+        vocabularies."March" = "Anvyi"
+        vocabularies."April" = "Kawoni"
+        vocabularies."May" = "Anasgvti"
+        vocabularies."June" = "Dehaluyi"
+        vocabularies."July" = "Guyegwoni"
+        vocabularies."August" = "Galoni"
+        vocabularies."September" = "Dulisdi"
+        vocabularies."October" = "Duninidi"
+        vocabularies."November" = "Nvdadegwa"
+        vocabularies."December" = "Vskiyi"
     }
 }

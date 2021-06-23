@@ -7,31 +7,40 @@ class PeopleAndProfessionsSection extends BaseSection {
     PeopleAndProfessionsSection() {
         title = "People and Professions"
 
-        vocabulary = [:]
-        vocabulary."Person" = "Yvwi"
-        vocabulary."Lawyer" = "Ditiyohi"
-        vocabulary."Treasurer" = "Adela agatiya"
-        vocabulary."People" = "Aniyvwi"
-        vocabulary."Preacher" = "Alijadohvsgi"
-        vocabulary."Translator" = "Dinetlvdisgi"
-        vocabulary."Teacher" = "Dideyohvsgi"
-        vocabulary."Dancer" = "Alisgisgi"
-        vocabulary."Artist" = "Ditlilostanvhvsgi"
-        vocabulary."Doctor" = "Ganagati"
-        vocabulary."Medicine person" = "Didanvwisgi"
-        vocabulary."Worker/Employee" = "Julvwisdane"
-        vocabulary."Nurse" = "Junidlvgi digatiya"
-        vocabulary."Chief / President" = "Ugvwiyuhi"
-        vocabulary."Accountant" = "Adela Ugasesdi"
-        vocabulary."Actor" = "Advnelisgi"
-        vocabulary."Policeman" = "Didaniyisgi"
-        vocabulary."Firefighter" = "Digadladisgi"
-        vocabulary."Singer" = "Dikanogisgi"
-        vocabulary."Soldier" = new Vocabulary(english:"Soldier", cherokee:"Ayosgi", footnote: new Footnote(src:"\"Ayawisgi\" is an alternative and older way to write the word.", isInternal:true))
-        vocabulary."Store clerk" = "Adananv adagatidehi"
-        vocabulary."Student" = "Didelogwasgi"
-        vocabulary."Writer" = "Digowelisgi"
-        vocabulary."Boss" = "Jukastli /Asgayegvsdi"
+        vocabularies."Person" = "Yvwi"
+        vocabularies."Lawyer" = "Ditiyohi"
+        vocabularies."Treasurer" = "Adela agatiya"
+        vocabularies."People" = "Aniyvwi"
+        vocabularies."Preacher" = "Alijadohvsgi"
+        vocabularies."Translator" = "Dinetlvdisgi"
+        vocabularies."Teacher" = "Dideyohvsgi"
+        vocabularies."Dancer" = "Alisgisgi"
+        vocabularies."Artist" = "Ditlilostanvhvsgi"
+        vocabularies."Doctor" = "Ganagati"
+        vocabularies."Medicine person" = "Didanvwisgi"
+        vocabularies."Worker/Employee" = "Julvwisdane"
+        vocabularies."Nurse" = "Junidlvgi digatiya"
+        vocabularies."Chief / President" = "Ugvwiyuhi"
+        vocabularies."Accountant" = "Adela Ugasesdi"
+        vocabularies."Actor" = "Advnelisgi"
+        vocabularies."Policeman" = "Didaniyisgi"
+        vocabularies."Firefighter" = "Digadladisgi"
+        vocabularies."Singer" = "Dikanogisgi"
+        vocabularies."Soldier" = new Vocabulary(english:"Soldier", cherokee:"Ayosgi", footnote: new Footnote(src:"\"Ayawisgi\" is an alternative and older way to write the word.", isInternal:true))
+        vocabularies."Store clerk" = "Adananv adagatidehi"
+        vocabularies."Student" = "Didelogwasgi"
+        vocabularies."Writer" = "Digowelisgi"
+        vocabularies."Boss" = "Jukastli /Asgayegvsdi"
+
+        topics << "JAC profession"
+        topics << "Personal details"
+        topics << "What do you do?"
+        topics << "Different jobs and occupations"
+        topics << "personal details [not family unless \"I have 2 kids\"]"
+        topics << "At work - looking for a job"
+        topics << "at the office"
+        topics << "ARC when do you work"
+        topics << "pictures of professions"
     }
 
     static void main(String[] args) {
@@ -96,7 +105,7 @@ Boss"""
             }
 
             if (en && chr) {
-                println "vocabulary.\"${en}\" = \"${chr}\""
+                println "vocabularies.\"${en}\" = \"${chr}\""
             }
 
 //            println it

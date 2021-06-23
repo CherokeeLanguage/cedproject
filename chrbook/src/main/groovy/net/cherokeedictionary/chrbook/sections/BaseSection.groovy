@@ -1,17 +1,18 @@
 package net.cherokeedictionary.chrbook.sections
 
+import net.cherokeedictionary.chrbook.format.LatexFormat
 import net.cherokeedictionary.transliteration.SyllabaryUtil
 
 class BaseSection {
     def title = ""
     def titleTranslit = ""
-    def vocabulary = ["REMMOVE":"REMOVE"]
-    def topics = ["REMOVE"]
+    def vocabularies = [:]
+    def topics = []
     def dialogs = []
     def tmpBindings = [:]
 
     BaseSection() {
-        dialogs << new DialogLine(name:"REMOVE", dialog:"REMOVE", engName:"REMOVE", engDialog:"REMOVE")
+//        dialogs << new DialogLine(name:"REMOVE", dialog:"REMOVE", engName:"REMOVE", engDialog:"REMOVE")
     }
 
     String getLinkTitle() {
@@ -29,7 +30,7 @@ class BaseSection {
         bindings.title = SyllabaryUtil.mixedTransliteration(titleTranslit)
         bindings.anchor = title.replaceAll(" ", "").replaceAll(",", "").replaceAll("\\?", "").replaceAll("\\.", "")
         bindings.objectives = topics
-        bindings.vocabulary = vocabulary
+        bindings.vocabulary = vocabularies
         bindings.dialogs = dialogs
         bindings << tmpBindings
         return bindings

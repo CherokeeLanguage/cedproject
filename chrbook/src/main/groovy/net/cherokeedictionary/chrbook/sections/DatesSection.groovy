@@ -3,13 +3,12 @@ package net.cherokeedictionary.chrbook.sections
 class DatesSection extends BaseSection {
     DatesSection() {
         title = "Dates"
-        vocabulary = [:]
-        vocabulary.Monday = "Unadodagwonvi"
-        vocabulary.Tuesday = "Taline iga"
-        vocabulary.Wednesday = "Joine iga"
-        vocabulary.Thursday = "Nvhgine iga"
-        vocabulary.Friday = "Junvgilosdi"
-        vocabulary.Saturday = "Unadodagwidena"
-        vocabulary.Sunday = "Unadodagwasgvi"
+        vocabularies.Monday = "Unadodagwonvi"
+        vocabularies.Tuesday = "Taline iga"
+        vocabularies.Wednesday = "Joine iga"
+        vocabularies.Thursday = "Nvhgine iga"
+        vocabularies.Friday = "Junvgilosdi"
+        vocabularies.Saturday = "Unadodagwidena"
+        vocabularies.Sunday = "Unadodagwasgvi"
     }
 }

@@ -5,16 +5,28 @@ package net.cherokeedictionary.chrbook
 
 import net.cherokeedictionary.chrbook.format.AsciidocFormat
 import net.cherokeedictionary.chrbook.format.LatexFormat
+import net.cherokeedictionary.chrbook.sections.AddressAndEmailSection
+import net.cherokeedictionary.chrbook.sections.ClothesAndShoppingSection
 import net.cherokeedictionary.chrbook.sections.ColorsSection
 import net.cherokeedictionary.chrbook.sections.DatesSection
+import net.cherokeedictionary.chrbook.sections.DirectionsSection
+import net.cherokeedictionary.chrbook.sections.DoctorSection
+import net.cherokeedictionary.chrbook.sections.FamilySection
+import net.cherokeedictionary.chrbook.sections.FoodSection
+import net.cherokeedictionary.chrbook.sections.MoneySection
 import net.cherokeedictionary.chrbook.sections.MonthsSection
 import net.cherokeedictionary.chrbook.sections.NumbersSection
 import net.cherokeedictionary.chrbook.sections.PeopleAndProfessionsSection
 import net.cherokeedictionary.chrbook.sections.SeasonsSection
 import net.cherokeedictionary.chrbook.sections.ShapesSection
+import net.cherokeedictionary.chrbook.sections.TelephoneSection
+import net.cherokeedictionary.chrbook.sections.ThisAndThatSection
 import net.cherokeedictionary.chrbook.sections.TimesSection
+import net.cherokeedictionary.chrbook.sections.TransportationSection
 import net.cherokeedictionary.chrbook.sections.WeatherSection
 import net.cherokeedictionary.chrbook.sections.WhatIsYourNameSection
+import net.cherokeedictionary.chrbook.sections.WhereAreYouFromSection
+import net.cherokeedictionary.chrbook.sections.YoursMineOursSection
 import net.cherokeedictionary.chrbook.util.Vocabulary
 import net.cherokeedictionary.transliteration.SyllabaryUtil
 import net.cherokeedictionary.chrbook.sections.GreetingsSection
@@ -46,20 +58,8 @@ appendiciesFile.write("")
 chartsFile.write("")
 grammarFile.write("")
 
-def greetingsSection = new GreetingsSection()
-def whatIsYourNameSection = new WhatIsYourNameSection()
-def numbersSection = new NumbersSection()
-def colorsSection = new ColorsSection()
-def shapesSection = new ShapesSection()
-def datesSection = new DatesSection()
-def monthsSection = new MonthsSection()
-def timesSection = new TimesSection()
-def seasonsSection = new SeasonsSection()
-def weatherSection = new WeatherSection()
-def peopleAndProfessionsSection = new PeopleAndProfessionsSection()
-
-def path = "/projects/GoogleDriveTimo/Cherokee Umbrella"
-//def path = "W:/GOOGLEDRIVE/Cherokee Umbrella"
+//def path = "/projects/GoogleDriveTimo/Cherokee Umbrella"
+def path = "W:/GOOGLEDRIVE/Cherokee Umbrella"
 
 def books = [:]
 books.put("begCher", "/books/BeginningCherokeeSearchable04.pdf")
@@ -171,12 +171,21 @@ def textf = {src, style ->
 
 def genericChapter = {baseSection, closure ->
     chapter(baseSection) {
-        whatYouWillLearn(baseSection)
-        text "\\newpage"
-        dialog(baseSection)
-        text "\\vfill"
-        text "\\newpage"
-        vocabulary(baseSection.vocabulary)
+        if (baseSection.topics.size() > 0) {
+            whatYouWillLearn(baseSection)
+            text "\\newpage"
+        }
+
+        if (baseSection.dialogs.size() > 0) {
+            dialog(baseSection)
+            text "\\vfill"
+            text "\\newpage"
+        }
+
+        if (baseSection.vocabularies) {
+            vocabulary(baseSection.vocabularies)
+        }
+
         closure()
     }
 }
@@ -207,6 +216,30 @@ def nChapter = {title, closure ->
     closure()
 }
 
+def greetingsSection = new GreetingsSection()
+def whatIsYourNameSection = new WhatIsYourNameSection()
+def numbersSection = new NumbersSection()
+def colorsSection = new ColorsSection()
+def shapesSection = new ShapesSection()
+def datesSection = new DatesSection()
+def monthsSection = new MonthsSection()
+def timesSection = new TimesSection()
+def seasonsSection = new SeasonsSection()
+def weatherSection = new WeatherSection()
+def peopleAndProfessionsSection = new PeopleAndProfessionsSection()
+def moneySection = new MoneySection()
+def directionsSection = new DirectionsSection()
+def whereAreYouFromSection = new WhereAreYouFromSection()
+def telephoneSection = new TelephoneSection()
+def addressAndEmailSection = new AddressAndEmailSection()
+def thisAndThatSection = new ThisAndThatSection()
+def familySection = new FamilySection()
+def doctorSection = new DoctorSection()
+def transportationSection = new TransportationSection()
+def clothesAndShoppingSection = new ClothesAndShoppingSection()
+def foodSection = new FoodSection()
+def yoursMineOursSection = new YoursMineOursSection()
+
 clearCitations
 
 out(format.chapter("Pronunciation and Syllabary", "", "Pronunciation and Syllabary - "))
@@ -230,26 +263,7 @@ genericChapter(greetingsSection) {
     }
 }
 
-genericChapter(whatIsYourNameSection) {
-    def str = """
-    Meeting people pp 2-3 (name, to want)
-
-    Simple questions pp4 (tsu, sgo, sg, s) and pp 74 Smith
-
-    turn these statements into questions
-    turn these questions into statements
-    ask for xyz
-    do you want xyz
-    tell your friend you would like an apple
-    Identify other people you see that you are not currently talking to.
-
-    More on this in Chapter 4
-
-    Is your name bob?
-    Is his name Barry?
-    """
-    text(str)
-}
+genericChapter(whatIsYourNameSection) {}
 
 nChapter("I'd like you to meet...") {
     tbr "[could be in What is your name?]"
@@ -267,44 +281,7 @@ nChapter("I want, I see") {
     tbr "there are some verbs included in the book specifically for this purpose"
 }
 
-def vocab = [:]
-vocab."Where do you live? (1 person)" = "Hadlv hinela?"//HS pp32#22
-vocab."What is your address? (Where written-material it-you-get?" = "Hadlv gowelia dijanesdi?"//HS pp32#28
-vocab."My address is ____. (written-material it-I-get-at _____." = "Goweli diginesdi ____."//HS pp33#29
-
-vocab."people, tribe" = "yvwi"//HS pp77
-vocab."I am an Indian. (I originate of the real people.)" = "Jiyvwiyadv."//HS pp75#68
-vocab."You are an Indian." = "hiyvwiyadv."//HS pp76#69
-vocab."Are you an Indian?" = "Hiyvwiyasgohv?"//HS pp76#70
-vocab."He is an Indian." = "Ayvwiyadv."//HS pp76#71
-vocab."What tribe of Indian does he belong to?" = "Gado usdi ayvwiya?"//HS pp76#72
-vocab."Do you speak English?" = "Yunegake hiwonia?"//HS pp76#73
-vocab."I am of Osage origin . (I originate as an ...)" = "Asasi jiyvwi."//HS pp76#74
-vocab."... as a Delaware" = "Agwanvgi jiyvwi."//HS pp76#74
-vocab."... as a Creek" = "Agusa jiyvwi."//HS pp76#74
-vocab."... as a White" = "Jiyunega jiyvwi."//HS pp76#74
-vocab."American Indian (yv-wi means a people, -ya means basic, real, true, essential)" = "ayvwiya"//HS pp76
-vocab."I speak Cherokee a little. (Little I-speak Cherokee)" = "Gaoyotli jiwonia Jalagi."//HS pp76#65
-
-vocab."Do you speak Cherokee a little?" = "Gayotlike hiwonia Jalagi?"//HS pp76#66
-vocab."He speaks Cherokee well. (Well-indeed Cherokee he-speaks.)" = "Osdadv Jalagi gawonia."//HS pp76#67
-vocab."" = ""
-vocab."" = ""
-
-nChapter("Where are you from?") {
-    tbr "ARC where are you from?"
-    tbr "tell about oklahoma and nc"
-    tbr "I am from xyz"
-    tbr "pics of nationalities"
-    tbr "reference Appendicies"
-    tbr "ex10 where are these people from?"
-    tbr "ex 12 list xyz of countries (area codes of states?)"
-    tbr "where are you?  where are you from?"
-    tbr "languages - german"
-    tbr "countries - Germany"
-    tbr "people - German"
-    tbr "english - yonega (according-to-white)"
-}
+genericChapter(whereAreYouFromSection) {}
 
 nChapter("Do you speak Tsalagi?") {
     tbr "Do you speak xyz?"
@@ -313,20 +290,9 @@ nChapter("Do you speak Tsalagi?") {
     tbr "other languages"
 }
 
-nChapter("on the telephone") {
-    tbr "ARC the telephone number is"
-    tbr "JAC telephoning"
-    tbr "what is your phone number?"
-    tbr "ex11 what are the phone numbers and who do they belong to?"
-    tbr "contacts list on your phone"
-    tbr "email list?"
-}
+genericChapter(telephoneSection) {}
 
-nChapter("Address \\& Email") {
-    tbr "JAC my address is"
-    tbr "JAC writing and mailing letters"
-    tbr "email - NOT JAC - but faxing didn't seem like a current topic"
-}
+genericChapter(addressAndEmailSection) {}
 
 genericChapter(numbersSection) {
     bookSection("Cardinal Numbers", "") {
@@ -351,7 +317,6 @@ genericChapter(numbersSection) {
 
 genericChapter(datesSection) {
     footnote("Discussed in the section ", "Days Of Week Meanings", "daysOfWeekMeaning")
-
 }
 
 genericChapter(timesSection) {
@@ -411,14 +376,6 @@ genericChapter(monthsSection) {
 
 genericChapter(seasonsSection) {
     citation("walcpp49", "walc pp49")
-    text "\\\\\n"
-    tbr"\\noindent JAC Seasons pp140"
-    tbr "In winter"
-    tbr "in summer"
-    tbr "in autumn, in fall"
-    tbr "in spring"
-    tbr "June is in the summer"
-    tbr "December is in the winter"
 
     def seasonsVocab = [:]
     seasonsVocab."When winter comes, it becomes cold." = "Gola yinulistana, ahyvdladisgo’i."
@@ -430,16 +387,6 @@ genericChapter(seasonsSection) {
 }
 
 genericChapter(peopleAndProfessionsSection) {
-    tbr "\\noindent JAC profession"
-    tbr "Personal details"
-    tbr "What do you do?"
-    tbr "Different jobs and occupations"
-    tbr "personal details [not family unless \"I have 2 kids\"]"
-    tbr "At work - looking for a job"
-    tbr "at the office"
-    tbr "ARC when do you work"
-    tbr "pictures of professions"
-
     bookSection("Attaching Pronoun Prefixes To Nouns", "") {
         text "In Cherokee, pronoun prefixes are attached to a noun just as they are in a verb. Pronouns are not separated from the noun and verb as they are in English. The following examples will begin to demonstrate how to attach set A and set B prefixes onto nouns."
         citation("walcpp53","walc pp53")
@@ -466,24 +413,9 @@ genericChapter(peopleAndProfessionsSection) {
     }
 }
 
-nChapter("This and That") {
-    tbr "Describing things - cars, trucks, buildings, signs"
-    tbr "JAC this and that"
-    tbr "this and that as describing things.  and basic here, there, this, that, where clause"
-    tbr "more indepth in chapter 9"
-    tbr "JAC where is it?"
-    tbr "JAC here and there"
-    tbr "JAC near and far"
-    tbr "form phrases like this, that, these, those"
-    tbr "describing things holmes smith 98"
-}
+genericChapter(thisAndThatSection) {}
 
-nChapter("Family") {
-    tbr "talking about your family, saying who things belong to, describing things"
-    tbr "numbers 21-100"
-    tbr "ARC the family"
-    tbr "JAC family members"
-}
+genericChapter(familySection) {}
 
 nChapter("To have and have not") {
     tbr "JAC do you have"
@@ -494,135 +426,17 @@ nChapter("Describing Others") {
     tbr "describing people"
 }
 
-nChapter("Directions") {
-    tbr "where, where in the town center. where are my clothes"
-    tbr "Giving simple directions"
-    tbr "talking about more places around town and their location"
-    tbr "saying what belongs to whom"
-    tbr "ARC around town"
-    tbr "agreement (in sentence)"
-    tbr "JAC common verb forms"
-    tbr "JAC asking a question"
-    tbr "where is it?"
-    tbr "here and there"
-    tbr "near and far"
-    tbr "names of places around town"
-    tbr "where is the town square (center)?"
-    tbr "simple directions"
-    tbr "about more places in town and locations"
-    tbr "what belongs to whom (continued from last chapter)"
-    tbr "ch 27 pp245-252 smith holmes"
-    tbr "go straight"
-    tbr "make a right"
-    tbr "go two blocks"
-    tbr "make a left"
-    tbr "second house on the right"
-    tbr "go north on highway 41"
-    tbr "get off at exit 12"
-    tbr "make a right (head east)"
-    tbr "go to the 4-way stop"
-    tbr "go straight one mile"
-    def directionsVocab = [:]
-    directionsVocab."North" = "Juhyvdlvi"
-    directionsVocab."South" = "Juganowvi"
-    directionsVocab."Up" = "Galvladi"
-    directionsVocab."Center" = "Ayetli"
-    directionsVocab."East" = "Dikalvgvi"
-    directionsVocab."West" = "Wudeligvi"
-    directionsVocab."Down" = "Eladi"
-    directionsVocab."Towards" = "Ididla"
-    directionsVocab."Which way?" = "Hadlv ididla?"
-    directionsVocab."Where?/ Where is it?" = "Hadlv?"
-    directionsVocab."Where did you go?" = "Hadlv hega? "
-    directionsVocab."Where are you heading?" = "Hadlv hwikti?"
-    directionsVocab."We are heading south." = "Juganowv ididla wojigati."
-    directionsVocab."I am going to work." = "Digilvwisdanedii gega."
-    directionsVocab."Here" = "Ahani"
-    directionsVocab."Close" = "Na’v"
-    directionsVocab."Toward" = "Ididla"
-    directionsVocab."Everywhere" = "Nikv’i"
-    directionsVocab."Outside" = "Doyi"
-    directionsVocab."Nowhere" = "Tla ilvdlv"
-    directionsVocab."Upstream" = "Jogididla"
-    directionsVocab."There" = "Vhna’i"
-    directionsVocab."there" = "Age’i Over"
-    directionsVocab."Away from" = "Udliyv’i"
-    directionsVocab."Above" = "Galvladidla"
-    directionsVocab."Below" = "Eladidla"
-    directionsVocab."Somewhere" = "Ilvtlv’i"
-    directionsVocab."Underneath" = "Hawinididla"
-    directionsVocab."Downstream" = "Ge’ididla"
-    directionsVocab."Far" = "Ina"
-    directionsVocab."Where are you going?" = "Hadlv hega?"
-    directionsVocab."When will you go?" = "Hilayv tesi?"
-    directionsVocab."Are you close?" = "Na’vju hedoha?"
-    directionsVocab."Will you go there?" = "Witedoliju?"
-    directionsVocab."Where did they go?" = "Hadlv unenvsei?"
-    directionsVocab."We will go at 6:00" = "Sudali atliilisv dadesi."
-    directionsVocab."When will you be here?" = "Hilayv tiluhji?"
-    directionsVocab."Where did you go?" = "Hadlv hweda?"
-    directionsVocab."He is standing over there" = "Age’i digadoga."
-    directionsVocab."They are singing there." = "Vhnai danihnogi’a."
-    directionsVocab."I am working behind my house." = "Digwenvsv’i ohnididla dagilvwisdaneha."
-    directionsVocab."We (not you) went to the Stomp Grounds saturday night." = "Gatiyo’i wogedolv dodagwidena usv’i jigesv’i."
-    directionsVocab."Him/her and I are walking towards the church." = "Junilawisdi’i didla wosda’i."
-    directionsVocab."They live far away." = "Ina digesv’i waninela."
-    directionsVocab."They travel around everywhere." = "Nikv’i anedolidoho’i."
-    directionsVocab."They will come here (up to this point)." = "Ahani iyv’i dvniluhji."
-    directionsVocab."On top of" = "Gadu’i"
-    directionsVocab."Above" = "Galvladidla"
-    directionsVocab."Below" = "Eladidla"
-    directionsVocab."There" = "Vhna’i"
-    directionsVocab."Over there" = "Age’i"
-    directionsVocab."Right here" = "Ahani"
-    directionsVocab."Far" = "Ina"
-    directionsVocab."Chair/table" = "Gasgilo"
-    directionsVocab."In the middle/between" = "Ayetli"
-    directionsVocab."He/she is standing" = "Gadoga"
-    directionsVocab."I am getting up" = "Gadidi’a"
-    directionsVocab."I woke up" = "Jiyegi"
-    directionsVocab."I am getting ready" = "Gadvnv’isdiha"
-    directionsVocab."I just took a shower" = "Gadawoja"
-    directionsVocab."I brushed my teeth" = "Dejindohgv dejinvgala"
-    directionsVocab."I am ironing" = "Dejitesga"
-    directionsVocab."I went to the bathroom" = "Doyi-edasdi wijiyvha"
-    directionsVocab."I just ate breakfast" = "Sanale-ehi galisdayvhvga"
-    directionsVocab."I put on my clothes" = "Deganiwoja"
-    directionsVocab."I just left" = "Ga’nigi"
-    directionsVocab."I put my shoes on" = "Degalasutlvga"
-    directionsVocab."I combed my hair" = "Galitawoja"
-    directionsVocab."I prepared my meal" = "Alsdayhdi gadvnv’isda"
-    directionsVocab."I just ironed my clothes" = "Dihnawo dejitvla"
-    text "\\begin{multicols}{2}[\\section{First Section}]"
-    vocabulary(directionsVocab, false)
-    text "\\end{multicols}"
+genericChapter(directionsSection) {
     citation("walcpp828594","walc pp82-85,94")
 }
 
-nChapter("At the doctor") {
-    tbr "body - body parts and bodily functions"
-    tbr "ARC My Head Hurts"
-    tbr "ARC the future"
-    tbr "ARC Command forms"
-    tbr "Body parts"
-    tbr "smith holmes pp236-241"
-    tbr "i don't feel well"
-}
+genericChapter(doctorSection) {}
 
 nChapter("To the Beach") {
     tbr "ARC let's go to the beach"
 }
 
-nChapter("Transportation") {
-    tbr "at the bus stop"
-    tbr "at the train station"
-    tbr "at the hotel"
-    tbr "ARC at the hotel"
-    tbr "ARC nationalities"
-    tbr "ARC dual form"
-    tbr "JAC on the road"
-    tbr "JAC bus, train, subway, taxi"
-}
+genericChapter(transportationSection) {}
 
 nChapter("at the airport") {
     tbr "ARC at the airport"
@@ -632,27 +446,9 @@ nChapter("Festivals and Celebrations") {
     tbr "festivals"
 }
 
-nChapter("Weather") {
-    tbr "JAC How is the weather"
-}
+genericChapter(moneySection) {}
 
-nChapter("Money") {
-    tbr "ARC how much is this?"
-    tbr "ARC I would like to change 100"
-    tbr "buying things"
-    tbr  "food"
-    tbr "money"
-    tbr "desire"
-    tbr "JAC in a restaurant"
-    tbr "JAC it costs"
-    tbr "JAC shopping"
-    tbr "JAC house hunting"
-}
-
-nChapter("Clothes and Shopping") {
-    tbr "describe clothes"
-    tbr "buy different clothing items"
-}
+genericChapter(clothesAndShoppingSection) {}
 
 nChapter("Animals") {
     tbr "different animals in the wild"
@@ -662,27 +458,9 @@ genericChapter(colorsSection) {}
 
 genericChapter(shapesSection) {}
 
-genericChapter(weatherSection) {
-    noindent
-    tbr "JAC Weather pp29"
-    tbr "How's the weather today? What's the weather like today?"
-    tbr "It's nice weather."
-    tbr "It's raining."
-    tbr "It's snowing."
-    tbr "It's hot."
-    tbr "It's cold."
-    tbr "It's cool"
-    tbr "It's warm"
-    tbr "The weather is bad today."
-}
+genericChapter(weatherSection) {}
 
-nChapter("Food") {
-    tbr "ARC this is delicious"
-    tbr "ARC verbs"
-    tbr "ARC past tense"
-    tbr "JAC breakfast"
-    tbr "JAC sample menu"
-}
+genericChapter(foodSection) {}
 
 nChapter("on the farm") {
     tbr "driving a tractor"
@@ -693,17 +471,7 @@ nChapter("Visiting Friends") {
     tbr "I am a guest"
 }
 
-nChapter("Yours, Mine, Ours") {
-    tbr "our house, your house, etc"
-    tbr "JAC my, your, his/her"
-    tbr "ARC to have"
-    tbr "ARC possessives"
-    tbr "ARC Possessive noun construction"
-    tbr "JAC it's me"
-    tbr "JAC it's mine"
-    tbr "JAC about me"
-    tbr "JAC to me"
-}
+genericChapter(yoursMineOursSection) {}
 
 nChapter("Questions") {
     tbr "JAC who, what, when, where, how"
@@ -838,7 +606,7 @@ def charts = """\\chapter{Appendix A - Charts}
 \\includepdf{${path}/charts/cnosite/World16x29.pdf}"""
 
 chartsFile.append(charts)
-printCitations()
+
 oldStuffFile.append("""
 %\\includepdf[pages=43-45, trim=55 100 45 250, clip=true]{${path}${books.begCher}}
 %\\includepdf[pages=43-45]{${path}${books.begCher}}
@@ -875,4 +643,7 @@ oldStuffFile.append("""
 
 \\cite{cherokeeNationDownloads}
 """)
+
+printCitations()
+
 

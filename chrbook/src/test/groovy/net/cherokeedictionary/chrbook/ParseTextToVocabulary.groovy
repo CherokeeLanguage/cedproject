@@ -1,19 +1,31 @@
 package net.cherokeedictionary.chrbook
 
-def str = """1. Gadidi’a - I am getting up
-2. Jiyegi - I woke up
-3. Gadvnv’isdiha - I am getting ready
-4. Gadawoja - I just took a shower
-5. Dejindohgv dejinvgala - I brushed my teeth
-6. Dejitesga - I am ironing
-7. Doyi-edasdi wijiyvha - I went to the bathroom
-8. Sanale-ehi galisdayvhvga - I just ate breakfast
-9. Deganiwoja - I put on my clothes
-10. Ga’nigi - I just left
-11. Degalasutlvga - I put my shoes on
-12. Galitawoja - I combed my hair
-13. Alsdayhdi gadvnv’isda - I prepared my meal
-14. Dihnawo dejitvla - I just ironed my clothes"""
+def str = """1. Sidanelv’i - Family
+2. Juniyvwi - Clans
+3. Edoda - Father
+4. Eji - Mother
+5. Etlogi - (paternal) Aunt
+6. Eduji - Uncle
+7. Elisi - Grandma
+8. Eduda - Grandpa (maternal)
+9. Vgido - My sibling (opposite sex)
+10. Josdadahnvtli - My brother (same sex)
+11. Josdadalv’i - My sister (same sex)
+12. Gohusdi agwvni - My cousin
+13. Agwadadujiyv achuja - My nephew
+14. Agwadadujiyv agehyuja - My niece
+15. Ta’line eji - Aunt (maternal)
+16. Enisi - Grandpa (paternal)
+1. Ani-Kawi - Deer Clan
+2. Ani-godagewi - Savannah Clan
+3. Ani-jisgwa - Bird Clan
+4. Ani-sahoni - Blue Clan
+5. Ani-wah(a)ya - Wolf Clan
+6. Ani-wodi - Paint Clan
+7. Ani-gilohi - Long Hair Clan
+8. Digiyvwi - My clan
+9. ____ digiyvwi. - My clan is ____.
+10. ___ dijayvwi. - Your clan is ___."""
 
 str.eachLine {
     def chr = it.substring(it.indexOf(". ") + 2, it.indexOf(" - "))

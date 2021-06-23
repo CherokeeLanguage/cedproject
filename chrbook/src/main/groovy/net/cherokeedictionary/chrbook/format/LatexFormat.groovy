@@ -15,7 +15,7 @@ class LatexFormat extends BaseFormat {
 //        title = title.replaceAll("&", "\\&")
         sb << "\\index{$titleName}\n"
         sb << "\\index{$titleTranslit}\n"
-        sb << "\\chapter{${title}}\n"
+        sb << "\\chapter*{${title}}\n"
 
         return sb
     }
@@ -39,27 +39,36 @@ class LatexFormat extends BaseFormat {
     def dialog = {baseSection, showPhonetic=true ->
         def sb = new StringBuilder()
         sb << "\\subsection{Dialog - ${SyllabaryUtil.tsalagiToSyllabary("analinohesgv")}}\n" //3+ danatlinohesgv
-        sb << "\\begin{tabular}{p{2cm} p{11cm}}\n"
-        baseSection.dialogs.each {
-            sb << SyllabaryUtil.mixedTransliteration(it.name).trim()
-            sb << ":"
-            if (showPhonetic) {
-                sb << "\\newline \\textcolor{red}{${it.name}}:"
+
+
+        baseSection.dialogs.eachWithIndex {it, idx ->
+            if (idx == 0) {
+                sb << "\\begin{tabular}{p{2cm} p{11cm}}\n"
+            }
+            if (it.name) {
+                sb << SyllabaryUtil.mixedTransliteration(it.name).trim()
+                sb << ":"
+                if (showPhonetic) {
+                    sb << "\\newline \\textcolor{red}{${it.name}}:"
+                }
+
+                sb << " & "
+                sb << SyllabaryUtil.mixedTransliteration(it.dialog)
+                sb << "\\newline"
+                if (showPhonetic) {
+                    sb << "\\textcolor{red}{${it.dialog}}"
+                }
+                sb << "\\\\\n"
             }
 
-            sb << " & "
-            sb << SyllabaryUtil.mixedTransliteration(it.dialog)
-            sb << "\\newline"
-            if (showPhonetic) {
-                sb << "\\textcolor{red}{${it.dialog}}"
+            if (idx == baseSection.dialogs.size() - 1) {
+                sb << "\\end{tabular}\n"
+                sb << "\\\\\n"
+                sb << "\\\\\n"
+                sb << "\\\\\n"
             }
-            sb << "\\\\\n"
         }
 
-        sb << "\\end{tabular}\n"
-        sb << "\\\\\n"
-        sb << "\\\\\n"
-        sb << "\\\\\n"
         sb << "\\noindent\\begin{tabular}{p{2cm} p{11cm}}"
         baseSection.dialogs.each {
             sb << "${it.engName}: & ${it.engDialog}\\\\\n"
@@ -77,21 +86,24 @@ class LatexFormat extends BaseFormat {
     // and \columnbreak where you want the split
     def vocabulary = {src, showTitle=true ->
         def sb = new StringBuilder()
+        def translit = ""
+
         if (showTitle) {
             sb << "\\subsection{Vocabulary - ${SyllabaryUtil.mixedTransliteration("dikaneisdi")}}\n"
         }
-        def translit = ""
         sb << "\\begin{minipage}{\\linewidth}\n"
-        sb << "\\begin{tabular}{p{3cm} p{11cm}}\n"
+//        sb << "\\begin{savenotes}\n\\begin{multicols}{2}\n\n"
+        sb << "\\begin{tabular}{p{5cm} p{9cm}}\n"
 
         src.eachWithIndex { key, value, idx ->
             //first item starts new table... as does 25th item which should start a new page
             if (idx > 0 && idx % 20 == 0) {
+//                sb << "\\end{tabular}\\columnbreak\\begin{tabular}{p{3cm} p{11cm}}"
                 sb << "\\end{tabular}\n"
                 sb << "\\end{minipage}\n\n"
                 sb << "\\vfill\\newpage"
                 sb << "\\begin{minipage}{\\linewidth}"
-                sb << "\\begin{tabular}{p{3cm} p{11cm}}\n"
+                sb << "\\begin{tabular}{p{5cm} p{9cm}}\n"
             }
 
             def sb2 = new StringBuilder()
@@ -129,7 +141,7 @@ class LatexFormat extends BaseFormat {
 
         sb << "\\end{tabular}\n"
         sb << "\\end{minipage}\n\n"
-
+//        sb << "\\end{savenotes}"
         return sb
     }
 
