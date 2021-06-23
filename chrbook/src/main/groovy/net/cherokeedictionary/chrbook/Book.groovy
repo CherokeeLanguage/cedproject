@@ -58,8 +58,8 @@ def seasonsSection = new SeasonsSection()
 def weatherSection = new WeatherSection()
 def peopleAndProfessionsSection = new PeopleAndProfessionsSection()
 
-//def path = "/projects/GoogleDriveTimo/Cherokee Umbrella"
-def path = "W:/GOOGLEDRIVE/Cherokee Umbrella"
+def path = "/projects/GoogleDriveTimo/Cherokee Umbrella"
+//def path = "W:/GOOGLEDRIVE/Cherokee Umbrella"
 
 def books = [:]
 books.put("begCher", "/books/BeginningCherokeeSearchable04.pdf")
