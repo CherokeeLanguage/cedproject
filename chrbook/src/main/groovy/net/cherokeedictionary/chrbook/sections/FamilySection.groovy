@@ -34,7 +34,7 @@ class FamilySection extends BaseSection {
         vocabularies."Paint Clan" = "Ani-wodi"
         vocabularies."Long Hair Clan" = "Ani-gilohi"
         vocabularies."My clan" = "Digiyvwi"
-        vocabularies."My clan is " = "\\underline{    } digiyvwi."
-        vocabularies."Your clan is ." = "\\underline{    } dijayvwi."
+        vocabularies."My clan is \\underline{    }" = " digiyvwi."
+        vocabularies."Your clan is \\underline{    }." = " dijayvwi."
     }
 }

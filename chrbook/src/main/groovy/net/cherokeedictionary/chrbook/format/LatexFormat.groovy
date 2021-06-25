@@ -15,7 +15,7 @@ class LatexFormat extends BaseFormat {
 //        title = title.replaceAll("&", "\\&")
         sb << "\\index{$titleName}\n"
         sb << "\\index{$titleTranslit}\n"
-        sb << "\\chapter*{${title}}\n"
+        sb << "\\chapter{${title}}\n"
 
         return sb
     }

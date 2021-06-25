@@ -2,6 +2,7 @@ package net.cherokeedictionary.chrbook
 
 //TODO: adjust vocabulary for words so they're 2 columns
 //TODO: adjust vocabulary so sentences are one column and width is more standard
+//TODO: etymologies of words
 
 import net.cherokeedictionary.chrbook.format.AsciidocFormat
 import net.cherokeedictionary.chrbook.format.LatexFormat
@@ -63,7 +64,7 @@ def path = "W:/GOOGLEDRIVE/Cherokee Umbrella"
 
 def books = [:]
 books.put("begCher", "/books/BeginningCherokeeSearchable04.pdf")
-
+books.put("interCherokee", "/books/intermediate_cherokee_0570773_C0609_howard_gregg_eby_rick.pdf")
 output.append(format.title)
 
 def clearCitations = {
@@ -246,6 +247,47 @@ out(format.chapter("Pronunciation and Syllabary", "", "Pronunciation and Syllaba
 
 walc1 "9-10, 109"
 
+def str = """personal details
+meeting people, saying where you are from, simple sentences with is/are, saying there is/there are, numbers 1-10
+
+how you describe yourself
+ saying your nationality, saying which languages you speak, talking about more than one object, some places around town, what your profession is
+
+this and that
+telling time, asking about opening times, days of the week, numbers 11-20, making phrases and sentences with this that those
+
+our house
+family, saying who things belong to, describing things, numbers 21-100
+
+where is the town center?
+giving simple directions, talking about more places around town and their location, saying what belongs to whom
+
+what did you do?
+ talking about things which happened in the past, means of transport, arabic verbs, saying me,him, them, etc
+
+once upon a time
+saying was/were, is/are not; describing something, saying became, a new type of is/are sentence, saying you had done something
+
+more than one
+ looking for a job in the paper, looking for a flat or a house, talking about more than one person or thing, saying these/those, talking about two people or things
+
+what do you do?
+ saying what you do every day, talking about your interests, saying what you like or dislike, saying what you will do in the future; more about /not/
+
+talking about nationalities
+
+more about describing places, saying who, which, that, passive verbs
+
+recipe, telling people to do something; duals, plurals, possessive
+
+shopping, saying how things are done
+
+sports and leisure activities, talking about colors, describing how or when you have done something
+
+talking about what you hope to do, making suggestions
+
+talking about each, every, all and some, using irregular nouns and adjectives, news from everywhere else"""
+
 genericChapter(greetingsSection) {
     bookSection("Hello","osiyo") {
         text"In Cherokee there is only one way to say 'Good Morning,' 'Good Afternoon,' 'Good Evening,' and Hello; that is by saying ${transl("osiyo")} ${redSpan("(o)siyo")} or the shortened version ${transl("siyo")} ${redSpan("siyo")}."
@@ -363,6 +405,8 @@ genericChapter(timesSection) {
     text "\"1130\" ${SyllabaryUtil.tsalagiToSyllabary("sadu ayetli")} or \"soon\" ${SyllabaryUtil.tsalagiToSyllabary("gilagwuiyusdi")}"
     footnote "Actually the phrase translates to: \"kind of like later\" or in English you'd say \"soon\""
     citation("feelingHiderGregg202Dpp9", "Feeling, Hider, Gregg, Intermediate Cherokee Module 202D pp10")
+    text "\\includepdf[pages={64}]{${path}${books.interCherokee}}"
+
 }
 
 genericChapter(monthsSection) {
@@ -428,6 +472,23 @@ nChapter("Describing Others") {
 
 genericChapter(directionsSection) {
     citation("walcpp828594","walc pp82-85,94")
+    text "\\noindent The verb suffix that means “Going Somewhere.”\\\\\n"
+    text "Rules for use\\\n"
+    text "Attaching “-ega” to the past tense of the verb will produce the meaning of “going somewhere to do something.”\\\\\n"
+    text "So take the remote past suffix and cut the “-v’i” off and add “-ega.”\\\\\n"
+    text "1. Dagilvwisdanelv’i I worked. becomes —> Dagilvwisdanel-ega - I am going to work.\\\\\n"
+    text "2. Agwalsdayvhnv’i I ate a meal. becomes —> Galisdayvhn-ega I am going to eat a meal.\\\\\n"
+    text "3. Unasuhnv’i They fished. becomes —> Anasuhn-ega They are going to fish.\\\\\n\n"
+    text "\\noindent Place of\\\\\n"
+    text "The suffixes -i and -o’i mean “the place of” and it is added to nouns in Cherokee to form place names. Examples shown below.\\\\\n"
+    text "1. Agusa Creek person —>  Guso’i “Muskogee” (Creek Place)\\\\\n"
+    text "2. Kolanv Raven —> Kolanv’i “Big Cove” (Place of the Raven)\\\\\\\\\n\n"
+    text "On or In\\\\\n"
+    text "This noun suffixes -hi and -ohi means“on” or “in” and can also have the meaning of “into” as shown below in the following examples:\\\\\n"
+    text "3. Ama Water—> Amohi Into the water\\\\\n"
+    text "4. Taluja Basket —>  Talujohi Into the basket\\\\\n"
+    text "5. Gasgilo Table —>  Gasgilohi On the table\\\\\n"
+    citation("walcpp88", "walc pp88")
 }
 
 genericChapter(doctorSection) {}
@@ -528,6 +589,54 @@ nChapter("Sort Further") {
     tbr "Present, past, future"
     tbr "a story or part of a story in Cherokee - then analyze it"
     tbr "negative command sentences"
+
+    def othervocab = [:]
+    othervocab."How much does it cost?  What are the stakes?" = "hala jugvwalodi"
+    othervocab."What size do you want?  (What written do you want?)" = "Hala goweli jaduliha?"
+    othervocab."How many do you want? How much do you want?" = "Hala igai jaduliha?"
+    othervocab."David quit his job." = "dawidi usulagoje dulvwistanehv."//HS 133
+    othervocab."That's the way it is!" = "sgidv nusdi"
+    othervocab."(Yes), and several workers in his plant have lost their jobs." = "Ale hilvsgi junilvwistanehi duniyohusi junilvstaneti."//HS 133
+    othervocab."What day of the week is it today?" = "Gado usdi iga atligili?"//HB 107
+    othervocab."What date is it today?" = "Gado usdi asesdi kohi?"//HB 107
+    othervocab."I am glad you all came." = "Galieligi nigada jijilugi."//HB 107
+    othervocab."Won't you sit down?  (anywhere you choose) To one person: (bend yourself on something) To several: (Let's all be sitting around)" = "Halisdutlvga. idanvnida."//HB 107
+    othervocab."Everybody be seated. (in a certain place like at the dinner table)" = "higada ijanvnida."//HB 107
+    othervocab."rain (always a verb)" = "agasga"
+    othervocab."lawyer (arguer for a goal)" = "ginitiyohihi"//HB 132
+    othervocab."marine (on-deep-water-goer)" = "amayihawinianedohi"//HB 132
+    othervocab."minister" = "analijadohvsgi"//HB 132
+    othervocab."musician" = "dinikanogisdisgi"//HB 132
+    othervocab."nurse (caretaker of the ill)" = "junatlvgi dinigitiya"//HB 132
+    othervocab."post" = "digowelisgi kanohatlvsgi"//HB 132
+    othervocab."posts" = "dinowelisgi kanohetlvsgi"//HB 132
+    othervocab."policeman (final catcher)" = "dinidaniyisgi"//HB 132
+    othervocab."repairman (makes it good again)" = "osda igvnehi"//HB 132
+    othervocab."repairman" = "osda iyanvnehi"//HB 132
+    othervocab."sailor (on-water-goer)" = "amaianedohi"//HB 132
+    othervocab."secretary (writer-down)" = "gowelisgi digowelisgi"//HB 132
+    othervocab."secretaries" = "digowelisgi dinowelisgi"//HB 132
+    othervocab."soldier" = "aniyosgi"//HB 132
+    othervocab."teacher" = "dinadeyohvsgi"//HB 132
+    othervocab."typist" = "dini gesdisgi"//HB 132
+    othervocab."When do they get off work? (each day)" = "Halayv anisulagogo junilvwistanehi?"//HB 132
+    othervocab."When do you stop work? (temporarily, for time off or for vacation)" = "Halayv tohtedoli?"//HB 132
+    othervocab."John has a new job." = "Jani aje julvwisdaniti uha."//HB 132
+    othervocab."I hear he is working very hard." = "Gadvgi stayosv dulvwistanehv"//HB 132
+    othervocab."They say Mark has been transferred." = "ujatina dulvwistane anadi Maga."//HB 132
+//    othervocab."" = ""
+//    othervocab."" = ""
+//    othervocab."" = ""
+//    othervocab."" = ""
+//    othervocab."" = ""
+//    othervocab."" = ""
+//    othervocab."" = ""
+//    othervocab."" = ""
+//    othervocab."" = ""
+//    othervocab."" = ""
+//    othervocab."" = ""
+//    othervocab."" = ""
+    vocabulary(othervocab)
 }
 
 def notesName = "NOTES:"
@@ -548,8 +657,9 @@ wordBreakdown("${transl("dohi")} and ${transl("osi")} Tohi and Osi", "wordBreakd
 }
 
 wordBreakdown("Notes on the meanings of the days of the week", "daysOfWeekMeaning") {
-    tbr "Notes on the meanings of the days of the week:"
+    tbr "Notes on the meanings of the days of the week:\\\\\\\\\n"
     citation("walc1pp46", "We Are Learning Cherokee pp46")
+
     tbr"${textf("Unadodagwonvi", "i")} - When they have completed doing something all day"
     tbr"${textf("Ta’line iga", "i")} - The second day"
     tbr "${textf("Jo’ine iga", "i")} - The third day"
@@ -573,6 +683,7 @@ answerKeyPrint()
 //pdf("/cherokee/grammar/evaG/MatrixSay_Persons.pdf", "", grammarFile)
 walc1("66,68-79,82,103-105", grammarFile)
 walc1("14-18, 20-27", grammarFile)
+
 
 
 //on mac
