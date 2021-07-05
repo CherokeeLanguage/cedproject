@@ -3,6 +3,8 @@ package net.cherokeedictionary.chrbook.sections
 import net.cherokeedictionary.chrbook.format.LatexFormat
 import net.cherokeedictionary.transliteration.SyllabaryUtil
 
+import static net.cherokeedictionary.chrbook.BookFormatter.*
+
 class BaseSection {
     def title = ""
     def titleTranslit = ""

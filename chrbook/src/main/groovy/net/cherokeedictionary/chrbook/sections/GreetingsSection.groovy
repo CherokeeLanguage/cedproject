@@ -1,7 +1,5 @@
 package net.cherokeedictionary.chrbook.sections
 
-import net.cherokeedictionary.chrbook.BookFormatter
-
 class GreetingsSection extends BaseSection {
     GreetingsSection() {
         super()

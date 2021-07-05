@@ -4,8 +4,8 @@ package net.cherokeedictionary.chrbook
 //TODO: adjust vocabulary so sentences are one column and width is more standard
 //TODO: etymologies of words
 
-import net.cherokeedictionary.chrbook.format.AsciidocFormat
-import net.cherokeedictionary.chrbook.format.LatexFormat
+import static net.cherokeedictionary.chrbook.BookFormatter.*
+
 import net.cherokeedictionary.chrbook.sections.AddressAndEmailSection
 import net.cherokeedictionary.chrbook.sections.ClothesAndShoppingSection
 import net.cherokeedictionary.chrbook.sections.ColorsSection
@@ -32,191 +32,6 @@ import net.cherokeedictionary.chrbook.util.Vocabulary
 import net.cherokeedictionary.transliteration.SyllabaryUtil
 import net.cherokeedictionary.chrbook.sections.GreetingsSection
 
-//https://www.overleaf.com/learn/latex/Bold,_italics_and_underlining
-//def format = new AsciidocFormat()
-def format = new LatexFormat()
-def extension = format.extension
-//def bindMap = new LinkedHashMap<String, String>()
-def citationIndex = 0
-def citationMap = new LinkedHashMap<String, String>()
-def answerKey = new LinkedHashMap<String, String>()
-
-def output = new File("bookOutput/book.${extension}")
-def bibliography = new File("bookOutput/bibliography.${extension}")
-def readerFile = new File("bookOutput/reader.${extension}")
-def answerFile = new File("bookOutput/answerGuide.${extension}")
-def oldStuffFile = new File("bookOutput/oldresearch.${extension}")
-def appendiciesFile = new File("bookOutput/appendicies.${extension}")
-def chartsFile = new File("bookOutput/charts.${extension}")
-def grammarFile = new File("bookOutput/grammar.${extension}")
-
-output.write("")
-bibliography.write("")
-readerFile.write("")
-answerFile.write("")
-oldStuffFile.write("")
-appendiciesFile.write("")
-chartsFile.write("")
-grammarFile.write("")
-
-//def path = "/projects/GoogleDriveTimo/Cherokee Umbrella"
-def path = "W:/GOOGLEDRIVE/Cherokee Umbrella"
-
-def books = [:]
-books.put("begCher", "/books/BeginningCherokeeSearchable04.pdf")
-books.put("interCherokee", "/books/intermediate_cherokee_0570773_C0609_howard_gregg_eby_rick.pdf")
-output.append(format.title)
-
-def clearCitations = {
-    citationIndex = 0
-    citationMap = new LinkedHashMap<String, String>()
-}
-
-def out = {sb ->
-    output.append(sb.toString())
-}
-
-def chapter = { baseSection, closure ->
-    def sb = new StringBuilder()
-    def titleName = baseSection.title
-    def titleTranslit = SyllabaryUtil.tsalagiToSyllabary(baseSection.titleTranslit)
-    def title = "${titleName} - ${titleTranslit}"
-    sb << format.chapter(titleName, titleTranslit, title)
-
-    output.append(sb.toString())
-    closure()
-}
-
-def whatYouWillLearn = {baseSection ->
-    def objectives = baseSection.topics
-
-    output.append(format.whatYouWillLearn(objectives).toString())
-}
-
-def dialog = {baseSection, showPhonetic=true ->
-    out(format.dialog(baseSection, showPhonetic))
-}
-
-def vocabulary = {src, showTitle=true ->
-    out(format.vocabulary(src, showTitle))
-}
-
-def transl = {
-    return format.transl(it)
-}
-
-def bookSection = { title, phonetic, closure ->
-    out(format.bookSection(title, phonetic))
-    closure()
-}
-
-def footnote = {src, linkTitle=null, link=null, isInternal=true ->
-    out(format.footnote(src, linkTitle, link, isInternal))
-}
-
-def br = {
-    output.append(format.br())
-}
-
-def pre = {
-    output << format.pre()
-}
-
-def text = {
-    output.append(it)
-}
-
-def tbr = {
-    text("${it}\\\\\n")
-}
-
-def redSpan = {
-    return format.redSpan(it)
-}
-
-def exercise = {displayText, answers, displaySyllabary=true ->
-    if (answers) {
-        answerKey."${displayText}" = answers
-    }
-
-    out(format.exercise(displayText, answers, displaySyllabary))
-}
-
-def citation = {title, src ->
-    citationIndex++
-    citationMap[title] = src
-
-    out(format.citation(title))
-}
-
-def printCitations = {
-    bibliography.append(format.printCitations(citationMap).toString())
-}
-
-def wordBreakdown = {title, anchor, closure ->
-    out(format.wordBreakdown(title, anchor))
-    closure()
-}
-
-def answerKeyPrint = {
-    answerFile.append(format.answerKeyPrint(answerKey).toString())
-}
-
-def reader = {
-    readerFile.append(format.reader(answerKey).toString())
-}
-
-def textf = {src, style ->
-    return format.textf(src, style)
-}
-
-def genericChapter = {baseSection, closure ->
-    chapter(baseSection) {
-        if (baseSection.topics.size() > 0) {
-            whatYouWillLearn(baseSection)
-            text "\\newpage"
-        }
-
-        if (baseSection.dialogs.size() > 0) {
-            dialog(baseSection)
-            text "\\vfill"
-            text "\\newpage"
-        }
-
-        if (baseSection.vocabularies) {
-            vocabulary(baseSection.vocabularies)
-        }
-
-        closure()
-    }
-}
-
-def sent = {en, chr ->
-    output.append("${en}\\newline ${redSpan(transl(chr))}")
-}
-
-def pdf = {fileName, pages, appender ->
-    def pagez = pages ? "[pages={${pages}}]" : ""
-    appender.append("\\includepdf${pagez}{${path}${fileName}}\n")
-}
-
-def walc1 = {pages, appender=output ->
-    pdf("/sort/timo/walc1.pdf", pages, appender)
-}
-
-def noindent = {appender=output ->
-    appender.append("\\noindent")
-}
-
-def nChapter = {title, closure ->
-    def sb = new StringBuilder()
-    sb << format.chapter(title, title, title)
-
-    output << sb.toString()
-
-    closure()
-}
-
 def greetingsSection = new GreetingsSection()
 def whatIsYourNameSection = new WhatIsYourNameSection()
 def numbersSection = new NumbersSection()
@@ -241,52 +56,11 @@ def clothesAndShoppingSection = new ClothesAndShoppingSection()
 def foodSection = new FoodSection()
 def yoursMineOursSection = new YoursMineOursSection()
 
-clearCitations
+clearCitations()
 
 out(format.chapter("Pronunciation and Syllabary", "", "Pronunciation and Syllabary - "))
 
-walc1 "9-10, 109"
-
-def str = """personal details
-meeting people, saying where you are from, simple sentences with is/are, saying there is/there are, numbers 1-10
-
-how you describe yourself
- saying your nationality, saying which languages you speak, talking about more than one object, some places around town, what your profession is
-
-this and that
-telling time, asking about opening times, days of the week, numbers 11-20, making phrases and sentences with this that those
-
-our house
-family, saying who things belong to, describing things, numbers 21-100
-
-where is the town center?
-giving simple directions, talking about more places around town and their location, saying what belongs to whom
-
-what did you do?
- talking about things which happened in the past, means of transport, arabic verbs, saying me,him, them, etc
-
-once upon a time
-saying was/were, is/are not; describing something, saying became, a new type of is/are sentence, saying you had done something
-
-more than one
- looking for a job in the paper, looking for a flat or a house, talking about more than one person or thing, saying these/those, talking about two people or things
-
-what do you do?
- saying what you do every day, talking about your interests, saying what you like or dislike, saying what you will do in the future; more about /not/
-
-talking about nationalities
-
-more about describing places, saying who, which, that, passive verbs
-
-recipe, telling people to do something; duals, plurals, possessive
-
-shopping, saying how things are done
-
-sports and leisure activities, talking about colors, describing how or when you have done something
-
-talking about what you hope to do, making suggestions
-
-talking about each, every, all and some, using irregular nouns and adjectives, news from everywhere else"""
+walc1("9-10, 109")
 
 genericChapter(greetingsSection) {
     bookSection("Hello","osiyo") {
@@ -303,6 +77,8 @@ genericChapter(greetingsSection) {
         footnote("We will discuss the plurality prefixes (d-) in the section ", "Word Breakdown - Plurality Prefixes", "wordBreakdownPluralityPrefixes")
         exercise("1. Goodbye, Mary and John. 2. Goodbye, Titus. 3. Goodbye, Daniel. 4. Goodbye, Mary, John, Susan, and Mark.", "1. Dodadagohvi, Meli ale Jani. 2. Donadagohvi, Dadasi 3. Donadagohvi, Danili 4. Dodadagohvi, Meli, Jani, Susani, ale Maga", false)
     }
+
+    pdf(books.get("arc"), "27", output, "15 100 5 305")
 }
 
 genericChapter(whatIsYourNameSection) {}
@@ -332,9 +108,36 @@ nChapter("Do you speak Tsalagi?") {
     tbr "other languages"
 }
 
-genericChapter(telephoneSection) {}
+genericChapter(telephoneSection) {
+    text "My telephone number is..."
+    text "their telephone number is..."
+    text "try number..."
+    text "is there a phone here?"
+    text "do you have a phone?"
+    text "the line is busy"
+    text "there is no answer"
+    text "may i speak with >>>>?"
+    text "speaking"
+    text "this is titus speaking."
+    text "can you go text bob?"
+    text "text bob and tell him I need..."
+    text "what is <name><your><my> number?"
+}
 
-genericChapter(addressAndEmailSection) {}
+genericChapter(addressAndEmailSection) {
+    text "I live at <my address is....>"
+    text "where does .... live?"
+    text "He lives in this town"
+    text "she lives at ...."
+    text "our address is...."
+    text "we live at..."
+    text "my room number is ..."
+    text "do you have a pen(cil)"
+    text "do you have a stamp?"
+    text "do you have an envelope"
+    text "where is the post office"
+    text "how long will it take to get there?"
+}
 
 genericChapter(numbersSection) {
     bookSection("Cardinal Numbers", "") {
@@ -355,10 +158,19 @@ genericChapter(numbersSection) {
         text "Ordinal numbers are very similar to the regular numbers in Cherokee. To make a number into an ordinal number, most of the time you will only add the suffix ${redSpan("-ne")} to the end of the word. For some the suffix ${redSpan("-hine")} (seen on 1st) and the suffix ${redSpan("-sine")} (seen on 11th - 19th) needs to be added to change the number into an ordinal."
         citation("walc141", "WALC1 pp41")
     }
+
+    text "counters"
+    text "1 cat"
+    text "2 pencils"
+    text "animate counter"
+    text "inanimate counter"
+
 }
 
 genericChapter(datesSection) {
     footnote("Discussed in the section ", "Days Of Week Meanings", "daysOfWeekMeaning")
+    text "the civil war was in 1861"
+    text "ny worlds fair took place in 1939"
 }
 
 genericChapter(timesSection) {
@@ -430,36 +242,7 @@ genericChapter(seasonsSection) {
     citation("walcpp49", "walc pp49")
 }
 
-genericChapter(peopleAndProfessionsSection) {
-    bookSection("Attaching Pronoun Prefixes To Nouns", "") {
-        text "In Cherokee, pronoun prefixes are attached to a noun just as they are in a verb. Pronouns are not separated from the noun and verb as they are in English. The following examples will begin to demonstrate how to attach set A and set B prefixes onto nouns."
-        citation("walcpp53","walc pp53")
-        text "\\\\\n"
-        text "\\newline \\noindent Set A Prefixes:"
-        text "\\begin{itemize}\n"
-        text "\\item A-ganakti —> He/she is a doctor\n"
-        text "\\item Ji-ganakti —> I am a doctor\n"
-        text "\\item Ani-ganakti —> They are doctors\n"
-        text "\\item Hi-ganakti —-> You are a doctor\n"
-        text "\\item A-yvwi —> A person or He/she is a person\n"
-        text "\\item Ji-yvwi —> I am a person\n"
-        text "\\item Hi-yvwi —> You are a person\n"
-        text "\\item Ani-yvwi —> They are people\n"
-        text "\\end{itemize}\n"
-        text "\n"
-        text "\\noindent Set B Prefixes:\n"
-        text "\\begin{itemize}\n"
-        text "\\item U-gvwiyuhi —> He/she is a chief/president\n"
-        text "\\item Agi-gvwiyuhi —> I am a chief/president\n"
-        text "\\item Ja-gvwiyuhi —> You are a chief/president\n"
-        text "\\item Uni-gvwiyuhi —> They are chiefs/presidents\n"
-        text "\\end{itemize}\n"
-    }
-}
-
 genericChapter(thisAndThatSection) {}
-
-genericChapter(familySection) {}
 
 nChapter("To have and have not") {
     tbr "JAC do you have"
@@ -540,6 +323,40 @@ nChapter("Questions") {
     tbr "JAC how many"
     tbr "ARC question words"
 }
+
+genericChapter(familySection) {}
+
+genericChapter(peopleAndProfessionsSection) {
+    bookSection("Attaching Pronoun Prefixes To Nouns", "") {
+        text "In Cherokee, pronoun prefixes are attached to a noun just as they are in a verb. Pronouns are not separated from the noun and verb as they are in English. The following examples will begin to demonstrate how to attach set A and set B prefixes onto nouns."
+        citation("walcpp53","walc pp53")
+        text "\\\\\n"
+        text "\\newline \\noindent Set A Prefixes:"
+        text "\\begin{itemize}\n"
+        text "\\item A-ganakti —> He/she is a doctor\n"
+        text "\\item Ji-ganakti —> I am a doctor\n"
+        text "\\item Ani-ganakti —> They are doctors\n"
+        text "\\item Hi-ganakti —-> You are a doctor\n"
+        text "\\item A-yvwi —> A person or He/she is a person\n"
+        text "\\item Ji-yvwi —> I am a person\n"
+        text "\\item Hi-yvwi —> You are a person\n"
+        text "\\item Ani-yvwi —> They are people\n"
+        text "\\end{itemize}\n"
+        text "\n"
+        text "\\noindent Set B Prefixes:\n"
+        text "\\begin{itemize}\n"
+        text "\\item U-gvwiyuhi —> He/she is a chief/president\n"
+        text "\\item Agi-gvwiyuhi —> I am a chief/president\n"
+        text "\\item Ja-gvwiyuhi —> You are a chief/president\n"
+        text "\\item Uni-gvwiyuhi —> They are chiefs/presidents\n"
+        text "\\end{itemize}\n"
+    }
+}
+
+reader()
+walc1("36-37,91-92,95, 108", readerFile)
+
+answerKeyPrint()
 
 nChapter("Sort Further") {
     tbr "JAC nouns and noun particles"
@@ -650,8 +467,8 @@ bookSection("Dialect Breakdown", "Otali - Giduwa") {
 
 wordBreakdown("${transl("dohi")} and ${transl("osi")} Tohi and Osi", "wordBreakdownTohiOsi") {
     text "Altman and Belt (pp91-92) have this to say about Tohi and Osi:Tohi is a Cherokee morpheme that indicates the state in which nature is flowing at its appropriate pace and everything is as it should be. This fundamental concept is used in greetings and responses (${redSpan("Tohigwatsv?")} and ${redSpan("Tohigwu.")}), and in a variety of other instances and constructions that indicate an underlying concern with the notion that things be flowing well in the Cherokee world. Tohi can be glossed variously as \"well,\" \"peaceful,\" \"unhurried,\" and \"health.\" In the Cherokee speakers' view, if the state of tohi becomes disrupted there can be disastrous consequences, and communities that are disrupted in this way can be dangerous or unhealthy places to live."
-    br
-    br
+    br()
+    br()
     text "In addition to and as an adjunct to tohi, the concept of osi describes the proper state of the individual person. Visualized as upright, facing forward, and resting on a single point of balance, osi is also used in greetings and replies (${redSpan("osigwatsv?")} and ${redSpan("osigwu.")}), and in other contexts that indicate that the notion of an individual’s state of being is crucial in ensuring that all is flowing well in the larger Cherokee world. Osi is properly understood as referring to the state of neutrality and balance, but it is most often glossed as \"good.\" If individuals are out of balance, they can cause problems in the larger system."
     citation("altmanBelt90-98", "Altman, H.M., & Belt, T.N. (2008). Reading History: Cherokee History through a Cherokee Lens. Native South 1, 90-98. http://doi.org/10.1353/nso.0.0003")
 }
@@ -670,11 +487,6 @@ wordBreakdown("Notes on the meanings of the days of the week", "daysOfWeekMeanin
     tbr "${textf("Unadodagwasgv’i", "i")} - The day they do something all day."
 }
 
-reader()
-walc1("36-37,91-92,95, 108", readerFile)
-
-answerKeyPrint()
-
 //pdf("/cherokee/grammar/evaG/Pronoun Prefixes A and B hand.pdf", "", grammarFile)
 //pdf("/cherokee/grammar/evaG/Say It_Persons.pdf", "", grammarFile)
 //pdf("/cherokee/grammar/evaG/Say It_Vtab.pdf", "", grammarFile)
@@ -684,7 +496,7 @@ answerKeyPrint()
 walc1("66,68-79,82,103-105", grammarFile)
 walc1("14-18, 20-27", grammarFile)
 
-
+nChapter("JAC public notices and signs") {}
 
 //on mac
 def charts = """\\chapter{Appendix A - Charts}
@@ -755,6 +567,6 @@ oldStuffFile.append("""
 \\cite{cherokeeNationDownloads}
 """)
 
+nChapter("JAC summary of japanese grammar") {}
+
 printCitations()
-
-

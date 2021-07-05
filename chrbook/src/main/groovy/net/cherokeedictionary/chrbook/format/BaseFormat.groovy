@@ -6,7 +6,7 @@ class BaseFormat {
     def extension = ""
     def title = ""
 
-    def transl = {
+    def transl(it) {
         SyllabaryUtil.tsalagiToSyllabary(it)
     }
 }

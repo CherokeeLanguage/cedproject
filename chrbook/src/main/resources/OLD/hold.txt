@@ -1,0 +1,103 @@
+
+/*
+%{--<g:render template="gsf/sections/titleTOC" model="[tableOfContents: tableOfContents]"/>--}%
+%{--<pre>
+Dedication
+From The Author
+</pre>
+<pre>
+Greetings
+Do you speak Cherokee?
+    ${greetingsSection.linkTitle}
+${whatIsYourNameSection.linkTitle}
+Where are you from?
+I\d like you to meet
+Do you understand?
+</pre>--}%
+%{--<g:render template="gsf/layout/chapterLayout" model="[baseSection: greetingsSection, isPrintVersion:isPrintVersion, showPhonetic:true]">--}%
+%{--    <g:render template="gsf/sections/hello" model="[showExercise:true]"/>--}%
+%{--    <br/>--}%
+%{--    <g:render template="gsf/sections/goodbye" model="[showExercise:true]"/>--}%
+%{--</g:render>--}%
+%{--<g:render template="gsf/chapters/WhatIsYourName" model="[baseSection: whatIsYourNameSection, isPrintVersion:isPrintVersion]"/>
+<pre>
+Numbers and Money
+Cardinal Numbers
+Ordinal Numbers
+Money
+</pre>
+<g:render template="gsf/chapters/Numbers" model="[baseSection: numbersSection, isPrintVersion:isPrintVersion]"/>
+<pre>
+On the Telephone
+
+Address and Email
+
+Dates, Months, and Days of Week
+</pre>
+<g:render template="gsf/chapters/Dates" model="[baseSection: datesSection, isPrintVersion:isPrintVersion]"/>
+<g:render template="gsf/chapters/Months" model="[baseSection: monthsSection, isPrintVersion:isPrintVersion]"/>
+<g:render template="gsf/chapters/Times" model="[baseSection: timesSection, isPrintVersion:isPrintVersion]"/>
+<pre>
+Special Occasions
+
+Describing Things</pre>
+<g:render template="gsf/chapters/Colors" model="[baseSection: colorsSection, isPrintVersion:isPrintVersion]"/>
+<pre>Clothes and Shopping
+Describing Others
+</pre>
+Shapes
+<g:render template="gsf/chapters/Shapes" model="[baseSection: shapesSection, isPrintVersion:isPrintVersion]"/>
+<pre>
+Food, eating, drinking
+Breakfast, Coffee, Lunch, Dinner, Dating
+are you hungry
+
+Directions, where is something, directions around town
+Weather, Seasons
+
+Profession
+Body Parts \& Functions
+5 senses
+Emotions
+
+Seasons
+This and That
+Family
+
+This \& That
+Possessive
+Animals
+
+On the farm
+Visiting Friends
+Verb Conjugation
+Yours, Mine, Ours
+At the doctor
+Around the House
+At the beach
+Transportation
+Festivals and Celebrations
+At the airport
+
+I want.  I see
+Questions
+Pronouns
+Singular/Plural
+Derived Nouns
+Articles and Conversion
+prepositions
+conjunctions
+interjections
+negation
+To Have and Have Not
+Advanced Verb
+Clitics
+</pre>
+
+Grammar Summary<br/>
+<g:render template="gsf/sections/dialect"/>
+<g:render template="gsf/sections/tohiDohiWordBreakdownQuote"/>
+<g:render template="gsf/sections/daysOfWeekMeaning"/>
+<br/><br/>
+<br/>Charts<br/>
+*/

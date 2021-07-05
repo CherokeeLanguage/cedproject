@@ -1,103 +1,207 @@
+ARC
+personal details
+meeting people, saying where you are from, simple sentences with is/are, saying there is/there are, numbers 1-10
 
-/*
-%{--<g:render template="gsf/sections/titleTOC" model="[tableOfContents: tableOfContents]"/>--}%
-%{--<pre>
-Dedication
-From The Author
-</pre>
-<pre>
-Greetings
-Do you speak Cherokee?
-    ${greetingsSection.linkTitle}
-${whatIsYourNameSection.linkTitle}
-Where are you from?
-I\d like you to meet
-Do you understand?
-</pre>--}%
-%{--<g:render template="gsf/layout/chapterLayout" model="[baseSection: greetingsSection, isPrintVersion:isPrintVersion, showPhonetic:true]">--}%
-%{--    <g:render template="gsf/sections/hello" model="[showExercise:true]"/>--}%
-%{--    <br/>--}%
-%{--    <g:render template="gsf/sections/goodbye" model="[showExercise:true]"/>--}%
-%{--</g:render>--}%
-%{--<g:render template="gsf/chapters/WhatIsYourName" model="[baseSection: whatIsYourNameSection, isPrintVersion:isPrintVersion]"/>
-<pre>
-Numbers and Money
-Cardinal Numbers
-Ordinal Numbers
-Money
-</pre>
-<g:render template="gsf/chapters/Numbers" model="[baseSection: numbersSection, isPrintVersion:isPrintVersion]"/>
-<pre>
-On the Telephone
+how you describe yourself
+ saying your nationality, saying which languages you speak, talking about more than one object, some places around town, what your profession is
 
-Address and Email
+this and that
+telling time, asking about opening times, days of the week, numbers 11-20, making phrases and sentences with this that those
 
-Dates, Months, and Days of Week
-</pre>
-<g:render template="gsf/chapters/Dates" model="[baseSection: datesSection, isPrintVersion:isPrintVersion]"/>
-<g:render template="gsf/chapters/Months" model="[baseSection: monthsSection, isPrintVersion:isPrintVersion]"/>
-<g:render template="gsf/chapters/Times" model="[baseSection: timesSection, isPrintVersion:isPrintVersion]"/>
-<pre>
-Special Occasions
+our house
+family, saying who things belong to, describing things, numbers 21-100
 
-Describing Things</pre>
-<g:render template="gsf/chapters/Colors" model="[baseSection: colorsSection, isPrintVersion:isPrintVersion]"/>
-<pre>Clothes and Shopping
-Describing Others
-</pre>
-Shapes
-<g:render template="gsf/chapters/Shapes" model="[baseSection: shapesSection, isPrintVersion:isPrintVersion]"/>
-<pre>
-Food, eating, drinking
-Breakfast, Coffee, Lunch, Dinner, Dating
-are you hungry
+where is the town center?
+giving simple directions, talking about more places around town and their location, saying what belongs to whom
 
-Directions, where is something, directions around town
-Weather, Seasons
+what did you do?
+ talking about things which happened in the past, means of transport, arabic verbs, saying me,him, them, etc
 
-Profession
-Body Parts \& Functions
-5 senses
-Emotions
+once upon a time
+saying was/were, is/are not; describing something, saying became, a new type of is/are sentence, saying you had done something
 
-Seasons
-This and That
-Family
+more than one
+ looking for a job in the paper, looking for a flat or a house, talking about more than one person or thing, saying these/those, talking about two people or things
 
-This \& That
-Possessive
-Animals
+what do you do?
+ saying what you do every day, talking about your interests, saying what you like or dislike, saying what you will do in the future; more about /not/
 
-On the farm
-Visiting Friends
-Verb Conjugation
-Yours, Mine, Ours
-At the doctor
-Around the House
-At the beach
-Transportation
-Festivals and Celebrations
-At the airport
+talking about nationalities
 
-I want.  I see
-Questions
-Pronouns
-Singular/Plural
-Derived Nouns
-Articles and Conversion
-prepositions
-conjunctions
-interjections
-negation
-To Have and Have Not
-Advanced Verb
-Clitics
-</pre>
+more about describing places, saying who, which, that, passive verbs
 
-Grammar Summary<br/>
-<g:render template="gsf/sections/dialect"/>
-<g:render template="gsf/sections/tohiDohiWordBreakdownQuote"/>
-<g:render template="gsf/sections/daysOfWeekMeaning"/>
-<br/><br/>
-<br/>Charts<br/>
-*/
+recipe, telling people to do something; duals, plurals, possessive
+
+shopping, saying how things are done
+
+sports and leisure activities, talking about colors, describing how or when you have done something
+
+talking about what you hope to do, making suggestions
+
+talking about each, every, all and some, using irregular nouns and adjectives, news from everywhere else
+
+
+JAC
+syllabary
+accent
+sounds
+vowels, consonants, etc
+
+days and months
+numbers 1-10
+colors
+north, south, east, west
+
+greetings
+how's the weather?
+
+do you have?
+in a restaurant
+
+pronouns
+to be or not to be
+desu
+
+common verb forms
+asking a question I
+where is it?
+here and there
+near and far
+
+nouns and noun particles
+common adjective forms
+
+plain or polite
+to construct the polite form of a verb
+the -te and -ta forms
+various usages of the -te form
+
+my,your, his, her, etc
+some comparisons
+asking a question II
+
+to have and have not
+also
+
+i have been to...
+sometimes I go...
+i can, I am able to...
+i've decided to...
+
+do you speak japanese?
+please speak a little slower
+thanks!
+
+this and that
+not
+isn't it, aren't you?
+
+it's me, etc
+it's mine, etc
+about me, etc
+to me, etc
+the modifiers
+the noun-maker /no/
+
+hello how are you?
+I'd like you to meet...
+what's new?
+see you soon
+
+have you two met/
+glad to have met you
+
+numbers
+more numbers
+pronunciation of numbers before certain counters
+ordinals
+two and two
+
+it costs...
+the telephone number is...
+my address is...
+some dates
+
+what time is it?
+the time is now....
+when will you come?
+it's time
+
+ago
+morning, noon, and night
+this week, next month, etc
+expressions of past, presentt, and future
+
+days of the week
+days of the month
+waht's the date today?
+months of the year
+the seasons
+
+iku to go
+a few action phases
+
+they say that...
+i have to, I must
+something to drink
+
+a little and a lot
+too much
+more or less
+enough and some more
+
+I want to...
+I intend to...
+it is supposed to ...
+something, everything, nothing
+
+of course! It's a pity! it' doesn't matter!
+the same
+already
+
+i like it, it's good
+i don't like it, it's bad
+
+who? what when where how
+how much/
+how many?
+
+some, someone, something
+once, twice
+up to
+i need it, it's necessary
+i feel like
+at the home of
+
+on the road
+bus, train, subway, taxi
+writing and mailing letters and faxes
+telephoning
+
+what's your name?
+where are you from?
+how old are you?
+professions
+family matters
+
+shopping
+
+breakfast
+a sample menu
+
+in, on, under
+if, when
+without
+house hunting
+
+to come
+to say
+to do
+i'm a stranger here
+
+the most common verb forms
+meeting an old friend
+the most common verbs and verb phrases
+public notices and signs
+
+summary of japanese grammar

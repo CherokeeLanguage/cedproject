@@ -4,11 +4,9 @@ import net.cherokeedictionary.chrbook.format.LatexFormat
 import net.cherokeedictionary.transliteration.SyllabaryUtil
 
 class BookFormatter {
-    //https://www.overleaf.com/learn/latex/Bold,_italics_and_underlining
-//def format = new AsciidocFormat()
     static def format = new LatexFormat()
     static def extension = format.extension
-//def bindMap = new LinkedHashMap<String, String>()
+    //def bindMap = new LinkedHashMap<String, String>()
     static def citationIndex = 0
     static def citationMap = new LinkedHashMap<String, String>()
     static def answerKey = new LinkedHashMap<String, String>()
@@ -22,20 +20,37 @@ class BookFormatter {
     static def chartsFile = new File("bookOutput/charts.${extension}")
     static def grammarFile = new File("bookOutput/grammar.${extension}")
 
-//def path = "/projects/GoogleDriveTimo/Cherokee Umbrella"
+    //def path = "/projects/GoogleDriveTimo/Cherokee Umbrella"
     static def path = "W:/GOOGLEDRIVE/Cherokee Umbrella"
 
-    def books = [:]
-    def clearCitations = {
+    static def books = [:]
+
+    static {
+        output.write("")
+        bibliography.write("")
+        readerFile.write("")
+        answerFile.write("")
+        oldStuffFile.write("")
+        appendiciesFile.write("")
+        chartsFile.write("")
+        grammarFile.write("")
+        books.put("begCher", "/books/BeginningCherokeeSearchable04.pdf")
+        books.put("interCherokee", "/books/intermediate_cherokee_0570773_C0609_howard_gregg_eby_rick.pdf")
+        books.put("arc", "/OtherLanguageReference/132903393-Teach-Yourself-Arabic.pdf")
+        books.put("jfe", "/OtherLanguageReference/43956948-Japanese-for-Everyone-GAKKEN-eBook.pdf")
+        output.append(format.title)
+    }
+
+    static def clearCitations() {
         citationIndex = 0
         citationMap = new LinkedHashMap<String, String>()
     }
 
-    def out = {sb ->
+    static def out(sb) {
         output.append(sb.toString())
     }
 
-    def chapter = { baseSection, closure ->
+    static def chapter( baseSection, closure) {
         def sb = new StringBuilder()
         def titleName = baseSection.title
         def titleTranslit = SyllabaryUtil.tsalagiToSyllabary(baseSection.titleTranslit)
@@ -46,54 +61,54 @@ class BookFormatter {
         closure()
     }
 
-    def whatYouWillLearn = {baseSection ->
+    static def whatYouWillLearn(baseSection) {
         def objectives = baseSection.topics
 
         output.append(format.whatYouWillLearn(objectives).toString())
     }
 
-    def dialog = {baseSection, showPhonetic=true ->
+    static def dialog(baseSection, showPhonetic=true) {
         out(format.dialog(baseSection, showPhonetic))
     }
 
-    def vocabulary = {src, showTitle=true ->
+    static def vocabulary(src, showTitle=true) {
         out(format.vocabulary(src, showTitle))
     }
 
-    def transl = {
+    static def transl(it) {
         return format.transl(it)
     }
 
-    def bookSection = { title, phonetic, closure ->
+    static def bookSection( title, phonetic, closure) {
         out(format.bookSection(title, phonetic))
         closure()
     }
 
-    def footnote = {src, linkTitle=null, link=null, isInternal=true ->
+    static def footnote(src, linkTitle=null, link=null, isInternal=true) {
         out(format.footnote(src, linkTitle, link, isInternal))
     }
 
-    def br = {
+    static def br() {
         output.append(format.br())
     }
 
-    def pre = {
+    static def pre() {
         output << format.pre()
     }
 
-    def text = {
+    static def text(it) {
         output.append(it)
     }
 
-    def tbr = {
+    static def tbr(it) {
         text("${it}\\\\\n")
     }
 
-    def redSpan = {
+    static def redSpan(it) {
         return format.redSpan(it)
     }
 
-    def exercise = {displayText, answers, displaySyllabary=true ->
+    static def exercise(displayText, answers, displaySyllabary=true) {
         if (answers) {
             answerKey."${displayText}" = answers
         }
@@ -101,35 +116,35 @@ class BookFormatter {
         out(format.exercise(displayText, answers, displaySyllabary))
     }
 
-    def citation = {title, src ->
+    static def citation(title, src) {
         citationIndex++
         citationMap[title] = src
 
         out(format.citation(title))
     }
 
-    def printCitations = {
+    static def printCitations() {
         bibliography.append(format.printCitations(citationMap).toString())
     }
 
-    def wordBreakdown = {title, anchor, closure ->
+    static def wordBreakdown(title, anchor, closure) {
         out(format.wordBreakdown(title, anchor))
         closure()
     }
 
-    def answerKeyPrint = {
+    static def answerKeyPrint() {
         answerFile.append(format.answerKeyPrint(answerKey).toString())
     }
 
-    def reader = {
+    static def reader() {
         readerFile.append(format.reader(answerKey).toString())
     }
 
-    def textf = {src, style ->
+    static def textf(src, style) {
         return format.textf(src, style)
     }
 
-    def genericChapter = {baseSection, closure ->
+    static def genericChapter(baseSection, closure) {
         chapter(baseSection) {
             if (baseSection.topics.size() > 0) {
                 whatYouWillLearn(baseSection)
@@ -142,32 +157,36 @@ class BookFormatter {
                 text "\\newpage"
             }
 
-            if (baseSection.vocabulary) {
-                vocabulary(baseSection.vocabulary)
+            if (baseSection.vocabularies) {
+                vocabulary(baseSection.vocabularies)
             }
 
             closure()
         }
     }
 
-    def sent = {en, chr ->
+    static def sent(en, chr) {
         output.append("${en}\\newline ${redSpan(transl(chr))}")
     }
 
-    def pdf = {fileName, pages, appender ->
-        def pagez = pages ? "[pages={${pages}}]" : ""
+    static def pdf(String fileName, String pages, File appender, trim=null) {
+        def trimSection = ""
+        if (trim) {
+            trimSection = ", trim=${trim},  clip=true"
+        }
+        def pagez = pages ? "[pages={${pages}}${trimSection}]" : ""
         appender.append("\\includepdf${pagez}{${path}${fileName}}\n")
     }
 
-    def walc1 = {pages, appender=output ->
+    static def walc1(String pages, File appender=output) {
         pdf("/sort/timo/walc1.pdf", pages, appender)
     }
 
-    def noindent = {appender=output ->
+    static def noindent(appender=output) {
         appender.append("\\noindent")
     }
 
-    def nChapter = {title, closure ->
+    static def nChapter(title, closure) {
         def sb = new StringBuilder()
         sb << format.chapter(title, title, title)
 
