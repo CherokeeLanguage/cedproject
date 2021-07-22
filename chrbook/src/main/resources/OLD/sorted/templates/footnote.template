@@ -1,5 +1,0 @@
-<sup>${src}
-<% if (link) { %>
-    <a href="#${link}">${linkTitle}</a>
-<% } %>
-</sup>

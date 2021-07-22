@@ -1,7 +1,0 @@
-<b>What You Will Learn In This Chapter</b><br/>
-In this unit you will learn:<br/>
-<ul>
-<% objectives.each { %>
-    <li>${it}</li>
-<% } %>
-</ul>

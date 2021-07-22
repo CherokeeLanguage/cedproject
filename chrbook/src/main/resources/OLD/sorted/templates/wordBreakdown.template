@@ -1,4 +1,0 @@
-<% if (anchor) { %>
-    <a name=\"${anchor.replaceAll(" ", "")}\"></a>
-<% } %>
-<h4>Word Breakdown - ${title}</h4>

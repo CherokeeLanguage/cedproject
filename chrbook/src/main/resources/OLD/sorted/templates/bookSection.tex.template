@@ -1,1 +1,0 @@
-\\index{${title}}\\subsection{${title}<% if (phonetic) { %> - ${phonetic}<% } %>}

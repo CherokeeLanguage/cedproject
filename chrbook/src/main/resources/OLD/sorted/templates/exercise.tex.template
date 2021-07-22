@@ -1,3 +1,0 @@
-\\section{Exercise - ${title}}
-Translate to Cherokee syllabary and the phonetic equivalent\\\\
-${text}\\\\<% if (answers) { %>${answers}\\\\${answersTranslit}<% } %>

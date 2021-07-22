@@ -1,8 +1,0 @@
-<% def whatYouWillLearn = "What You Will Learn" %>
-\\index{${whatYouWillLearn}}\\subsection{${whatYouWillLearn}}
-In this unit you will learn:
-\\begin{itemize}
-<% objectives.each { %>
-    \\item ${it}
-<% } %>
-\\end{itemize}\\newpage

@@ -1,5 +1,0 @@
-%+Bibliography
-\\begin{thebibliography}{99}
-<% citationMap.eachWithIndex { item, idx ->%>\\bibitem{<%=item%>} <%=item%>
-<% } %>\\end{thebibliography}
-%-Bibliography

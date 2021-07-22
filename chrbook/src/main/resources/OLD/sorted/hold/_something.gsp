@@ -1,1 +1,0 @@
-<g:lookup definition="dog"/>
