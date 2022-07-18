@@ -183,7 +183,8 @@ function gitClone() {
   git clone https://github.com/CherokeeLanguage/cedgrammarguide.git grammar
   git clone https://github.com/CherokeeLanguage/CherokeeDateTime.git dateTime
   git clone https://github.com/CherokeeLanguage/cherokeeDeconstructor.git deconstructor
-  git clone https://github.com/CherokeeLanguage/reactCED.git reactCED
+  git clone https://github.com/cdrchops/grooscript.git grooscript
+  #git clone https://github.com/CherokeeLanguage/reactCED.git reactCED
 }
 
 function pull() {
