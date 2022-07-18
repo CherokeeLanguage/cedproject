@@ -189,7 +189,7 @@ function buildAll() {
 function backupDatabaseOnServer() {
     echo "backing up database on server"
     #    ssh cdrchops@63.142.255.175 "\/home/cdrchops/backupDB.sh"
-    ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/backupDB.sh"
+    sshpass -p ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/backupDB.sh"
 }
 
 function pullDatabaseFromServer() {

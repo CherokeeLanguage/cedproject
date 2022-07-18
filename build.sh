@@ -19,6 +19,160 @@ function prop() {
   grep "${1}" ./build.properties | cut -d'=' -f2
 }
 
+#SITEPASS=$(prop 'SITEPASS')
+#USERNAME=$(prop 'USERNAME')
+#DBPASS=$(prop 'DBPASS')
+#HOSTS=$(prop 'HOSTS')
+#
+#echo $SITEPASS
+#echo $USERNAME
+#echo $DBPASS
+#echo $HOSTS
+
+#sshpass -p $SITEPASS ssh $USERNAME@63.142.255.175 "\/home/cdrchops/backupDB.sh Tk02030#"
+
+USERNAME=$1
+SITEPASS=$2
+HOSTS=$3
+GITHASH=$4
+DBPASS=$5
+
+echo $SITEPASS
+echo $USERNAME
+echo $DBPASS
+echo $HOSTS
+echo $GITHASH
+
+#sshpass -p $SITEPASS ssh $(prop 'USERNAME')@$(prop 'HOSTS') "\/home/cdrchops/backupDB.sh $DBPASS"
+
+#sshpass -p $SITEPASS ssh $USERNAME@63.142.255.175 "\/home/cdrchops/backupDB.sh $DBPASS"
+#sshpass -p $2 ssh $1@$3 \/home/cdrchops/backupDB.sh $5
+
+################################################
+# DATABASE
+################################################
+function backupDatabaseOnServer() {
+  echo "backing up database on server"
+  sshpass -p $SITEPASS ssh $USERNAME@63.142.255.175 "\/home/cdrchops/backupDB.sh $DBPASS"
+}
+
+function pullDatabaseFromServer() {
+  echo "pulling sql dump from server"
+  sshpass -p $SITEPASS scp $USERNAME@63.142.255.175:/home/cdrchops/dump.sql.gz ./dump.sql.gz
+#  scp cdrchops@63.142.255.175:~/dump.sql.gz ./dump.sql.gz
+}
+
+################################################
+# DEPLOY
+################################################
+function updateServerWithLatestWar() {
+  echo "updateServerWithLatestWar"
+  sshpass -p $SITEPASS scp ./dictionary/build/libs/dictionary-0.1.war $USERNAME@63.142.255.175:~/ROOT.war
+#  scp ./dictionary/build/libs/dictionary-0.1.war cdrchops@63.142.255.175:~/ROOT.war
+  #    scp ./dictionary/build/libs/dictionary-0.1.war $(prop 'USERNAME')"@"$(prop 'HOSTS'):~/ROOT.war
+}
+
+function goToServer() {
+  sshpass -p $SITEPASS ssh $USERNAME@63.142.255.175
+}
+
+function restartServer() {
+  echo "restarting server"
+  sshpass -p $SITEPASS ssh $USERNAME@63.142.255.175 "\/home/cdrchops/deployWar.sh"
+#  ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/stopTomcat.sh"
+#  ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/copyWar.sh"
+#  ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/startTomcat.sh"
+}
+
+function startReactServer() {
+  ./gradlew server:bootRun
+}
+
+function startReactClient() {
+  ./gradlew client:start
+}
+
+function stopReactClient() {
+  # taskkill -F -IM node.exe #windows
+  lsof -i :3000
+}
+function stopReactServer() {
+  lsof -i :8080
+}
+
+function startBothClientAndServer() {
+  ./gradlew bootRun -parallel
+}
+
+function stopBothClientAndServer() {
+  stopReactClient
+  stopReactServer
+}
+
+################################################
+# BUILD
+################################################
+
+function build() {
+  echo "build "$1
+  cd $1
+  gradle clean build publishToMavenLocal publish
+  cd ..
+}
+
+function copyGrammarGuide() {
+  cp ./grammar/hold1.txt ./dictionary/grails-app/assets/javascripts/hold1.txt
+  cp ./grammar/hold2.txt ./dictionary/grails-app/assets/javascripts/hold2.txt
+}
+#takes a parameter for the path
+function buildDictionary() {
+  copyGrammarGuide
+  echo -e "build dictionary"
+  cd $1dictionary
+  grails clean
+  grails prod war
+  cd ..
+}
+
+function buildUtilities() {
+  build "utilities" ./
+}
+
+function buildTransliteration() {
+  build "transliteration" ./
+}
+
+function buildConjugation() {
+  build "conjugation" ./
+}
+
+function buildDateTime() {
+  build "dateTime" ./
+}
+
+function buildDeconstructor() {
+  cd deconstructor
+  gradle convert
+  cd ..
+}
+
+function buildAll() {
+  echo -e "building all"
+  buildTransliteration
+  buildUtilities
+  buildConjugation
+  buildDateTime
+  #    build "transliteration"
+  #    build "utilities"
+  #    build "conjugation"
+  #    build "dateTime"
+  #    build "deconstruction"
+  buildDictionary
+}
+
+################################################
+# GIT
+################################################
 function gitClone() {
   echo -e "clone repos"
   git clone https://github.com/CherokeeLanguage/cherokeetransliteration.git transliteration
@@ -97,18 +251,6 @@ function addCommitToGit() {
   directories addCommit answer
 }
 
-function build() {
-  echo "build "$1
-  cd $1
-  gradle clean build publishToMavenLocal publish
-  cd ..
-}
-
-function copyGrammarGuide() {
-  cp ./grammar/hold1.txt ./dictionary/grails-app/assets/javascripts/hold1.txt
-  cp ./grammar/hold2.txt ./dictionary/grails-app/assets/javascripts/hold2.txt
-}
-
 function addCommitDirectory() {
   cd $1
   echo "commit message?"
@@ -146,106 +288,9 @@ function addCommitDeconstructor() {
   addCommitDirectory "deconstructor"
 }
 
-#takes a parameter for the path
-function buildDictionary() {
-  copyGrammarGuide
-  echo -e "build dictionary"
-  cd $1dictionary
-  grails clean
-  grails prod war
-  cd ..
-}
-
-function buildUtilities() {
-  build "utilities" ./
-}
-
-function buildTransliteration() {
-  build "transliteration" ./
-}
-
-function buildConjugation() {
-  build "conjugation" ./
-}
-
-function buildDateTime() {
-  build "dateTime" ./
-}
-
-function buildDeconstructor() {
-  cd deconstructor
-  gradle convert
-  cd ..
-}
-
-function buildAll() {
-  echo -e "building all"
-  buildTransliteration
-  buildUtilities
-  buildConjugation
-  buildDateTime
-  #    build "transliteration"
-  #    build "utilities"
-  #    build "conjugation"
-  #    build "dateTime"
-  #    build "deconstruction"
-  buildDictionary
-}
-
-function backupDatabaseOnServer() {
-  echo "backing up database on server"
-      ssh cdrchops@63.142.255.175 "\/home/cdrchops/backupDB.sh"
-#  ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/backupDB.sh"
-}
-
-function pullDatabaseFromServer() {
-  echo "pulling sql dump from server"
-      scp cdrchops@63.142.255.175:~/dump.sql.gz ./dump.sql.gz
-#  scp $(prop 'USERNAME')"@"$(prop 'HOSTS'):~/dump.sql.gz ./backup/dump.sql.gz
-}
-
-function updateServerWithLatestWar() {
-  echo "updateServerWithLatestWar"
-  scp ./dictionary/build/libs/dictionary-0.1.war cdrchops@63.142.255.175:~/ROOT.war
-  #    scp ./dictionary/build/libs/dictionary-0.1.war $(prop 'USERNAME')"@"$(prop 'HOSTS'):~/ROOT.war
-}
-
-function goToServer() {
-  ssh cdrchops@63.142.255.175
-}
-
-function restartServer() {
-  echo "restarting server"
-#  ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/stopTomcat.sh"
-#  ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/copyWar.sh"
-#  ssh -l $(prop 'USERNAME') $(prop 'HOSTS') "\/home/cdrchops/startTomcat.sh"
-}
-
-function startReactServer() {
-  ./gradlew server:bootRun
-}
-
-function startReactClient() {
-  ./gradlew client:start
-}
-
-function stopReactClient() {
-  # taskkill -F -IM node.exe #windows
-  lsof -i :3000
-}
-function stopReactServer() {
-  lsof -i :8080
-}
-
-function startBothClientAndServer() {
-  ./gradlew bootRun -parallel
-}
-
-function stopBothClientAndServer() {
-  stopReactClient
-  stopReactServer
-}
-
+################################################
+# INSTALL
+################################################
 function installGradleSDKLinuxMac() {
   echo "installing gradle 6.8.3 via sdk"
   source "$HOME/.sdkman/bin/sdkman-init.sh"
@@ -349,6 +394,13 @@ function installMysqlDatabase() {
   mysql -uroot -p${rootpasswd} -e "FLUSH PRIVILEGES;"
   mysql -uroot -p${rootpasswd} smallDb <./backups/cedSmallDb.sql
 }
+
+
+
+################################################
+# MENUS
+################################################
+
 
 #backups
 #cedLibrariesForWindows
