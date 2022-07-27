@@ -150,9 +150,21 @@ function buildDateTime() {
   build "dateTime" ./
 }
 
+function buildGrooscript() {
+    cd grooscript
+    gradle clean build publishToMavenLocal
+    cd ..
+}
+
+function buildGrooscriptPlugin() {
+    cd grooscript-plugins
+    gradle clean build publishToMavenLocal
+    cs ..
+}
+
 function buildDeconstructor() {
   cd deconstructor
-  gradle convert
+  gradle clean build convert
   cd ..
 }
 
@@ -162,6 +174,10 @@ function buildAll() {
   buildUtilities
   buildConjugation
   buildDateTime
+  buildGrooscript
+  builtGrooscriptPlugin
+  buildDeconstructor
+
   #    build "transliteration"
   #    build "utilities"
   #    build "conjugation"
@@ -175,16 +191,19 @@ function buildAll() {
 ################################################
 function gitClone() {
   echo -e "clone repos"
-  git clone https://github.com/CherokeeLanguage/cherokeetransliteration.git transliteration
-  git clone https://github.com/CherokeeLanguage/cherokeeutilities.git utilities
-  git clone https://github.com/CherokeeLanguage/cherokeeconjugation.git conjugation
-  git clone https://github.com/CherokeeLanguage/cedLibrariesForWindows.git
-  git clone https://github.com/CherokeeLanguage/cherokeedictionary.git dictionary
-  git clone https://github.com/CherokeeLanguage/cedgrammarguide.git grammar
-  git clone https://github.com/CherokeeLanguage/CherokeeDateTime.git dateTime
-  git clone https://github.com/CherokeeLanguage/cherokeeDeconstructor.git deconstructor
-  git clone https://github.com/cdrchops/grooscript.git grooscript
-  #git clone https://github.com/CherokeeLanguage/reactCED.git reactCED
+  host=https://$GITHASH@github.com
+  git clone $host/CherokeeLanguage/cherokeetransliteration.git transliteration
+  git clone $host/CherokeeLanguage/cherokeeutilities.git utilities
+  git clone $host/CherokeeLanguage/cherokeeconjugation.git conjugation
+  #git clone $host/CherokeeLanguage/cedLibrariesForWindows.git
+  git clone $host/CherokeeLanguage/cherokeedictionary.git dictionary
+  git clone $host/CherokeeLanguage/cedgrammarguide.git grammar
+  git clone $host/CherokeeLanguage/CherokeeDateTime.git dateTime
+  git clone $host/CherokeeLanguage/cherokeeDeconstructor.git deconstructor
+  git clone $host/cdrchops/grooscript.git grooscript
+  git clone $host/cdrchops/grooscript-plugins.git
+  #git clone $host/CherokeeLanguage/reactCED.git reactCED
+  #git clone https://github.com/node-gradle/gradle-node-plugin
 }
 
 function pull() {
