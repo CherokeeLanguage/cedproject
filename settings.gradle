@@ -9,11 +9,12 @@
 
 rootProject.name = 'cedproject'
 
-include 'transliteration'
-include 'utilities'
-include 'conjugation'
-include 'dateTime'
-include 'dictionary'
+//include 'transliteration'
+//include 'utilities'
+//include 'conjugation'
+//include 'dateTime'
+//include 'dictionary'
+
 //include 'grooscript'
 //include 'grooscript-plugins'
 //./gradlew npmInstall
