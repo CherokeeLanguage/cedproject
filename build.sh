@@ -20,7 +20,8 @@
 #echo $HOSTS
 #echo $GITHASH
 
-./buildMain.sh  $1
+
+./buildMain.sh
 #function buildIt() {
 #    ./build.sh $1 $2 $3 $4 $5 $6
 #}

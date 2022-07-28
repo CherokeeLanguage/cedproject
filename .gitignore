@@ -18,6 +18,5 @@ backup/dump.sql.gz
 reactCED
 grails-react-starter
 grooscript
-startbuild.sh
-grooscript
 grooscript-plugins
+build.sh

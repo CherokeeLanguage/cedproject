@@ -21,6 +21,10 @@ DBPASS=$5
     # status
     # add commit directory
 
+function gitPush() {
+    echo "git push"
+}
+
 ################################################
 # DATABASE
 ################################################
