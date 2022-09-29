@@ -12,19 +12,6 @@ DBPASS=$5
 #echo $HOSTS
 #echo $GITHASH
 
-# GIT COMMANDS
-    # clone
-    # reset
-    # add
-    # commit
-    # update local git
-    # status
-    # add commit directory
-
-function gitPush() {
-    echo "git push"
-}
-
 ################################################
 # DATABASE
 ################################################
@@ -37,12 +24,12 @@ function gitPush() {
 
 function backupDatabaseOnServer() {
   echo "backing up database on server"
-  sshpass -p $SITEPASS ssh $USERNAME@63.142.255.175 "\/home/cdrchops/backupDB.sh $DBPASS"
+  sshpass -p "$SITEPASS" ssh cdrchops@63.142.255.175 "\/home/cdrchops/backupDB.sh Tk02030#"
 }
 
 function pullDatabaseFromServer() {
   echo "pulling sql dump from server"
-  sshpass -p $SITEPASS scp $USERNAME@63.142.255.175:/home/cdrchops/dump.sql.gz ./dump.sql.gz
+  sshpass -p "$SITEPASS" scp cdrchops@63.142.255.175:/home/cdrchops/dump.sql.gz ./dump.sql.gz
 }
 
 # site
@@ -57,16 +44,16 @@ function pullDatabaseFromServer() {
     # stop both react client and server
 function updateServerWithLatestWar() {
     echo "updateServerWithLatestWar"
-    sshpass -p $SITEPASS scp ./dictionary/build/libs/dictionary-0.1.war $USERNAME@63.142.255.175:~/ROOT.war
+    sshpass -p "$SITEPASS" scp ./dictionary/build/libs/dictionary-0.1.war cdrchops@63.142.255.175:~/ROOT.war
 }
 
 function goToServer() {
-    sshpass -p $SITEPASS ssh $USERNAME@63.142.255.175
+    sshpass -p "$SITEPASS" ssh cdrchops@63.142.255.175
 }
 
 function restartServer() {
     echo "restarting server"
-    sshpass -p $SITEPASS ssh $USERNAME@63.142.255.175 "\/home/cdrchops/deployWar.sh"
+    sshpass -p "$SITEPASS" ssh cdrchops@63.142.255.175 "\/home/cdrchops/deployWar.sh"
 }
 
 # build
@@ -94,7 +81,7 @@ function build() {
 #takes a parameter for the path
 function buildDictionary() {
     copyGrammarGuide
-    copyGrooscript
+    //copyGrooscript
     echo -e "build dictionary"
     cd $1dictionary
     grails clean
@@ -144,9 +131,9 @@ function buildAll() {
     buildUtilities
     buildConjugation
     buildDateTime
-    buildGrooscript
-    buildGrooscriptPlugin
-    buildDeconstructor
+    #buildGrooscript
+    #buildGrooscriptPlugin
+    #buildDeconstructor
 
   #    build "transliteration"
   #    build "utilities"
@@ -156,16 +143,72 @@ function buildAll() {
     buildDictionary
 }
 
-# installs
-    # win
-        # install gradle latest
-        # install gradle 3.5
-        # install groovy latest
-        # install grails latest
-        # install jdk 1.8
-        # install nvm
-        # install nodejs
-        # install mysql
+
+################################################
+# GIT
+################################################
+# GIT COMMANDS
+    # clone
+    # reset
+    # add
+    # commit
+    # update local git
+    # status
+    # add commit directory
+
+function gitPush() {
+    echo "git push"
+}
+
+function gitClone() {
+    echo -e "clone repos"
+    host=https://$GITHASH@github.com
+    # This is already chacked out as evidenced by the ability to read this script
+    # https://github.com/CherokeeLanguage/cedproject.git
+    git clone $host/CherokeeLanguage/cherokeetransliteration.git transliteration
+    git clone $host/CherokeeLanguage/cherokeeutilities.git utilities
+    git clone $host/CherokeeLanguage/cherokeeconjugation.git conjugation
+    #git clone $host/CherokeeLanguage/cedLibrariesForWindows.git
+    git clone $host/CherokeeLanguage/cherokeedictionary.git dictionary
+    git clone $host/CherokeeLanguage/cedgrammarguide.git grammar
+    git clone $host/CherokeeLanguage/CherokeeDateTime.git dateTime
+    #git clone $host/CherokeeLanguage/cherokeeDeconstructor.git deconstructor
+    #git clone $host/cdrchops/grooscript.git grooscript
+    #git clone $host/cdrchops/grooscript-plugins.git
+    #git clone $host/CherokeeLanguage/reactCED.git reactCED
+    #git clone https://github.com/node-gradle/gradle-node-plugin
+}
+
+function installSDKsLinux() {
+    #!/bin/bash
+    #https://www.windowscentral.com/how-backup-windows-subsystem-linux-wsl-distribution
+    sudo apt update && sudo apt upgrade
+    sudo apt dist-upgrade
+    sudo apt-get install dist-upgrade git wget curl zip unzip lsb-release gnupg sshpass -Y
+    curl -s "https://get.sdkman.io" | bash
+    source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+    sdk install java 8.0.292.j9-adpt
+    sdk install gradle 6.9.2
+    sdk install gradle 3.5
+    sdk install grails 4.0.11
+    sudo apt-get install mariadb-client mariadb-server
+
+    #https://serverspace.io/support/help/how-to-install-mysql-on-debian-10/
+    #sudo apt-get install default-mysql-server #don't use this one
+    wget https://dev.mysql.com/get/mysql-apt-config_0.8.22-1_all.deb
+    sudo dpkg -i mysql-apt-config_0.8.22-1_all.deb
+    #apt-get update
+    #sudo apt install mysql-server
+    #sudo apt-get install mysql-community-server
+    #/usr/bin/mysql -u root -p
+
+    curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+    source ~/.bashrc
+    nvm install node
+
+    npm install gulp-cli
+}
 
 function tasks() {
     compgen -A function

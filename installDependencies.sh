@@ -8,6 +8,7 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 sdk install java 8.0.292.j9-adpt
 sdk install gradle 6.9.2
+sdk install gradle 3.5
 sdk install grails 4.0.11
 sudo apt-get install mariadb-client mariadb-server
 
