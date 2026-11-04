@@ -42,3 +42,14 @@ rounds:
         classification: finding
     verification-coverage:
       - note: reviewer verified all factual/cross-reference claims clean (zero tags local+remote, no PRs, no version declarations, deck cross-references, GitVersion characterization, #1 and #4 consistency) — no class 1–8 or other-family findings beyond the two above
+  - round: 3
+    date: 2026-11-04
+    reviewer: fresh-context general dispatch (task ses_e589c7e78ffe2HHwfCXyyxhybf)
+    verdict: FAIL
+    findings:
+      - class: gap-analysis (unexercised stated prohibition)
+        ground: R-5's "no non-release PR SHALL produce a GitHub Release or a v-prefixed tag" was exercised by no criterion — SC-2 asserted only the dev tag's own name format; a non-release flow producing a stray v-tag or a GitHub Release would pass all SCs
+        remediation: SC-12 added — the same harness run's full tag listing (no `v*` names) plus a release-list API absence check
+        classification: finding
+    verification-coverage:
+      - note: reviewer verified all factual/cross-reference claims clean (full deck-anchor set, GitVersion live characterization, #1/#4 consistency) — single finding above

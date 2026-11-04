@@ -150,6 +150,7 @@ practice.
 | SC-9 | structural | The change creates no CI: no workflow files exist under `.github/workflows/` in the root after implementation | Directory-absence check (glob) | R-9 |
 | SC-10 | behavioral | A non-release PR's version equals the rule-derived expectation for its change category and base state — baseline case (no release tag: 0.1.0 + category) and post-release case (latest release tag + category), the breaking→major branch included | Harness runs asserting exact version strings: a baseline-seeded repo and a release-tag-seeded repo, category varied over feature, fix, and breaking (e.g. 0.1.0 + breaking → 1.0.0-dev.<sha>) | R-2 |
 | SC-11 | behavioral | A pre-seeded colliding tag name (pointing elsewhere) blocks the PR's creation gate: the PR is not created, the existing tag's target is unchanged, and the collision is reported | Harness run seeding a colliding tag, then asserting no PR exists, the original tag target is unchanged, and the report is in the run's record | R-3 |
+| SC-12 | behavioral | SC-1's non-release PR flow produces no `v`-prefixed tag and no GitHub Release | The same harness run's full `git ls-remote --tags` listing (no `v*` names) + a release-list API check (no release exists) | R-5, R-6 |
 
 **Evidence types.** Behavioral SCs: executed harness/API output (PR URLs,
 tag listings, checkout SHA assertions, release views) — never assertions.
