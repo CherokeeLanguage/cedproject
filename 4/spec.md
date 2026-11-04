@@ -43,12 +43,14 @@ makes them git tags, not PR-record labels alone.
   bodies follow the `release-promoter` composition). *Trace: S1, S5, S8.*
 - **R-2** A non-release PR's version SHALL be the dev form
   `MAJOR.MINOR.PATCH-dev.<short-sha>`. The base is the next release version
-  the PR's work would earn, per the changelog-category rule
-  (breaking→major, feature→minor, fix→patch — the `version-manager` rule)
-  from the latest release tag; before the family's first release tag, the
-  base line is `0.1.0`. `<short-sha>` is the abbreviated hash of the commit
-  the version tags — the hash tagging that makes the label self-verifying
-  against the content it names. *Trace: S2, S8.*
+  the PR's work would earn: from the latest release tag (or the `0.1.0`
+  baseline before the family's first release tag), the PR's change category
+  per the changelog-category rule — breaking→major, feature→minor,
+  fix→patch (the `version-manager` rule) — bumps exactly one level
+  (0.1.0 + feature → 0.2.0; 0.1.0 + fix → 0.1.1; 0.1.0 + breaking → 1.0.0).
+  `<short-sha>` is the abbreviated hash of the commit the version tags —
+  the hash tagging that makes the label self-verifying against the content
+  it names. *Trace: S2, S8.*
 - **R-3** A non-release PR's dev version SHALL exist as a git tag on the PR's
   head commit — created at PR creation, pushed to that repository's own
   origin, verified on the remote (`git ls-remote --tags` listing a tag whose
@@ -129,9 +131,12 @@ practice.
 | SC-1 | behavioral | A non-release PR created under the amended workflow carries a title matching `^\[\d+\.\d+\.\d+-dev\.[0-9a-f]{7,40}\] ` and a body `Version:` line | Behavioral harness run (real remote PR creation): assert the title regex and the body line against the created PR | R-1, R-2 |
 | SC-2 | behavioral | SC-1's PR has a dev tag on its head commit on the remote, matching the dev format (no `v` prefix), and a fresh clone's `git checkout <dev-version>` resolves to the head commit SHA | `git ls-remote --tags` lists the tag at the head SHA; a fresh clone's checkout resolves with SHA equality | R-3, R-6 |
 | SC-3 | behavioral | After a scoped branch rewrite of SC-1's PR branch, the remote dev tag points at the new head | Harness rewrite (`git push --force-with-lease`) + `git ls-remote --tags` re-verification | R-4 |
-| SC-4 | behavioral | A release PR carries no dev-form pre-merge tag at creation, and post-merge the promoted artifacts exist (annotated `vX.Y.Z` tag + GitHub Release) | API checks around the merge: tag listing at creation (absence of dev-form tag) + `gh release view` / tag listing post-merge | R-5 |
+| SC-4 | behavioral | A release PR carries, at creation, a title matching `^\[\d+\.\d+\.\d+\] ` and no dev-form pre-merge tag | Harness/API check at release-PR creation: title regex + tag listing (absence of dev-form tag) | R-5, R-1 |
 | SC-5 | structural | `CONTRIBUTING.md` exists at the root stating the family rule, both forms, the promotion boundary, the `0.1.0` baseline, the derivation rule, and the `v` reservation | File-existence check + per-statement content grep | R-8 (with R-2, R-6) |
 | SC-6 | structural | `git-workflow-pr` carries the pre-create dev-tag step and the `Version:` line in its §4 body contract; `version-manager` carries the dev-base derivation and the baseline | Grep of the two card files for the amended clauses | R-8 |
+| SC-7 | behavioral | Post-merge, SC-4's release PR has the promoted artifacts: an annotated `vX.Y.Z` tag on the merged trunk commit and a GitHub Release built on it | API checks post-merge: annotated-tag listing + `gh release view` | R-5 |
+| SC-8 | structural | The amended `git-workflow-pr` retains the "Release PRs are parent-repo artifacts only" rule unchanged | Grep of the card file for the parent-only clause | R-7 |
+| SC-9 | structural | The change creates no CI: no workflow files exist under `.github/workflows/` in the root after implementation | Directory-absence check (glob) | R-9 |
 
 **Evidence types.** Behavioral SCs: executed harness/API output (PR URLs,
 tag listings, checkout SHA assertions, release views) — never assertions.
