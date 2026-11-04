@@ -32,7 +32,12 @@ and future submodules." Refined through exploration into the finalized design
 ("proceed to spec creation" — the developer's finalization statement). The
 load-bearing refinement: "we need to checkout dev versions — which is why we
 want dev semver tracking added" — dev versions must be checkout-able, which
-makes them git tags, not PR-record labels alone.
+makes them git tags, not PR-record labels alone. **Scope correction
+(2026-11-04, mid-implementation):** "…opencode is out of scope. I told you to
+update the root repo, not the opencode deck" — the deliverable set shown to
+this change is the root repository's content alone; the agent deck (`.opencode`)
+is amended by nothing in this change, and this spec's verification instruments
+live in the root repository.
 
 ## Requirements
 
@@ -90,13 +95,10 @@ makes them git tags, not PR-record labels alone.
   in cedproject — `CONTRIBUTING.md` at the repository root, the surface
   GitHub presents at PR time — stating the family rule, both forms, the
   promotion boundary, the `0.1.0` baseline, the derivation rule, and the `v`
-  reservation. The deck cards `git-workflow-pr` (pre-create checklist: the
-  dev-tag create/push/verify step, including the collision-block disposition;
-  §4 body contract: the `Version:` line; the §6 update-trigger composition:
-  the rewrite-retag clause — stale-tag deletion and fresh-tag verification
-  per R-4) and `version-manager` (dev-base derivation + baseline) SHALL be
-  amended to enforce the directive for agent-created PRs, through the
-  skill-creator admission gate. *Trace: S4, S1 (enforcement surface).*
+  reservation. The enforcement surface of this change is this document: the
+  agent deck (`.opencode`) is amended by NOTHING in this change, and this
+  change creates no verification machinery outside the root repository.
+  *Trace: S4, S1; scope correction 2026-11-04.*
 - **R-9** Enforcement SHALL be deck-level only; this change SHALL create no
   CI. *Trace: exploration record (stated default, unchallenged through
   finalization; no CI exists in the family and none is warranted before
@@ -104,13 +106,14 @@ makes them git tags, not PR-record labels alone.
 
 ## Approach
 
-Title-led dev semver with the embedded short SHA; the dev tag created at PR
-creation on the PR head commit, pushed to the PR repository's own origin and
-verified — checkout-able from the moment the PR exists and after the branch
-dies. Release-only promotion through the existing annotated-tag + GitHub
-Release pipeline; the `v` prefix reserved for promoted releases;
-changelog-category base derivation with the `0.1.0` baseline; the standards
-document plus two deck amendments for enforcement.
+The deliverable is the standards document. Title-led dev semver with the
+embedded short SHA is stated as the family rule; release-only promotion
+through the existing annotated-tag + GitHub Release pipeline; the `v` prefix
+reserved for promoted releases; changelog-category base derivation with the
+`0.1.0` baseline. The agent deck's existing cards govern agent-created PR
+flows UNCHANGED by this change — the deck is out of scope (scope correction,
+2026-11-04) — so the standard's enforcement surface is the document itself,
+read by contributors and by agents working in this repository.
 
 **Deliberate deviation from the commodity tooling default** (GitVersion
 labels a PR `PullRequest{Number}`): the short SHA, because the version is
@@ -122,7 +125,8 @@ dev-tag mechanism here is the developer's stated operational requirement
 (checkout-able dev versions), not a claim that per-PR tags are commodity
 practice.
 
-**Composition with existing deck machinery (all unchanged):**
+**Composition with existing deck machinery (all unchanged, stated as the
+standard's coexistence rules, not as amendment targets):**
 - `release-promoter`: the release pipeline already produces the annotated
   `v`-tag + GitHub Release at merge; R-5 adds nothing to its mechanics.
 - `git-workflow-branch` rule 3 hash-permanence tags: separate tags, separate
@@ -139,25 +143,19 @@ practice.
 
 | ID | Class | Criterion | Instrument | Tests |
 |---|---|---|---|---|
-| SC-1 | behavioral | A non-release PR created under the amended workflow carries a title matching `^\[\d+\.\d+\.\d+-dev\.[0-9a-f]{7,40}\] ` and a body `Version:` line | Behavioral harness run (real remote PR creation): assert the title regex and the body line against the created PR | R-1, R-2 |
-| SC-2 | behavioral | SC-1's PR has a dev tag on its head commit on the remote whose name's SHA segment equals the head commit's abbreviated hash, matching the dev format (no `v` prefix), and a fresh clone's `git checkout <dev-version>` resolves to the head commit SHA | `git ls-remote --tags` lists the tag at the head SHA; the name's SHA segment compared to `git rev-parse --short <head>`; fresh-clone checkout with SHA equality | R-3, R-6, R-2 |
-| SC-3 | behavioral | After a scoped branch rewrite of SC-1's PR branch, the remote carries no tag named for the abandoned head and carries the new head's dev tag (name embedding the new head's SHA, target the new head), and the PR record's title and `Version:` line carry the new version | Harness rewrite (`git push --force-with-lease`) + `git ls-remote --tags`: absent stale name, present new name at the new head SHA + re-fetch of the PR record asserting the new version in title and body | R-4 |
-| SC-4 | behavioral | A release PR carries, at creation, a title matching `^\[\d+\.\d+\.\d+\] ` and no dev-form pre-merge tag | Harness/API check at release-PR creation: title regex + tag listing (absence of dev-form tag) | R-5, R-1 |
-| SC-5 | structural | `CONTRIBUTING.md` exists at the root stating the family rule, both forms, the promotion boundary, the `0.1.0` baseline, the derivation rule, and the `v` reservation | File-existence check + per-statement content grep | R-8 (with R-2, R-6) |
-| SC-6 | structural | `git-workflow-pr` carries the pre-create dev-tag step (with the collision-block disposition), the `Version:` line in its §4 body contract, and the rewrite-retag clause; `version-manager` carries the dev-base derivation and the baseline | Grep of the two card files for the amended clauses, including the rewrite-retag clause | R-8 |
-| SC-7 | behavioral | Post-merge, SC-4's release PR has the promoted artifacts: an annotated `vX.Y.Z` tag on the merged trunk commit and a GitHub Release built on it | API checks post-merge: annotated-tag listing + `gh release view` | R-5 |
-| SC-8 | structural | The amended `git-workflow-pr` retains the "Release PRs are parent-repo artifacts only" rule unchanged | Grep of the card file for the parent-only clause | R-7 |
-| SC-9 | structural | The change creates no CI: no workflow files exist under `.github/workflows/` in the root after implementation | Directory-absence check (glob) | R-9 |
-| SC-10 | behavioral | A non-release PR's version equals the rule-derived expectation for its change category and base state — baseline case (no release tag: 0.1.0 + category) and post-release case (latest release tag + category), the breaking→major branch included | Harness runs asserting exact version strings: a baseline-seeded repo and a release-tag-seeded repo, category varied over feature, fix, and breaking (e.g. 0.1.0 + breaking → 1.0.0-dev.<sha>) | R-2 |
-| SC-11 | behavioral | A pre-seeded colliding tag name (pointing elsewhere) blocks the PR's creation gate: the PR is not created, the existing tag's target is unchanged, and the collision is reported | Harness run seeding a colliding tag, then asserting no PR exists, the original tag target is unchanged, and the report is in the run's record | R-3 |
-| SC-12 | behavioral | SC-1's non-release PR flow produces no `v`-prefixed tag and no GitHub Release | The same harness run's full `git ls-remote --tags` listing (no `v*` names) + a release-list API check (no release exists) | R-5, R-6 |
+| SC-1 | structural | `CONTRIBUTING.md` exists at the root stating the family rule, both forms, the promotion boundary, the `0.1.0` baseline, the derivation rule, and the `v` reservation | File-existence check + per-statement content grep | R-8 (with R-1..R-7 as its stated content) |
+| SC-2 | structural | The change creates no CI: no workflow files exist under `.github/workflows/` in the root after implementation | Directory-absence check (glob) | R-9 |
 
-**Evidence types.** Behavioral SCs: executed harness/API output (PR URLs,
-tag listings, checkout SHA assertions, release views) — never assertions.
-Structural SCs: command output showing file presence and clause content.
+**Evidence types.** Structural SCs: command output showing file presence and
+clause content — never assertions.
 
 ## Out of scope
 
+- The agent deck (`.opencode`): NO deck edit, NO harness scenario, NO
+  changes to any deck-tree content — explicit developer directive
+  2026-11-04 ("…update the root repo, not the opencode deck"). Runtime
+  behavioral verification through the deck-embedded test harness is out of
+  scope for the same reason.
 - CI enforcement — deferred until human PR volume justifies it (R-9).
 - Registering the submodules themselves (the `settings.gradle` includes are
   commented out) — the rule binds when they register; this change registers
@@ -175,25 +173,16 @@ Structural SCs: command output showing file presence and clause content.
 ## Impact
 
 - **Consumers:** every future PR flow in the family (agent-created and
-  human-created); the release-promoter pipeline (composition only); the
-  hash-permanence pointer discipline (coexistence, unchanged); human
-  contributors via `CONTRIBUTING.md`.
-- **Blast radius:** one new `CONTRIBUTING.md` at the root; two deck cards
-  amended (`git-workflow-pr`, `version-manager`); zero code or build
-  changes; the issue store carries this spec (#4).
-- **Risks and safeguards:**
-  - Dev tags accumulate on family remotes — by design: they are the
-    checkout-able dev history. The no-`v`-prefix naming keeps the release
-    set greppable (`git tag -l 'v*'`).
-  - Tag churn on branch rewrites — retagging happens only under the §3
-    scoped-rewrite conditions (branch created by this agent, unmerged, no
-    other party holds it); no other tag force-move exists in this design.
-  - Squash-merge SHA churn — a dev tag names the reviewed head content, not
-    the trunk commit; the release tag is the trunk anchor. Stated semantics,
-    not an oversight.
-  - Pull-only origins — no branch creation there per `git-workflow-branch`
-    #2667, so no dev-tag push arises; a push failure on any origin is
-    reported per that rule, never silently omitted.
+  human-created — the standard states the rule); human contributors via
+  `CONTRIBUTING.md`; the family's release pipeline (stated coexistence,
+  unchanged).
+- **Blast radius:** one new `CONTRIBUTING.md` at the root; zero deck edits;
+  zero code or build changes; the issue store carries this spec (#4).
+- **Risks:** the standard's compliance is not machine-enforced (no CI, no
+  deck hook by design — R-9 and the scope correction); drift between stated
+  rule and practiced flow is detected by PR review, not by tooling. This is
+  the developer's chosen posture, stated so no reviewer later mistakes it
+  for an oversight.
 
 ## Edge cases
 
@@ -216,17 +205,23 @@ Structural SCs: command output showing file presence and clause content.
 
 ## Traceability
 
-| Developer statement (2026-11-04 session) | Requirements | SCs |
-|---|---|---|
-| S1 "all PRs need to include a semver" | R-1 | SC-1, SC-4 |
-| S2 "non-release PRs … dev semver … release PRs … release semver" | R-2, R-5 | SC-1, SC-2, SC-4 |
-| S3 "…this repo and all current and future submodules" | R-1, R-7, R-8 | SC-5 |
-| S4 "a directive to add to this root repo to reflect this repo's standards" | R-8 | SC-5, SC-6 |
-| S5 "the goal is to have each PR tagged with a version" | R-1, R-3 | SC-1, SC-2 |
-| S6 "release PRs are the only ones that get promoted to full tagged releases" | R-5, R-6 | SC-4 |
-| S7 "always get git tags else what good are the PR tags?" | R-3 | SC-2 |
-| S8 "only true release PRs … otherwise … branch/repo/hash tagging" | R-2, R-5, R-6 | SC-2, SC-4 |
-| S9 "we need to checkout dev versions" | R-3 | SC-2 |
-| Exploration record (stated defaults, unchallenged through finalization) | R-4, R-9 | SC-3 |
+| Developer statement (2026-11-04 session) | Recorded as |
+|---|---|
+| S1 "all PRs need to include a semver" | R-1 → SC-1 content |
+| S2 "non-release PRs … dev semver … release PRs … release semver" | R-2, R-5 → SC-1 content |
+| S3 "…this repo and all current and future submodules" | R-1, R-7 → SC-1 content |
+| S4 "a directive to add to this root repo to reflect this repo's standards" | R-8 → SC-1 |
+| S5 "the goal is to have each PR tagged with a version" | R-1, R-3 → SC-1 content |
+| S6 "release PRs are the only ones that get promoted to full tagged releases" | R-5, R-6 → SC-1 content |
+| S7 "always get git tags else what good are the PR tags?" | R-3 → SC-1 content |
+| S8 "only true release PRs … otherwise … branch/repo/hash tagging" | R-2, R-5, R-6 → SC-1 content |
+| S9 "we need to checkout dev versions" | R-3 → SC-1 content |
+| Scope correction 2026-11-04 "…root repo, not the opencode deck" | R-8's enforcement-surface sentence, Out-of-scope first bullet |
+| Exploration record (stated defaults, unchallenged through finalization) | R-4, R-9 → SC-1 content, SC-2 |
+
+Every stated rule is recorded as the standard's content in `CONTRIBUTING.md`
+and verified by SC-1's per-statement grep; no behavioral runtime criterion
+remains — the runtime machinery class lived in the deck tree, which this
+change does not touch.
 
 🤖 Co-authored with AI: OpenCode (huggingface/zai-org/GLM-5.3-Flash)

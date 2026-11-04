@@ -70,6 +70,16 @@ rounds:
     verdict: PASS
     findings: []
     note: zero-finding verdict — loop exit; all repo/deck/live-source claims verified clean, traceability both directions confirmed, instruments executable, no ambiguity/escape-hatch/contradiction, safeguard confirmed on the scoped remote tag deletion
+  - round: 6
+    date: 2026-11-04
+    kind: implementation-phase scope revision (developer directive)
+    verdict: revised artifact returned to validation
+    findings:
+      - class: scope correction (developer directive)
+        ground: developer directive 2026-11-04 mid-implementation — ".opencode is out of scope; update the root repo, not the opencode deck"; the deck-amendment enforcement (R-8's card amendments), the harness-scenario instruments (behavioral SC set pre-revision), and the plan's .opencode work were out of true scope
+        remediation: R-8 revised to doc-only enforcement surface; behavioral SC set removed (their runtime machinery lives in the deck tree); SC table restated as SC-1 (doc content grep) + SC-2 (no-CI glob); Out-of-scope gains the deck bullet; plan revision follows
+        classification: finding (spec-flaw discovery per implement card rule 4)
+    state: spec re-validation dispatch follows the revision
 artifact: plan
 rounds:
   - round: 1
