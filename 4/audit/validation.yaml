@@ -1,0 +1,44 @@
+# Validation record — cedproject#4 (spec)
+
+artifact: spec
+rounds:
+  - round: 1
+    date: 2026-11-04
+    reviewer: fresh-context general dispatch (task ses_e58a92d9effeJzjFyiCvZuelt7)
+    verdict: FAIL
+    findings:
+      - class: incapable-instrument (class 5) / gap-analysis
+        ground: SC set verified only the version string's format; the embedded short SHA was never compared to the tagged commit's hash, so the self-verification property was unverified
+        remediation: SC-2 now asserts the tag name's SHA segment equals `git rev-parse --short <head>` and the tag target equals the head SHA
+        classification: finding
+      - class: incapable-instrument (class 5) / gap-analysis
+        ground: R-2's base-derivation rule (baseline/latest-tag + one-level bump per category) had no criterion comparing a derived version against the rule's expected output
+        remediation: SC-10 added — harness runs asserting exact version strings for baseline-seeded and release-tag-seeded repos, category varied
+        classification: finding
+      - class: ambiguous-criterion (class 4) / internal-contradiction
+        ground: R-4's "re-pointed" implied same-name tag moves, contradicting in effect R-2's self-verifying naming (name embeds the head SHA); mechanism was derivable, not stated
+        remediation: R-4 now states the mechanism — stale tag deleted on the remote (only under scoped-rewrite conditions), fresh tag created/pushed/verified per R-3, PR record's version updated; SC-3 asserts stale name absent + new name present at the new head
+        classification: finding
+      - class: gap-analysis (unexercised boundary)
+        ground: R-3's collision clause ("reported, never silently re-created") had no disposition and no exercising criterion; a silently re-creating deliverable would pass
+        remediation: R-3 gains the disposition (collision blocks the PR's creation gate until resolved by direction); SC-11 added — seeded collision asserts no PR, unchanged original target, report present
+        classification: finding
+    fabricated-claims:
+      - class: fabricated-claims family
+        classification: preference (no finding)
+        note: reviewer verified zero tags, no PRs, absent CONTRIBUTING.md/build.gradle content, no .github/, deck-card sections, GitVersion characterization, remote-body consistency — all clean
+  - round: 2
+    date: 2026-11-04
+    reviewer: fresh-context general dispatch (task ses_e58a20f8affegdwVWstm4SVMQ8)
+    verdict: FAIL
+    findings:
+      - class: gap-analysis (durable-enforcement surface unaccounted for)
+        ground: R-4's rewrite-retag rule had no requirement stating the amended git-workflow-pr card must durably carry it, and SC-6's grep set excluded it — an implementation could omit the clause from the card while every SC passed
+        remediation: R-8's amendment enumeration now includes the rewrite-retag clause (§6 update-trigger composition) and the collision-block disposition; SC-6's criterion and grep set extended to cover both
+        classification: finding
+      - class: gap-analysis (stated boundary never exercised)
+        ground: R-2's breaking→major branch was stated with an explicit example but SC-10 varied category over feature and fix only — a derivation defect confined to the major-bump branch would pass every SC
+        remediation: SC-10's instrument now varies category over feature, fix, and breaking in both seeded base states
+        classification: finding
+    verification-coverage:
+      - note: reviewer verified all factual/cross-reference claims clean (zero tags local+remote, no PRs, no version declarations, deck cross-references, GitVersion characterization, #1 and #4 consistency) — no class 1–8 or other-family findings beyond the two above

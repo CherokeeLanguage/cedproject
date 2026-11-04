@@ -55,16 +55,25 @@ makes them git tags, not PR-record labels alone.
   head commit — created at PR creation, pushed to that repository's own
   origin, verified on the remote (`git ls-remote --tags` listing a tag whose
   commit is the head SHA), and checkout-able in a fresh clone
-  (`git checkout <dev-version>` resolves to the head commit). The tag is
-  lightweight (the name carries version + hash; annotation is reserved for
-  release tags). A tag name already existing but pointing elsewhere SHALL be
-  reported, never silently re-created. *Trace: S5, S7, S9.*
+  (`git checkout <dev-version>` resolves to the head commit). The tag name's
+  SHA segment SHALL equal the head commit's abbreviated hash — the name
+  self-verifies against the content it names. The tag is lightweight (the
+  name carries version + hash; annotation is reserved for release tags). A
+  tag name already existing but pointing elsewhere SHALL be reported and
+  SHALL block the PR's creation gate until resolved by direction — never
+  silently re-created. *Trace: S5, S7, S9.*
 - **R-4** When a PR branch is rewritten under the `git-workflow-pr` §3
-  scoped-rewrite authorization, the dev tag SHALL be re-pointed to the new
-  head commit and re-verified on the remote, under the same two update
-  triggers as the PR itself (review feedback; submodule pointer movement). A
-  tag left pointing at abandoned history is a defect. *Trace: exploration
-  record (stated default, unchallenged through finalization).*
+  scoped-rewrite authorization, the head commit changes, so the dev version
+  changes with it: the stale dev tag (whose name embeds the abandoned head's
+  SHA) SHALL be deleted on the remote, a fresh dev tag for the new head
+  SHALL be created, pushed, and verified per R-3, and the PR record's
+  version SHALL be updated to the new version — all under the same two
+  update triggers as the PR itself (review feedback; submodule pointer
+  movement), and the tag deletion only under the scoped-rewrite conditions
+  (branch created by this agent, unmerged, no other party holds it). A tag
+  left pointing at abandoned history is a defect. *Trace: exploration
+  record (stated default, unchallenged through finalization); mechanism
+  resolved to preserve R-2's self-verifying naming.*
 - **R-5** A release PR's version SHALL be the release form
   `MAJOR.MINOR.PATCH`; at merge it SHALL be promoted by the existing
   release-promoter pipeline (annotated `v`-prefixed tag + GitHub Release). A
@@ -82,10 +91,12 @@ makes them git tags, not PR-record labels alone.
   GitHub presents at PR time — stating the family rule, both forms, the
   promotion boundary, the `0.1.0` baseline, the derivation rule, and the `v`
   reservation. The deck cards `git-workflow-pr` (pre-create checklist: the
-  dev-tag create/push/verify step; §4 body contract: the `Version:` line) and
-  `version-manager` (dev-base derivation + baseline) SHALL be amended to
-  enforce the directive for agent-created PRs, through the skill-creator
-  admission gate. *Trace: S4, S1 (enforcement surface).*
+  dev-tag create/push/verify step, including the collision-block disposition;
+  §4 body contract: the `Version:` line; the §6 update-trigger composition:
+  the rewrite-retag clause — stale-tag deletion and fresh-tag verification
+  per R-4) and `version-manager` (dev-base derivation + baseline) SHALL be
+  amended to enforce the directive for agent-created PRs, through the
+  skill-creator admission gate. *Trace: S4, S1 (enforcement surface).*
 - **R-9** Enforcement SHALL be deck-level only; this change SHALL create no
   CI. *Trace: exploration record (stated default, unchallenged through
   finalization; no CI exists in the family and none is warranted before
@@ -129,14 +140,16 @@ practice.
 | ID | Class | Criterion | Instrument | Tests |
 |---|---|---|---|---|
 | SC-1 | behavioral | A non-release PR created under the amended workflow carries a title matching `^\[\d+\.\d+\.\d+-dev\.[0-9a-f]{7,40}\] ` and a body `Version:` line | Behavioral harness run (real remote PR creation): assert the title regex and the body line against the created PR | R-1, R-2 |
-| SC-2 | behavioral | SC-1's PR has a dev tag on its head commit on the remote, matching the dev format (no `v` prefix), and a fresh clone's `git checkout <dev-version>` resolves to the head commit SHA | `git ls-remote --tags` lists the tag at the head SHA; a fresh clone's checkout resolves with SHA equality | R-3, R-6 |
-| SC-3 | behavioral | After a scoped branch rewrite of SC-1's PR branch, the remote dev tag points at the new head | Harness rewrite (`git push --force-with-lease`) + `git ls-remote --tags` re-verification | R-4 |
+| SC-2 | behavioral | SC-1's PR has a dev tag on its head commit on the remote whose name's SHA segment equals the head commit's abbreviated hash, matching the dev format (no `v` prefix), and a fresh clone's `git checkout <dev-version>` resolves to the head commit SHA | `git ls-remote --tags` lists the tag at the head SHA; the name's SHA segment compared to `git rev-parse --short <head>`; fresh-clone checkout with SHA equality | R-3, R-6, R-2 |
+| SC-3 | behavioral | After a scoped branch rewrite of SC-1's PR branch, the remote carries no tag named for the abandoned head and carries the new head's dev tag (name embedding the new head's SHA, target the new head) | Harness rewrite (`git push --force-with-lease`) + `git ls-remote --tags`: absent stale name, present new name at the new head SHA | R-4 |
 | SC-4 | behavioral | A release PR carries, at creation, a title matching `^\[\d+\.\d+\.\d+\] ` and no dev-form pre-merge tag | Harness/API check at release-PR creation: title regex + tag listing (absence of dev-form tag) | R-5, R-1 |
 | SC-5 | structural | `CONTRIBUTING.md` exists at the root stating the family rule, both forms, the promotion boundary, the `0.1.0` baseline, the derivation rule, and the `v` reservation | File-existence check + per-statement content grep | R-8 (with R-2, R-6) |
-| SC-6 | structural | `git-workflow-pr` carries the pre-create dev-tag step and the `Version:` line in its §4 body contract; `version-manager` carries the dev-base derivation and the baseline | Grep of the two card files for the amended clauses | R-8 |
+| SC-6 | structural | `git-workflow-pr` carries the pre-create dev-tag step (with the collision-block disposition), the `Version:` line in its §4 body contract, and the rewrite-retag clause; `version-manager` carries the dev-base derivation and the baseline | Grep of the two card files for the amended clauses, including the rewrite-retag clause | R-8 |
 | SC-7 | behavioral | Post-merge, SC-4's release PR has the promoted artifacts: an annotated `vX.Y.Z` tag on the merged trunk commit and a GitHub Release built on it | API checks post-merge: annotated-tag listing + `gh release view` | R-5 |
 | SC-8 | structural | The amended `git-workflow-pr` retains the "Release PRs are parent-repo artifacts only" rule unchanged | Grep of the card file for the parent-only clause | R-7 |
 | SC-9 | structural | The change creates no CI: no workflow files exist under `.github/workflows/` in the root after implementation | Directory-absence check (glob) | R-9 |
+| SC-10 | behavioral | A non-release PR's version equals the rule-derived expectation for its change category and base state — baseline case (no release tag: 0.1.0 + category) and post-release case (latest release tag + category), the breaking→major branch included | Harness runs asserting exact version strings: a baseline-seeded repo and a release-tag-seeded repo, category varied over feature, fix, and breaking (e.g. 0.1.0 + breaking → 1.0.0-dev.<sha>) | R-2 |
+| SC-11 | behavioral | A pre-seeded colliding tag name (pointing elsewhere) blocks the PR's creation gate: the PR is not created, the existing tag's target is unchanged, and the collision is reported | Harness run seeding a colliding tag, then asserting no PR exists, the original tag target is unchanged, and the report is in the run's record | R-3 |
 
 **Evidence types.** Behavioral SCs: executed harness/API output (PR URLs,
 tag listings, checkout SHA assertions, release views) — never assertions.
@@ -184,8 +197,8 @@ Structural SCs: command output showing file presence and clause content.
 ## Edge cases
 
 - **Tag-name collision:** an existing tag name pointing elsewhere is
-  reported, never silently re-created (R-3) — mirrors the idempotence
-  discipline of `git-workflow-branch` rule 3.
+  reported and blocks the PR's creation gate until resolved by direction
+  (R-3) — mirrors the idempotence discipline of `git-workflow-branch` rule 3.
 - **Baseline ambiguity:** before the first release tag, "the latest release
   tag" does not exist; R-2's `0.1.0` baseline resolves it.
 - **Simultaneous PRs claiming the same base:** two in-flight PRs may both
@@ -195,8 +208,10 @@ Structural SCs: command output showing file presence and clause content.
 - **Human-created PRs:** bound by `CONTRIBUTING.md`; deck enforcement covers
   agent-created PRs; CI is deferred (R-9).
 - **Rewrite invalidation:** a tag created before a mid-review rewrite is
-  re-pointed under R-4's triggers; between triggers a tag may name the
-  pre-rewrite head — the PR record's version line is updated with the tag.
+  replaced under R-4's triggers — the stale tag (named for the abandoned
+  head) is deleted and a fresh tag names the new head; between triggers the
+  remote may carry the pre-rewrite tag, and the PR record's version is
+  updated to the new version at the trigger.
 
 ## Traceability
 
