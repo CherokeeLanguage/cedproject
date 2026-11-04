@@ -80,6 +80,12 @@ rounds:
         remediation: R-8 revised to doc-only enforcement surface; behavioral SC set removed (their runtime machinery lives in the deck tree); SC table restated as SC-1 (doc content grep) + SC-2 (no-CI glob); Out-of-scope gains the deck bullet; plan revision follows
         classification: finding (spec-flaw discovery per implement card rule 4)
     state: spec re-validation dispatch follows the revision
+  - round: 7
+    date: 2026-11-04
+    reviewer: fresh-context general dispatch (task ses_e5883b8aaffeuqSl4P5VUZ52fe)
+    verdict: PASS
+    findings: []
+    note: zero-finding verdict on the revised spec — scope correction consistently stated (R-8/Approach/Out-of-scope), both directions of traceability intact, instruments capable, stance disclosure explicit
 artifact: plan
 rounds:
   - round: 1
@@ -88,3 +94,10 @@ rounds:
     verdict: PASS
     findings: []
     note: zero-finding verdict — all 15 classes judged clean; factual claims verified against the repo (.gitignore card, parent-only clause, harness layout, RED preconditions real)
+  - round: 2
+    date: 2026-11-04
+    kind: revision after the developer's scope correction (validated spec r7 basis)
+    reviewer: fresh-context general dispatch (task ses_e5883b89fffelbaqu7Xw51FG30)
+    verdict: PASS
+    findings: []
+    note: zero-finding verdict on the revised single-item plan (CONTRIBUTING.md + no-CI absence check)
