@@ -4,7 +4,50 @@ status: open
 labels:
 - needs-approval
 - documentation
-body: ''
+body: "# Spec — cedproject#3 — the tracked production-database dumps: removal-only\n\
+  \n## Intent\n\nTicket #3's scope is the **removal of the tracked production-database\
+  \ dump\nfiles from the repository tip — nothing else.** The removal is executed\
+  \ and\ntrunk-landed; what remains is the ticket's record: the removal's fact, and\n\
+  the standing history-treatment disposition, recorded on the ticket. Every\nother\
+  \ statement in the ticket's pre-store-era draft (legacy script residue,\nbackup-path\
+  \ records, `build.properties`, and any dependency on the devops\nrepo) is **out\
+  \ of this ticket** — those surfaces have their own homes and no\ndependency of any\
+  \ kind runs from this ticket to another repository.\n\n## Provenance\n\n- Developer\
+  \ answers 2026-11-03 (ticket #2, closed with the record): the\n  tracked SQL files\
+  \ can be deleted — removal alone. (Values/dump contents\n  are never reproduced\
+  \ anywhere — paths-only per the org SOP.)\n- Developer scope direction 2026-11-04,\
+  \ in session: \"#3 is only for the\n  removals … it has nothing to do with anything\
+  \ else … and does not need\n  dependencies on devops.\"\n- The removal **executed**:\
+  \ commit `8e3debd` (`fix(#3): remove tracked\n  production database dumps from the\
+  \ repository tip`) — nine `backups/`\n  paths, 8,994 deletions — carried by the\
+  \ stacked PR (cedproject#7) and\n  merged to trunk at `f7bef28` on 2026-11-04.\n\
+  \n## Requirements\n\n- **R-1** The nine tracked paths (`backups/bhd.sql`, `backups/ced.sql`,\n\
+  \  `backups/cedSmallDb.sql`, `backups/cno.sql`, `backups/cwl.sql`,\n  `backups/noq.sql`,\
+  \ `backups/rrd.sql`, `backups/vrb.sql`,\n  `backups/output.txt`) SHALL be absent\
+  \ from the repository tip. — **Already\n  delivered** by the commit above; this\
+  \ ticket records it, it does not\n  re-execute it.\n- **R-2** The history treatment\
+  \ SHALL stand as **removal-alone**: the dumps\n  remain in git history; no history\
+  \ rewrite is elected. The recording here\n  is the ticket's disposition record;\
+  \ a future history rewrite would be its\n  own ticket. *Trace: the 2026-11-03 answers;\
+  \ the 2026-11-04 scope\n  direction.*\n\n## Success criteria\n\n| ID | Class | Criterion\
+  \ | Instrument | Tests |\n|---|---|---|---|---|\n| SC-1 | structural | The nine\
+  \ paths are absent from trunk | `git ls-files backups/` on the synced trunk returns\
+  \ empty | R-1 |\n| SC-2 | structural | The ticket carries the removal record (the\
+  \ executing commit, merge evidence) and the removal-alone disposition line | The\
+  \ ticket's record set (local `{3}/` record + remote-tracker comment) contains both\
+  \ lines paths-only | R-1, R-2 |\n| SC-3 | structural | No other surface is touched\
+  \ by this ticket's work: no code, script, or doc change, no cross-repo dependency\
+  \ | The ticket's activity log shows record-edits only; zero repo diffs after the\
+  \ merge | R-1, R-2 |\n\n**Evidence types:** executed command outputs (`git ls-files`,\
+  \ ticket-record\nreads) — never assertions.\n\n## Out of scope\n\n- Everything else\
+  \ the pre-store draft mentioned: legacy script residue,\n  backup-path records,\
+  \ the `build.properties` file, and any other\n  repository's work (no devops or\
+  \ other cross-repo dependencies).\n- History rewriting (not elected; recorded as\
+  \ the standing disposition's\n  complement — a future ticket's matter, never this\
+  \ one).\n\n## Impact\n\n- **Consumers:** ticket #3 itself (its record set) and anyone\
+  \ auditing the\n  removal's disposition later.\n- **Blast radius:** zero repository\
+  \ changes; ticket-record edits only.\n- **Risks:** none — record edits, paths-only.\n\
+  \n\U0001F916 Co-authored with AI: OpenCode (huggingface/zai-org/GLM-5.3-Flash)\n"
 created_at: '2026-11-04T16:09:48+00:00'
-updated_at: '2026-11-04T16:10:00+00:00'
+updated_at: '2026-11-04T17:19:44+00:00'
 github_url: https://github.com/CherokeeLanguage/cedproject/issues/3
