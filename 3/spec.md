@@ -25,11 +25,15 @@ re-dump can use as-is.
 ## Requirements
 
 - **R-1** The nine tracked paths SHALL be removed from the repository tip.
-  The **git-history treatment is the developer's explicit election** recorded
-  in this ticket at implementation: removal alone (history retains the dumps)
-  vs history rewrite (filter-repo/BFG — an org-wide coordination event, since
-  every clone/fork carries the objects). cdrchops' "can be deleted" authorizes
-  the tip removal; the history election is not pre-decided here.
+  **Ungated (developer directive, 2026-11-04):** the developer stated the
+  removal of these backup files "should not have dependencies against
+  anything" — R-1 executes now, independent of the migration (superseding
+  the prior blanket R-5 gate for this requirement). The **git-history
+  treatment remains the developer's explicit election**, not yet decided:
+  removal alone (history retains the dumps) vs history rewrite
+  (filter-repo/BFG — an org-wide coordination event, since every
+  clone/fork carries the objects); the election record in this ticket and
+  the history execution, if any, ride the developer's later direction.
 - **R-2** The legacy script residue SHALL be retired with the unified parent
   build (devops#23's Gradle composite replaces `build.sh`/`buildMain.sh`'s
   build role) and the stack deploy (cherokeedictionary#125 replaces the deploy
@@ -49,16 +53,17 @@ re-dump can use as-is.
   the same disposition pass: once the unified build + key-based deploy land,
   the file's values have no consumer; template-with-empty-values or deletion,
   developer's election recorded here.
-- **R-5** All of the above is **gated on the completed and accepted
-  migration** (devops#14's acceptance record) — nothing here executes before
-  the cutover; this ticket is the tracked follow-up so the obligations are
-  not dangling.
+- **R-5** **Gating scoping (developer directive, 2026-11-04):** only
+  R-2 (legacy residue), R-3 (backup-path record), and R-4
+  (`build.properties` disposition) remain **gated on the completed and
+  accepted migration** (devops#14's acceptance record). R-1's tracked-path
+  removal is ungated and executes immediately.
 
 ## Success criteria
 
 | ID | Criterion | Class | Instrument |
 |---|---|---|---|
-| SC-1 | The nine paths are absent from the repository tip; the history-election record exists | structural | `git ls-files` check + the recorded election |
+| SC-1 | The nine paths are absent from the repository tip; the history-treatment election is still recorded as open pending the developer's call (ungated — executes now) | structural | `git ls-files` check + the recorded election state |
 | SC-2 | The legacy deploy/backup residue's disposition is recorded (removed or deprecated-in-place per file) | structural | diff review + the disposition list |
 | SC-3 | The backup-path record names the on-server instrument and the pull step; the argv-free hardening item is recorded (implemented or explicitly deferred with a date) | structural | the record's presence + the item's state |
 | SC-4 | `build.properties` disposition recorded; zero credential values in any post-change artifact | structural | secret-scan class check over the diff |
