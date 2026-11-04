@@ -1,0 +1,9 @@
+title: 'Draft spec (follow-up, post-migration) — cedproject hygiene: tracked SQL dumps
+  removal + history treatment, legacy script residue, backup-path record'
+status: open
+labels:
+- needs-approval
+- documentation
+body: ''
+created_at: '2026-11-04T16:09:48+00:00'
+updated_at: '2026-11-04T16:09:48+00:00'
