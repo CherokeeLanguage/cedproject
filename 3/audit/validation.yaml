@@ -1,0 +1,31 @@
+# Validation record — cedproject#3 (spec, removal-only scope)
+
+artifact: spec
+rounds:
+  - round: 1
+    date: 2026-11-04
+    reviewer: fresh-context general dispatch (task ses_e586cd687ffeY4p1YmXGbQZTl1)
+    verdict: FAIL
+    findings:
+      - class: internal-contradiction / cross-reference-sufficiency (remote title/body disagreeing with the governing spec)
+        ground: the remote issue's title still announced the pre-store draft's broader scope; the body half the reviewer reported was over-broad (body edit had landed; title had not)
+        remediation: remote title patched to the removal-only scope via the authenticated API passthrough; SC-3's instrument finding remediated in the same cycle (see next entry)
+        classification: finding
+      - class: incapable-instrument (SC-3's zero-diff half)
+        ground: a ticket activity log cannot observe git-tree state; the instrument answered a weaker question than the criterion asked
+        remediation: SC-3's instrument restated as `git status --porcelain` + `git log f7bef28..HEAD --stat`
+        classification: finding
+  - round: 2
+    date: 2026-11-04
+    reviewer: fresh-context general dispatch (task ses_e586b5e4affeH4cH4oehWA511G)
+    verdict: PASS
+    findings: []
+    note: zero-finding verdict; all instruments executed by the reviewer — SC-1 ls-files empty on trunk at f7bef28, SC-2 records present and paths-only both sides, SC-3 clean tree + empty post-merge log, remote title/body coherent with the removal-only scope; provenance spot-checks clean
+exit: reconciliation
+exit_ground: >
+  The validation cycle's executed evidence independently and verifiably shows
+  the ticket's narrowed deliverables already delivered on trunk (removal
+  landed via 8e3debd through cedproject#7's merge f7bef28; records standing
+  on both surfaces) with no pending work under the developer's
+  removals-only scope direction — per the validation standards' loop section,
+  the owning ticket is reconciled to a completed verdict in the same workflow.
