@@ -44,7 +44,7 @@ dependency of any kind runs from this ticket to another repository.
 |---|---|---|---|---|
 | SC-1 | structural | The nine paths are absent from trunk | `git ls-files backups/` on the synced trunk returns empty | R-1 |
 | SC-2 | structural | The ticket carries the removal record (the executing commit, merge evidence) and the removal-alone disposition line | The ticket's record set (local `{3}/` record + remote-tracker comment) contains both lines paths-only | R-1, R-2 |
-| SC-3 | structural | No other surface is touched by this ticket's work: no code, script, or doc change, no cross-repo dependency | The ticket's activity log shows record-edits only; zero repo diffs after the merge | R-1, R-2 |
+| SC-3 | structural | No other surface is touched by this ticket's work: no code, script, or doc change, no cross-repo dependency | `git status --porcelain` shows no tracked modification; `git log f7bef28..HEAD --stat` shows no repo-content commit after the merge | R-1, R-2 |
 
 **Evidence types:** executed command outputs (`git ls-files`, ticket-record
 reads) — never assertions.

@@ -37,17 +37,18 @@ body: "# Spec — cedproject#3 — the tracked production-database dumps: remova
   \ ticket's record set (local `{3}/` record + remote-tracker comment) contains both\
   \ lines paths-only | R-1, R-2 |\n| SC-3 | structural | No other surface is touched\
   \ by this ticket's work: no code, script, or doc change, no cross-repo dependency\
-  \ | The ticket's activity log shows record-edits only; zero repo diffs after the\
-  \ merge | R-1, R-2 |\n\n**Evidence types:** executed command outputs (`git ls-files`,\
-  \ ticket-record\nreads) — never assertions.\n\n## Out of scope\n\n- Everything else\
-  \ the pre-store draft mentioned: legacy script residue,\n  backup-path records,\
-  \ the `build.properties` file, and any other\n  repository's work (no devops or\
-  \ other cross-repo dependencies).\n- History rewriting (not elected; recorded as\
-  \ the standing disposition's\n  complement — a future ticket's matter, never this\
-  \ one).\n\n## Impact\n\n- **Consumers:** ticket #3 itself (its record set) and anyone\
-  \ auditing the\n  removal's disposition later.\n- **Blast radius:** zero repository\
-  \ changes; ticket-record edits only.\n- **Risks:** none — record edits, paths-only.\n\
-  \n\U0001F916 Co-authored with AI: OpenCode (huggingface/zai-org/GLM-5.3-Flash)\n"
+  \ | `git status --porcelain` shows no tracked modification; `git log f7bef28..HEAD\
+  \ --stat` shows no repo-content commit after the merge | R-1, R-2 |\n\n**Evidence\
+  \ types:** executed command outputs (`git ls-files`, ticket-record\nreads) — never\
+  \ assertions.\n\n## Out of scope\n\n- Everything else the pre-store draft mentioned:\
+  \ legacy script residue,\n  backup-path records, the `build.properties` file, and\
+  \ any other\n  repository's work (no devops or other cross-repo dependencies).\n\
+  - History rewriting (not elected; recorded as the standing disposition's\n  complement\
+  \ — a future ticket's matter, never this one).\n\n## Impact\n\n- **Consumers:**\
+  \ ticket #3 itself (its record set) and anyone auditing the\n  removal's disposition\
+  \ later.\n- **Blast radius:** zero repository changes; ticket-record edits only.\n\
+  - **Risks:** none — record edits, paths-only.\n\n\U0001F916 Co-authored with AI:\
+  \ OpenCode (huggingface/zai-org/GLM-5.3-Flash)\n"
 created_at: '2026-11-04T16:09:48+00:00'
-updated_at: '2026-11-04T17:19:44+00:00'
+updated_at: '2026-11-04T17:21:20+00:00'
 github_url: https://github.com/CherokeeLanguage/cedproject/issues/3
