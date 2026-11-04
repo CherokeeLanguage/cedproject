@@ -1,1 +1,8 @@
-comments: []
+comments:
+- type: stakeholder
+  body: 'Removal record (2026-11-04): commits 8e3debd (fix(#3), nine backups/ paths
+    deleted — 8,994 deletions) landed on trunk via the stacked PR cedproject#7, merge
+    f7bef28. Disposition — removal-alone: the dumps remain in git history; no history
+    rewrite is elected. Execution evidence: git ls-files backups/ is empty on the
+    synced trunk. (Paths-only per the org SOP; contents never reproduced.)'
+  timestamp: '2026-11-04T17:19:42+00:00'

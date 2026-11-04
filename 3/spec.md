@@ -1,87 +1,67 @@
-# Draft spec (follow-up, post-migration) — cedproject hygiene
+# Spec — cedproject#3 — the tracked production-database dumps: removal-only
 
-> DRAFT — awaiting developer review. Filed 2026-11-03 from cdrchops'
-> clarification answers (cedproject#2, closed with the record): the tracked
-> SQL files can be deleted; the real backup path is the on-server
-> `backupDB.sh` + the `./build.sh` pull; execution rides THIS follow-up spec,
-> gated on the completed migration (devops#14's acceptance) per cdrchops'
-> directive. Values/dump contents are never reproduced here (org SOP —
-> paths-only).
+## Intent
 
-## Problem
+Ticket #3's scope is the **removal of the tracked production-database dump
+files from the repository tip — nothing else.** The removal is executed and
+trunk-landed; what remains is the ticket's record: the removal's fact, and
+the standing history-treatment disposition, recorded on the ticket. Every
+other statement in the ticket's pre-store-era draft (legacy script residue,
+backup-path records, `build.properties`, and any dependency on the devops
+repo) is **out of this ticket** — those surfaces have their own homes and no
+dependency of any kind runs from this ticket to another repository.
 
-cedproject tracks nine database-dump/text files under `backups/` in a public
-repository (`bhd.sql`, `ced.sql`, `cedSmallDb.sql`, `cno.sql`, `cwl.sql`,
-`noq.sql`, `rrd.sql`, `vrb.sql`, `output.txt`) — pulled live-data snapshots,
-not intentional public artifacts (cdrchops' answer, 2026-11-03). The legacy
-deploy/backup scripts carry residue: `buildScripts/deployWar.sh`'s interactive
-menu (the "deploy aiki" entry unused ~5 years — a single-server-era proof of
-concept), `buildMain.sh`'s password-bearing legacy deploy functions, and
-`buildScripts/functions.sh`'s duplicate scp. The backup path itself
-(`backupDB.sh` on the server, invoked with the database password as a
-command-line argument) is the working instrument that the migration's cutover
-re-dump can use as-is.
+## Provenance
+
+- Developer answers 2026-11-03 (ticket #2, closed with the record): the
+  tracked SQL files can be deleted — removal alone. (Values/dump contents
+  are never reproduced anywhere — paths-only per the org SOP.)
+- Developer scope direction 2026-11-04, in session: "#3 is only for the
+  removals … it has nothing to do with anything else … and does not need
+  dependencies on devops."
+- The removal **executed**: commit `8e3debd` (`fix(#3): remove tracked
+  production database dumps from the repository tip`) — nine `backups/`
+  paths, 8,994 deletions — carried by the stacked PR (cedproject#7) and
+  merged to trunk at `f7bef28` on 2026-11-04.
 
 ## Requirements
 
-- **R-1** The nine tracked paths SHALL be removed from the repository tip.
-  **Ungated (developer directive, 2026-11-04):** the developer stated the
-  removal of these backup files "should not have dependencies against
-  anything" — R-1 executes now, independent of the migration (superseding
-  the prior blanket R-5 gate for this requirement). The **git-history
-  treatment remains the developer's explicit election**, not yet decided:
-  removal alone (history retains the dumps) vs history rewrite
-  (filter-repo/BFG — an org-wide coordination event, since every
-  clone/fork carries the objects); the election record in this ticket and
-  the history execution, if any, ride the developer's later direction.
-- **R-2** The legacy script residue SHALL be retired with the unified parent
-  build (devops#23's Gradle composite replaces `build.sh`/`buildMain.sh`'s
-  build role) and the stack deploy (cherokeedictionary#125 replaces the deploy
-  role): `deployWar.sh`'s menu (including the unused "deploy aiki" entry),
-  `buildMain.sh`'s legacy deploy/backup bash functions, `functions.sh`'s
-  duplicate scp — removed or explicitly retained-with-deprecation-note at
-  implementation (the AVG#25 deprecation-note pattern is the template).
-- **R-3** The on-server backup path SHALL be recorded as the canonical
-  instrument for the migration window: `backupDB.sh` (ced1) → zip →
-  `./build.sh`'s pull step. The phase-5 cutover's fresh dump (devops#14 R-7c)
-  can ride it; a **follow-up hardening item** (this spec's, not stage-A's):
-  the password-as-command-line-argument invocation (process-list exposure on
-  the remote) gets replaced by an argv-free mechanism (env/config file on the
-  server) — behavior-compatible, no dump format change.
-- **R-4** The `build.properties` credential surface (tracked, non-empty
-  values: UNAME/HOSTS/USERNAME/GITHASH/DBPASS — paths-only per the SOP) rides
-  the same disposition pass: once the unified build + key-based deploy land,
-  the file's values have no consumer; template-with-empty-values or deletion,
-  developer's election recorded here.
-- **R-5** **Gating scoping (developer directive, 2026-11-04):** only
-  R-2 (legacy residue), R-3 (backup-path record), and R-4
-  (`build.properties` disposition) remain **gated on the completed and
-  accepted migration** (devops#14's acceptance record). R-1's tracked-path
-  removal is ungated and executes immediately.
+- **R-1** The nine tracked paths (`backups/bhd.sql`, `backups/ced.sql`,
+  `backups/cedSmallDb.sql`, `backups/cno.sql`, `backups/cwl.sql`,
+  `backups/noq.sql`, `backups/rrd.sql`, `backups/vrb.sql`,
+  `backups/output.txt`) SHALL be absent from the repository tip. — **Already
+  delivered** by the commit above; this ticket records it, it does not
+  re-execute it.
+- **R-2** The history treatment SHALL stand as **removal-alone**: the dumps
+  remain in git history; no history rewrite is elected. The recording here
+  is the ticket's disposition record; a future history rewrite would be its
+  own ticket. *Trace: the 2026-11-03 answers; the 2026-11-04 scope
+  direction.*
 
 ## Success criteria
 
-| ID | Criterion | Class | Instrument |
-|---|---|---|---|
-| SC-1 | The nine paths are absent from the repository tip; the history-treatment election is still recorded as open pending the developer's call (ungated — executes now) | structural | `git ls-files` check + the recorded election state |
-| SC-2 | The legacy deploy/backup residue's disposition is recorded (removed or deprecated-in-place per file) | structural | diff review + the disposition list |
-| SC-3 | The backup-path record names the on-server instrument and the pull step; the argv-free hardening item is recorded (implemented or explicitly deferred with a date) | structural | the record's presence + the item's state |
-| SC-4 | `build.properties` disposition recorded; zero credential values in any post-change artifact | structural | secret-scan class check over the diff |
+| ID | Class | Criterion | Instrument | Tests |
+|---|---|---|---|---|
+| SC-1 | structural | The nine paths are absent from trunk | `git ls-files backups/` on the synced trunk returns empty | R-1 |
+| SC-2 | structural | The ticket carries the removal record (the executing commit, merge evidence) and the removal-alone disposition line | The ticket's record set (local `{3}/` record + remote-tracker comment) contains both lines paths-only | R-1, R-2 |
+| SC-3 | structural | No other surface is touched by this ticket's work: no code, script, or doc change, no cross-repo dependency | The ticket's activity log shows record-edits only; zero repo diffs after the merge | R-1, R-2 |
 
-## Impact
-
-Consumers: the org's secret-scan posture (the zero-hit goal); the migration's
-cutover (the dump instrument); the unified build (devops#23). Blast radius:
-cedproject's tracked files + scripts; no child-repo changes. Risks: minimal —
-all removals are of dead or duplicated surfaces; the history rewrite (if
-elected) is the one heavyweight step and is explicitly the developer's call.
+**Evidence types:** executed command outputs (`git ls-files`, ticket-record
+reads) — never assertions.
 
 ## Out of scope
 
-The unified parent build itself (devops#23); the stack deploy script
-(cherokeedictionary#125); the MariaDB container's ongoing backup loop
-(devops#12's — the post-migration successor of R-3's instrument); stage-B
-modernization.
+- Everything else the pre-store draft mentioned: legacy script residue,
+  backup-path records, the `build.properties` file, and any other
+  repository's work (no devops or other cross-repo dependencies).
+- History rewriting (not elected; recorded as the standing disposition's
+  complement — a future ticket's matter, never this one).
+
+## Impact
+
+- **Consumers:** ticket #3 itself (its record set) and anyone auditing the
+  removal's disposition later.
+- **Blast radius:** zero repository changes; ticket-record edits only.
+- **Risks:** none — record edits, paths-only.
 
 🤖 Co-authored with AI: OpenCode (huggingface/zai-org/GLM-5.3-Flash)
-
