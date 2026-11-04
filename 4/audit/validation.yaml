@@ -53,3 +53,14 @@ rounds:
         classification: finding
     verification-coverage:
       - note: reviewer verified all factual/cross-reference claims clean (full deck-anchor set, GitVersion live characterization, #1/#4 consistency) — single finding above
+  - round: 4
+    date: 2026-11-04
+    reviewer: fresh-context general dispatch (task ses_e589927c0ffec99YvVZTRJ6t5f)
+    verdict: FAIL
+    findings:
+      - class: gap-analysis (unexercised stated SHALL)
+        ground: R-4's third SHALL ("the PR record's version SHALL be updated to the new version") was exercised by no criterion — SC-3 asserted remote tag state only; a retag-correct but PR-record-stale implementation would pass all SCs
+        remediation: SC-3's criterion and instrument extended — the harness re-fetches the PR record post-rewrite and asserts the new version in title and `Version:` line
+        classification: finding
+    verification-coverage:
+      - note: reviewer verified all factual/cross-reference claims clean (zero tags local+remote, no releases, deck-anchor set, GitVersion live characterization, #1/#4 consistency) — single finding above
